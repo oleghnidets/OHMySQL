@@ -52,6 +52,31 @@
 
 #pragma mark - Abstract queries
 
+- (NSArray *)selectFirst:(NSString *)tableName {
+    return [self selectAll:tableName condition:nil];
+}
+
+- (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition {
+    return [self selectAll:tableName condition:condition];
+}
+
+- (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames {
+    return [self selectFirst:tableName condition:condition orderBy:columnNames ascending:YES];
+}
+
+- (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
+    NSParameterAssert(tableName);
+    
+    NSString *queryString = [NSString selectFirstStringFor:tableName condition:condition orderBy:columnNames ascending:isAscending];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
+}
+
+- (NSArray *)selectAll:(NSString *)tableName {
+    return [self selectAll:tableName condition:nil];
+}
+
 - (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition {
     NSParameterAssert(tableName);
     
@@ -61,13 +86,34 @@
     return [self executeSELECTQuery:query];
 }
 
+- (NSArray *)selectAll:(NSString *)tableName orderBy:(NSArray *)columnNames {
+    return [self selectAll:tableName condition:nil orderBy:columnNames ascending:YES];
+}
+
+- (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
+    NSParameterAssert(tableName && columnNames.count);
+    
+    NSString *queryString = [NSString selectAllStringFor:tableName condition:condition orderBy:columnNames ascending:isAscending];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
+}
+
+- (OHQueryResultErrorType)updateAll:(NSString *)tableName set:(NSDictionary *)set {
+    return [self updateAll:tableName set:set condition:nil];
+}
+
 - (OHQueryResultErrorType)updateAll:(NSString *)tableName set:(NSDictionary *)set condition:(NSString *)condition {
-    NSParameterAssert(tableName);
+    NSParameterAssert(tableName && set);
     
     NSString *queryString = [NSString updateStringFor:tableName set:set condition:condition];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
     return [self executeQuery:query];
+}
+
+- (OHQueryResultErrorType)deleteAllFrom:(NSString *)tableName {
+    return [self deleteAllFrom:tableName condition:nil];
 }
 
 - (OHQueryResultErrorType)deleteAllFrom:(NSString *)tableName condition:(NSString *)condition {
@@ -148,7 +194,6 @@
     
     if (!_mysql) {
         NSLog(@"Cannot connect to DB. Check your configuration properties.");
-        
         return OHQueryResultErrorTypeUnknown;
     }
     

@@ -14,7 +14,28 @@
 
 - (NSString *)appendCondition:(NSString *)condition {
     if (condition && ![condition isEqualToString:@""]) {
-        return  [self stringByAppendingFormat:@" WHERE %@", condition];
+        return [self stringByAppendingFormat:@" WHERE %@", condition];
+    }
+    
+    return self;
+}
+
+- (NSString *)appendOrderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
+    if (columnNames.count) {
+        NSString *orderByString = @" ORDER BY";
+        for (NSString *column in columnNames) {
+            orderByString = [orderByString stringByAppendingFormat:@" %@,", column];
+        }
+        
+        return [self stringByAppendingString:[[orderByString removeLastCharacter] stringByAppendingFormat:isAscending ? @" ASC" : @" DESC"]];
+    }
+    
+    return self;
+}
+
+- (NSString *)appendLimit:(NSNumber *)limit {
+    if (limit.integerValue > 0) {
+        return [self stringByAppendingFormat:@" LIMIT %li", limit.integerValue];
     }
     
     return self;
@@ -34,8 +55,16 @@
 
 #pragma mark - Queries
 
++ (NSString *)selectFirstStringFor:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
+    return [[NSString selectAllStringFor:tableName condition:condition orderBy:columnsNames ascending:isAscending] appendLimit:@1];
+}
+
 + (NSString *)selectAllStringFor:(NSString *)tableName condition:(NSString *)condition {
     return [[NSString stringWithFormat:@"SELECT * FROM %@", tableName] appendCondition:condition];
+}
+
++ (NSString *)selectAllStringFor:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
+    return [[NSString stringWithFormat:@"SELECT * FROM %@", tableName] appendOrderBy:columnsNames ascending:isAscending];
 }
 
 + (NSString *)updateStringFor:(NSString *)tableName set:(NSDictionary *)set condition:(NSString *)condition {
@@ -57,6 +86,7 @@
         values = [values stringByAppendingFormat:@"'%@',", value];
     }
     
+    // (%@, %@, %@) VALUES ('%@', '%@', '%@')
     return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", tableName, [columnsString removeLastCharacter], [values removeLastCharacter]];
 }
 

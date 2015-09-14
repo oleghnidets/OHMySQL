@@ -1,1199 +1,543 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>06674F243AB658851A3BDB77</key>
-		<dict>
-			<key>fileRef</key>
-			<string>54E7F3918299C1761618F36C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>54E7F3918299C1761618F36C</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>7C36A8631B875CEF0072EB0A</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>NSString+Helper.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C36A8641B875CEF0072EB0A</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>NSString+Helper.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C36A8651B875CEF0072EB0A</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7C36A8641B875CEF0072EB0A</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7C44FDDB1B87A5030037B87D</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OHConstants.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7C44FDDC1B87A6AF0037B87D</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OHMySQL.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61C01B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61CB1B7B38BA003A468F</string>
-				<string>7CCC61E51B7B38BA003A468F</string>
-				<string>7CCC61CA1B7B38BA003A468F</string>
-				<string>B97B74721DA611951BF0DEFD</string>
-				<string>FE42F509C0FD8A891F7BA875</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61C11B7B38BA003A468F</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>OH</string>
-				<key>LastUpgradeCheck</key>
-				<string>0640</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Oleg Hnidets</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>7CCC61C81B7B38BA003A468F</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.4</string>
-					</dict>
-					<key>7CCC61E11B7B38BA003A468F</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.4</string>
-						<key>TestTargetID</key>
-						<string>7CCC61C81B7B38BA003A468F</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>7CCC61C41B7B38BA003A468F</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>7CCC61C01B7B38BA003A468F</string>
-			<key>productRefGroup</key>
-			<string>7CCC61CA1B7B38BA003A468F</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>7CCC61C81B7B38BA003A468F</string>
-				<string>7CCC61E11B7B38BA003A468F</string>
-			</array>
-		</dict>
-		<key>7CCC61C41B7B38BA003A468F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>7CCC61EA1B7B38BA003A468F</string>
-				<string>7CCC61EB1B7B38BA003A468F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>7CCC61C51B7B38BA003A468F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>7CCC61D51B7B38BA003A468F</string>
-				<string>7CCC61D21B7B38BA003A468F</string>
-				<string>7CCC61CF1B7B38BA003A468F</string>
-				<string>7CCC61F41B7B5601003A468F</string>
-				<string>7CCC61FE1B7B5825003A468F</string>
-				<string>7CCC61F71B7B5648003A468F</string>
-				<string>7C36A8651B875CEF0072EB0A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7CCC61C61B7B38BA003A468F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>7CCC61F91B7B5661003A468F</string>
-				<string>06674F243AB658851A3BDB77</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7CCC61C71B7B38BA003A468F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>7CCC61D81B7B38BA003A468F</string>
-				<string>7CCC61DD1B7B38BA003A468F</string>
-				<string>7CCC61DA1B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7CCC61C81B7B38BA003A468F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>7CCC61EC1B7B38BA003A468F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F4494C2DF972AED2F12F5C57</string>
-				<string>7CCC61C51B7B38BA003A468F</string>
-				<string>7CCC61C61B7B38BA003A468F</string>
-				<string>7CCC61C71B7B38BA003A468F</string>
-				<string>DFA5E2A109D4303E9F1731CC</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>OHMySQL</string>
-			<key>productName</key>
-			<string>MySQL</string>
-			<key>productReference</key>
-			<string>7CCC61C91B7B38BA003A468F</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>7CCC61C91B7B38BA003A468F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OHMySQL.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>7CCC61CA1B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61C91B7B38BA003A468F</string>
-				<string>7CCC61E21B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61CB1B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61FF1B7CCDF8003A468F</string>
-				<string>7CCC61D31B7B38BA003A468F</string>
-				<string>7CCC61D41B7B38BA003A468F</string>
-				<string>7CCC61D61B7B38BA003A468F</string>
-				<string>7CCC61CC1B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>MySQL</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61CC1B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61D01B7B38BA003A468F</string>
-				<string>7CCC61D11B7B38BA003A468F</string>
-				<string>7CCC61D91B7B38BA003A468F</string>
-				<string>7CCC61DB1B7B38BA003A468F</string>
-				<string>7CCC61CD1B7B38BA003A468F</string>
-				<string>7CCC61CE1B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61CD1B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61CE1B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61CF1B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61CE1B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61D01B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61D11B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61D21B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61D11B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61D31B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OHViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61D41B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>OHViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61D51B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61D41B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61D61B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61D71B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>path</key>
-			<string>.</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61D71B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61D81B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61D61B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61D91B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61DA1B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61D91B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61DB1B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61DC1B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>LaunchScreen.xib</string>
-			<key>path</key>
-			<string>.</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61DC1B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61DD1B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61DB1B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61DE1B7B38BA003A468F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>7CCC61E91B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7CCC61DF1B7B38BA003A468F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7CCC61E01B7B38BA003A468F</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7CCC61E11B7B38BA003A468F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>7CCC61EF1B7B38BA003A468F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>7CCC61DE1B7B38BA003A468F</string>
-				<string>7CCC61DF1B7B38BA003A468F</string>
-				<string>7CCC61E01B7B38BA003A468F</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>7CCC61E41B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>OHMySQLTests</string>
-			<key>productName</key>
-			<string>MySQLTests</string>
-			<key>productReference</key>
-			<string>7CCC61E21B7B38BA003A468F</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>7CCC61E21B7B38BA003A468F</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>OHMySQLTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>7CCC61E31B7B38BA003A468F</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>7CCC61C11B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>7CCC61C81B7B38BA003A468F</string>
-			<key>remoteInfo</key>
-			<string>MySQL</string>
-		</dict>
-		<key>7CCC61E41B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>7CCC61C81B7B38BA003A468F</string>
-			<key>targetProxy</key>
-			<string>7CCC61E31B7B38BA003A468F</string>
-		</dict>
-		<key>7CCC61E51B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61E81B7B38BA003A468F</string>
-				<string>7CCC61E61B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>MySQLTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61E61B7B38BA003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61E71B7B38BA003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61E71B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61E81B7B38BA003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>MySQLTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61E91B7B38BA003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61E81B7B38BA003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61EA1B7B38BA003A468F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.4</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>7CCC61EB1B7B38BA003A468F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.4</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>7CCC61EC1B7B38BA003A468F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>7CCC61ED1B7B38BA003A468F</string>
-				<string>7CCC61EE1B7B38BA003A468F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>7CCC61ED1B7B38BA003A468F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>F383C11697CBDCC57F8BAF7E</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
-				<string>NO</string>
-				<key>INFOPLIST_FILE</key>
-				<string>MySQL/Supporting Files/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>OHMySQL</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>7CCC61EE1B7B38BA003A468F</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>F8D71F15E5B73A62DE3B7D74</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
-				<string>NO</string>
-				<key>INFOPLIST_FILE</key>
-				<string>MySQL/Supporting Files/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>OHMySQL</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>7CCC61EF1B7B38BA003A468F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>7CCC61F01B7B38BA003A468F</string>
-				<string>7CCC61F11B7B38BA003A468F</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>7CCC61F01B7B38BA003A468F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>MySQLTests/Supporting Files/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>OHMySQLTests</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>7CCC61F11B7B38BA003A468F</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>MySQLTests/Supporting Files/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>OHMySQLTests</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>7CCC61F21B7B5601003A468F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OHMySQLManager.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61F31B7B5601003A468F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>OHMySQLManager.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61F41B7B5601003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61F31B7B5601003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61F51B7B5648003A468F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OHMySQLQuery.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61F61B7B5648003A468F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>OHMySQLQuery.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61F71B7B5648003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61F61B7B5648003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61F81B7B5661003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>7CCC61F91B7B5661003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61F81B7B5661003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Required</string>
-				</array>
-			</dict>
-		</dict>
-		<key>7CCC61FA1B7B566A003A468F</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreFoundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreFoundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>7CCC61FC1B7B5825003A468F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>OHMySQLUser.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61FD1B7B5825003A468F</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>OHMySQLUser.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7CCC61FE1B7B5825003A468F</key>
-		<dict>
-			<key>fileRef</key>
-			<string>7CCC61FD1B7B5825003A468F</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>7CCC61FF1B7CCDF8003A468F</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7C44FDDC1B87A6AF0037B87D</string>
-				<string>7C44FDDB1B87A5030037B87D</string>
-				<string>7C36A8631B875CEF0072EB0A</string>
-				<string>7C36A8641B875CEF0072EB0A</string>
-				<string>7CCC61FC1B7B5825003A468F</string>
-				<string>7CCC61FD1B7B5825003A468F</string>
-				<string>7CCC61F51B7B5648003A468F</string>
-				<string>7CCC61F61B7B5648003A468F</string>
-				<string>7CCC61F21B7B5601003A468F</string>
-				<string>7CCC61F31B7B5601003A468F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>OHMySQL</string>
-			<key>path</key>
-			<string>OHMySQL</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B97B74721DA611951BF0DEFD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F383C11697CBDCC57F8BAF7E</string>
-				<string>F8D71F15E5B73A62DE3B7D74</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DFA5E2A109D4303E9F1731CC</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>F383C11697CBDCC57F8BAF7E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F4494C2DF972AED2F12F5C57</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>F8D71F15E5B73A62DE3B7D74</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FE42F509C0FD8A891F7BA875</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7CCC61FA1B7B566A003A468F</string>
-				<string>7CCC61F81B7B5661003A468F</string>
-				<string>54E7F3918299C1761618F36C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>7CCC61C11B7B38BA003A468F</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06674F243AB658851A3BDB77 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E7F3918299C1761618F36C /* libPods.a */; };
+		7C36A8651B875CEF0072EB0A /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A8641B875CEF0072EB0A /* NSString+Helper.m */; };
+		7CCC61CF1B7B38BA003A468F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61CE1B7B38BA003A468F /* main.m */; };
+		7CCC61D21B7B38BA003A468F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61D11B7B38BA003A468F /* AppDelegate.m */; };
+		7CCC61D51B7B38BA003A468F /* OHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61D41B7B38BA003A468F /* OHViewController.m */; };
+		7CCC61D81B7B38BA003A468F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC61D61B7B38BA003A468F /* Main.storyboard */; };
+		7CCC61DA1B7B38BA003A468F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC61D91B7B38BA003A468F /* Images.xcassets */; };
+		7CCC61DD1B7B38BA003A468F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC61DB1B7B38BA003A468F /* LaunchScreen.xib */; };
+		7CCC61E91B7B38BA003A468F /* MySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61E81B7B38BA003A468F /* MySQLTests.m */; };
+		7CCC61F41B7B5601003A468F /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61F31B7B5601003A468F /* OHMySQLManager.m */; };
+		7CCC61F71B7B5648003A468F /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61F61B7B5648003A468F /* OHMySQLQuery.m */; };
+		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7CCC61FE1B7B5825003A468F /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61FD1B7B5825003A468F /* OHMySQLUser.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7CCC61E31B7B38BA003A468F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CCC61C11B7B38BA003A468F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CCC61C81B7B38BA003A468F;
+			remoteInfo = MySQL;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C36A8631B875CEF0072EB0A /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
+		7C36A8641B875CEF0072EB0A /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
+		7C44FDDB1B87A5030037B87D /* OHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHConstants.h; sourceTree = "<group>"; };
+		7C44FDDC1B87A6AF0037B87D /* OHMySQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHMySQL.h; sourceTree = "<group>"; };
+		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CCC61CD1B7B38BA003A468F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CCC61CE1B7B38BA003A468F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7CCC61D01B7B38BA003A468F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7CCC61D11B7B38BA003A468F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7CCC61D31B7B38BA003A468F /* OHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHViewController.h; sourceTree = "<group>"; };
+		7CCC61D41B7B38BA003A468F /* OHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHViewController.m; sourceTree = "<group>"; };
+		7CCC61D71B7B38BA003A468F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7CCC61D91B7B38BA003A468F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7CCC61DC1B7B38BA003A468F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7CCC61E21B7B38BA003A468F /* OHMySQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OHMySQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CCC61E71B7B38BA003A468F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CCC61E81B7B38BA003A468F /* MySQLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySQLTests.m; sourceTree = "<group>"; };
+		7CCC61F21B7B5601003A468F /* OHMySQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLManager.h; sourceTree = "<group>"; };
+		7CCC61F31B7B5601003A468F /* OHMySQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLManager.m; sourceTree = "<group>"; };
+		7CCC61F51B7B5648003A468F /* OHMySQLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQuery.h; sourceTree = "<group>"; };
+		7CCC61F61B7B5648003A468F /* OHMySQLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQuery.m; sourceTree = "<group>"; };
+		7CCC61F81B7B5661003A468F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		7CCC61FC1B7B5825003A468F /* OHMySQLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLUser.h; sourceTree = "<group>"; };
+		7CCC61FD1B7B5825003A468F /* OHMySQLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLUser.m; sourceTree = "<group>"; };
+		F383C11697CBDCC57F8BAF7E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F8D71F15E5B73A62DE3B7D74 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7CCC61C61B7B38BA003A468F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */,
+				06674F243AB658851A3BDB77 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC61DF1B7B38BA003A468F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7CCC61C01B7B38BA003A468F = {
+			isa = PBXGroup;
+			children = (
+				7CCC61CB1B7B38BA003A468F /* MySQL */,
+				7CCC61E51B7B38BA003A468F /* MySQLTests */,
+				7CCC61CA1B7B38BA003A468F /* Products */,
+				B97B74721DA611951BF0DEFD /* Pods */,
+				FE42F509C0FD8A891F7BA875 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7CCC61CA1B7B38BA003A468F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC61C91B7B38BA003A468F /* OHMySQL.app */,
+				7CCC61E21B7B38BA003A468F /* OHMySQLTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7CCC61CB1B7B38BA003A468F /* MySQL */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC61FF1B7CCDF8003A468F /* OHMySQL */,
+				7CCC61D31B7B38BA003A468F /* OHViewController.h */,
+				7CCC61D41B7B38BA003A468F /* OHViewController.m */,
+				7CCC61D61B7B38BA003A468F /* Main.storyboard */,
+				7CCC61CC1B7B38BA003A468F /* Supporting Files */,
+			);
+			path = MySQL;
+			sourceTree = "<group>";
+		};
+		7CCC61CC1B7B38BA003A468F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC61D01B7B38BA003A468F /* AppDelegate.h */,
+				7CCC61D11B7B38BA003A468F /* AppDelegate.m */,
+				7CCC61D91B7B38BA003A468F /* Images.xcassets */,
+				7CCC61DB1B7B38BA003A468F /* LaunchScreen.xib */,
+				7CCC61CD1B7B38BA003A468F /* Info.plist */,
+				7CCC61CE1B7B38BA003A468F /* main.m */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7CCC61E51B7B38BA003A468F /* MySQLTests */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC61E81B7B38BA003A468F /* MySQLTests.m */,
+				7CCC61E61B7B38BA003A468F /* Supporting Files */,
+			);
+			path = MySQLTests;
+			sourceTree = "<group>";
+		};
+		7CCC61E61B7B38BA003A468F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC61E71B7B38BA003A468F /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7CCC61FF1B7CCDF8003A468F /* OHMySQL */ = {
+			isa = PBXGroup;
+			children = (
+				7C44FDDC1B87A6AF0037B87D /* OHMySQL.h */,
+				7C44FDDB1B87A5030037B87D /* OHConstants.h */,
+				7C36A8631B875CEF0072EB0A /* NSString+Helper.h */,
+				7C36A8641B875CEF0072EB0A /* NSString+Helper.m */,
+				7CCC61FC1B7B5825003A468F /* OHMySQLUser.h */,
+				7CCC61FD1B7B5825003A468F /* OHMySQLUser.m */,
+				7CCC61F51B7B5648003A468F /* OHMySQLQuery.h */,
+				7CCC61F61B7B5648003A468F /* OHMySQLQuery.m */,
+				7CCC61F21B7B5601003A468F /* OHMySQLManager.h */,
+				7CCC61F31B7B5601003A468F /* OHMySQLManager.m */,
+			);
+			path = OHMySQL;
+			sourceTree = "<group>";
+		};
+		B97B74721DA611951BF0DEFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F383C11697CBDCC57F8BAF7E /* Pods.debug.xcconfig */,
+				F8D71F15E5B73A62DE3B7D74 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE42F509C0FD8A891F7BA875 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */,
+				7CCC61F81B7B5661003A468F /* Foundation.framework */,
+				54E7F3918299C1761618F36C /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7CCC61C81B7B38BA003A468F /* OHMySQL */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CCC61EC1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQL" */;
+			buildPhases = (
+				F4494C2DF972AED2F12F5C57 /* Check Pods Manifest.lock */,
+				7CCC61C51B7B38BA003A468F /* Sources */,
+				7CCC61C61B7B38BA003A468F /* Frameworks */,
+				7CCC61C71B7B38BA003A468F /* Resources */,
+				DFA5E2A109D4303E9F1731CC /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OHMySQL;
+			productName = MySQL;
+			productReference = 7CCC61C91B7B38BA003A468F /* OHMySQL.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7CCC61E11B7B38BA003A468F /* OHMySQLTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CCC61EF1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQLTests" */;
+			buildPhases = (
+				7CCC61DE1B7B38BA003A468F /* Sources */,
+				7CCC61DF1B7B38BA003A468F /* Frameworks */,
+				7CCC61E01B7B38BA003A468F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7CCC61E41B7B38BA003A468F /* PBXTargetDependency */,
+			);
+			name = OHMySQLTests;
+			productName = MySQLTests;
+			productReference = 7CCC61E21B7B38BA003A468F /* OHMySQLTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7CCC61C11B7B38BA003A468F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = OH;
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Oleg Hnidets";
+				TargetAttributes = {
+					7CCC61C81B7B38BA003A468F = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					7CCC61E11B7B38BA003A468F = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = 7CCC61C81B7B38BA003A468F;
+					};
+				};
+			};
+			buildConfigurationList = 7CCC61C41B7B38BA003A468F /* Build configuration list for PBXProject "OHMySQL" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7CCC61C01B7B38BA003A468F;
+			productRefGroup = 7CCC61CA1B7B38BA003A468F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7CCC61C81B7B38BA003A468F /* OHMySQL */,
+				7CCC61E11B7B38BA003A468F /* OHMySQLTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7CCC61C71B7B38BA003A468F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC61D81B7B38BA003A468F /* Main.storyboard in Resources */,
+				7CCC61DD1B7B38BA003A468F /* LaunchScreen.xib in Resources */,
+				7CCC61DA1B7B38BA003A468F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC61E01B7B38BA003A468F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DFA5E2A109D4303E9F1731CC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4494C2DF972AED2F12F5C57 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7CCC61C51B7B38BA003A468F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC61D51B7B38BA003A468F /* OHViewController.m in Sources */,
+				7CCC61D21B7B38BA003A468F /* AppDelegate.m in Sources */,
+				7CCC61CF1B7B38BA003A468F /* main.m in Sources */,
+				7CCC61F41B7B5601003A468F /* OHMySQLManager.m in Sources */,
+				7CCC61FE1B7B5825003A468F /* OHMySQLUser.m in Sources */,
+				7CCC61F71B7B5648003A468F /* OHMySQLQuery.m in Sources */,
+				7C36A8651B875CEF0072EB0A /* NSString+Helper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7CCC61DE1B7B38BA003A468F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CCC61E91B7B38BA003A468F /* MySQLTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7CCC61E41B7B38BA003A468F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CCC61C81B7B38BA003A468F /* OHMySQL */;
+			targetProxy = 7CCC61E31B7B38BA003A468F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7CCC61D61B7B38BA003A468F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CCC61D71B7B38BA003A468F /* Base */,
+			);
+			name = Main.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		7CCC61DB1B7B38BA003A468F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7CCC61DC1B7B38BA003A468F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7CCC61EA1B7B38BA003A468F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7CCC61EB1B7B38BA003A468F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7CCC61ED1B7B38BA003A468F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F383C11697CBDCC57F8BAF7E /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				INFOPLIST_FILE = "MySQL/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = OHMySQL;
+			};
+			name = Debug;
+		};
+		7CCC61EE1B7B38BA003A468F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8D71F15E5B73A62DE3B7D74 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				INFOPLIST_FILE = "MySQL/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = OHMySQL;
+			};
+			name = Release;
+		};
+		7CCC61F01B7B38BA003A468F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MySQLTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = OHMySQLTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL";
+			};
+			name = Debug;
+		};
+		7CCC61F11B7B38BA003A468F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MySQLTests/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = OHMySQLTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7CCC61C41B7B38BA003A468F /* Build configuration list for PBXProject "OHMySQL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC61EA1B7B38BA003A468F /* Debug */,
+				7CCC61EB1B7B38BA003A468F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CCC61EC1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQL" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC61ED1B7B38BA003A468F /* Debug */,
+				7CCC61EE1B7B38BA003A468F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7CCC61EF1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQLTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7CCC61F01B7B38BA003A468F /* Debug */,
+				7CCC61F11B7B38BA003A468F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7CCC61C11B7B38BA003A468F /* Project object */;
+}

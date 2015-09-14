@@ -6,7 +6,9 @@
 
 @interface NSString (SQLQueryString)
 
++ (nonnull NSString *)selectFirstStringFor:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnsNames ascending:(BOOL)isAscending;
 + (nonnull NSString *)selectAllStringFor:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
++ (nonnull NSString *)selectAllStringFor:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnsNames ascending:(BOOL)isAscending;
 + (nonnull NSString *)updateStringFor:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set condition:(nullable NSString *)condition;
 + (nonnull NSString *)deleteFrom:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 + (nonnull NSString *)insertIntoFor:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set;

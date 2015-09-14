@@ -14,28 +14,118 @@
 @property (nonatomic, strong, readonly, null_unspecified) OHMySQLUser *user;
 
 + (nonnull OHMySQLManager *)sharedManager;
-
-
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
+
+
+/**
+ *  Select the first record of the selected table.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *
+ *  @return Array of dictionary (JSON).
+ */
+- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName;
+
+/**
+ *  Select the first record of the selected table.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *
+ *  @return Array of dictionary (JSON).
+ */
+- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+
+/**
+ *  Select the first record of the selected table. Sorts the records in ascending order by default.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param columnNames Result-set of one or more columns.
+ *
+ *  @return Array of dictionary (JSON).
+ */
+- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnNames;
+
+/**
+ *  Select the first record of the selected table.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param columnNames Result-set of one or more columns.
+ *  @param isAscending Ascending or descending order.
+ *
+ *  @return Array of dictionary (JSON).
+ */
+- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnNames ascending:(BOOL)isAscending;
 
 /**
  *  Select all records.
  *  @pre You must connect user once.
  *
- *  @param tableName Name of target table.
- *  @param condition Condition like in real SQL query (e.g: id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param tableName Name of the target table.
+ *
+ *  @return Array of dictionaries (JSON).
+ */
+- (nullable NSArray *)selectAll:(nonnull NSString *)tableName;
+
+/**
+ *  Select all records.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
  *  @return Array of dictionaries (JSON).
  */
 - (nullable NSArray *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 /**
+ *  Select all records with sorting. Sorts the records in ascending order by default.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param columnNames Result-set of one or more columns.
+ *
+ *  @return Array of dictionaries (JSON).
+ */
+- (nullable NSArray *)selectAll:(nonnull NSString *)tableName orderBy:(nonnull NSArray *)columnNames;
+
+/**
+ *  Select all records with sorting.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param columnNames Result-set of one or more columns.
+ *  @param isAscending Ascending or descending order.
+ *
+ *  @return Array of dictionaries (JSON).
+ */
+- (nullable NSArray *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnNames ascending:(BOOL)isAscending;
+
+/**
  *  Update all records.
  *  @pre You must connect user once.
  *
- *  @param tableName Name of target table.
+ *  @param tableName Name of the target table.
  *  @param set       Key is column' name in table, value is your object.
- *  @param condition Condition like in real SQL query (e.g: name='Name'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *
+ *  @return Zero for success. Nonzero if an error occurred.
+ */
+- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set;
+
+/**
+ *  Update all records.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param set       Key is column' name in table, value is your object.
+ *  @param condition Likes in real SQL query (e.g: WHERE name='Name'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
@@ -45,8 +135,18 @@
  *  Deletes all records.
  *  @pre You must connect user once.
  *
- *  @param tableName Name of target table.
- *  @param condition Condition like in real SQL query (e.g: id>'10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param tableName Name of the target table.
+ *
+ *  @return Zero for success. Nonzero if an error occurred.
+ */
+- (OHQueryResultErrorType)deleteAllFrom:(nonnull NSString *)tableName;
+
+/**
+ *  Deletes all records.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id>'10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
@@ -56,7 +156,7 @@
  *  Insert a new record.
  *  @pre You must connect user once.
  *
- *  @param tableName Name of target table.
+ *  @param tableName Name of the target table.
  *  @param set       Key is column' name in table, value is your object.
  *
  *  @return Zero for success. Nonzero if an error occurred.
