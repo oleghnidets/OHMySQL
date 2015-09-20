@@ -7,6 +7,16 @@
 
 #import <mysql-connector-c/mysql.h>
 
+extern NSString *_Nonnull const OHJoinInner;
+extern NSString *_Nonnull const OHJoinRight;
+extern NSString *_Nonnull const OHJoinLeft;
+extern NSString *_Nonnull const OHJoinFull;
+
+NSString *const OHJoinInner = @"INNER";
+NSString *const OHJoinRight = @"RIGHT";
+NSString *const OHJoinLeft  = @"LEFT";
+NSString *const OHJoinFull  = @"FULL";
+
 @interface OHMySQLManager ()
 
 @property (nonatomic, assign, readwrite) NSUInteger countOfFields;
@@ -52,6 +62,40 @@
 
 #pragma mark - Abstract queries
 
+- (NSArray *)selectJoin:(NSString *)joinType
+                   from:(NSString *)tableName1
+                   join:(NSString *)tableName2
+            columnNames:(NSArray *)columnNames
+            onCondition:(NSString *)condition {
+    NSParameterAssert(tableName1 && tableName2 && columnNames.count && condition);
+    
+    NSString *queryString = nil;
+    if ([joinType isEqualToString:OHJoinInner]) {
+        queryString = [NSString joinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else if ([joinType isEqualToString:OHJoinRight]) {
+        queryString = [NSString rightJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else if ([joinType isEqualToString:OHJoinLeft]) {
+        queryString = [NSString leftJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else if ([joinType isEqualToString:OHJoinFull]) {
+        queryString = [NSString fullJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else {
+        NSAssert(queryString, @"You must specify correct join type");
+    }
+
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
+}
+
+- (nullable NSArray *)selectJoin:(NSString *)joinType from:(NSString *)tableName1 joinInner:(nonnull NSString *)tableName2 columnNames:(nonnull NSArray *)columnNames onCondition:(nonnull NSString *)condition {
+    NSParameterAssert(tableName1 && tableName2 && columnNames.count && condition);
+    
+    NSString *queryString = [NSString joinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
+}
+
 - (NSArray *)selectFirst:(NSString *)tableName {
     return [self selectAll:tableName condition:nil];
 }
@@ -73,7 +117,7 @@
     return [self executeSELECTQuery:query];
 }
 
-- (NSArray *)selectAll:(NSString *)tableName {
+- (NSArray *)selectAllFrom:(NSString *)tableName {
     return [self selectAll:tableName condition:nil];
 }
 
@@ -155,7 +199,7 @@
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
         for (NSUInteger i=0; i<self.countOfFields; ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
-            NSString *value = [NSString stringWithUTF8String:row[i]];
+            NSString *value = [NSString stringWithUTF8String:row[i] ?: "null"];
             
             jsonDict[key] = value;
         }

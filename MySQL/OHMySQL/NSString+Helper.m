@@ -21,16 +21,12 @@
 }
 
 - (NSString *)appendOrderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
-    if (columnNames.count) {
-        NSString *orderByString = @" ORDER BY";
-        for (NSString *column in columnNames) {
-            orderByString = [orderByString stringByAppendingFormat:@" %@,", column];
-        }
-        
-        return [self stringByAppendingString:[[orderByString removeLastCharacter] stringByAppendingFormat:isAscending ? @" ASC" : @" DESC"]];
+    if (!columnNames.count) {
+        return self;
     }
     
-    return self;
+    NSString *orderByString = @" ORDER BY";
+    return [self stringByAppendingString:[[orderByString stringByCommaWithArray:columnNames] stringByAppendingFormat:isAscending ? @" ASC" : @" DESC"]];;
 }
 
 - (NSString *)appendLimit:(NSNumber *)limit {
@@ -42,6 +38,10 @@
 }
 
 + (NSString *)updateSetStringFrom:(NSDictionary *)set {
+    if (!set.count) {
+        return nil;
+    }
+    
     NSString *setString = @"";
     for (NSString *key in set.allKeys) {
         NSString *value = set[key];
@@ -53,7 +53,36 @@
     return [setString removeLastCharacter];
 }
 
+- (NSString *)stringByCommaWithArray:(NSArray *)strings {
+    if (!strings.count) {
+        return self;
+    }
+    
+    NSString *result = self;
+    for (NSString *column in strings) {
+        result = [result stringByAppendingFormat:@" %@,", column];
+    }
+    
+    return [result removeLastCharacter];
+}
+
 #pragma mark - Queries
+
++ (NSString *)joinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ INNER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
++ (NSString *)rightJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ RIGHT JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
++ (NSString *)leftJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ LEFT JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
++ (NSString *)fullJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ FULL JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
 
 + (NSString *)selectFirstStringFor:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
     return [[NSString selectAllStringFor:tableName condition:condition orderBy:columnsNames ascending:isAscending] appendLimit:@1];
@@ -76,18 +105,13 @@
 }
 
 + (NSString *)insertIntoFor:(NSString *)tableName set:(NSDictionary *)set {
-    NSString *columnsString = @"";
-    for (NSString *column in set.allKeys) {
-        columnsString = [columnsString stringByAppendingFormat:@"%@,", column];
-    }
-    
     NSString *values = @"";
     for (NSString *value in set.allValues) {
         values = [values stringByAppendingFormat:@"'%@',", value];
     }
     
     // (%@, %@, %@) VALUES ('%@', '%@', '%@')
-    return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", tableName, [columnsString removeLastCharacter], [values removeLastCharacter]];
+    return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", tableName, [@"" stringByCommaWithArray:set.allKeys], [values removeLastCharacter]];
 }
 
 @end

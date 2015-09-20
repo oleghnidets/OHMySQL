@@ -8,6 +8,11 @@
 
 @class OHMySQLUser, OHMySQLQuery;
 
+extern NSString *_Nonnull const OHJoinInner;
+extern NSString *_Nonnull const OHJoinRight;
+extern NSString *_Nonnull const OHJoinLeft;
+extern NSString *_Nonnull const OHJoinFull;
+
 @interface OHMySQLManager : NSObject
 
 @property (nonatomic, assign, readonly, getter=isConnected) BOOL connected;
@@ -16,6 +21,18 @@
 + (nonnull OHMySQLManager *)sharedManager;
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
 
+/**
+ *
+ *
+ *  @param joinType    <#joinType description#>
+ *  @param tableName1  <#tableName1 description#>
+ *  @param tableName2  <#tableName2 description#>
+ *  @param columnNames <#columnNames description#>
+ *  @param condition   <#condition description#>
+ *
+ *  @return <#return value description#>
+ */
+- (nullable NSArray *)selectJoin:(nonnull NSString *)joinType from:(nonnull NSString *)tableName1 join:(nonnull NSString *)tableName2 columnNames:(nonnull NSArray *)columnNames onCondition:(nonnull NSString *)condition;
 
 /**
  *  Select the first record of the selected table.
@@ -71,7 +88,7 @@
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectAll:(nonnull NSString *)tableName;
+- (nullable NSArray *)selectAllFrom:(nonnull NSString *)tableName;
 
 /**
  *  Select all records.
@@ -165,9 +182,9 @@
 
 //! Executes SELECT query if only sqlQuery.queryString is SELECT-based.
 - (nullable NSArray *)executeSELECTQuery:(nonnull OHMySQLQuery *)sqlQuery;
-//! Executes SELECT query if only sqlQuery.queryString is UPDATE-based.
+//! Executes UPDATE query if only sqlQuery.queryString is UPDATE-based.
 - (void)executeUPDATEQuery:(nonnull OHMySQLQuery *)sqlQuery;
-//! Executes SELECT query if only sqlQuery.queryString is DELETE-based.
+//! Executes DELETE query if only sqlQuery.queryString is DELETE-based.
 - (void)executeDELETEQuery:(nonnull OHMySQLQuery *)sqlQuery;
 
 //! Executes any query.

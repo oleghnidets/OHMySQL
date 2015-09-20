@@ -43,10 +43,17 @@
     
     NSLog(@"%@", [[OHMySQLManager sharedManager] selectAll:@"users" condition:nil]);
     NSLog(@"%@", [[OHMySQLManager sharedManager] selectAll:@"users" condition:@"" orderBy:@[@"name", @"id"] ascending:YES]);
-    NSLog(@"%@", [[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:YES]);
+    NSDictionary *first = [[[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:YES] firstObject];
+    NSLog(@"%@", first);
     
-    NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
-
+    NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"students" set:@{ @"groupId" : @"1", @"userId" : first[@"id"] }]);
+    NSLog(@"%@",[[OHMySQLManager sharedManager] selectJoin:OHJoinRight
+                                                      from:@"users"
+                                                      join:@"students"
+                                               columnNames:@[@"students.groupID", @"users.name", @"users.lastname"]
+                                               onCondition:@"users.id=students.userId"]);
+    
+//    NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
 
     // ----
     self.query = [[OHMySQLQuery alloc] initWithUser:user queryString:@"SELECT * FROM users WHERE name='Name'"];
@@ -58,6 +65,10 @@
                               self.nameLabel.text, self.lastNameLabel.text, self.passwordLabel.text];
     
     NSLog(@"%li", [[OHMySQLManager sharedManager] executeQuery:self.query]);
+}
+
+- (IBAction)selectButtonClicked:(UIButton *)sender {
+    NSLog(@"%@", [[OHMySQLManager sharedManager] selectAllFrom:@"users"]);
 }
 
 @end
