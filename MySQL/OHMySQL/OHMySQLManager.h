@@ -22,17 +22,22 @@ extern NSString *_Nonnull const OHJoinFull;
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
 
 /**
+ *  Combines rows from two or more tables, based on a common field between them.
+ *  @pre You must connect user once.
  *
+ *  @param joinType    Type of join.
+ *  @param tableName1  Left table.
+ *  @param tableName2  Right table.
+ *  @param columnNames Array of column names.
+ *  @param condition   Common condition.
  *
- *  @param joinType    <#joinType description#>
- *  @param tableName1  <#tableName1 description#>
- *  @param tableName2  <#tableName2 description#>
- *  @param columnNames <#columnNames description#>
- *  @param condition   <#condition description#>
- *
- *  @return <#return value description#>
+ *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectJoin:(nonnull NSString *)joinType from:(nonnull NSString *)tableName1 join:(nonnull NSString *)tableName2 columnNames:(nonnull NSArray *)columnNames onCondition:(nonnull NSString *)condition;
+- (nullable NSArray *)selectJoinType:(nonnull NSString *)joinType
+                                from:(nonnull NSString *)tableName1
+                                join:(nonnull NSString *)tableName2
+                         columnNames:(nonnull NSArray<NSString *> *)columnNames
+                         onCondition:(nonnull NSString *)condition;
 
 /**
  *  Select the first record of the selected table.
@@ -65,7 +70,9 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionary (JSON).
  */
-- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnNames;
+- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName
+                        condition:(nullable NSString *)condition
+                          orderBy:(nonnull NSArray<NSString *> *)columnNames;
 
 /**
  *  Select the first record of the selected table.
@@ -78,7 +85,10 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionary (JSON).
  */
-- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnNames ascending:(BOOL)isAscending;
+- (nullable NSArray<NSDictionary *> *)selectFirst:(nonnull NSString *)tableName
+                                        condition:(nullable NSString *)condition
+                                          orderBy:(nonnull NSArray<NSString *> *)columnNames
+                                        ascending:(BOOL)isAscending;
 
 /**
  *  Select all records.
@@ -88,7 +98,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectAllFrom:(nonnull NSString *)tableName;
+- (nullable NSArray<NSDictionary *> *)selectAllFrom:(nonnull NSString *)tableName;
 
 /**
  *  Select all records.
@@ -99,7 +109,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 /**
  *  Select all records with sorting. Sorts the records in ascending order by default.
@@ -110,7 +120,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectAll:(nonnull NSString *)tableName orderBy:(nonnull NSArray *)columnNames;
+- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName orderBy:(nonnull NSArray<NSString *> *)columnNames;
 
 /**
  *  Select all records with sorting.
@@ -123,7 +133,10 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition orderBy:(nonnull NSArray *)columnNames ascending:(BOOL)isAscending;
+- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName
+                                      condition:(nullable NSString *)condition
+                                        orderBy:(nonnull NSArray<NSString *> *)columnNames
+                                      ascending:(BOOL)isAscending;
 
 /**
  *  Update all records.
@@ -134,7 +147,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set;
+- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 /**
  *  Update all records.
@@ -146,7 +159,9 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set condition:(nullable NSString *)condition;
+- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName
+                                set:(nonnull NSDictionary<NSString *, id> *)set
+                          condition:(nullable NSString *)condition;
 
 /**
  *  Deletes all records.
@@ -178,7 +193,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set;
+- (OHQueryResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 //! Executes SELECT query if only sqlQuery.queryString is SELECT-based.
 - (nullable NSArray *)executeSELECTQuery:(nonnull OHMySQLQuery *)sqlQuery;

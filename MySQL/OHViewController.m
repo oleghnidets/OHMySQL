@@ -29,11 +29,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // ----    
+    
+    // ----
     OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root" password:@"root" serverName:@"localhost" dbName:@"RateIt" port:3306 socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
     [[OHMySQLManager sharedManager] connectWithUser:user];
-
+    
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"users" set:@{ @"name" : @"ABC", @"lastname" : @"ABC", @"password" : @"123456" }]);
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"users" set:@{ @"name" : @"BCD", @"lastname" : @"BCD", @"password" : @"123456" }]);
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"users" set:@{ @"name" : @"CDE", @"lastname" : @"CDE", @"password" : @"123456" }]);
@@ -47,14 +47,14 @@
     NSLog(@"%@", first);
     
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"students" set:@{ @"groupId" : @"1", @"userId" : first[@"id"] }]);
-    NSLog(@"%@",[[OHMySQLManager sharedManager] selectJoin:OHJoinRight
-                                                      from:@"users"
-                                                      join:@"students"
-                                               columnNames:@[@"students.groupID", @"users.name", @"users.lastname"]
-                                               onCondition:@"users.id=students.userId"]);
+    NSLog(@"%@",[[OHMySQLManager sharedManager] selectJoinType:OHJoinRight
+                                                          from:@"users"
+                                                          join:@"students"
+                                                   columnNames:@[@"students.groupID", @"users.name", @"users.lastname"]
+                                                   onCondition:@"users.id=students.userId"]);
     
-//    NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
-
+    //    NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
+    
     // ----
     self.query = [[OHMySQLQuery alloc] initWithUser:user queryString:@"SELECT * FROM users WHERE name='Name'"];
     __unused NSArray *dict = [[OHMySQLManager sharedManager] executeSELECTQuery:self.query];

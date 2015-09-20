@@ -7,10 +7,10 @@
 @interface NSString (SQLQueryString)
 
 //
-+ (nonnull NSString *)joinStringFrom:(nonnull NSString *)tableName1
-                           joinInner:(nonnull NSString *)tableName2
-                         columnNames:(nonnull NSArray *)columnNames
-                         onCondition:(nonnull NSString *)condition;
++ (nonnull NSString *)innerJoinStringFrom:(nonnull NSString *)tableName1
+                                joinInner:(nonnull NSString *)tableName2
+                              columnNames:(nonnull NSArray *)columnNames
+                              onCondition:(nonnull NSString *)condition;
 
 + (nonnull NSString *)leftJoinStringFrom:(nonnull NSString *)tableName1
                                joinInner:(nonnull NSString *)tableName2

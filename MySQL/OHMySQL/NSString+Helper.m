@@ -68,20 +68,20 @@
 
 #pragma mark - Queries
 
-+ (NSString *)joinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
++ (NSString *)innerJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
     return [NSString stringWithFormat:@"SELECT %@ FROM %@ INNER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
 }
 
 + (NSString *)rightJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ RIGHT JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ RIGHT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
 }
 
 + (NSString *)leftJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ LEFT JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ LEFT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
 }
 
 + (NSString *)fullJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ FULL JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ FULL OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
 }
 
 + (NSString *)selectFirstStringFor:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {

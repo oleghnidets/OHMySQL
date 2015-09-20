@@ -228,7 +228,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = OH;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Oleg Hnidets";
 				TargetAttributes = {
 					7CCC61C81B7B38BA003A468F = {
@@ -388,6 +388,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -456,6 +457,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				INFOPLIST_FILE = "MySQL/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SyS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OHMySQL;
 			};
 			name = Debug;
@@ -469,6 +471,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				INFOPLIST_FILE = "MySQL/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SyS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OHMySQL;
 			};
 			name = Release;
@@ -487,6 +490,7 @@
 				);
 				INFOPLIST_FILE = "MySQLTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SyS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OHMySQLTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL";
 			};
@@ -502,6 +506,7 @@
 				);
 				INFOPLIST_FILE = "MySQLTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "SyS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OHMySQLTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL";
 			};
