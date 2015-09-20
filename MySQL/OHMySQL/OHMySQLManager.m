@@ -50,7 +50,7 @@ NSString *const OHJoinFull  = @"FULL";
     
     mysql_init(&local);
     if (!mysql_real_connect(&local, user.serverName.UTF8String, user.userName.UTF8String, user.password.UTF8String, user.dbName.UTF8String, (unsigned int)user.port, user.socket.UTF8String, 0)) {
-        NSLog(@"Failed to connect to database: Error: %s", mysql_error(&local));
+        OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
     } else {
         _mysql = &local;
     }
@@ -183,7 +183,7 @@ NSString *const OHJoinFull  = @"FULL";
 - (NSArray *)executeSELECTQuery:(OHMySQLQuery *)sqlQuery {
     NSInteger error = 0;
     if ((error = [self executeQuery:sqlQuery])) {
-        NSLog(@"%s Error: %li", __PRETTY_FUNCTION__, error);
+        OHLogError(@"%li", error);
         
         return nil;
     }
@@ -216,20 +216,20 @@ NSString *const OHJoinFull  = @"FULL";
 - (void)executeDELETEQuery:(OHMySQLQuery *)sqlQuery {
     NSInteger error = OHQueryResultErrorTypeNone;
     if ((error = [self executeQuery:sqlQuery])) {
-        NSLog(@"%s Error: %li", __PRETTY_FUNCTION__, error);
+        OHLogError(@"%li", error);
     }
 }
 
 - (void)executeUPDATEQuery:(OHMySQLQuery *)sqlQuery {
     NSInteger error = OHQueryResultErrorTypeNone;
     if ((error = [self executeQuery:sqlQuery])) {
-        NSLog(@"%s Error: %li", __PRETTY_FUNCTION__, error);
+        OHLogError(@"%li", error);
     }
 }
 
 - (OHQueryResultErrorType)executeQuery:(OHMySQLQuery *)sqlQuery {
     if (!sqlQuery.queryString || !sqlQuery.user) {
-        NSLog(@"Unexpected prolem with the query.");
+        OHLogError(@"Unexpected prolem with the query.");
         
         return OHQueryResultErrorTypeUnknown; // CR_UNKNOWN_ERROR
     } else if (![OHMySQLManager sharedManager].isConnected) {
@@ -237,7 +237,7 @@ NSString *const OHJoinFull  = @"FULL";
     }
     
     if (!_mysql) {
-        NSLog(@"Cannot connect to DB. Check your configuration properties.");
+        OHLogError(@"Cannot connect to DB. Check your configuration properties.");
         return OHQueryResultErrorTypeUnknown;
     }
     

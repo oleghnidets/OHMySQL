@@ -30,3 +30,10 @@ typedef NS_ENUM(NSInteger, OHQueryResultErrorType){
 
 #define OHArgName(arg) (@""#arg)
 #define OHAsser(arg) NSAssert(arg, @"Invalid parameter. %@ cannot be nil. Please check the input parameters.", OHArgName(arg));
+
+#ifdef DEBUG
+    #define OHLogError(frmt, ...) NSLog(@"%s -[ERROR] %@", __PRETTY_FUNCTION__, OHArgName(__VA_ARGS__));
+#else
+    #define OHLogError(frmt, ...) ;
+#endif
+
