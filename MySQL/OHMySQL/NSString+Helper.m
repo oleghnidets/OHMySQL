@@ -7,11 +7,7 @@
 @implementation NSString (SQLQueryString)
 
 #pragma mark - Helpers
-
-- (NSString *)removeLastCharacter {
-    return [self substringToIndex:self.length-1];
-}
-
+#pragma mark Append
 - (NSString *)appendCondition:(NSString *)condition {
     if (condition && ![condition isEqualToString:@""]) {
         return [self stringByAppendingFormat:@" WHERE %@", condition];
@@ -35,6 +31,11 @@
     }
     
     return self;
+}
+
+#pragma mark Other
+- (NSString *)removeLastCharacter {
+    return [self substringToIndex:self.length-1];
 }
 
 + (NSString *)updateSetStringFrom:(NSDictionary *)set {
@@ -68,43 +69,50 @@
 
 #pragma mark - Queries
 
-+ (NSString *)innerJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ INNER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
-}
-
-+ (NSString *)rightJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ RIGHT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
-}
-
-+ (NSString *)leftJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ LEFT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
-}
-
-+ (NSString *)fullJoinStringFrom:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ FULL OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
-}
-
-+ (NSString *)selectFirstStringFor:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
-    return [[NSString selectAllStringFor:tableName condition:condition orderBy:columnsNames ascending:isAscending] appendLimit:@1];
-}
-
-+ (NSString *)selectAllStringFor:(NSString *)tableName condition:(NSString *)condition {
+#pragma mark SELECT ALL
++ (NSString *)selectAllString:(NSString *)tableName condition:(NSString *)condition {
     return [[NSString stringWithFormat:@"SELECT * FROM %@", tableName] appendCondition:condition];
 }
 
-+ (NSString *)selectAllStringFor:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
-    return [[NSString stringWithFormat:@"SELECT * FROM %@", tableName] appendOrderBy:columnsNames ascending:isAscending];
++ (NSString *)selectAllString:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
+    return [[[NSString stringWithFormat:@"SELECT * FROM %@", tableName] appendCondition:condition] appendOrderBy:columnsNames ascending:isAscending];
 }
 
-+ (NSString *)updateStringFor:(NSString *)tableName set:(NSDictionary *)set condition:(NSString *)condition {
+#pragma mark JOINS
++ (NSString *)innerJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ INNER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
++ (NSString *)rightJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ RIGHT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
++ (NSString *)leftJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ LEFT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
++ (NSString *)fullJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ FULL OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+}
+
+#pragma mark SELECT FIRST
++ (NSString *)selectFirstString:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
+    return [[NSString selectAllString:tableName condition:condition orderBy:columnsNames ascending:isAscending] appendLimit:@1];
+}
+
+
+#pragma mark UPDATE
++ (NSString *)updateString:(NSString *)tableName set:(NSDictionary *)set condition:(NSString *)condition {
     return [[NSString stringWithFormat:@"UPDATE %@ SET %@", tableName, [NSString updateSetStringFrom:set]] appendCondition:condition];
 }
 
-+ (NSString *)deleteFrom:(NSString *)tableName condition:(NSString *)condition {
+#pragma mark DELETE
++ (NSString *)deleteString:(NSString *)tableName condition:(NSString *)condition {
     return [[NSString stringWithFormat:@"DELETE FROM %@", tableName] appendCondition:condition];
 }
 
-+ (NSString *)insertIntoFor:(NSString *)tableName set:(NSDictionary *)set {
+#pragma mark INSERT
++ (NSString *)insertString:(NSString *)tableName set:(NSDictionary *)set {
     NSString *values = @"";
     for (NSString *value in set.allValues) {
         values = [values stringByAppendingFormat:@"'%@',", value];
@@ -112,6 +120,12 @@
     
     // (%@, %@, %@) VALUES ('%@', '%@', '%@')
     return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", tableName, [@"" stringByCommaWithArray:set.allKeys], [values removeLastCharacter]];
+}
+
+#pragma mark Other
+
++ (nonnull NSString *)countString:(nonnull NSString *)tableName {
+    return [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
 }
 
 @end

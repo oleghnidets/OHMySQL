@@ -21,24 +21,56 @@ extern NSString *_Nonnull const OHJoinFull;
 + (nonnull OHMySQLManager *)sharedManager;
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
 
+#pragma mark SELECT
 /**
- *  Combines rows from two or more tables, based on a common field between them.
+ *  Select all records.
  *  @pre You must connect user once.
  *
- *  @param joinType    Type of join.
- *  @param tableName1  Left table.
- *  @param tableName2  Right table.
- *  @param columnNames Array of column names.
- *  @param condition   Common condition.
+ *  @param tableName Name of the target table.
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectJoinType:(nonnull NSString *)joinType
-                                from:(nonnull NSString *)tableName1
-                                join:(nonnull NSString *)tableName2
-                         columnNames:(nonnull NSArray<NSString *> *)columnNames
-                         onCondition:(nonnull NSString *)condition;
+- (nullable NSArray<NSDictionary *> *)selectAllFrom:(nonnull NSString *)tableName;
 
+/**
+ *  Select all records.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *
+ *  @return Array of dictionaries (JSON).
+ */
+- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+
+/**
+ *  Select all records with sorting. Sorts the records in ascending order by default.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param columnNames Result-set of one or more columns.
+ *
+ *  @return Array of dictionaries (JSON).
+ */
+- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName orderBy:(nonnull NSArray<NSString *> *)columnNames;
+
+/**
+ *  Select all records with sorting.
+ *  @pre You must connect user once.
+ *
+ *  @param tableName Name of the target table.
+ *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param columnNames Result-set of one or more columns.
+ *  @param isAscending Ascending or descending order.
+ *
+ *  @return Array of dictionaries (JSON).
+ */
+- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName
+                                      condition:(nullable NSString *)condition
+                                        orderBy:(nonnull NSArray<NSString *> *)columnNames
+                                      ascending:(BOOL)isAscending;
+
+#pragma mark SELECT FIRST
 /**
  *  Select the first record of the selected table.
  *  @pre You must connect user once.
@@ -90,54 +122,38 @@ extern NSString *_Nonnull const OHJoinFull;
                                           orderBy:(nonnull NSArray<NSString *> *)columnNames
                                         ascending:(BOOL)isAscending;
 
+#pragma mark INSERT
 /**
- *  Select all records.
+ *  Insert a new record.
  *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
+ *  @param set       Key is column' name in table, value is your object.
  *
- *  @return Array of dictionaries (JSON).
+ *  @return Zero for success. Nonzero if an error occurred.
  */
-- (nullable NSArray<NSDictionary *> *)selectAllFrom:(nonnull NSString *)tableName;
+- (OHQueryResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
+#pragma mark JOIN
 /**
- *  Select all records.
+ *  Combines rows from two or more tables, based on a common field between them.
  *  @pre You must connect user once.
  *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
+ *  @param joinType    Type of join.
+ *  @param tableName1  Left table.
+ *  @param tableName2  Right table.
+ *  @param columnNames Array of column names.
+ *  @param condition   Common condition.
  *
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+- (nullable NSArray *)selectJoinType:(nonnull NSString *)joinType
+                                from:(nonnull NSString *)tableName1
+                                join:(nonnull NSString *)tableName2
+                         columnNames:(nonnull NSArray<NSString *> *)columnNames
+                         onCondition:(nonnull NSString *)condition;
 
-/**
- *  Select all records with sorting. Sorts the records in ascending order by default.
- *  @pre You must connect user once.
- *
- *  @param tableName Name of the target table.
- *  @param columnNames Result-set of one or more columns.
- *
- *  @return Array of dictionaries (JSON).
- */
-- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName orderBy:(nonnull NSArray<NSString *> *)columnNames;
-
-/**
- *  Select all records with sorting.
- *  @pre You must connect user once.
- *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *  @param columnNames Result-set of one or more columns.
- *  @param isAscending Ascending or descending order.
- *
- *  @return Array of dictionaries (JSON).
- */
-- (nullable NSArray<NSDictionary *> *)selectAll:(nonnull NSString *)tableName
-                                      condition:(nullable NSString *)condition
-                                        orderBy:(nonnull NSArray<NSString *> *)columnNames
-                                      ascending:(BOOL)isAscending;
-
+#pragma mark UPDATE
 /**
  *  Update all records.
  *  @pre You must connect user once.
@@ -163,6 +179,7 @@ extern NSString *_Nonnull const OHJoinFull;
                                 set:(nonnull NSDictionary<NSString *, id> *)set
                           condition:(nullable NSString *)condition;
 
+#pragma mark DELETE
 /**
  *  Deletes all records.
  *  @pre You must connect user once.
@@ -184,17 +201,11 @@ extern NSString *_Nonnull const OHJoinFull;
  */
 - (OHQueryResultErrorType)deleteAllFrom:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
-/**
- *  Insert a new record.
- *  @pre You must connect user once.
- *
- *  @param tableName Name of the target table.
- *  @param set       Key is column' name in table, value is your object.
- *
- *  @return Zero for success. Nonzero if an error occurred.
- */
-- (OHQueryResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
+#pragma mark Other
 
+- (nonnull NSNumber *)countAll:(nonnull NSString *)tableName;
+
+#pragma mark Execute
 //! Executes SELECT query if only sqlQuery.queryString is SELECT-based.
 - (nullable NSArray *)executeSELECTQuery:(nonnull OHMySQLQuery *)sqlQuery;
 //! Executes UPDATE query if only sqlQuery.queryString is UPDATE-based.

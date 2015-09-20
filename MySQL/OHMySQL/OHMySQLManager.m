@@ -62,31 +62,34 @@ NSString *const OHJoinFull  = @"FULL";
 
 #pragma mark - Abstract queries
 
-- (NSArray *)selectJoinType:(NSString *)joinType
-                       from:(NSString *)tableName1
-                       join:(NSString *)tableName2
-                columnNames:(NSArray *)columnNames
-                onCondition:(NSString *)condition {
-    NSParameterAssert(tableName1 && tableName2 && columnNames.count && condition);
+#pragma mark SELECT
+- (NSArray *)selectAllFrom:(NSString *)tableName {
+    return [self selectAll:tableName condition:nil];
+}
+
+- (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition {
+    NSParameterAssert(tableName);
     
-    NSString *queryString = nil;
-    if ([joinType isEqualToString:OHJoinInner]) {
-        queryString = [NSString innerJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else if ([joinType isEqualToString:OHJoinRight]) {
-        queryString = [NSString rightJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else if ([joinType isEqualToString:OHJoinLeft]) {
-        queryString = [NSString leftJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else if ([joinType isEqualToString:OHJoinFull]) {
-        queryString = [NSString fullJoinStringFrom:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else {
-        NSAssert(queryString, @"You must specify correct join type");
-    }
-    
+    NSString *queryString = [NSString selectAllString:tableName condition:condition];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
     return [self executeSELECTQuery:query];
 }
 
+- (NSArray *)selectAll:(NSString *)tableName orderBy:(NSArray *)columnNames {
+    return [self selectAll:tableName condition:nil orderBy:columnNames ascending:YES];
+}
+
+- (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
+    NSParameterAssert(tableName && columnNames.count);
+    
+    NSString *queryString = [NSString selectAllString:tableName condition:condition orderBy:columnNames ascending:isAscending];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
+}
+
+#pragma mark SELECT FIRST
 - (NSArray *)selectFirst:(NSString *)tableName {
     return [self selectAll:tableName condition:nil];
 }
@@ -100,40 +103,51 @@ NSString *const OHJoinFull  = @"FULL";
 }
 
 - (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
-    NSParameterAssert(tableName);
-    
-    NSString *queryString = [NSString selectFirstStringFor:tableName condition:condition orderBy:columnNames ascending:isAscending];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
-    
-    return [self executeSELECTQuery:query];
-}
-
-- (NSArray *)selectAllFrom:(NSString *)tableName {
-    return [self selectAll:tableName condition:nil];
-}
-
-- (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition {
-    NSParameterAssert(tableName);
-    
-    NSString *queryString = [NSString selectAllStringFor:tableName condition:condition];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
-    
-    return [self executeSELECTQuery:query];
-}
-
-- (NSArray *)selectAll:(NSString *)tableName orderBy:(NSArray *)columnNames {
-    return [self selectAll:tableName condition:nil orderBy:columnNames ascending:YES];
-}
-
-- (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
     NSParameterAssert(tableName && columnNames.count);
     
-    NSString *queryString = [NSString selectAllStringFor:tableName condition:condition orderBy:columnNames ascending:isAscending];
+    NSString *queryString = [NSString selectFirstString:tableName condition:condition orderBy:columnNames ascending:isAscending];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
     return [self executeSELECTQuery:query];
 }
 
+#pragma mark SELECT JOIN
+- (NSArray *)selectJoinType:(NSString *)joinType
+                       from:(NSString *)tableName1
+                       join:(NSString *)tableName2
+                columnNames:(NSArray *)columnNames
+                onCondition:(NSString *)condition {
+    NSParameterAssert(tableName1 && tableName2 && columnNames.count && condition);
+    
+    NSString *queryString = nil;
+    if ([joinType isEqualToString:OHJoinInner]) {
+        queryString = [NSString innerJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else if ([joinType isEqualToString:OHJoinRight]) {
+        queryString = [NSString rightJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else if ([joinType isEqualToString:OHJoinLeft]) {
+        queryString = [NSString leftJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else if ([joinType isEqualToString:OHJoinFull]) {
+        queryString = [NSString fullJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
+    } else {
+        NSAssert(queryString, @"You must specify correct join type");
+    }
+    
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
+}
+
+#pragma mark INSERT
+- (OHQueryResultErrorType)insertInto:(NSString *)tableName set:(NSDictionary *)set {
+    NSParameterAssert(tableName && set);
+    
+    NSString *queryString = [NSString insertString:tableName set:set];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeQuery:query];
+}
+
+#pragma mark UPDATE
 - (OHQueryResultErrorType)updateAll:(NSString *)tableName set:(NSDictionary *)set {
     return [self updateAll:tableName set:set condition:nil];
 }
@@ -142,12 +156,13 @@ NSString *const OHJoinFull  = @"FULL";
 - (OHQueryResultErrorType)updateAll:(NSString *)tableName set:(NSDictionary *)set condition:(NSString *)condition {
     NSParameterAssert(tableName && set);
     
-    NSString *queryString = [NSString updateStringFor:tableName set:set condition:condition];
+    NSString *queryString = [NSString updateString:tableName set:set condition:condition];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
     return [self executeQuery:query];
 }
 
+#pragma mark DELETE
 - (OHQueryResultErrorType)deleteAllFrom:(NSString *)tableName {
     return [self deleteAllFrom:tableName condition:nil];
 }
@@ -155,19 +170,21 @@ NSString *const OHJoinFull  = @"FULL";
 - (OHQueryResultErrorType)deleteAllFrom:(NSString *)tableName condition:(NSString *)condition {
     NSParameterAssert(tableName);
     
-    NSString *queryString = [NSString deleteFrom:tableName condition:condition];
+    NSString *queryString = [NSString deleteString:tableName condition:condition];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
     return [self executeQuery:query];
 }
 
-- (OHQueryResultErrorType)insertInto:(NSString *)tableName set:(NSDictionary *)set {
-    NSParameterAssert(tableName && set);
+#pragma mark Other
+
+- (NSNumber *)countAll:(NSString *)tableName {
+    NSParameterAssert(tableName);
     
-    NSString *queryString = [NSString insertIntoFor:tableName set:set];
+    NSString *queryString = [NSString countString:tableName];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
-    return [self executeQuery:query];
+    return [[self executeSELECTQuery:query].firstObject allValues].firstObject;
 }
 
 #pragma mark - Based on OHMySQLQuery
