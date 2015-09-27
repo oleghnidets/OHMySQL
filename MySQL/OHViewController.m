@@ -58,8 +58,6 @@
 //        NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
     
     // ----
-    self.query = [[OHMySQLQuery alloc] initWithUser:user queryString:@"SELECT * FROM users WHERE name='Name'"];
-    __unused NSArray *dict = [[OHMySQLManager sharedManager] executeSELECTQuery:self.query];
 }
 
 - (IBAction)submitButtonClicked:(UIButton *)sender {

@@ -28,6 +28,8 @@
                          onCondition:(nonnull NSString *)condition;
 
 //
++ (nonnull NSString *)selectFirstString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+
 + (nonnull NSString *)selectFirstString:(nonnull NSString *)tableName
                               condition:(nullable NSString *)condition
                                 orderBy:(nonnull NSArray *)columnsNames

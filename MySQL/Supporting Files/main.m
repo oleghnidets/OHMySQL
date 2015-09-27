@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
 #import "AppDelegate.h"
+#import "OHAppDelegateTest.h"
+
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        Class appDelegateClass = (NSClassFromString(@"XCTestCase") ? [OHAppDelegateTest class] : [AppDelegate class]);
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass(appDelegateClass));
     }
 }

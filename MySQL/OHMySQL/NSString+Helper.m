@@ -96,6 +96,11 @@
 }
 
 #pragma mark SELECT FIRST
+
++ (NSString *)selectFirstString:(NSString *)tableName condition:(NSString *)condition {
+    return [[NSString selectAllString:tableName condition:condition] appendLimit:@1];
+}
+
 + (NSString *)selectFirstString:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnsNames ascending:(BOOL)isAscending {
     return [[NSString selectAllString:tableName condition:condition orderBy:columnsNames ascending:isAscending] appendLimit:@1];
 }

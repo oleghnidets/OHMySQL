@@ -91,11 +91,16 @@ NSString *const OHJoinFull  = @"FULL";
 
 #pragma mark SELECT FIRST
 - (NSArray *)selectFirst:(NSString *)tableName {
-    return [self selectAll:tableName condition:nil];
+    return [self selectFirst:tableName condition:nil];
 }
 
 - (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition {
-    return [self selectAll:tableName condition:condition];
+    NSParameterAssert(tableName);
+    
+    NSString *queryString = [NSString selectFirstString:tableName condition:condition];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    
+    return [self executeSELECTQuery:query];
 }
 
 - (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames {
@@ -250,6 +255,7 @@ NSString *const OHJoinFull  = @"FULL";
         return OHQueryResultErrorTypeUnknown;
     }
     
+    mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
     return mysql_real_query(_mysql, sqlQuery.queryString.UTF8String, sqlQuery.queryString.length);
 }
 

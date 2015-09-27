@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		06674F243AB658851A3BDB77 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E7F3918299C1761618F36C /* libPods.a */; };
+		7C1E86BE1BAEF117003C125A /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1E86BD1BAEF116003C125A /* OHMySQLTests.m */; settings = {ASSET_TAGS = (); }; };
 		7C36A8651B875CEF0072EB0A /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C36A8641B875CEF0072EB0A /* NSString+Helper.m */; };
+		7C801FEA1BB42FB800880B39 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C801FE91BB42FB800880B39 /* OHAppDelegateTest.m */; settings = {ASSET_TAGS = (); }; };
 		7CCC61CF1B7B38BA003A468F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61CE1B7B38BA003A468F /* main.m */; };
 		7CCC61D21B7B38BA003A468F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61D11B7B38BA003A468F /* AppDelegate.m */; };
 		7CCC61D51B7B38BA003A468F /* OHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61D41B7B38BA003A468F /* OHViewController.m */; };
 		7CCC61D81B7B38BA003A468F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC61D61B7B38BA003A468F /* Main.storyboard */; };
 		7CCC61DA1B7B38BA003A468F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC61D91B7B38BA003A468F /* Images.xcassets */; };
 		7CCC61DD1B7B38BA003A468F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CCC61DB1B7B38BA003A468F /* LaunchScreen.xib */; };
-		7CCC61E91B7B38BA003A468F /* MySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61E81B7B38BA003A468F /* MySQLTests.m */; };
 		7CCC61F41B7B5601003A468F /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61F31B7B5601003A468F /* OHMySQLManager.m */; };
 		7CCC61F71B7B5648003A468F /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CCC61F61B7B5648003A468F /* OHMySQLQuery.m */; };
 		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -34,10 +35,13 @@
 
 /* Begin PBXFileReference section */
 		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C1E86BD1BAEF116003C125A /* OHMySQLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLTests.m; sourceTree = "<group>"; };
 		7C36A8631B875CEF0072EB0A /* NSString+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helper.h"; sourceTree = "<group>"; };
 		7C36A8641B875CEF0072EB0A /* NSString+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helper.m"; sourceTree = "<group>"; };
 		7C44FDDB1B87A5030037B87D /* OHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHConstants.h; sourceTree = "<group>"; };
 		7C44FDDC1B87A6AF0037B87D /* OHMySQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHMySQL.h; sourceTree = "<group>"; };
+		7C801FE81BB42FB800880B39 /* OHAppDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAppDelegateTest.h; sourceTree = "<group>"; };
+		7C801FE91BB42FB800880B39 /* OHAppDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAppDelegateTest.m; sourceTree = "<group>"; };
 		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61CD1B7B38BA003A468F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CCC61CE1B7B38BA003A468F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,7 +54,6 @@
 		7CCC61DC1B7B38BA003A468F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7CCC61E21B7B38BA003A468F /* OHMySQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OHMySQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61E71B7B38BA003A468F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7CCC61E81B7B38BA003A468F /* MySQLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySQLTests.m; sourceTree = "<group>"; };
 		7CCC61F21B7B5601003A468F /* OHMySQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLManager.h; sourceTree = "<group>"; };
 		7CCC61F31B7B5601003A468F /* OHMySQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLManager.m; sourceTree = "<group>"; };
 		7CCC61F51B7B5648003A468F /* OHMySQLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQuery.h; sourceTree = "<group>"; };
@@ -131,7 +134,9 @@
 		7CCC61E51B7B38BA003A468F /* MySQLTests */ = {
 			isa = PBXGroup;
 			children = (
-				7CCC61E81B7B38BA003A468F /* MySQLTests.m */,
+				7C1E86BD1BAEF116003C125A /* OHMySQLTests.m */,
+				7C801FE81BB42FB800880B39 /* OHAppDelegateTest.h */,
+				7C801FE91BB42FB800880B39 /* OHAppDelegateTest.m */,
 				7CCC61E61B7B38BA003A468F /* Supporting Files */,
 			);
 			path = MySQLTests;
@@ -318,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CCC61D51B7B38BA003A468F /* OHViewController.m in Sources */,
+				7C801FEA1BB42FB800880B39 /* OHAppDelegateTest.m in Sources */,
 				7CCC61D21B7B38BA003A468F /* AppDelegate.m in Sources */,
 				7CCC61CF1B7B38BA003A468F /* main.m in Sources */,
 				7CCC61F41B7B5601003A468F /* OHMySQLManager.m in Sources */,
@@ -331,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CCC61E91B7B38BA003A468F /* MySQLTests.m in Sources */,
+				7C1E86BE1BAEF117003C125A /* OHMySQLTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +485,7 @@
 		7CCC61F01B7B38BA003A468F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -492,14 +498,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SyS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OHMySQLTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OHMySQL.app/OHMySQL";
 			};
 			name = Debug;
 		};
 		7CCC61F11B7B38BA003A468F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "";
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -508,7 +514,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SyS.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = OHMySQLTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MySQL.app/MySQL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OHMySQL.app/OHMySQL";
 			};
 			name = Release;
 		};

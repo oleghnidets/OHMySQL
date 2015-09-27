@@ -20,6 +20,7 @@ extern NSString *_Nonnull const OHJoinFull;
 
 + (nonnull OHMySQLManager *)sharedManager;
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
+- (void)disconnect;
 
 #pragma mark SELECT
 /**
