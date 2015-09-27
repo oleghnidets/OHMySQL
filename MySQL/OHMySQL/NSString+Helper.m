@@ -27,7 +27,7 @@
 
 - (NSString *)appendLimit:(NSNumber *)limit {
     if (limit.integerValue > 0) {
-        return [self stringByAppendingFormat:@" LIMIT %li", limit.integerValue];
+        return [self stringByAppendingFormat:@" LIMIT %li", (long)limit.integerValue];
     }
     
     return self;

@@ -31,7 +31,12 @@
     [super viewDidLoad];
     
     // ----
-    OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root" password:@"root" serverName:@"localhost" dbName:@"RateIt" port:3306 socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+    OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
+                                                     password:@"root"
+                                                   serverName:@"localhost"
+                                                       dbName:@"RateIt"
+                                                         port:3306
+                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
     [[OHMySQLManager sharedManager] connectWithUser:user];
     
     NSLog(@"%@", [[OHMySQLManager sharedManager] countAll:@"users"]);
@@ -45,7 +50,7 @@
     
     NSLog(@"%@", [[OHMySQLManager sharedManager] selectAll:@"users" condition:nil]);
     NSLog(@"%@", [[OHMySQLManager sharedManager] selectAll:@"users" condition:@"" orderBy:@[@"name", @"id"] ascending:YES]);
-    NSDictionary *first = [[[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:YES] firstObject];
+    NSDictionary *first = [[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:YES];
     NSLog(@"%@", first);
     
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"students" set:@{ @"groupId" : @"1", @"userId" : first[@"id"] }]);

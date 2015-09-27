@@ -48,6 +48,8 @@ NSString *const OHJoinFull  = @"FULL";
     self.user = user;
     static MYSQL local;
     
+    mysql_library_init;
+    
     mysql_init(&local);
     if (!mysql_real_connect(&local, user.serverName.UTF8String, user.userName.UTF8String, user.password.UTF8String, user.dbName.UTF8String, (unsigned int)user.port, user.socket.UTF8String, 0)) {
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
@@ -90,30 +92,30 @@ NSString *const OHJoinFull  = @"FULL";
 }
 
 #pragma mark SELECT FIRST
-- (NSArray *)selectFirst:(NSString *)tableName {
+- (NSDictionary *)selectFirst:(NSString *)tableName {
     return [self selectFirst:tableName condition:nil];
 }
 
-- (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition {
+- (NSDictionary *)selectFirst:(NSString *)tableName condition:(NSString *)condition {
     NSParameterAssert(tableName);
     
     NSString *queryString = [NSString selectFirstString:tableName condition:condition];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
-    return [self executeSELECTQuery:query];
+    return [self executeSELECTQuery:query].firstObject;
 }
 
-- (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames {
+- (NSDictionary *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames {
     return [self selectFirst:tableName condition:condition orderBy:columnNames ascending:YES];
 }
 
-- (NSArray *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
+- (NSDictionary *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
     NSParameterAssert(tableName && columnNames.count);
     
     NSString *queryString = [NSString selectFirstString:tableName condition:condition orderBy:columnNames ascending:isAscending];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
-    return [self executeSELECTQuery:query];
+    return [self executeSELECTQuery:query].firstObject;
 }
 
 #pragma mark SELECT JOIN
@@ -213,14 +215,18 @@ NSString *const OHJoinFull  = @"FULL";
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
         for (NSUInteger i=0; i<self.countOfFields; ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
-            NSString *value = [NSString stringWithUTF8String:row[i] ?: "null"];
+            id value = @"";
+            if (row[i]) {
+                value = [NSString stringWithUTF8String:row[i]];
+            } else {
+                value = [NSNull null];
+            }
             
             jsonDict[key] = value;
         }
         
         [arrayOfDictionaries addObject:jsonDict];
     }
-    
     
     mysql_free_result(_result);
     
@@ -269,6 +275,7 @@ NSString *const OHJoinFull  = @"FULL";
     if (_mysql) {
         mysql_close(_mysql);
         _mysql = nil;
+        mysql_library_end;
     }
 }
 

@@ -89,33 +89,29 @@
 }
 
 - (void)testC1 {
-    NSArray *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable"];
+    NSDictionary *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable"];
 
-    XCTAssert(response.count == 1);
-    XCTAssert([response.firstObject isKindOfClass:[NSDictionary class]]);
-    XCTAssert([response.firstObject[@"id"] isEqualToString:@"1"]);
+    XCTAssert([response isKindOfClass:[NSDictionary class]]);
+    XCTAssert([response[@"id"] isEqualToString:@"1"]);
 }
 
 - (void)testC2 {
-    NSArray *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>5"];
-    
-    XCTAssert(response.count == 1);
-    XCTAssert([response.firstObject isKindOfClass:[NSDictionary class]]);
-    XCTAssert([response.firstObject[@"id"] isEqualToString:@"6"]);
+    NSDictionary *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>5"];
+
+    XCTAssert([response isKindOfClass:[NSDictionary class]]);
+    XCTAssert([response[@"id"] isEqualToString:@"6"]);
 }
 
 - (void)testC3 {
-    NSArray *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>1" orderBy:@[@"name"]];
+    NSDictionary *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>1" orderBy:@[@"name"]];
     
-    XCTAssert(response.count == 1);
-    XCTAssert([response.firstObject isKindOfClass:[NSDictionary class]]);
+    XCTAssert([response isKindOfClass:[NSDictionary class]]);
 }
 
 - (void)testC4 {
-    NSArray *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>1" orderBy:@[@"name"] ascending:NO];
+    NSDictionary *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>1" orderBy:@[@"name"] ascending:NO];
     
-    XCTAssert(response.count == 1);
-    XCTAssert([response.firstObject isKindOfClass:[NSDictionary class]]);
+    XCTAssert([response isKindOfClass:[NSDictionary class]]);
 }
 
 - (void)testD1 {

@@ -80,7 +80,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionary (JSON).
  */
-- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName;
+- (nullable NSDictionary<NSString *, id> *)selectFirst:(nonnull NSString *)tableName;
 
 /**
  *  Select the first record of the selected table.
@@ -91,7 +91,7 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionary (JSON).
  */
-- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+- (nullable NSDictionary<NSString *, id> *)selectFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 /**
  *  Select the first record of the selected table. Sorts the records in ascending order by default.
@@ -103,9 +103,9 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionary (JSON).
  */
-- (nullable NSArray *)selectFirst:(nonnull NSString *)tableName
-                        condition:(nullable NSString *)condition
-                          orderBy:(nonnull NSArray<NSString *> *)columnNames;
+- (nullable NSDictionary<NSString *, id> *)selectFirst:(nonnull NSString *)tableName
+                                             condition:(nullable NSString *)condition
+                                               orderBy:(nonnull NSArray<NSString *> *)columnNames;
 
 /**
  *  Select the first record of the selected table.
@@ -118,10 +118,10 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Array of dictionary (JSON).
  */
-- (nullable NSArray<NSDictionary *> *)selectFirst:(nonnull NSString *)tableName
-                                        condition:(nullable NSString *)condition
-                                          orderBy:(nonnull NSArray<NSString *> *)columnNames
-                                        ascending:(BOOL)isAscending;
+- (nullable NSDictionary<NSString *, id> *)selectFirst:(nonnull NSString *)tableName
+                                             condition:(nullable NSString *)condition
+                                               orderBy:(nonnull NSArray<NSString *> *)columnNames
+                                             ascending:(BOOL)isAscending;
 
 #pragma mark INSERT
 /**
