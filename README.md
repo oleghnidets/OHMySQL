@@ -1,9 +1,17 @@
 # OHMySQL
 You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
 
+## Installation
+You can use CocoaPods. Add the following line to your Podfile:
+```objective-c
+pod 'OHMySQL', '~> 0.1.0'
+```
+
+Or you can copy files into your project. But be aware you need to copy [mysql-connector-c](https://github.com/ketzusaka/mysql-connector-c) library.
+
 ## Usage
 
-At the first you need to connect to database.
+At the first you need to connect to the database.
 
 ```objective-c
 OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
