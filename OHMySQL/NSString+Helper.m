@@ -133,4 +133,8 @@
     return [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
 }
 
++ (NSString *)lastInsertIDString {
+    return @"SELECT LAST_INSERT_ID()";
+}
+
 @end

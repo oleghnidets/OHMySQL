@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06674F243AB658851A3BDB77 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E7F3918299C1761618F36C /* libPods.a */; };
 		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */; settings = {ASSET_TAGS = (); }; };
 		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; settings = {ASSET_TAGS = (); }; };
 		7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHViewController.m */; settings = {ASSET_TAGS = (); }; };
 		7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55D481BB95930004A2FF9 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -38,6 +39,8 @@
 		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61F81B7B5661003A468F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		7CD43FF81BBABE30001EFEDE /* OHMySQLSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLSerialization.h; sourceTree = "<group>"; };
+		7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLSerialization.m; sourceTree = "<group>"; };
 		7CE55D211BB95887004A2FF9 /* OHAppDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAppDelegateTest.h; sourceTree = "<group>"; };
 		7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAppDelegateTest.m; sourceTree = "<group>"; };
 		7CE55D451BB95928004A2FF9 /* OHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHViewController.h; sourceTree = SOURCE_ROOT; };
@@ -160,6 +163,8 @@
 				7CE55E291BB95E79004A2FF9 /* OHMySQL.h */,
 				7CE55E2A1BB95E79004A2FF9 /* OHMySQLManager.h */,
 				7CE55E2B1BB95E79004A2FF9 /* OHMySQLManager.m */,
+				7CD43FF81BBABE30001EFEDE /* OHMySQLSerialization.h */,
+				7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */,
 				7CE55E2C1BB95E79004A2FF9 /* OHMySQLQuery.h */,
 				7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */,
 				7CE55E2E1BB95E79004A2FF9 /* OHMySQLUser.h */,
@@ -328,6 +333,7 @@
 				7CE55E311BB95E79004A2FF9 /* OHMySQLManager.m in Sources */,
 				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
 				7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */,
+				7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */,
 				7CE55E331BB95E79004A2FF9 /* OHMySQLUser.m in Sources */,
 				7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */,
 				7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */,

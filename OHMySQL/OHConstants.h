@@ -1,31 +1,70 @@
 //  Created by Oleg on 2015.
 //  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
-//
+//x
 
 /**
- *  Error types of executing a query.
+ *  Client error codes and messages.
  */
-typedef NS_ENUM(NSInteger, OHQueryResultErrorType){
+typedef NS_ENUM(NSUInteger, OHResultErrorType){
     /**
      *  Success.
      */
-    OHQueryResultErrorTypeNone = 0,
+    OHResultErrorTypeNone = 0,
     /**
      *  Commands were executed in an improper order.
      */
-    OHQueryResultErrorTypeSync = 2014,
+    OHResultErrorTypeSync = 2014,
     /**
      *  The MySQL server has gone away.
      */
-    OHQueryResultErrorTypeGone = 2006,
+    OHResultErrorTypeGone = 2006,
     /**
      *  The connection to the server was lost during the query.
      */
-    OHQueryResultErrorTypeLost = 2013,
+    OHResultErrorTypeLost = 2013,
     /**
      *  An unknown error occurred.
      */
-    OHQueryResultErrorTypeUnknown = 2000,
+    OHResultErrorTypeUnknown = 2000,
+};
+
+
+/**
+ *  Refresh options.
+ */
+typedef NS_OPTIONS(NSUInteger, OHRefreshOptions){
+    /**
+     *  Refresh the grant tables, like FLUSH PRIVILEGES.
+     */
+    OHRefreshOptionGrant = 1,
+    /**
+     *  Flush the logs, like FLUSH LOGS.
+     */
+    OHRefreshOptionLog = 2,
+    /**
+     *  Flush the table cache, like FLUSH TABLES.
+     */
+    OHRefreshOptionTables = 4,
+    /**
+     *  Flush the host cache, like FLUSH HOSTS.
+     */
+    OHRefreshOptionHosts = 8,
+    /**
+     *  Reset status variables, like FLUSH STATUS.
+     */
+    OHRefreshOptionStatus = 16,
+    /**
+     *  Flush the thread cache.
+     */
+    OHRefreshOptionThreads = 32,
+    /**
+     *  On a slave replication server, reset the master server information and restart the slave, like RESET SLAVE.
+     */
+    OHRefreshOptionSlave = 64,
+    /**
+     *  On a master replication server, remove the binary log files listed in the binary log index and truncate the index file, like RESET MASTER.
+     */
+    OHRefreshOptionMaster = 128,
 };
 
 #define OHArgName(arg) (@""#arg)

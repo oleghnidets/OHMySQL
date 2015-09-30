@@ -31,6 +31,8 @@
     [super viewDidLoad];
     
     // ----
+    NSDate *startDate  = [NSDate date];
+    
     OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
                                                      password:@"root"
                                                    serverName:@"localhost"
@@ -46,6 +48,8 @@
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"users" set:@{ @"name" : @"CDE", @"lastname" : @"CDE", @"password" : @"123456" }]);
     NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"users" set:@{ @"name" : @"Oleg", @"lastname" : @"Hnidets", @"password" : @"123456" }]);
     
+    NSLog(@"%@", [[OHMySQLManager sharedManager] lastInsertID]);
+    
     NSLog(@"%li", [[OHMySQLManager sharedManager] updateAll:@"users" set:@{ @"name" : @"Stas", @"lastname" : @"Turchynskiy" } condition:@"name='Oleg'"]);
     
     NSLog(@"%@", [[OHMySQLManager sharedManager] selectAll:@"users" condition:nil]);
@@ -60,8 +64,8 @@
                                                    columnNames:@[@"students.groupID", @"users.name", @"users.lastname"]
                                                    onCondition:@"users.id=students.userId"]);
     
-//        NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
-    
+//  NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@""]);
+    NSLog(@"Time execution: %f", [[NSDate date] timeIntervalSinceDate:startDate]);
     // ----
 }
 

@@ -2,7 +2,7 @@
 //  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSString (SQLQueryString)
 
@@ -54,5 +54,7 @@
 + (nonnull NSString *)insertString:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set;
 
 + (nonnull NSString *)countString:(nonnull NSString *)tableName;
+
++ (nonnull NSString *)lastInsertIDString;
 
 @end

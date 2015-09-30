@@ -25,7 +25,6 @@ extern NSString *_Nonnull const OHJoinFull;
 #pragma mark SELECT
 /**
  *  Select all records.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *
@@ -35,7 +34,6 @@ extern NSString *_Nonnull const OHJoinFull;
 
 /**
  *  Select all records.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
@@ -46,7 +44,6 @@ extern NSString *_Nonnull const OHJoinFull;
 
 /**
  *  Select all records with sorting. Sorts the records in ascending order by default.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param columnNames Result-set of one or more columns.
@@ -57,7 +54,6 @@ extern NSString *_Nonnull const OHJoinFull;
 
 /**
  *  Select all records with sorting.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
@@ -74,7 +70,6 @@ extern NSString *_Nonnull const OHJoinFull;
 #pragma mark SELECT FIRST
 /**
  *  Select the first record of the selected table.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *
@@ -84,7 +79,6 @@ extern NSString *_Nonnull const OHJoinFull;
 
 /**
  *  Select the first record of the selected table.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
@@ -95,7 +89,6 @@ extern NSString *_Nonnull const OHJoinFull;
 
 /**
  *  Select the first record of the selected table. Sorts the records in ascending order by default.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
@@ -109,7 +102,6 @@ extern NSString *_Nonnull const OHJoinFull;
 
 /**
  *  Select the first record of the selected table.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
@@ -126,19 +118,17 @@ extern NSString *_Nonnull const OHJoinFull;
 #pragma mark INSERT
 /**
  *  Insert a new record.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param set       Key is column' name in table, value is your object.
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
+- (OHResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 #pragma mark JOIN
 /**
  *  Combines rows from two or more tables, based on a common field between them.
- *  @pre You must connect user once.
  *
  *  @param joinType    Type of join.
  *  @param tableName1  Left table.
@@ -157,18 +147,16 @@ extern NSString *_Nonnull const OHJoinFull;
 #pragma mark UPDATE
 /**
  *  Update all records.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *  @param set       Key is column' name in table, value is your object.
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
+- (OHResultErrorType)updateAll:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 /**
- *  Update all records.
- *  @pre You must connect user once.
+ *  Update all records with condition.
  *
  *  @param tableName Name of the target table.
  *  @param set       Key is column' name in table, value is your object.
@@ -176,45 +164,75 @@ extern NSString *_Nonnull const OHJoinFull;
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)updateAll:(nonnull NSString *)tableName
-                                set:(nonnull NSDictionary<NSString *, id> *)set
-                          condition:(nullable NSString *)condition;
+- (OHResultErrorType)updateAll:(nonnull NSString *)tableName
+                           set:(nonnull NSDictionary<NSString *, id> *)set
+                     condition:(nullable NSString *)condition;
 
 #pragma mark DELETE
 /**
  *  Deletes all records.
- *  @pre You must connect user once.
  *
  *  @param tableName Name of the target table.
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)deleteAllFrom:(nonnull NSString *)tableName;
+- (OHResultErrorType)deleteAllFrom:(nonnull NSString *)tableName;
 
 /**
- *  Deletes all records.
- *  @pre You must connect user once.
+ *  Deletes all records with condition.
  *
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id>'10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-- (OHQueryResultErrorType)deleteAllFrom:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
+- (OHResultErrorType)deleteAllFrom:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 #pragma mark Other
-
+/**
+ *  Counts records in a table.
+ *
+ *  @param tableName Name of the target table
+ *
+ *  @return The returns the number of records in a table.
+ */
 - (nonnull NSNumber *)countAll:(nonnull NSString *)tableName;
+
+/**
+ *  Checks whether the connection to the server is working. If the connection has gone down and auto-reconnect is enabled an attempt to reconnect is made.
+ *
+ *  @return Zero if the connection to the server is active. Nonzero if an error occurred. A nonzero return does not indicate whether the MySQL server itself is down; the connection might be broken for other reasons such as network problems.
+ */
+- (OHResultErrorType)pingMySQL;
+
+/**
+ *  Causes the database specified by dbName to become the default (current) database on the current connection.
+ *
+ *  @param dbName Name of the target db.
+ *
+ *  @return Zero for success. Nonzero if an error occurred (see enum).
+ */
+- (OHResultErrorType)selectDataBase:(nonnull NSString *)dbName;
+
+/**
+ *  @return Returns a value representing the first automatically generated value that was set for an AUTO_INCREMENT column by the most recently executed INSERT statement to affect such a column. Returns 0, which reflects that no row was inserted. Or returns 0 if the previous statement does not use an AUTO_INCREMENT value.
+ */
+- (nonnull NSNumber *)lastInsertID;
+
+/**
+ *  Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
+ *
+ *  @param Options a bit mask composed from any combination.
+ *
+ *  @return Zero for success. Nonzero if an error occurred (see enum).
+ */
+- (OHResultErrorType)refresh:(OHRefreshOptions)options;
 
 #pragma mark Execute
 //! Executes SELECT query if only sqlQuery.queryString is SELECT-based.
-- (nullable NSArray *)executeSELECTQuery:(nonnull OHMySQLQuery *)sqlQuery;
-//! Executes UPDATE query if only sqlQuery.queryString is UPDATE-based.
-- (void)executeUPDATEQuery:(nonnull OHMySQLQuery *)sqlQuery;
-//! Executes DELETE query if only sqlQuery.queryString is DELETE-based.
-- (void)executeDELETEQuery:(nonnull OHMySQLQuery *)sqlQuery;
+- (nullable NSArray<NSDictionary<NSString *, id> *> *)executeSELECTQuery:(nonnull OHMySQLQuery *)sqlQuery;
 
 //! Executes any query.
-- (OHQueryResultErrorType)executeQuery:(nonnull OHMySQLQuery *)sqlQuery;
+- (OHResultErrorType)executeQuery:(nonnull OHMySQLQuery *)sqlQuery;
 
 @end
