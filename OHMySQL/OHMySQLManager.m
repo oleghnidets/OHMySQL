@@ -8,11 +8,6 @@
 
 #import <mysql-connector-c/mysql.h>
 
-extern NSString *_Nonnull const OHJoinInner;
-extern NSString *_Nonnull const OHJoinRight;
-extern NSString *_Nonnull const OHJoinLeft;
-extern NSString *_Nonnull const OHJoinFull;
-
 NSString *const OHJoinInner = @"INNER";
 NSString *const OHJoinRight = @"RIGHT";
 NSString *const OHJoinLeft  = @"LEFT";

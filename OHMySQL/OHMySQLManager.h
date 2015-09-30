@@ -15,12 +15,14 @@ extern NSString *_Nonnull const OHJoinFull;
 
 @interface OHMySQLManager : NSObject
 
+//! Pings the server and indicates whether the connection to the server is working.
 @property (nonatomic, assign, readonly, getter=isConnected) BOOL connected;
 @property (nonatomic, strong, readonly, null_unspecified) OHMySQLUser *user;
 
 + (nonnull OHMySQLManager *)sharedManager;
+
+//! Attempts to establish a connection to a MySQL database engine
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
-- (void)disconnect;
 
 #pragma mark SELECT
 /**
@@ -222,11 +224,14 @@ extern NSString *_Nonnull const OHJoinFull;
 /**
  *  Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
  *
- *  @param Options a bit mask composed from any combination.
+ *  @param Options A bit mask composed from any combination.
  *
  *  @return Zero for success. Nonzero if an error occurred (see enum).
  */
 - (OHResultErrorType)refresh:(OHRefreshOptions)options;
+
+//! Closes a previously opened connection.
+- (void)disconnect;
 
 #pragma mark Execute
 //! Executes SELECT query if only sqlQuery.queryString is SELECT-based.
