@@ -36,4 +36,19 @@
     return self;
 }
 
+- (instancetype)initWithUserName:(NSString *)name
+                        password:(NSString *)password
+                       sslConfig:(OHSSLConfig *)sslConfig
+                      serverName:(NSString *)serverName
+                          dbName:(NSString *)dbName
+                            port:(NSUInteger)port
+                          socket:(NSString *)socket {
+    self = [self initWithUserName:name password:password serverName:serverName dbName:dbName port:port socket:socket];
+    if (self) {
+        _sslConfig = sslConfig;
+    }
+    
+    return self;
+}
+
 @end

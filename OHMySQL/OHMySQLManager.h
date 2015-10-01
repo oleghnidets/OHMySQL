@@ -21,7 +21,7 @@ extern NSString *_Nonnull const OHJoinFull;
 
 + (nonnull OHMySQLManager *)sharedManager;
 
-//! Attempts to establish a connection to a MySQL database engine
+//! Attempts to establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
 - (void)connectWithUser:(nonnull OHMySQLUser *)user;
 
 #pragma mark SELECT

@@ -52,7 +52,12 @@ static OHMySQLManager *sharedManager = nil;
     mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
     my_bool reconnect = 1;
     mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
-    mysql_set_server_option(&local, MYSQL_OPTION_MULTI_STATEMENTS_ON);
+    
+    if (self.user.sslConfig) {
+        mysql_ssl_set(&local, self.user.sslConfig.key.UTF8String, self.user.sslConfig.certPath.UTF8String,
+                      self.user.sslConfig.certAuthPath.UTF8String, self.user.sslConfig.certAuthPEMPath.UTF8String,
+                      self.user.sslConfig.cipher.UTF8String);
+    }
     
     if (!mysql_real_connect(&local, user.serverName.UTF8String, user.userName.UTF8String, user.password.UTF8String, user.dbName.UTF8String, (unsigned int)user.port, user.socket.UTF8String, 0)) {
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
@@ -198,7 +203,7 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 - (NSNumber *)lastInsertID {
-    return @(mysql_insert_id(_mysql));
+    return _mysql ? @(mysql_insert_id(_mysql)) : @0;
 }
 
 - (OHResultErrorType)selectDataBase:(NSString *)dbName {
@@ -259,8 +264,10 @@ static OHMySQLManager *sharedManager = nil;
         return OHResultErrorTypeUnknown;
     }
     
+    mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
+    
     NSInteger error = mysql_real_query(_mysql, sqlQuery.queryString.UTF8String, sqlQuery.queryString.length);
-    if (error) { OHLogError(@"%li", error); }
+    if (error) { OHLogError(@"%s", mysql_error(_mysql)); }
     
     return error;
 }

@@ -27,6 +27,7 @@
 - (NSString *)dropTable {
     return @"DROP TABLE `TestTable`";
 }
+
 #pragma mark - setup
 
 - (void)setUp {
@@ -73,8 +74,8 @@
     NSArray *response = [[OHMySQLManager sharedManager] selectAll:@"TestTable" orderBy:@[@"id"]];
     
     XCTAssert([response.firstObject isKindOfClass:[NSDictionary class]]);
-    XCTAssert([response.firstObject[@"id"] isEqualToString:@"1"]);
-    XCTAssert([response[1][@"id"] isEqualToString:@"2"]);
+    XCTAssert([response.firstObject[@"id"] isEqualToNumber:@1]);
+    XCTAssert([response[1][@"id"] isEqualToNumber:@2]);
 }
 
 - (void)testB4 {
@@ -84,22 +85,22 @@
                                                         ascending:NO];
     
     XCTAssert([response.firstObject isKindOfClass:[NSDictionary class]]);
-    XCTAssert([response.firstObject[@"id"] isEqualToString:@"20"]);
-    XCTAssert([response.lastObject[@"id"] isEqualToString:@"3"]);
+    XCTAssert([response.firstObject[@"id"] isEqualToNumber:@20]);
+    XCTAssert([response.lastObject[@"id"] isEqualToNumber:@3]);
 }
 
 - (void)testC1 {
     NSDictionary *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable"];
 
     XCTAssert([response isKindOfClass:[NSDictionary class]]);
-    XCTAssert([response[@"id"] isEqualToString:@"1"]);
+    XCTAssert([response[@"id"] isEqualToNumber:@1]);
 }
 
 - (void)testC2 {
     NSDictionary *response = [[OHMySQLManager sharedManager] selectFirst:@"TestTable" condition:@"id>5"];
 
     XCTAssert([response isKindOfClass:[NSDictionary class]]);
-    XCTAssert([response[@"id"] isEqualToString:@"6"]);
+    XCTAssert([response[@"id"] isEqualToNumber:@6]);
 }
 
 - (void)testC3 {
