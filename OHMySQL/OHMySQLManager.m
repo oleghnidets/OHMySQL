@@ -203,7 +203,7 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 - (NSNumber *)lastInsertID {
-    return _mysql ? @(mysql_insert_id(_mysql)) : @0;
+    return _mysql != NULL ? @(mysql_insert_id(_mysql)) : @0;
 }
 
 - (OHResultErrorType)selectDataBase:(NSString *)dbName {
@@ -287,7 +287,7 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 - (OHResultErrorType)pingMySQL {
-    return _mysql ? mysql_ping(_mysql) : OHResultErrorTypeUnknown;
+    return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeUnknown;
 }
 
 - (BOOL)isConnected {

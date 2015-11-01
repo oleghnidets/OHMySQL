@@ -1,10 +1,13 @@
 //  Created by Oleg on 2015.
 //  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
-//x
+//
 
 /**
  *  Client error codes and messages.
  */
+
+@import Foundation;
+
 typedef NS_ENUM(NSUInteger, OHResultErrorType){
     /**
      *  Success.
@@ -71,8 +74,20 @@ typedef NS_OPTIONS(NSUInteger, OHRefreshOptions){
 #define OHAsser(arg) NSAssert(arg, @"Invalid parameter. %@ cannot be nil. Please check the input parameters.", OHArgName(arg));
 
 #ifdef DEBUG
+    #define OHLog(frmt, ...) NSLog(@"%s -[INFO] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
+#else
+    #define OHLog(frmt, ...) ;
+#endif
+
+#ifdef DEBUG
     #define OHLogError(frmt, ...) NSLog(@"%s -[ERROR] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
 #else
     #define OHLogError(frmt, ...) ;
+#endif
+
+#ifdef DEBUG
+    #define OHLogWarn(frmt, ...) NSLog(@"%s -[WARNING] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
+#else
+    #define OHLogWarn(frmt, ...) ;
 #endif
 

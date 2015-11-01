@@ -8,21 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		06674F243AB658851A3BDB77 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E7F3918299C1761618F36C /* libPods.a */; };
+		7C85C7301BE5376F00F7B30C /* OHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C85C72F1BE5376F00F7B30C /* OHUser.m */; };
+		7C85C7371BE54CCD00F7B30C /* NSObject+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C85C7361BE54CCD00F7B30C /* NSObject+Mapping.m */; };
 		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */; settings = {ASSET_TAGS = (); }; };
-		7CD43FFF1BBD1A5F001EFEDE /* OHSSLConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FFE1BBD1A5F001EFEDE /* OHSSLConfig.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHViewController.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55D481BB95930004A2FF9 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E051BB95A48004A2FF9 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55E0C1BB95A48004A2FF9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
-		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
-		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55E301BB95E79004A2FF9 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E271BB95E79004A2FF9 /* NSString+Helper.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55E311BB95E79004A2FF9 /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2B1BB95E79004A2FF9 /* OHMySQLManager.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55E321BB95E79004A2FF9 /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */; settings = {ASSET_TAGS = (); }; };
-		7CE55E331BB95E79004A2FF9 /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2F1BB95E79004A2FF9 /* OHMySQLUser.m */; settings = {ASSET_TAGS = (); }; };
+		7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */; };
+		7CD43FFF1BBD1A5F001EFEDE /* OHSSLConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FFE1BBD1A5F001EFEDE /* OHSSLConfig.m */; };
+		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; };
+		7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHViewController.m */; };
+		7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55D481BB95930004A2FF9 /* Main.storyboard */; };
+		7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E051BB95A48004A2FF9 /* AppDelegate.m */; };
+		7CE55E0C1BB95A48004A2FF9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */; };
+		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; };
+		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
+		7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */; };
+		7CE55E301BB95E79004A2FF9 /* NSString+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E271BB95E79004A2FF9 /* NSString+Helper.m */; };
+		7CE55E311BB95E79004A2FF9 /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2B1BB95E79004A2FF9 /* OHMySQLManager.m */; };
+		7CE55E321BB95E79004A2FF9 /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */; };
+		7CE55E331BB95E79004A2FF9 /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2F1BB95E79004A2FF9 /* OHMySQLUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +39,11 @@
 
 /* Begin PBXFileReference section */
 		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C85C72E1BE5376F00F7B30C /* OHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OHUser.h; path = Model/OHUser.h; sourceTree = "<group>"; };
+		7C85C72F1BE5376F00F7B30C /* OHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OHUser.m; path = Model/OHUser.m; sourceTree = "<group>"; };
+		7C85C7311BE5387600F7B30C /* OHMappingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMappingProtocol.h; sourceTree = "<group>"; };
+		7C85C7351BE54CCD00F7B30C /* NSObject+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mapping.h"; sourceTree = "<group>"; };
+		7C85C7361BE54CCD00F7B30C /* NSObject+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mapping.m"; sourceTree = "<group>"; };
 		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61F81B7B5661003A468F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -92,9 +99,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C85C72D1BE5374C00F7B30C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C85C72E1BE5376F00F7B30C /* OHUser.h */,
+				7C85C72F1BE5376F00F7B30C /* OHUser.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		7CCC61C01B7B38BA003A468F = {
 			isa = PBXGroup;
 			children = (
+				7C85C72D1BE5374C00F7B30C /* Model */,
 				7CE55E251BB95E79004A2FF9 /* OHMySQL */,
 				7CCC61CB1B7B38BA003A468F /* OHMySQLProject */,
 				7CE55D201BB95887004A2FF9 /* OHMySQLTests */,
@@ -162,6 +179,9 @@
 			children = (
 				7CE55E261BB95E79004A2FF9 /* NSString+Helper.h */,
 				7CE55E271BB95E79004A2FF9 /* NSString+Helper.m */,
+				7C85C7351BE54CCD00F7B30C /* NSObject+Mapping.h */,
+				7C85C7361BE54CCD00F7B30C /* NSObject+Mapping.m */,
+				7C85C7311BE5387600F7B30C /* OHMappingProtocol.h */,
 				7CE55E281BB95E79004A2FF9 /* OHConstants.h */,
 				7CE55E291BB95E79004A2FF9 /* OHMySQL.h */,
 				7CE55E2A1BB95E79004A2FF9 /* OHMySQLManager.h */,
@@ -335,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE55E301BB95E79004A2FF9 /* NSString+Helper.m in Sources */,
+				7C85C7371BE54CCD00F7B30C /* NSObject+Mapping.m in Sources */,
 				7CE55E311BB95E79004A2FF9 /* OHMySQLManager.m in Sources */,
 				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
 				7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */,
@@ -344,6 +365,7 @@
 				7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */,
 				7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */,
 				7CE55E321BB95E79004A2FF9 /* OHMySQLQuery.m in Sources */,
+				7C85C7301BE5376F00F7B30C /* OHUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

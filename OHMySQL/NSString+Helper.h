@@ -66,4 +66,6 @@
 //! SELECT LAST_INSERT_ID()
 + (nonnull NSString *)lastInsertIDString;
 
+- (nonnull NSString *)stringWithSingleMarks;
+
 @end

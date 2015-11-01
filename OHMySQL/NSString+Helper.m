@@ -129,12 +129,17 @@
 
 #pragma mark Other
 
-+ (nonnull NSString *)countString:(nonnull NSString *)tableName {
++ (NSString *)countString:(NSString *)tableName {
     return [NSString stringWithFormat:@"SELECT COUNT(*) FROM %@", tableName];
 }
 
 + (NSString *)lastInsertIDString {
     return @"SELECT LAST_INSERT_ID()";
+}
+
+// TODO: remove from here
+- (NSString *)stringWithSingleMarks {
+    return [NSString stringWithFormat:@"'%@'", self];
 }
 
 @end
