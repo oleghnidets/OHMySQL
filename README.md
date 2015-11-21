@@ -1,6 +1,11 @@
 # OHMySQL
 You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
 
+## How To Get Started
+- To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
+- Try to use OHMySQL API. 
+- When it'll be ready then transfer your local Data Base(s) to remote MySQL server.
+
 ## Installation
 You can use CocoaPods. Add the following line to your Podfile:
 ```objective-c
@@ -34,7 +39,7 @@ The response contains array of dictionaries (like JSON).
 ```objective-c
 NSArray *all = [[OHMySQLManager sharedManager] selectAll:@"users" condition:nil]);
 NSArray *orderedAll = [[OHMySQLManager sharedManager] selectAll:@"users" condition:@"" orderBy:@[@"name", @"id"] ascending:YES]);
-NSDictionary *first = [[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:NO].firstObject;
+NSDictionary *first = [[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:NO];
 ```
 
 ### JOINs
@@ -60,7 +65,35 @@ NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"students" set:@{ @"gr
 NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@"id>3"]);
 ```
     
-    
+### Mapping
+
+Mapping response looks like the following:
+```objective-c
+OHTask *task = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:context];
+[task mapFromResponse:taskDict];
+```
+
+Also you can send your local changes to DB easily.
+```objective-c
+// Use autoincremented id in your DB. So you don't need to specify id here. 
+OHTask *task = [OHTask new];
+task.name = @"Code cleanup";
+task.taskDescription = @"Delete unused classes and files";
+task.status = 0;
+[task insert]; // Also update local taskId
+...
+task.name = @"Something";
+task.status = 1;
+[task update];
+...
+[task deleteObject];
+```
+
+## Communication
+- If you need help, write (me)[oleg.oleksan@gmail.com]
+- If you found a bug, please provide steps to reproduce it, open an issue.
+- If you want to contribute, submit a pull request.
+
 ## License 
 
 The MIT License (MIT)
