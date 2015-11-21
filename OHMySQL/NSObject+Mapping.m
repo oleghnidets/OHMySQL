@@ -58,6 +58,13 @@
     return [[OHMySQLManager sharedManager] deleteAllFrom:self.indexKey condition:[self indexKeyCondition]];
 }
 
+- (void)mapFromResponse:(NSDictionary *)response {
+    NSDictionary *mirrorMappingDictionary = [self.mappingDictionary mirror];
+    for (NSString *key in mirrorMappingDictionary.allKeys) {
+        [self setValue:response[key] forKey:mirrorMappingDictionary[key]];
+    }
+}
+
 #pragma mark - Private
 
 - (NSString *)indexKeyCondition {
