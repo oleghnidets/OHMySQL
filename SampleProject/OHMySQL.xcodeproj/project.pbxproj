@@ -28,6 +28,7 @@
 		7CE55E311BB95E79004A2FF9 /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2B1BB95E79004A2FF9 /* OHMySQLManager.m */; };
 		7CE55E321BB95E79004A2FF9 /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */; };
 		7CE55E331BB95E79004A2FF9 /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2F1BB95E79004A2FF9 /* OHMySQLUser.m */; };
+		F8FCA7401165CFF81C278133 /* libPods-OHMySQL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OHMySQL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = SOURCE_ROOT; };
@@ -83,8 +85,10 @@
 		7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQuery.m; sourceTree = "<group>"; };
 		7CE55E2E1BB95E79004A2FF9 /* OHMySQLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLUser.h; sourceTree = "<group>"; };
 		7CE55E2F1BB95E79004A2FF9 /* OHMySQLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLUser.m; sourceTree = "<group>"; };
+		E8DC7B01B78799D7EAECAACD /* Pods-OHMySQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.debug.xcconfig"; sourceTree = "<group>"; };
 		F383C11697CBDCC57F8BAF7E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F8D71F15E5B73A62DE3B7D74 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FCC288E660A0972D124AEF59 /* Pods-OHMySQL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 			files = (
 				7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */,
 				06674F243AB658851A3BDB77 /* libPods.a in Frameworks */,
+				F8FCA7401165CFF81C278133 /* libPods-OHMySQL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +222,8 @@
 			children = (
 				F383C11697CBDCC57F8BAF7E /* Pods.debug.xcconfig */,
 				F8D71F15E5B73A62DE3B7D74 /* Pods.release.xcconfig */,
+				E8DC7B01B78799D7EAECAACD /* Pods-OHMySQL.debug.xcconfig */,
+				FCC288E660A0972D124AEF59 /* Pods-OHMySQL.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -227,6 +234,7 @@
 				7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */,
 				7CCC61F81B7B5661003A468F /* Foundation.framework */,
 				54E7F3918299C1761618F36C /* libPods.a */,
+				12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -238,11 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CCC61EC1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQL" */;
 			buildPhases = (
-				F4494C2DF972AED2F12F5C57 /* Check Pods Manifest.lock */,
+				F4494C2DF972AED2F12F5C57 /* 📦 Check Pods Manifest.lock */,
 				7CCC61C51B7B38BA003A468F /* Sources */,
 				7CCC61C61B7B38BA003A468F /* Frameworks */,
 				7CCC61C71B7B38BA003A468F /* Resources */,
-				DFA5E2A109D4303E9F1731CC /* Copy Pods Resources */,
+				DFA5E2A109D4303E9F1731CC /* 📦 Copy Pods Resources */,
+				CE2A75915D97A77B55DEC3A6 /* 📦 Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -330,29 +339,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		DFA5E2A109D4303E9F1731CC /* Copy Pods Resources */ = {
+		CE2A75915D97A77B55DEC3A6 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4494C2DF972AED2F12F5C57 /* Check Pods Manifest.lock */ = {
+		DFA5E2A109D4303E9F1731CC /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4494C2DF972AED2F12F5C57 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,7 +530,7 @@
 		};
 		7CCC61ED1B7B38BA003A468F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F383C11697CBDCC57F8BAF7E /* Pods.debug.xcconfig */;
+			baseConfigurationReference = E8DC7B01B78799D7EAECAACD /* Pods-OHMySQL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "";
@@ -520,7 +544,7 @@
 		};
 		7CCC61EE1B7B38BA003A468F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8D71F15E5B73A62DE3B7D74 /* Pods.release.xcconfig */;
+			baseConfigurationReference = FCC288E660A0972D124AEF59 /* Pods-OHMySQL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "";
