@@ -128,7 +128,7 @@
 /**
  *  Combines rows from two or more tables, based on a common field between them.
  *
- *  @param joinType    Type of join.
+ *  @param joinType    Type of join (Use one of the constants from OHJoinConstants).
  *  @param tableName   Destination table.
  *  @param columnNames Columns to fetch.
  *  @param joinOn      [Table:Condition]. { "Users":"Users.id=Company.userId" }

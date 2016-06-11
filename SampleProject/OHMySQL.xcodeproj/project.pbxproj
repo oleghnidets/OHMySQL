@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C082D181D0C4BCC0055E642 /* OHJoinConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C082D171D0C4BCC0055E642 /* OHJoinConstants.m */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A958D1C0086030083798B /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A958A1C0086030083798B /* OHTask+CoreDataProperties.m */; };
 		7C6A958E1C0086030083798B /* OHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A958C1C0086030083798B /* OHTask.m */; };
@@ -42,6 +43,8 @@
 /* Begin PBXFileReference section */
 		12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OHMySQL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C082D161D0C4BCC0055E642 /* OHJoinConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHJoinConstants.h; sourceTree = "<group>"; };
+		7C082D171D0C4BCC0055E642 /* OHJoinConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHJoinConstants.m; sourceTree = "<group>"; };
 		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		7C6A95891C0086030083798B /* OHTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "OHTask+CoreDataProperties.h"; path = "Model/OHTask+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -191,19 +194,21 @@
 		7CE55E251BB95E79004A2FF9 /* OHMySQL */ = {
 			isa = PBXGroup;
 			children = (
-				7CE55E261BB95E79004A2FF9 /* NSString+Helper.h */,
-				7CE55E271BB95E79004A2FF9 /* NSString+Helper.m */,
 				7C85C7351BE54CCD00F7B30C /* NSObject+Mapping.h */,
 				7C85C7361BE54CCD00F7B30C /* NSObject+Mapping.m */,
-				7C85C7311BE5387600F7B30C /* OHMappingProtocol.h */,
+				7CE55E261BB95E79004A2FF9 /* NSString+Helper.h */,
+				7CE55E271BB95E79004A2FF9 /* NSString+Helper.m */,
 				7CE55E281BB95E79004A2FF9 /* OHConstants.h */,
+				7C082D161D0C4BCC0055E642 /* OHJoinConstants.h */,
+				7C082D171D0C4BCC0055E642 /* OHJoinConstants.m */,
+				7C85C7311BE5387600F7B30C /* OHMappingProtocol.h */,
 				7CE55E291BB95E79004A2FF9 /* OHMySQL.h */,
 				7CE55E2A1BB95E79004A2FF9 /* OHMySQLManager.h */,
 				7CE55E2B1BB95E79004A2FF9 /* OHMySQLManager.m */,
-				7CD43FF81BBABE30001EFEDE /* OHMySQLSerialization.h */,
-				7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */,
 				7CE55E2C1BB95E79004A2FF9 /* OHMySQLQuery.h */,
 				7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */,
+				7CD43FF81BBABE30001EFEDE /* OHMySQLSerialization.h */,
+				7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */,
 				7CE55E2E1BB95E79004A2FF9 /* OHMySQLUser.h */,
 				7CE55E2F1BB95E79004A2FF9 /* OHMySQLUser.m */,
 				7CD43FFD1BBD1A5F001EFEDE /* OHSSLConfig.h */,
@@ -387,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C082D181D0C4BCC0055E642 /* OHJoinConstants.m in Sources */,
 				7CE55E301BB95E79004A2FF9 /* NSString+Helper.m in Sources */,
 				7C85C7371BE54CCD00F7B30C /* NSObject+Mapping.m in Sources */,
 				7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */,
