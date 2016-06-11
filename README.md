@@ -46,11 +46,10 @@ NSDictionary *first = [[OHMySQLManager sharedManager] selectFirst:@"users" condi
 
 The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
 ```objective-c
-NSArray *response = [[OHMySQLManager sharedManager] selectJoinType:OHJoinRight
-                                                              from:@"users"
-                                                              join:@"students"
-                                                       columnNames:@[@"students.groupID", @"users.name", @"users.lastname"]
-                                                       onCondition:@"users.id=students.userId"];
+NSArray *response = [[OHMySQLManager sharedManager] selectJOINType:OHJoinInner
+                                                         fromTable:@"Orders"
+                                                       columnNames:@[@"Orders.id", @"Goods.name", @"Goods.description", @"Orders.orderCount", @"Company.companyName", @"Goods.count"]
+                                                            joinOn:@[@"Goods":@"Orders.goodsId=Goods.id", @"Company":@"Orders.companyId=Company.Id"]];
                                    
 ```
 
@@ -90,7 +89,7 @@ task.status = 1;
 ```
 
 ## Communication
-- If you need help, write (me)[oleg.oleksan@gmail.com]
+- If you need help, write [me](oleg.oleksan@gmail.com)
 - If you found a bug, please provide steps to reproduce it, open an issue.
 - If you want to contribute, submit a pull request.
 
