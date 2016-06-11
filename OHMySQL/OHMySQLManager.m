@@ -5,18 +5,11 @@
 #import "OHMySQL.h"
 #import "NSString+Helper.h"
 #import "OHMySQLSerialization.h"
-
-#import <mysql-connector-c/mysql.h>
-
-NSString *const OHJoinInner = @"INNER";
-NSString *const OHJoinRight = @"RIGHT";
-NSString *const OHJoinLeft  = @"LEFT";
-NSString *const OHJoinFull  = @"FULL";
+#import <mysql.h>
 
 @interface OHMySQLManager ()
 
-@property (nonatomic, assign, readwrite) NSUInteger countOfFields;
-@property (nonatomic, strong, readwrite) OHMySQLUser *user;
+@property (strong, readwrite) OHMySQLUser *user;
 
 @end
 
@@ -24,7 +17,6 @@ static OHMySQLManager *sharedManager = nil;
 
 @implementation OHMySQLManager {
     MYSQL *_mysql;
-    MYSQL_RES *_result;
 }
 
 + (void)initialize {
@@ -45,10 +37,11 @@ static OHMySQLManager *sharedManager = nil;
     
     self.user = user;
     static MYSQL local;
-
+    
     mysql_library_init;
     
     mysql_init(&local);
+    
     mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
     my_bool reconnect = 1;
     mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
@@ -64,6 +57,11 @@ static OHMySQLManager *sharedManager = nil;
     } else {
         _mysql = &local;
     }
+    
+    mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
+    mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
+    
+    OHLog(@"%s", mysql_get_server_info(&local));
 }
 
 - (void)dealloc {
@@ -127,26 +125,13 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 #pragma mark SELECT JOIN
-- (NSArray *)selectJoinType:(NSString *)joinType
-                       from:(NSString *)tableName1
-                       join:(NSString *)tableName2
-                columnNames:(NSArray *)columnNames
-                onCondition:(NSString *)condition {
-    NSParameterAssert(tableName1 && tableName2 && columnNames.count && condition);
+- (NSArray *)selectJOINType:(NSString *)joinType fromTable:(NSString *)tableName columnNames:(NSArray<NSString *> *)columnNames joinOn:(NSDictionary<NSString *,NSString *> *)joinOn {
+    NSParameterAssert(tableName && joinOn.count && columnNames.count);
     
-    NSString *queryString = nil;
-    if ([joinType isEqualToString:OHJoinInner]) {
-        queryString = [NSString innerJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else if ([joinType isEqualToString:OHJoinRight]) {
-        queryString = [NSString rightJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else if ([joinType isEqualToString:OHJoinLeft]) {
-        queryString = [NSString leftJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else if ([joinType isEqualToString:OHJoinFull]) {
-        queryString = [NSString fullJoinString:tableName1 joinInner:tableName2 columnNames:columnNames onCondition:condition];
-    } else {
-        NSAssert(queryString, @"You must specify correct join type");
-    }
-    
+    NSString *queryString = [NSString join:joinType
+                                 fromTable:tableName
+                               columnNames:columnNames
+                                 joinInner:joinOn];
     OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
     
     return [self executeSELECTQuery:query];
@@ -203,16 +188,22 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 - (NSNumber *)lastInsertID {
-    return _mysql != NULL ? @(mysql_insert_id(_mysql)) : @0;
+    @synchronized (self) {
+        return _mysql != NULL ? @(mysql_insert_id(_mysql)) : @0;
+    }
 }
 
 - (OHResultErrorType)selectDataBase:(NSString *)dbName {
     NSParameterAssert(dbName);
-    return mysql_select_db(_mysql, dbName.UTF8String);
+    @synchronized (self) {
+        return mysql_select_db(_mysql, dbName.UTF8String);
+    }
 }
 
 - (OHResultErrorType)refresh:(OHRefreshOptions)options {
-    return mysql_refresh(_mysql, options);
+    @synchronized (self) {
+        return mysql_refresh(_mysql, options);
+    }
 }
 
 #pragma mark - Executing
@@ -225,15 +216,15 @@ static OHMySQLManager *sharedManager = nil;
         return nil;
     }
     
-    _result = mysql_store_result(_mysql);
+    MYSQL_RES *_result  = mysql_store_result(_mysql);
     MYSQL_FIELD *fields = mysql_fetch_fields(_result);
     
     NSMutableArray *arrayOfDictionaries = [NSMutableArray array];
-
+    
     MYSQL_ROW row;
     while ((row = mysql_fetch_row(_result))) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
-        for (CFIndex i=0; i<self.countOfFields; ++i) {
+        for (CFIndex i=0; i<mysql_num_fields(_result); ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
             id value = [OHMySQLSerialization objectFromCString:row[i] field:&fields[i]];
             
@@ -259,7 +250,7 @@ static OHMySQLManager *sharedManager = nil;
     }
     
     if (!_mysql) {
-        OHLogError(@"The connection is broken.")
+        OHLogError(@"The connection is broken.");
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
         return OHResultErrorTypeUnknown;
     }
@@ -274,20 +265,20 @@ static OHMySQLManager *sharedManager = nil;
 
 #pragma mark - Helpers
 
-- (NSUInteger)countOfFields {
-    return mysql_num_fields(_result);
-}
-
 - (void)disconnect {
-    if (_mysql) {
-        mysql_close(_mysql);
-        _mysql = nil;
-        mysql_library_end;
+    @synchronized (self) {
+        if (_mysql) {
+            mysql_close(_mysql);
+            _mysql = nil;
+            mysql_library_end;
+        }
     }
 }
 
 - (OHResultErrorType)pingMySQL {
-    return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeUnknown;
+    @synchronized (self) {
+        return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeUnknown;
+    }
 }
 
 - (BOOL)isConnected {

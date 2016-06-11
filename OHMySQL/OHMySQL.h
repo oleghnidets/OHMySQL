@@ -7,3 +7,6 @@
 #import "OHMySQLQuery.h"
 
 #import "OHConstants.h"
+
+#import "NSObject+Mapping.h"
+#import "OHMappingProtocol.h"

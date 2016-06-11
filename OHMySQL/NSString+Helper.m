@@ -79,20 +79,21 @@
 }
 
 #pragma mark JOINS
-+ (NSString *)innerJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ INNER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
+
++ (NSString *)join:(NSString *)joinType
+         fromTable:(NSString *)table
+       columnNames:(NSArray<NSString *> *)columnNames
+         joinInner:(NSDictionary *)tables {
+    return [NSString stringWithFormat:@"SELECT %@ FROM %@ %@", [@"" stringByCommaWithArray:columnNames], table, [NSString joinType:joinType joinOn:tables]];
 }
 
-+ (NSString *)rightJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ RIGHT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
-}
-
-+ (NSString *)leftJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ LEFT OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
-}
-
-+ (NSString *)fullJoinString:(NSString *)tableName1 joinInner:(NSString *)tableName2 columnNames:(NSArray *)columnNames onCondition:(NSString *)condition {
-    return [NSString stringWithFormat:@"SELECT %@ FROM %@ FULL OUTER JOIN %@ ON %@", [@"" stringByCommaWithArray:columnNames], tableName1, tableName2, condition];
++ (NSString *)joinType:(NSString *)joinType joinOn:(NSDictionary *)joinOn {
+    NSMutableString *result = [NSMutableString new];
+    for (NSString *table in joinOn.allKeys) {
+        [result appendFormat:@" %@ %@ ON %@ ", joinType, table, joinOn[table]];
+    }
+    
+    return result;
 }
 
 #pragma mark SELECT FIRST

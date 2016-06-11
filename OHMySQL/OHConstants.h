@@ -7,6 +7,7 @@
  */
 
 @import Foundation;
+#import "OHJoinConstants.h"
 
 typedef NS_ENUM(NSUInteger, OHResultErrorType){
     /**

@@ -1,7 +1,3 @@
-//
-//  OHMySQLSerialization.m
-//  OHMySQL
-//
 //  Created by Oleg on 9/29/15.
 //  Copyright © 2015 Oleg Hnidets. All rights reserved.
 //

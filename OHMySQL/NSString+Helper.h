@@ -6,29 +6,11 @@
 
 @interface NSString (SQLQueryString)
 
-//! SELECT column_name(s) FROM table1 INNER JOIN table2 ON table1.column_name=table2.column_name
-+ (nonnull NSString *)innerJoinString:(nonnull NSString *)tableName1
-                            joinInner:(nonnull NSString *)tableName2
-                          columnNames:(nonnull NSArray *)columnNames
-                          onCondition:(nonnull NSString *)condition;
-
-//! SELECT column_name(s) FROM table1 LEFT JOIN table2 ON table1.column_name=table2.column_name
-+ (nonnull NSString *)leftJoinString:(nonnull NSString *)tableName1
-                           joinInner:(nonnull NSString *)tableName2
-                         columnNames:(nonnull NSArray *)columnNames
-                         onCondition:(nonnull NSString *)condition;
-
-//! SELECT column_name(s) FROM table1 RIGHT JOIN table2 ON table1.column_name=table2.column_name
-+ (nonnull NSString *)rightJoinString:(nonnull NSString *)tableName1
-                            joinInner:(nonnull NSString *)tableName2
-                          columnNames:(nonnull NSArray *)columnNames
-                          onCondition:(nonnull NSString *)condition;
-
-//! SELECT column_name(s) FROM table1 FULL JOIN table2 ON table1.column_name=table2.column_name
-+ (nonnull NSString *)fullJoinString:(nonnull NSString *)tableName1
-                           joinInner:(nonnull NSString *)tableName2
-                         columnNames:(nonnull NSArray *)columnNames
-                         onCondition:(nonnull NSString *)condition;
+//! SELECT column_name(s) FROM table1 'join type' table2 ON table1.column_name=table2.column_name
++ (nonnull NSString *)join:(nonnull NSString *)joinType
+                 fromTable:(nonnull NSString *)table
+               columnNames:(nonnull NSArray<NSString *> *)columnNames
+                 joinInner:(nonnull NSDictionary *)tables;
 
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) LIMIT 1
 + (nonnull NSString *)selectFirstString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;

@@ -8,16 +8,11 @@
 
 @class OHMySQLUser, OHMySQLQuery;
 
-extern NSString *_Nonnull const OHJoinInner;
-extern NSString *_Nonnull const OHJoinRight;
-extern NSString *_Nonnull const OHJoinLeft;
-extern NSString *_Nonnull const OHJoinFull;
-
 @interface OHMySQLManager : NSObject
 
 //! Pings the server and indicates whether the connection to the server is working.
-@property (nonatomic, assign, readonly, getter=isConnected) BOOL connected;
-@property (nonatomic, strong, readonly, null_unspecified) OHMySQLUser *user;
+@property (assign, readonly, getter=isConnected) BOOL connected;
+@property (strong, readonly, null_unspecified) OHMySQLUser *user;
 
 + (nonnull OHMySQLManager *)sharedManager;
 
@@ -129,22 +124,21 @@ extern NSString *_Nonnull const OHJoinFull;
 - (OHResultErrorType)insertInto:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 #pragma mark JOIN
+
 /**
  *  Combines rows from two or more tables, based on a common field between them.
  *
  *  @param joinType    Type of join.
- *  @param tableName1  Left table.
- *  @param tableName2  Right table.
- *  @param columnNames Array of column names.
- *  @param condition   Common condition.
- *
+ *  @param tableName   Destination table.
+ *  @param columnNames Columns to fetch.
+ *  @param joinOn      [Table:Condition]. { "Users":"Users.id=Company.userId" }
+ *  
  *  @return Array of dictionaries (JSON).
  */
-- (nullable NSArray *)selectJoinType:(nonnull NSString *)joinType
-                                from:(nonnull NSString *)tableName1
-                                join:(nonnull NSString *)tableName2
+- (nullable NSArray *)selectJOINType:(nonnull NSString *)joinType
+                           fromTable:(nonnull NSString *)tableName
                          columnNames:(nonnull NSArray<NSString *> *)columnNames
-                         onCondition:(nonnull NSString *)condition;
+                              joinOn:(nonnull NSDictionary<NSString *,NSString *> *)joinOn;
 
 #pragma mark UPDATE
 /**

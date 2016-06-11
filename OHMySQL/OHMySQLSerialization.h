@@ -1,13 +1,9 @@
-//
-//  OHMySQLSerialization.h
-//  OHMySQL
-//
 //  Created by Oleg on 9/29/15.
 //  Copyright © 2015 Oleg Hnidets. All rights reserved.
 //
 
 @import Foundation;
-#import <mysql-connector-c/mysql.h>
+#import <mysql.h>
 
 @interface OHMySQLSerialization : NSObject
 

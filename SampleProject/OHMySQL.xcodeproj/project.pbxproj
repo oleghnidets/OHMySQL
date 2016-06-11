@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06674F243AB658851A3BDB77 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54E7F3918299C1761618F36C /* libPods.a */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A958D1C0086030083798B /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A958A1C0086030083798B /* OHTask+CoreDataProperties.m */; };
 		7C6A958E1C0086030083798B /* OHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A958C1C0086030083798B /* OHTask.m */; };
@@ -28,7 +27,6 @@
 		7CE55E311BB95E79004A2FF9 /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2B1BB95E79004A2FF9 /* OHMySQLManager.m */; };
 		7CE55E321BB95E79004A2FF9 /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2D1BB95E79004A2FF9 /* OHMySQLQuery.m */; };
 		7CE55E331BB95E79004A2FF9 /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E2F1BB95E79004A2FF9 /* OHMySQLUser.m */; };
-		F8FCA7401165CFF81C278133 /* libPods-OHMySQL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +95,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */,
-				06674F243AB658851A3BDB77 /* libPods.a in Frameworks */,
-				F8FCA7401165CFF81C278133 /* libPods-OHMySQL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
