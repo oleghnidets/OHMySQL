@@ -49,6 +49,7 @@
 }
 
 - (OHResultErrorType)updateWithCondition:(NSString *)condition {
+    NSParameterAssert(condition);
     return [[OHMySQLManager sharedManager] updateAll:self.mySQLTable
                                                  set:[self mapObjectToDictionary]
                                            condition:condition];
@@ -59,6 +60,7 @@
 }
 
 - (void)mapFromResponse:(NSDictionary *)response {
+    NSParameterAssert(response);
     NSDictionary *mirrorMappingDictionary = [self.mappingDictionary mirror];
     for (NSString *key in mirrorMappingDictionary.allKeys) {
         [self setValue:response[key] forKey:mirrorMappingDictionary[key]];

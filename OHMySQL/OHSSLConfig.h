@@ -1,7 +1,3 @@
-//
-//  OHSSLConfig.h
-//  OHMySQL
-//
 //  Created by Oleg on 10/1/15.
 //  Copyright © 2015 Oleg Hnidets. All rights reserved.
 //

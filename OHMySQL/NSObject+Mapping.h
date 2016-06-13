@@ -9,8 +9,8 @@
 
 - (OHResultErrorType)insert;
 - (OHResultErrorType)update;
-- (OHResultErrorType)updateWithCondition:(NSString *)condition;
+- (OHResultErrorType)updateWithCondition:(nonnull NSString *)condition;
 - (OHResultErrorType)deleteObject;
-- (void)mapFromResponse:(NSDictionary *)response;
+- (void)mapFromResponse:(nonnull NSDictionary *)response;
 
 @end

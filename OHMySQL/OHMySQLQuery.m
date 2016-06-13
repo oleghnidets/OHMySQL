@@ -13,6 +13,7 @@
 @implementation OHMySQLQuery
 
 - (instancetype)initWithUser:(OHMySQLUser *)user {
+    NSParameterAssert(user);
     if (self = [super init]) {
         _user = user;
     }
@@ -21,6 +22,7 @@
 }
 
 - (instancetype)initWithUser:(OHMySQLUser *)user queryString:(NSString *)query {
+    NSParameterAssert(user && query);
     if (self = [self initWithUser:user]) {
         _queryString = query;
     }

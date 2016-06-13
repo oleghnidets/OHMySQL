@@ -125,7 +125,7 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 #pragma mark SELECT JOIN
-- (NSArray *)selectJOINType:(NSString *)joinType fromTable:(NSString *)tableName columnNames:(NSArray<NSString *> *)columnNames joinOn:(NSDictionary<NSString *,NSString *> *)joinOn {
+- (NSArray *)selectJOINType:(NSString *)joinType fromTable:(NSString *)tableName columnNames:(NSArray *)columnNames joinOn:(NSDictionary *)joinOn {
     NSParameterAssert(tableName && joinOn.count && columnNames.count);
     
     NSString *queryString = [NSString join:joinType
@@ -224,7 +224,8 @@ static OHMySQLManager *sharedManager = nil;
     MYSQL_ROW row;
     while ((row = mysql_fetch_row(_result))) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
-        for (CFIndex i=0; i<mysql_num_fields(_result); ++i) {
+        NSInteger countOfFields = mysql_num_fields(_result);
+        for (CFIndex i=0; i<countOfFields; ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
             id value = [OHMySQLSerialization objectFromCString:row[i] field:&fields[i]];
             
@@ -257,7 +258,9 @@ static OHMySQLManager *sharedManager = nil;
     
     mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
     
-    NSInteger error = mysql_real_query(_mysql, sqlQuery.queryString.UTF8String, sqlQuery.queryString.length);
+    // To get proper length of string in different languages.
+    NSInteger queryStringLength = strlen(sqlQuery.queryString.UTF8String);
+    NSInteger error = mysql_real_query(_mysql, sqlQuery.queryString.UTF8String, queryStringLength);
     if (error) { OHLogError(@"%s", mysql_error(_mysql)); }
     
     return error;
@@ -267,7 +270,7 @@ static OHMySQLManager *sharedManager = nil;
 
 - (void)disconnect {
     @synchronized (self) {
-        if (_mysql) {
+        if (_mysql != NULL) {
             mysql_close(_mysql);
             _mysql = nil;
             mysql_library_end;
