@@ -16,7 +16,12 @@
 @implementation NSDictionary (Mirroring)
 
 - (NSDictionary *)mirror {
-    return [NSDictionary dictionaryWithObjects:self.allKeys forKeys:self.allValues];
+    NSMutableDictionary *mirroDictionary = [NSMutableDictionary dictionary];
+    [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        mirroDictionary[obj] = key;
+    }];
+    
+    return mirroDictionary;
 }
 
 @end

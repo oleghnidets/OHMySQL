@@ -14,10 +14,14 @@ static NSString *const kContextDomain = @"mysql.domain";
 NSError *contextError(OHResultErrorType type, NSString *description) {
     return [NSError errorWithDomain:kContextDomain
                                code:OHResultErrorTypeUnknown
-                           userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString(@"Required properties in query are absent.", nil) }];
+                           userInfo:@{ NSLocalizedDescriptionKey : description }];
 }
 
 @implementation OHMySQLQueryContext
+
+- (MYSQL *)mysql {
+    return self.storeCoordinator.mysql;
+}
 
 - (void)executeQuery:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
     if (!query.queryString) {
@@ -43,27 +47,52 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         return ;
     }
     
+    query.timeline.queryStartTime = CFAbsoluteTimeGetCurrent();
+    
     MYSQL *_mysql = self.storeCoordinator.mysql;
     mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
     
     // To get proper length of string in different languages.
     NSInteger queryStringLength = strlen(query.queryString.UTF8String);
     NSInteger errorCode = mysql_real_query(_mysql, query.queryString.UTF8String, queryStringLength);
+    
+    query.timeline.queryDuration = query.timeline.queryStartTime - CFAbsoluteTimeGetCurrent();
     if (errorCode) {
         NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(_mysql)];
         OHLogError(@"%@", mysqlError);
-        *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(mysqlError, nil));
+        if (error) {
+            *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(mysqlError, nil));
+        }
     }
 }
 
 - (NSArray<NSDictionary<NSString *,id> *> *)executeQueryAndFetchResult:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
     [self executeQuery:query error:error];
-    if (*error != nil) {
+    if (error && *error) {
         return nil;
     }
     
     return [self fetchResult];
 }
+
+- (NSNumber *)affectedRows {
+    @synchronized (self) {
+        my_ulonglong affectedRowsResult = mysql_affected_rows([self mysql]);
+        if (affectedRowsResult == (my_ulonglong)-1) {
+            return @(-1);
+        } else {
+            return @(affectedRowsResult);
+        }
+    }
+}
+
+- (NSNumber *)lastInsertID {
+    @synchronized (self) {
+        return self.mysql != NULL ? @(mysql_insert_id(self.mysql)) : @0;
+    }
+}
+
+#pragma mark - Private
 
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {
     MYSQL *_mysql = self.storeCoordinator.mysql;

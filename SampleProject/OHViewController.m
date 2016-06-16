@@ -26,7 +26,6 @@
     
     self.listOfTasks = [NSMutableArray array];
     
-    NSDate *startDate  = [NSDate date];
     OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
                                                      password:@"root"
                                                    serverName:@"localhost"
@@ -36,14 +35,20 @@
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
     [coordinator connect];
     
+    CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
+    
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
-    [queryContext executeQuery:[OHMySQLQueryFactory SELECT:@"tasks" condition:nil] error:nil];
+    OHMySQLQuery *query = [OHMySQLQueryFactory SELECT:@"tasks" condition:nil];
     
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     
-    NSArray *tasks = [queryContext fetchResult];
+    NSArray *tasks = [queryContext executeQueryAndFetchResult:query error:nil];
+    
+    NSLog(@"Time execution: %f", currentTime - CFAbsoluteTimeGetCurrent());
+    NSLog(@"%f", query.timeline.queryDuration);
+    
     for (NSDictionary *taskDict in tasks) {
         NSString *entityName = NSStringFromClass([OHTask class]);
         
@@ -65,7 +70,7 @@
         NSAssert(NO, @"Error saving context: %@\n%@", error.localizedDescription, error.userInfo);
     }
 
-    NSLog(@"Time execution: %f", [[NSDate date] timeIntervalSinceDate:startDate]);
+    
     [self.tableView reloadData];
 }
 

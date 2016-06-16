@@ -6,11 +6,12 @@
 
 #import "OHMySQLUser.h"
 #import "OHSSLConfig.h"
+#import <mysql.h>
 
 @interface OHMySQLStoreCoordinator ()
 
 @property (nonatomic, strong) OHMySQLUser *user;
-@property (assign, readwrite, nonnull) MYSQL *mysql;
+@property (assign, readwrite, nonnull) void *mysql;
 
 @end
 
@@ -35,11 +36,13 @@
     mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
     my_bool reconnect = 1;
     mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
+    mysql_options(&local, MYSQL_OPT_PROTOCOL, &_protocol);
     
-    if (self.user.sslConfig) {
-        mysql_ssl_set(&local, self.user.sslConfig.key.UTF8String, self.user.sslConfig.certPath.UTF8String,
-                      self.user.sslConfig.certAuthPath.UTF8String, self.user.sslConfig.certAuthPEMPath.UTF8String,
-                      self.user.sslConfig.cipher.UTF8String);
+    OHSSLConfig *SSLconfig = self.user.sslConfig;
+    if (SSLconfig) {
+        mysql_ssl_set(&local, SSLconfig.key.UTF8String, SSLconfig.certPath.UTF8String,
+                      SSLconfig.certAuthPath.UTF8String, SSLconfig.certAuthPEMPath.UTF8String,
+                      SSLconfig.cipher.UTF8String);
     }
     
     if (!mysql_real_connect(&local, _user.serverName.UTF8String, _user.userName.UTF8String, _user.password.UTF8String, _user.dbName.UTF8String, (unsigned int)_user.port, _user.socket.UTF8String, 0)) {
@@ -47,9 +50,19 @@
     } else {
         _mysql = &local;
     }
-    
-    mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
-    mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
+}
+
+- (OHResultErrorType)selectDataBase:(NSString *)database {
+    NSParameterAssert(database);
+    @synchronized (self) {
+        return mysql_select_db(_mysql, database.UTF8String);
+    }
+}
+
+- (OHResultErrorType)shutdown {
+    @synchronized (self) {
+        return mysql_shutdown(_mysql, SHUTDOWN_DEFAULT);
+    }
 }
 
 - (void)disconnect {

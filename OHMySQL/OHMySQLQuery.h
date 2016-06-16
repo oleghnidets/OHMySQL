@@ -3,12 +3,12 @@
 //
 
 @import Foundation;
-
-@class OHMySQLUser;
+#import "OHMySQLTimeline.h"
 
 @interface OHMySQLQuery : NSObject
 
-@property (copy, nonnull) NSString *queryString;
+@property (strong, nonnull) OHMySQLTimeline *timeline;
+@property (nonatomic, copy, nonnull) NSString *queryString;
 
 - (nonnull instancetype)initWithQueryString:(nonnull NSString *)query;
 
