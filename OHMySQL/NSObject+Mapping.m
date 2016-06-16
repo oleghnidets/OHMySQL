@@ -4,7 +4,7 @@
 
 #import "NSObject+Mapping.h"
 #import "OHMySQLManager.h"
-#import "NSString+Helper.h"
+#import "NSString+Utility.h"
 #import "OHMappingProtocol.h"
 
 @interface NSDictionary (Mirroring)

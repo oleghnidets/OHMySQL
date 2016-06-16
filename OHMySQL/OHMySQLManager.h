@@ -10,8 +10,6 @@
 
 @interface OHMySQLManager : NSObject
 
-//! Pings the server and indicates whether the connection to the server is working.
-@property (assign, readonly, getter=isConnected) BOOL connected;
 @property (strong, readonly, null_unspecified) OHMySQLUser *user;
 
 + (nonnull OHMySQLManager *)sharedManager;
@@ -195,13 +193,6 @@
 - (nonnull NSNumber *)countAll:(nonnull NSString *)tableName;
 
 /**
- *  Checks whether the connection to the server is working. If the connection has gone down and auto-reconnect is enabled an attempt to reconnect is made.
- *
- *  @return Zero if the connection to the server is active. Nonzero if an error occurred. A nonzero return does not indicate whether the MySQL server itself is down; the connection might be broken for other reasons such as network problems.
- */
-- (OHResultErrorType)pingMySQL;
-
-/**
  *  Causes the database specified by dbName to become the default (current) database on the current connection.
  *
  *  @param dbName Name of the target db.
@@ -215,14 +206,6 @@
  */
 - (nonnull NSNumber *)lastInsertID;
 
-/**
- *  Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
- *
- *  @param Options A bit mask composed from any combination.
- *
- *  @return Zero for success. Nonzero if an error occurred (see enum).
- */
-- (OHResultErrorType)refresh:(OHRefreshOptions)options;
 
 //! Closes a previously opened connection.
 - (void)disconnect;

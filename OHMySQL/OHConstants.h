@@ -71,9 +71,6 @@ typedef NS_OPTIONS(NSUInteger, OHRefreshOptions){
     OHRefreshOptionMaster = 128,
 };
 
-#define OHArgName(arg) (@""#arg)
-#define OHAsser(arg) NSAssert(arg, @"Invalid parameter. %@ cannot be nil. Please check the input parameters.", OHArgName(arg));
-
 #ifdef DEBUG
     #define OHLog(frmt, ...) NSLog(@"%s -[INFO] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
 #else

@@ -5,25 +5,13 @@
 #import "OHMySQLQuery.h"
 
 @interface OHMySQLQuery ()
-
-@property (nonatomic, strong, readwrite) OHMySQLUser *user;
-
 @end
 
 @implementation OHMySQLQuery
 
-- (instancetype)initWithUser:(OHMySQLUser *)user {
-    NSParameterAssert(user);
-    if (self = [super init]) {
-        _user = user;
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithUser:(OHMySQLUser *)user queryString:(NSString *)query {
-    NSParameterAssert(user && query);
-    if (self = [self initWithUser:user]) {
+- (nonnull instancetype)initWithQueryString:(nonnull NSString *)query {
+    NSParameterAssert(query);
+    if (self = [self init]) {
         _queryString = query;
     }
     

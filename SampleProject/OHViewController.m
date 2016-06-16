@@ -33,12 +33,17 @@
                                                        dbName:@"sample"
                                                          port:3306
                                                        socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
-    [[OHMySQLManager sharedManager] connectWithUser:user];
-
+    OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
+    [coordinator connect];
+    
+    OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
+    queryContext.storeCoordinator = coordinator;
+    [queryContext executeQuery:[OHMySQLQueryFactory SELECT:@"tasks" condition:nil] error:nil];
+    
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     
-    NSArray *tasks = [[OHMySQLManager sharedManager] selectAllFrom:@"tasks"];
+    NSArray *tasks = [queryContext fetchResult];
     for (NSDictionary *taskDict in tasks) {
         NSString *entityName = NSStringFromClass([OHTask class]);
         

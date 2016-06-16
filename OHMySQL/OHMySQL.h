@@ -6,6 +6,10 @@
 #import "OHMySQLUser.h"
 #import "OHMySQLQuery.h"
 
+#import "OHMySQLQueryContext.h"
+#import "OHMySQLQueryFactory.h"
+#import "OHMySQLStoreCoordinator.h"
+
 #import "OHConstants.h"
 
 #import "NSObject+Mapping.h"

@@ -3,13 +3,17 @@
 //
 
 #import "OHMySQL.h"
-#import "NSString+Helper.h"
+#import "NSString+Utility.h"
 #import "OHMySQLSerialization.h"
 #import <mysql.h>
+
+#import "OHMySQLStore.h"
+#import "OHMySQLStoreCoordinator.h"
 
 @interface OHMySQLManager ()
 
 @property (strong, readwrite) OHMySQLUser *user;
+@property (strong, readwrite) OHMySQLStoreCoordinator *storeCoordinator;
 
 @end
 
@@ -33,35 +37,8 @@ static OHMySQLManager *sharedManager = nil;
 - (void)connectWithUser:(OHMySQLUser *)user {
     NSParameterAssert(user);
     
-    [self disconnect];
-    
-    self.user = user;
-    static MYSQL local;
-    
-    mysql_library_init;
-    
-    mysql_init(&local);
-    
-    mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
-    my_bool reconnect = 1;
-    mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
-    
-    if (self.user.sslConfig) {
-        mysql_ssl_set(&local, self.user.sslConfig.key.UTF8String, self.user.sslConfig.certPath.UTF8String,
-                      self.user.sslConfig.certAuthPath.UTF8String, self.user.sslConfig.certAuthPEMPath.UTF8String,
-                      self.user.sslConfig.cipher.UTF8String);
-    }
-    
-    if (!mysql_real_connect(&local, user.serverName.UTF8String, user.userName.UTF8String, user.password.UTF8String, user.dbName.UTF8String, (unsigned int)user.port, user.socket.UTF8String, 0)) {
-        OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
-    } else {
-        _mysql = &local;
-    }
-    
-    mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
-    mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
-    
-    OHLog(@"%s", mysql_get_server_info(&local));
+    OHMySQLStoreCoordinator *storeCoordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
+    [storeCoordinator connect];
 }
 
 - (void)dealloc {
@@ -78,8 +55,8 @@ static OHMySQLManager *sharedManager = nil;
 - (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition {
     NSParameterAssert(tableName);
     
-    NSString *queryString = [NSString selectAllString:tableName condition:condition];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString SELECTString:tableName condition:condition];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeSELECTQuery:query];
 }
@@ -91,8 +68,8 @@ static OHMySQLManager *sharedManager = nil;
 - (NSArray *)selectAll:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
     NSParameterAssert(tableName && columnNames.count);
     
-    NSString *queryString = [NSString selectAllString:tableName condition:condition orderBy:columnNames ascending:isAscending];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString SELECTString:tableName condition:condition orderBy:columnNames ascending:isAscending];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeSELECTQuery:query];
 }
@@ -105,8 +82,8 @@ static OHMySQLManager *sharedManager = nil;
 - (NSDictionary *)selectFirst:(NSString *)tableName condition:(NSString *)condition {
     NSParameterAssert(tableName);
     
-    NSString *queryString = [NSString selectFirstString:tableName condition:condition];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString SELECTFirstString:tableName condition:condition];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeSELECTQuery:query].firstObject;
 }
@@ -118,8 +95,8 @@ static OHMySQLManager *sharedManager = nil;
 - (NSDictionary *)selectFirst:(NSString *)tableName condition:(NSString *)condition orderBy:(NSArray *)columnNames ascending:(BOOL)isAscending {
     NSParameterAssert(tableName && columnNames.count);
     
-    NSString *queryString = [NSString selectFirstString:tableName condition:condition orderBy:columnNames ascending:isAscending];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString SELECTFirstString:tableName condition:condition orderBy:columnNames ascending:isAscending];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeSELECTQuery:query].firstObject;
 }
@@ -128,11 +105,11 @@ static OHMySQLManager *sharedManager = nil;
 - (NSArray *)selectJOINType:(NSString *)joinType fromTable:(NSString *)tableName columnNames:(NSArray *)columnNames joinOn:(NSDictionary *)joinOn {
     NSParameterAssert(tableName && joinOn.count && columnNames.count);
     
-    NSString *queryString = [NSString join:joinType
-                                 fromTable:tableName
-                               columnNames:columnNames
-                                 joinInner:joinOn];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString JOINString:joinType
+                                       fromTable:tableName
+                                     columnNames:columnNames
+                                       joinInner:joinOn];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeSELECTQuery:query];
 }
@@ -141,8 +118,8 @@ static OHMySQLManager *sharedManager = nil;
 - (OHResultErrorType)insertInto:(NSString *)tableName set:(NSDictionary *)set {
     NSParameterAssert(tableName && set);
     
-    NSString *queryString = [NSString insertString:tableName set:set];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString INSERTString:tableName set:set];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeQuery:query];
 }
@@ -156,8 +133,8 @@ static OHMySQLManager *sharedManager = nil;
 - (OHResultErrorType)updateAll:(NSString *)tableName set:(NSDictionary *)set condition:(NSString *)condition {
     NSParameterAssert(tableName && set);
     
-    NSString *queryString = [NSString updateString:tableName set:set condition:condition];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString UPDATEString:tableName set:set condition:condition];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeQuery:query];
 }
@@ -170,8 +147,8 @@ static OHMySQLManager *sharedManager = nil;
 - (OHResultErrorType)deleteAllFrom:(NSString *)tableName condition:(NSString *)condition {
     NSParameterAssert(tableName);
     
-    NSString *queryString = [NSString deleteString:tableName condition:condition];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    NSString *queryString = [NSString DELETEString:tableName condition:condition];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [self executeQuery:query];
 }
@@ -182,7 +159,7 @@ static OHMySQLManager *sharedManager = nil;
     NSParameterAssert(tableName);
     
     NSString *queryString = [NSString countString:tableName];
-    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithUser:self.user queryString:queryString];
+    OHMySQLQuery *query = [[OHMySQLQuery alloc] initWithQueryString:queryString];
     
     return [[self executeSELECTQuery:query].firstObject allValues].firstObject;
 }
@@ -197,12 +174,6 @@ static OHMySQLManager *sharedManager = nil;
     NSParameterAssert(dbName);
     @synchronized (self) {
         return mysql_select_db(_mysql, dbName.UTF8String);
-    }
-}
-
-- (OHResultErrorType)refresh:(OHRefreshOptions)options {
-    @synchronized (self) {
-        return mysql_refresh(_mysql, options);
     }
 }
 
@@ -241,13 +212,13 @@ static OHMySQLManager *sharedManager = nil;
 }
 
 - (OHResultErrorType)executeQuery:(OHMySQLQuery *)sqlQuery {
-    if (!sqlQuery.queryString || !sqlQuery.user) {
+    if (!sqlQuery.queryString) {
         OHLogError(@"Unexpected prolem with the query.");
         
         return OHResultErrorTypeUnknown; // CR_UNKNOWN_ERROR
     } else if (![OHMySQLManager sharedManager].isConnected) {
         OHLogError(@"Try to reconnect user");
-        [[OHMySQLManager sharedManager] connectWithUser:sqlQuery.user];
+        [[OHMySQLManager sharedManager] connectWithUser:self.user];
     }
     
     if (!_mysql) {

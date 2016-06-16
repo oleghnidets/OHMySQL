@@ -8,10 +8,8 @@
 
 @interface OHMySQLQuery : NSObject
 
-@property (strong, readonly, nullable) OHMySQLUser *user;
 @property (copy, nonnull) NSString *queryString;
 
-- (nonnull instancetype)initWithUser:(nonnull OHMySQLUser *)user;
-- (nonnull instancetype)initWithUser:(nonnull OHMySQLUser *)user queryString:(nonnull NSString *)query;
+- (nonnull instancetype)initWithQueryString:(nonnull NSString *)query;
 
 @end
