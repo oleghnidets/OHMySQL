@@ -2,10 +2,11 @@
 //  Copyright © 2015 Oleg Hnidets. All rights reserved.
 //
 
-#import "NSObject+Mapping.h"
-#import "OHMySQLManager.h"
-#import "NSString+Utility.h"
 #import "OHMappingProtocol.h"
+#import "OHConstants.h"
+
+#import "NSObject+Mapping.h"
+#import "NSString+Utility.h"
 
 @interface NSDictionary (Mirroring)
 
@@ -32,38 +33,6 @@
 
 @implementation NSObject (Mapping)
 
-#pragma GCC diagnostic ignored "-Wundeclared-selector"
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-
-- (OHResultErrorType)insert {
-    OHResultErrorType errorType = [[OHMySQLManager sharedManager] insertInto:self.mySQLTable set:[self mapObjectToDictionary]];
-    
-    if (!errorType) {
-        NSNumber *lastID = [[OHMySQLManager sharedManager] lastInsertID];
-        if (lastID && ![lastID isEqualToNumber:@0]) {
-            [self setValue:lastID forKey:self.indexKey];
-            OHLog(@"Last ID %@", lastID);
-        }
-    }
-    
-    return errorType;
-}
-
-- (OHResultErrorType)update {
-    return [self updateWithCondition:[self indexKeyCondition]];
-}
-
-- (OHResultErrorType)updateWithCondition:(NSString *)condition {
-    NSParameterAssert(condition);
-    return [[OHMySQLManager sharedManager] updateAll:self.mySQLTable
-                                                 set:[self mapObjectToDictionary]
-                                           condition:condition];
-}
-
-- (OHResultErrorType)deleteObject {
-    return [[OHMySQLManager sharedManager] deleteAllFrom:self.indexKey condition:[self indexKeyCondition]];
-}
-
 - (void)mapFromResponse:(NSDictionary *)response {
     NSParameterAssert(response);
     NSDictionary *mirrorMappingDictionary = [self.mappingDictionary mirror];
@@ -72,7 +41,8 @@
     }
 }
 
-#pragma mark - Private
+#pragma GCC diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
 - (NSString *)indexKeyCondition {
     NSString *indexKey = self.indexKey;
@@ -88,12 +58,12 @@
         return [NSString stringWithFormat:@"%@=%@", self.mappingDictionary[indexKey], conditionValue];
     }
     
-    OHLogWarn(@"This object doesn't have index key. It'll update all records in table.");
+    OHLogWarn(@"This object doesn't have index key.");
     
     return nil;
 }
 
-- (NSDictionary *)mapObjectToDictionary {
+- (NSDictionary *)mapObject {
     NSMutableDictionary *objectDictionary = [NSMutableDictionary dictionary];
     
     NSDictionary *mirrorMappingDictionary = [self.mappingDictionary mirror];

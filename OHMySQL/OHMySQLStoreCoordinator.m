@@ -26,6 +26,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [self disconnect];
+}
+
 - (void)connect {
     static MYSQL local;
     
