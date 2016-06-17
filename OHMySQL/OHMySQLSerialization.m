@@ -3,10 +3,12 @@
 //
 
 #import "OHMySQLSerialization.h"
+#import <mysql.h>
 
 @implementation OHMySQLSerialization
 
-+ (id)objectFromCString:(const char *)cString field:(MYSQL_FIELD *)field {
++ (id)objectFromCString:(const char *)cString field:(const void *)pointer {
+    MYSQL_FIELD *field = (MYSQL_FIELD *)pointer;
     BOOL notNull = field->flags & NOT_NULL_FLAG;
     BOOL isNumber = IS_NUM(field->type);
     

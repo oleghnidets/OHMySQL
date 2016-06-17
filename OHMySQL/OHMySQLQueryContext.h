@@ -10,8 +10,22 @@
 
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
 
+/**
+ *  Executes a query.
+ *
+ *  @param query An query that should be executed.
+ *  @param error The error that occurred during the attempt to execute.
+ */
 - (void)executeQuery:(nonnull OHMySQLQuery *)query error:(NSError *_Nullable*_Nullable)error;
 
+/**
+ *  Executes a query and returns result. This method is the most applicable for SELECT queries.
+ *
+ *  @param query An query that should be executed.
+ *  @param error The error that occurred during the attempt to execute.
+ *
+ *  @return Result parsed as an array of dictionaries.
+ */
 - (nullable NSArray<NSDictionary<NSString *,id> *> *)executeQueryAndFetchResult:(nonnull OHMySQLQuery *)query
                                                                  error:(NSError *_Nullable*_Nullable)error;
 

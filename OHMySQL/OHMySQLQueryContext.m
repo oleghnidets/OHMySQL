@@ -14,6 +14,8 @@
 
 #import "NSObject+Mapping.h"
 
+#import <mysql.h>
+
 static NSString *const kContextDomain = @"mysql.error.domain";
 
 NSError *contextError(OHResultErrorType type, NSString *description) {
