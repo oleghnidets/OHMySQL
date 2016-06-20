@@ -6,10 +6,13 @@
 
 @protocol OHMappingProtocol <NSObject>
 
+//! Dictionary that represents class' properties with table' column names.
 - (NSDictionary *)mappingDictionary;
 
+//! Returns name of table.
 - (NSString *)mySQLTable;
 
+//! Returns name of index property.
 - (NSString *)indexKey;
 
 @end

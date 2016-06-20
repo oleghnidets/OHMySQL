@@ -5,9 +5,12 @@
 @import Foundation;
 #import "OHConstants.h"
 
-@class OHMySQLUser;
+@class OHMySQLUser, OHMySQLStore;
 
 @interface OHMySQLStoreCoordinator : NSObject
+
+//! Nonnull after connection with DB. 
+@property (nonatomic, strong, readonly, nullable) OHMySQLStore *store;
 
 //! Nonnull after connection with DB. You don't need to use this property at all.
 @property (assign, readonly, nonnull) void *mysql;

@@ -6,10 +6,13 @@
 
 #import "OHMySQLUser.h"
 #import "OHSSLConfig.h"
+#import "OHMySQLStore.h"
+
 #import <mysql.h>
 
 @interface OHMySQLStoreCoordinator ()
 
+@property (nonatomic, strong, readwrite) OHMySQLStore *store;
 @property (nonatomic, strong) OHMySQLUser *user;
 @property (assign, readwrite, nonnull) void *mysql;
 
