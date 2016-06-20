@@ -30,19 +30,21 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     return self.storeCoordinator.mysql;
 }
 
-- (void)executeQuery:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
+- (BOOL)executeQuery:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
     if (!query.queryString) {
         OHLogError(@"Query cannot be empty");
         if (error) {
             *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(@"Required properties in query are absent.", nil));
         }
-        return ;
+        
+        return NO;
     } else if (!self.storeCoordinator.isConnected) {
         OHLogError(@"No connection.");
         if (error) {
             *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(@"No connection.", nil));
         }
-        return ;
+        
+        return NO;
     }
     
     if (self.storeCoordinator.pingMySQL != OHResultErrorTypeNone) {
@@ -51,7 +53,8 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         if (error) {
             *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(@"Cannot connect to DB. Check your configuration properties.", nil));
         }
-        return ;
+        
+        return NO;
     }
     
     query.timeline.queryStartTime = CFAbsoluteTimeGetCurrent();
@@ -69,18 +72,24 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         OHLogError(@"Cannot execute query: %@", mysqlError);
         if (error) {
             *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(mysqlError, nil));
+            return NO;
         }
     }
+    
+    return YES;
 }
 
 - (NSArray<NSDictionary<NSString *,id> *> *)executeQueryAndFetchResult:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
-    [self executeQuery:query error:error];
-    if (error && *error) {
-        OHLogError(@"Cannot get results: %@", *error);
-        return nil;
+    // http://dev.mysql.com/doc/refman/5.7/en/c-api-threaded-clients.html
+    @synchronized (self) {
+        [self executeQuery:query error:error];
+        if (error && *error) {
+            OHLogError(@"Cannot get results: %@", *error);
+            return nil;
+        }
+        
+        return [self fetchResult];
     }
-    
-    return [self fetchResult];
 }
 
 - (NSNumber *)affectedRows {

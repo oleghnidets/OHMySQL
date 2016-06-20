@@ -8,6 +8,7 @@
 
 @interface OHMySQLQueryContext : NSObject
 
+//! Should be set by a user of this class.
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
 
 /**
@@ -16,7 +17,7 @@
  *  @param query An query that should be executed.
  *  @param error The error that occurred during the attempt to execute.
  */
-- (void)executeQuery:(nonnull OHMySQLQuery *)query error:(NSError *_Nullable*_Nullable)error;
+- (BOOL)executeQuery:(nonnull OHMySQLQuery *)query error:(NSError *_Nullable*_Nullable)error;
 
 /**
  *  Executes a query and returns result. This method is the most applicable for SELECT queries.
@@ -27,7 +28,7 @@
  *  @return Result parsed as an array of dictionaries.
  */
 - (nullable NSArray<NSDictionary<NSString *,id> *> *)executeQueryAndFetchResult:(nonnull OHMySQLQuery *)query
-                                                                 error:(NSError *_Nullable*_Nullable)error;
+                                                                          error:(NSError *_Nullable*_Nullable)error;
 
 /**
  *  @return Returns a value representing the first automatically generated value that was set for an AUTO_INCREMENT column by the most recently executed INSERT statement to affect such a column. Returns 0, which reflects that no row was inserted. Or returns 0 if the previous statement does not use an AUTO_INCREMENT value.
