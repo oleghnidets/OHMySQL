@@ -57,16 +57,16 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         return NO;
     }
     
-    query.timeline.queryStartTime = CFAbsoluteTimeGetCurrent();
+    CFAbsoluteTime queryStartTime = CFAbsoluteTimeGetCurrent();
     
-    MYSQL *_mysql = self.storeCoordinator.mysql;
+    MYSQL *_mysql = self.mysql;
     mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
     
     // To get proper length of string in different languages.
     NSInteger queryStringLength = strlen(query.queryString.UTF8String);
     NSInteger errorCode = mysql_real_query(_mysql, query.queryString.UTF8String, queryStringLength);
     
-    query.timeline.queryDuration = query.timeline.queryStartTime - CFAbsoluteTimeGetCurrent();
+    query.timeline.queryDuration = CFAbsoluteTimeGetCurrent() - queryStartTime;
     if (errorCode) {
         NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(_mysql)];
         OHLogError(@"Cannot execute query: %@", mysqlError);
@@ -161,7 +161,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
 #pragma mark - Private
 
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {
-    MYSQL *mysql = self.storeCoordinator.mysql;
+    MYSQL *mysql = self.mysql;
     MYSQL_RES *result  = mysql_store_result(mysql);
     MYSQL_FIELD *fields = mysql_fetch_fields(result);
     

@@ -13,7 +13,7 @@
 @interface OHMySQLStoreCoordinator ()
 
 @property (nonatomic, strong, readwrite) OHMySQLStore *store;
-@property (nonatomic, strong) OHMySQLUser *user;
+@property (nonatomic, strong, readwrite) OHMySQLUser *user;
 @property (assign, readwrite, nonnull) void *mysql;
 
 @end

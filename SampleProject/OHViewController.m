@@ -35,8 +35,6 @@
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
     [coordinator connect];
     
-    CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent();
-    
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
     OHMySQLQuery *query = [OHMySQLQueryFactory SELECT:@"tasks" condition:nil];
@@ -48,9 +46,9 @@
     
     NSArray *tasks = [queryContext executeQueryAndFetchResult:query error:nil];
     
-    NSLog(@"Time execution: %f", currentTime - CFAbsoluteTimeGetCurrent());
     NSLog(@"%f", query.timeline.queryDuration);
     NSLog(@"Seralization duration: %f", query.timeline.serializationDuration);
+    NSLog(@"Time execution: %f", query.timeline.totalTime);
     
     NSString *entityName = NSStringFromClass([OHTask class]);
     for (NSDictionary *taskDict in tasks) {

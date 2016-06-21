@@ -12,6 +12,9 @@
 //! Nonnull after connection with DB. 
 @property (nonatomic, strong, readonly, nullable) OHMySQLStore *store;
 
+//! Nonnull after connection with DB.
+@property (nonatomic, strong, readonly, nullable) OHMySQLUser *user;
+
 //! Nonnull after connection with DB. You don't need to use this property at all.
 @property (assign, readonly, nonnull) void *mysql;
 
