@@ -16,12 +16,12 @@
 
 #import <mysql.h>
 
-static NSString *const kContextDomain = @"mysql.error.domain";
+static NSString * const kContextDomain = @"mysql.error.domain";
 
 NSError *contextError(OHResultErrorType type, NSString *description) {
     return [NSError errorWithDomain:kContextDomain
                                code:OHResultErrorTypeUnknown
-                           userInfo:@{ NSLocalizedDescriptionKey : description }];
+                           userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString(description, nil) }];
 }
 
 @implementation OHMySQLQueryContext
@@ -34,14 +34,14 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     if (!query.queryString) {
         OHLogError(@"Query cannot be empty");
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(@"Required properties in query are absent.", nil));
+            *error = contextError(OHResultErrorTypeUnknown, @"Required properties in query are absent.");
         }
         
         return NO;
     } else if (!self.storeCoordinator.isConnected) {
-        OHLogError(@"No connection.");
+        OHLogError(@"No database connection.");
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(@"No connection.", nil));
+            *error = contextError(OHResultErrorTypeUnknown, @"No connection.");
         }
         
         return NO;
@@ -51,7 +51,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         OHLogError(@"The connection is broken.");
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(@"Cannot connect to DB. Check your configuration properties.", nil));
+            *error = contextError(OHResultErrorTypeUnknown, @"Cannot connect to DB. Check your configuration properties.");
         }
         
         return NO;
@@ -71,7 +71,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(_mysql)];
         OHLogError(@"Cannot execute query: %@", mysqlError);
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, NSLocalizedString(mysqlError, nil));
+            *error = contextError(OHResultErrorTypeUnknown, mysqlError);
             return NO;
         }
     }
@@ -88,7 +88,11 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
             return nil;
         }
         
-        return [self fetchResult];
+        CFAbsoluteTime seralizationStartTime = CFAbsoluteTimeGetCurrent();
+        NSArray *result = [self fetchResult];
+        query.timeline.serializationDuration = CFAbsoluteTimeGetCurrent() - seralizationStartTime;
+        
+        return result;
     }
 }
 
@@ -115,7 +119,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     OHMySQLQuery *query = [OHMySQLQueryFactory INSERT:[object mySQLTable] set:[object mapObject]];
     NSError *error;
     [self executeQuery:query error:&error];
-    OHLogError(@"Object cannot be inserted: %@", error);
+    if (error) { OHLogError(@"Object cannot be inserted: %@", error); }
     
     return error == nil;
 }
@@ -130,7 +134,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     NSError *error;
     if (condition) {
         [self executeQuery:query error:&error];
-        OHLogError(@"Object cannot be updated: %@", error);
+        if (error) { OHLogError(@"Object cannot be updated: %@", error); }
     } else {
         return NO;
     }
@@ -145,7 +149,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     // If object doesn't have index key don't update anything.
     NSError *error;
     if (condition) {
-        OHLogError(@"Object cannot be deleted: %@", error);
+        if (error) { OHLogError(@"Object cannot be deleted: %@", error); }
         [self executeQuery:query error:&error];
     } else {
         return NO;
@@ -157,27 +161,26 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
 #pragma mark - Private
 
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {
-    MYSQL *_mysql = self.storeCoordinator.mysql;
-    MYSQL_RES *_result  = mysql_store_result(_mysql);
-    MYSQL_FIELD *fields = mysql_fetch_fields(_result);
+    MYSQL *mysql = self.storeCoordinator.mysql;
+    MYSQL_RES *result  = mysql_store_result(mysql);
+    MYSQL_FIELD *fields = mysql_fetch_fields(result);
     
     NSMutableArray *arrayOfDictionaries = [NSMutableArray array];
     
     MYSQL_ROW row;
-    while ((row = mysql_fetch_row(_result))) {
+    while ((row = mysql_fetch_row(result))) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
-        NSInteger countOfFields = mysql_num_fields(_result);
+        NSInteger countOfFields = mysql_num_fields(result);
         for (CFIndex i=0; i<countOfFields; ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
             id value = [OHMySQLSerialization objectFromCString:row[i] field:&fields[i]];
-            
             jsonDict[key] = value;
         }
         
         [arrayOfDictionaries addObject:jsonDict];
     }
     
-    mysql_free_result(_result);
+    mysql_free_result(result);
     
     return arrayOfDictionaries;
 }

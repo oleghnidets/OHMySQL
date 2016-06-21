@@ -21,4 +21,8 @@
     return mysql_key(taskId);
 }
 
+- (NSString *)primaryKey {
+    return mysql_key(taskId);
+}
+
 @end

@@ -12,8 +12,12 @@
 //! Returns name of table.
 - (NSString *)mySQLTable;
 
+//! Returns name of primary property (row).
+- (NSString *)primaryKey;
+
+@optional
 //! Returns name of index property.
-- (NSString *)indexKey;
+- (NSString *)indexKey __attribute((deprecated("Use -primaryKey method instead of this one.")));
 
 @end
 

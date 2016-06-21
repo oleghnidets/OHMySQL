@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0Hu-TQ-BSO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0Hu-TQ-BSO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,6 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="B7D-fB-7qw">
                                 <rect key="frame" x="12" y="72" width="296" height="29"/>
-                                <animations/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Done"/>
@@ -32,7 +31,6 @@
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YF4-hE-FOV">
                                 <rect key="frame" x="0.0" y="108" width="320" height="460"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -45,7 +43,6 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AML-SA-0Pw">
                                                     <rect key="frame" x="8" y="0.0" width="5" height="43"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="5" id="gvE-5F-1eD"/>
@@ -53,13 +50,11 @@
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poL-BK-VnO">
                                                     <rect key="frame" x="29" y="8" width="42" height="27"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="AML-SA-0Pw" secondAttribute="bottom" id="0Zl-2H-TmE"/>
                                                 <constraint firstItem="AML-SA-0Pw" firstAttribute="top" secondItem="Swm-Z7-5T9" secondAttribute="top" id="6A8-RK-Et0"/>
@@ -69,7 +64,6 @@
                                                 <constraint firstItem="AML-SA-0Pw" firstAttribute="leading" secondItem="Swm-Z7-5T9" secondAttribute="leadingMargin" id="cw3-Il-n6F"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <connections>
                                             <outlet property="nameLabel" destination="poL-BK-VnO" id="fIJ-GJ-81T"/>
                                             <outlet property="statusView" destination="AML-SA-0Pw" id="k6H-du-Txq"/>
@@ -82,7 +76,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YF4-hE-FOV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="4t6-Rg-3mB"/>
@@ -95,7 +88,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IiV-gH-Ge0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y0V-Zp-5Wz"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="y0V-Zp-5Wz">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="vXZ-lx-hvc" id="rNg-Q9-OIQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YF4-hE-FOV" id="PPZ-n4-sk1"/>
@@ -113,7 +110,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jVd-lt-tiQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

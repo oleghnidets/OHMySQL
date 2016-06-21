@@ -30,9 +30,8 @@
 + (NSNumber *)numberFromCString:(const char *)cString {
     NSString *numberString = [NSString stringWithUTF8String:cString];
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    NSNumber *number = [formatter numberFromString:numberString];
     
-    return number;
+    return [formatter numberFromString:numberString];
 }
 
 @end

@@ -41,6 +41,8 @@
     queryContext.storeCoordinator = coordinator;
     OHMySQLQuery *query = [OHMySQLQueryFactory SELECT:@"tasks" condition:nil];
     
+    [OHMySQLManager sharedManager].context = queryContext;
+    
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     
@@ -48,12 +50,12 @@
     
     NSLog(@"Time execution: %f", currentTime - CFAbsoluteTimeGetCurrent());
     NSLog(@"%f", query.timeline.queryDuration);
+    NSLog(@"Seralization duration: %f", query.timeline.serializationDuration);
     
+    NSString *entityName = NSStringFromClass([OHTask class]);
     for (NSDictionary *taskDict in tasks) {
-        NSString *entityName = NSStringFromClass([OHTask class]);
-        
         NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName  inManagedObjectContext:context];
+        NSEntityDescription *entityDescription = [NSEntityDescription entityForName:entityName inManagedObjectContext:context];
         fetch.entity = entityDescription;
         fetch.predicate = [NSPredicate predicateWithFormat:@"(taskId == %@)", taskDict[@"id"]];
         NSArray *fetchedObjects = [context executeFetchRequest:fetch error:nil];
@@ -69,9 +71,19 @@
     if (![context save:&error]) {
         NSAssert(NO, @"Error saving context: %@\n%@", error.localizedDescription, error.userInfo);
     }
-
+    
     
     [self.tableView reloadData];
+}
+
+- (IBAction)addButtonPressed:(UIBarButtonItem *)sender {
+    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    OHTask *task = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([OHTask class])
+                                                 inManagedObjectContext:appDelegate.managedObjectContext];
+    task.name = @"Something important";
+    task.taskDescription = [@"Do something important: " stringByAppendingFormat:@"%@", [NSDate date]];
+    task.status = @0;
+    [[OHMySQLManager sharedManager].context insertObject:task];
 }
 
 #pragma mark - UITableViewDataSource
@@ -89,6 +101,23 @@
     [cell configureWithTask:self.tasks[indexPath.row]];
     
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        OHTask *task = self.tasks[indexPath.row];
+        if ([[OHMySQLManager sharedManager].context deleteObject:task]) {
+            NSMutableArray *updatedTasks = [self.tasks mutableCopy];
+            [updatedTasks removeObject:task];
+            self.tasks = updatedTasks;
+            
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
 }
 
 #pragma mark - UITableViewDelegate

@@ -6,6 +6,7 @@
 #import "OHMySQLStore.h"
 #import "OHMySQLQuery.h"
 
+#import "OHMySQLManager.h"
 #import "OHMySQLQueryContext.h"
 #import "OHMySQLQueryFactory.h"
 #import "OHMySQLStoreCoordinator.h"
