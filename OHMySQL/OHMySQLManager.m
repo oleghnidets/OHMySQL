@@ -19,7 +19,7 @@ static OHMySQLManager *_sharedManager = nil;
 }
 
 - (OHMySQLStoreCoordinator *)storeCoordinator {
-    return self.context.storeCoordinator;
+    return self.mainQueryContext.storeCoordinator;
 }
 
 @end

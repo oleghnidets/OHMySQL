@@ -16,7 +16,7 @@
 @property (nonatomic, strong, readonly, nullable) OHMySQLUser *user;
 
 //! Nonnull after connection with DB. You don't need to use this property at all.
-@property (assign, readonly, nonnull) void *mysql;
+@property (assign, readonly, nullable) void *mysql;
 
 //! Pings the server and indicates whether the connection to the server is working.
 @property (assign, readonly, getter=isConnected) BOOL connected;

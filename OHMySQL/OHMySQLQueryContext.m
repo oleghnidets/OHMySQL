@@ -150,14 +150,17 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
 #pragma mark - Objects
 
 - (void)insertObject:(NSObject<OHMappingProtocol> *)object {
+    if (!object) { return ; }
     [self.p_insertedObjects addObject:object];
 }
 
 - (void)updateObject:(NSObject<OHMappingProtocol> *)object {
+    if (!object) { return ; }
     [self.p_updatedObjects addObject:object];
 }
 
 - (void)deleteObject:(NSObject<OHMappingProtocol> *)object {
+    if (!object) { return ; }
     [self.p_deletedObjects addObject:object];
 }
 

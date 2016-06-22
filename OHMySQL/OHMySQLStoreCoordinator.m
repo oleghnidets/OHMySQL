@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong, readwrite) OHMySQLStore *store;
 @property (nonatomic, strong, readwrite) OHMySQLUser *user;
-@property (assign, readwrite, nonnull) void *mysql;
+@property (assign, readwrite, nullable) void *mysql;
 
 @end
 
