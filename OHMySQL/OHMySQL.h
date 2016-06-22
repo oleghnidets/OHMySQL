@@ -4,11 +4,11 @@
 
 #import "OHMySQLUser.h"
 #import "OHMySQLStore.h"
-#import "OHMySQLQuery.h"
+#import "OHMySQLQueryRequest.h"
 
 #import "OHMySQLManager.h"
 #import "OHMySQLQueryContext.h"
-#import "OHMySQLQueryFactory.h"
+#import "OHMySQLQueryRequestFactory.h"
 #import "OHMySQLStoreCoordinator.h"
 
 #import "OHMappingProtocol.h"

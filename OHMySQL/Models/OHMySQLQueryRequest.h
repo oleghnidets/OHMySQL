@@ -5,7 +5,7 @@
 @import Foundation;
 #import "OHMySQLTimeline.h"
 
-@interface OHMySQLQuery : NSObject
+@interface OHMySQLQueryRequest : NSObject
 
 @property (strong, nonnull) OHMySQLTimeline *timeline;
 @property (nonatomic, copy, nonnull) NSString *queryString;

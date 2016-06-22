@@ -11,10 +11,10 @@
 		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
 		7C842D7F1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D7E1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m */; };
 		7C842D821D1054E600A6B005 /* OHMySQLQueryContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D811D1054E600A6B005 /* OHMySQLQueryContext.m */; };
-		7C842D891D105C9800A6B005 /* OHMySQLQueryFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D881D105C9800A6B005 /* OHMySQLQueryFactory.m */; };
+		7C842D891D105C9800A6B005 /* OHMySQLQueryRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D881D105C9800A6B005 /* OHMySQLQueryRequestFactory.m */; };
 		7CBB08B91D12F22400B92CA9 /* NSObject+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A31D12F22400B92CA9 /* NSObject+Mapping.m */; };
 		7CBB08BA1D12F22400B92CA9 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A51D12F22400B92CA9 /* NSString+Utility.m */; };
-		7CBB08BB1D12F22400B92CA9 /* OHMySQLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A81D12F22400B92CA9 /* OHMySQLQuery.m */; };
+		7CBB08BB1D12F22400B92CA9 /* OHMySQLQueryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A81D12F22400B92CA9 /* OHMySQLQueryRequest.m */; };
 		7CBB08BC1D12F22400B92CA9 /* OHMySQLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08AA1D12F22400B92CA9 /* OHMySQLStore.m */; };
 		7CBB08BD1D12F22400B92CA9 /* OHMySQLTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08AC1D12F22400B92CA9 /* OHMySQLTimeline.m */; };
 		7CBB08BE1D12F22400B92CA9 /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08AE1D12F22400B92CA9 /* OHMySQLUser.m */; };
@@ -55,15 +55,15 @@
 		7C842D7E1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLStoreCoordinator.m; sourceTree = "<group>"; };
 		7C842D801D1054E600A6B005 /* OHMySQLQueryContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQueryContext.h; sourceTree = "<group>"; };
 		7C842D811D1054E600A6B005 /* OHMySQLQueryContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQueryContext.m; sourceTree = "<group>"; };
-		7C842D871D105C9800A6B005 /* OHMySQLQueryFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQueryFactory.h; sourceTree = "<group>"; };
-		7C842D881D105C9800A6B005 /* OHMySQLQueryFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQueryFactory.m; sourceTree = "<group>"; };
+		7C842D871D105C9800A6B005 /* OHMySQLQueryRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQueryRequestFactory.h; sourceTree = "<group>"; };
+		7C842D881D105C9800A6B005 /* OHMySQLQueryRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQueryRequestFactory.m; sourceTree = "<group>"; };
 		7C85C7311BE5387600F7B30C /* OHMappingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMappingProtocol.h; sourceTree = "<group>"; };
 		7CBB08A21D12F22400B92CA9 /* NSObject+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mapping.h"; sourceTree = "<group>"; };
 		7CBB08A31D12F22400B92CA9 /* NSObject+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mapping.m"; sourceTree = "<group>"; };
 		7CBB08A41D12F22400B92CA9 /* NSString+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utility.h"; sourceTree = "<group>"; };
 		7CBB08A51D12F22400B92CA9 /* NSString+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utility.m"; sourceTree = "<group>"; };
-		7CBB08A71D12F22400B92CA9 /* OHMySQLQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQuery.h; sourceTree = "<group>"; };
-		7CBB08A81D12F22400B92CA9 /* OHMySQLQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQuery.m; sourceTree = "<group>"; };
+		7CBB08A71D12F22400B92CA9 /* OHMySQLQueryRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQueryRequest.h; sourceTree = "<group>"; };
+		7CBB08A81D12F22400B92CA9 /* OHMySQLQueryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQueryRequest.m; sourceTree = "<group>"; };
 		7CBB08A91D12F22400B92CA9 /* OHMySQLStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLStore.h; sourceTree = "<group>"; };
 		7CBB08AA1D12F22400B92CA9 /* OHMySQLStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLStore.m; sourceTree = "<group>"; };
 		7CBB08AB1D12F22400B92CA9 /* OHMySQLTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLTimeline.h; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 		7CBB08A61D12F22400B92CA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7CBB08A71D12F22400B92CA9 /* OHMySQLQuery.h */,
-				7CBB08A81D12F22400B92CA9 /* OHMySQLQuery.m */,
+				7CBB08A71D12F22400B92CA9 /* OHMySQLQueryRequest.h */,
+				7CBB08A81D12F22400B92CA9 /* OHMySQLQueryRequest.m */,
 				7CBB08A91D12F22400B92CA9 /* OHMySQLStore.h */,
 				7CBB08AA1D12F22400B92CA9 /* OHMySQLStore.m */,
 				7CBB08AB1D12F22400B92CA9 /* OHMySQLTimeline.h */,
@@ -262,8 +262,8 @@
 				7CE55E291BB95E79004A2FF9 /* OHMySQL.h */,
 				7C842D801D1054E600A6B005 /* OHMySQLQueryContext.h */,
 				7C842D811D1054E600A6B005 /* OHMySQLQueryContext.m */,
-				7C842D871D105C9800A6B005 /* OHMySQLQueryFactory.h */,
-				7C842D881D105C9800A6B005 /* OHMySQLQueryFactory.m */,
+				7C842D871D105C9800A6B005 /* OHMySQLQueryRequestFactory.h */,
+				7C842D881D105C9800A6B005 /* OHMySQLQueryRequestFactory.m */,
 				7CD43FF81BBABE30001EFEDE /* OHMySQLSerialization.h */,
 				7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */,
 				7C842D7D1D104B7F00A6B005 /* OHMySQLStoreCoordinator.h */,
@@ -453,7 +453,7 @@
 				7CBB08B91D12F22400B92CA9 /* NSObject+Mapping.m in Sources */,
 				7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */,
 				7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */,
-				7C842D891D105C9800A6B005 /* OHMySQLQueryFactory.m in Sources */,
+				7C842D891D105C9800A6B005 /* OHMySQLQueryRequestFactory.m in Sources */,
 				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
 				7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */,
 				7C842D821D1054E600A6B005 /* OHMySQLQueryContext.m in Sources */,
@@ -462,7 +462,7 @@
 				7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */,
 				7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */,
 				7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */,
-				7CBB08BB1D12F22400B92CA9 /* OHMySQLQuery.m in Sources */,
+				7CBB08BB1D12F22400B92CA9 /* OHMySQLQueryRequest.m in Sources */,
 				7CBB08BA1D12F22400B92CA9 /* NSString+Utility.m in Sources */,
 				7CBB08BF1D12F22400B92CA9 /* OHSSLConfig.m in Sources */,
 				7CBB08C01D12F22400B92CA9 /* OHJoinConstants.m in Sources */,

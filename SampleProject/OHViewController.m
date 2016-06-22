@@ -37,14 +37,14 @@
     
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
-    OHMySQLQuery *query = [OHMySQLQueryFactory SELECT:@"tasks" condition:nil];
+    OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" condition:nil];
     
     [OHMySQLManager sharedManager].context = queryContext;
     
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *context = appDelegate.managedObjectContext;
     
-    NSArray *tasks = [queryContext executeQueryAndFetchResult:query error:nil];
+    NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:nil];
     
     NSLog(@"%f", query.timeline.queryDuration);
     NSLog(@"Seralization duration: %f", query.timeline.serializationDuration);
@@ -82,6 +82,7 @@
     task.taskDescription = [@"Do something important: " stringByAppendingFormat:@"%@", [NSDate date]];
     task.status = @0;
     [[OHMySQLManager sharedManager].context insertObject:task];
+    [[OHMySQLManager sharedManager].context save:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -108,7 +109,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         OHTask *task = self.tasks[indexPath.row];
-        if ([[OHMySQLManager sharedManager].context deleteObject:task]) {
+        [[OHMySQLManager sharedManager].context deleteObject:task];
+        if ([[OHMySQLManager sharedManager].context save:nil]) {
             NSMutableArray *updatedTasks = [self.tasks mutableCopy];
             [updatedTasks removeObject:task];
             self.tasks = updatedTasks;

@@ -15,7 +15,7 @@
 
 @implementation OHMySQLTests {
     OHMySQLUser *_user;
-    OHMySQLQuery *_query;
+    OHMySQLQueryRequest *_query;
 }
 
 - (NSString *)createTableString {
@@ -53,7 +53,7 @@
 // Create
 - (void)testA1 {
     _query.queryString = [self createTableString];
-    XCTAssert([[OHMySQLManager sharedManager] executeQuery:_query] == 0);
+    XCTAssert([[OHMySQLManager sharedManager] executeQueryRequest:_query] == 0);
 }
 
 - (void)testB1 {
@@ -155,7 +155,7 @@
 // Drop
 - (void)testZ1 {
     _query.queryString = [self dropTable];
-    XCTAssert([[OHMySQLManager sharedManager] executeQuery:_query] == 0);
+    XCTAssert([[OHMySQLManager sharedManager] executeQueryRequest:_query] == 0);
 }
 
 @end

@@ -3,13 +3,13 @@
 //
 
 @import Foundation;
-@class OHMySQLQuery;
+@class OHMySQLQueryRequest;
 
-@interface OHMySQLQueryFactory : NSObject
+@interface OHMySQLQueryRequestFactory : NSObject
 
 @end
 
-@interface OHMySQLQueryFactory (SELECT)
+@interface OHMySQLQueryRequestFactory (SELECT)
 
 /**
  *  Select all records.
@@ -19,7 +19,7 @@
  *
  *  @return Array of dictionaries (JSON).
  */
-+ (nonnull OHMySQLQuery *)SELECT:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
++ (nonnull OHMySQLQueryRequest *)SELECT:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 /**
  *  Select all records with sorting.
@@ -31,10 +31,10 @@
  *
  *  @return Array of dictionaries (JSON).
  */
-+ (nonnull OHMySQLQuery *)SELECT:(nonnull NSString *)tableName
-                       condition:(nullable NSString *)condition
-                         orderBy:(nonnull NSArray<NSString *> *)columnNames
-                       ascending:(BOOL)isAscending;
++ (nonnull OHMySQLQueryRequest *)SELECT:(nonnull NSString *)tableName
+                              condition:(nullable NSString *)condition
+                                orderBy:(nonnull NSArray<NSString *> *)columnNames
+                              ascending:(BOOL)isAscending;
 
 /**
  *  Select the first record of the selected table.
@@ -44,7 +44,7 @@
  *
  *  @return Array of dictionary (JSON).
  */
-+ (nonnull OHMySQLQuery *)SELECTFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
++ (nonnull OHMySQLQueryRequest *)SELECTFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 /**
  *  Select the first record of the selected table.
@@ -56,14 +56,14 @@
  *
  *  @return Array of dictionary (JSON).
  */
-+ (nonnull OHMySQLQuery *)SELECTFirst:(nonnull NSString *)tableName
-                            condition:(nullable NSString *)condition
-                              orderBy:(nonnull NSArray<NSString *> *)columnNames
-                            ascending:(BOOL)isAscending;
++ (nonnull OHMySQLQueryRequest *)SELECTFirst:(nonnull NSString *)tableName
+                                   condition:(nullable NSString *)condition
+                                     orderBy:(nonnull NSArray<NSString *> *)columnNames
+                                   ascending:(BOOL)isAscending;
 
 @end
 
-@interface OHMySQLQueryFactory (INSERT)
+@interface OHMySQLQueryRequestFactory (INSERT)
 
 /**
  *  Insert a new record.
@@ -73,11 +73,11 @@
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-+ (nonnull OHMySQLQuery *)INSERT:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
++ (nonnull OHMySQLQueryRequest *)INSERT:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 @end
 
-@interface OHMySQLQueryFactory (UPDATE)
+@interface OHMySQLQueryRequestFactory (UPDATE)
 
 /**
  *  Update all records with condition.
@@ -88,13 +88,13 @@
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-+ (nonnull OHMySQLQuery *)UPDATE:(nonnull NSString *)tableName
-                             set:(nonnull NSDictionary<NSString *, id> *)set
-                       condition:(nullable NSString *)condition;
++ (nonnull OHMySQLQueryRequest *)UPDATE:(nonnull NSString *)tableName
+                                    set:(nonnull NSDictionary<NSString *, id> *)set
+                              condition:(nullable NSString *)condition;
 
 @end
 
-@interface OHMySQLQueryFactory (DELETE)
+@interface OHMySQLQueryRequestFactory (DELETE)
 
 /**
  *  Deletes all records with condition.
@@ -104,11 +104,11 @@
  *
  *  @return Zero for success. Nonzero if an error occurred.
  */
-+ (nonnull OHMySQLQuery *)DELETE:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
++ (nonnull OHMySQLQueryRequest *)DELETE:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 @end
 
-@interface OHMySQLQueryFactory (JOIN)
+@interface OHMySQLQueryRequestFactory (JOIN)
 
 /**
  *  Combines rows from two or more tables, based on a common field between them.
@@ -120,14 +120,14 @@
  *
  *  @return Array of dictionaries (JSON).
  */
-+ (nonnull OHMySQLQuery *)JOINType:(nonnull NSString *)joinType
-                         fromTable:(nonnull NSString *)tableName
-                       columnNames:(nonnull NSArray<NSString *> *)columnNames
-                            joinOn:(nonnull NSDictionary<NSString *,NSString *> *)joinOn;
++ (nonnull OHMySQLQueryRequest *)JOINType:(nonnull NSString *)joinType
+                                fromTable:(nonnull NSString *)tableName
+                              columnNames:(nonnull NSArray<NSString *> *)columnNames
+                                   joinOn:(nonnull NSDictionary<NSString *,NSString *> *)joinOn;
 
 @end
 
-@interface OHMySQLQueryFactory (Other)
+@interface OHMySQLQueryRequestFactory (Other)
 
 /**
  *  Counts records in a table.
@@ -136,6 +136,6 @@
  *
  *  @return The returns the number of records in a table.
  */
-+ (nonnull OHMySQLQuery *)countAll:(nonnull NSString *)tableName;
++ (nonnull OHMySQLQueryRequest *)countAll:(nonnull NSString *)tableName;
 
 @end

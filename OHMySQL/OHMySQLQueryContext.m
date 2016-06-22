@@ -6,11 +6,11 @@
 #import "OHMySQLStoreCoordinator.h"
 
 #import "OHConstants.h"
-#import "OHMySQLQuery.h"
+#import "OHMySQLQueryRequest.h"
 #import "OHMySQLSerialization.h"
 
 #import "OHMappingProtocol.h"
-#import "OHMySQLQueryFactory.h"
+#import "OHMySQLQueryRequestFactory.h"
 
 #import "NSObject+Mapping.h"
 
@@ -24,13 +24,47 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
                            userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString(description, nil) }];
 }
 
+@interface OHMySQLQueryContext ()
+
+@property (nonatomic, strong) NSMutableArray *p_insertedObjects;
+@property (nonatomic, strong) NSMutableArray *p_updatedObjects;
+@property (nonatomic, strong) NSMutableArray *p_deletedObjects;
+
+@end
+
 @implementation OHMySQLQueryContext
 
 - (MYSQL *)mysql {
     return self.storeCoordinator.mysql;
 }
 
-- (BOOL)executeQuery:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
+- (instancetype)init {
+    if (self = [super init]) {
+        _p_insertedObjects = [NSMutableArray array];
+        _p_updatedObjects  = [NSMutableArray array];
+        _p_deletedObjects  = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
+#pragma mark - Public
+
+- (NSSet<NSObject<OHMappingProtocol> *> *)insertedObjects {
+    return [NSSet setWithArray:self.p_insertedObjects];
+}
+
+- (NSSet<NSObject<OHMappingProtocol> *> *)updatedObjects {
+    return [NSSet setWithArray:self.p_updatedObjects];
+}
+
+- (NSSet<NSObject<OHMappingProtocol> *> *)deletedObjects {
+    return [NSSet setWithArray:self.p_deletedObjects];
+}
+
+#pragma mark - Execute
+
+- (BOOL)executeQueryRequest:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
     if (!query.queryString) {
         OHLogError(@"Query cannot be empty");
         if (error) {
@@ -79,10 +113,10 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     return YES;
 }
 
-- (NSArray<NSDictionary<NSString *,id> *> *)executeQueryAndFetchResult:(OHMySQLQuery *)query error:(NSError *__autoreleasing *)error {
+- (NSArray<NSDictionary<NSString *,id> *> *)executeQueryRequestAndFetchResult:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
     // http://dev.mysql.com/doc/refman/5.7/en/c-api-threaded-clients.html
     @synchronized (self) {
-        [self executeQuery:query error:error];
+        [self executeQueryRequest:query error:error];
         if (error && *error) {
             OHLogError(@"Cannot get results: %@", *error);
             return nil;
@@ -115,59 +149,84 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
 
 #pragma mark - Objects
 
-- (BOOL)insertObject:(NSObject<OHMappingProtocol> *)object {
-    OHMySQLQuery *query = [OHMySQLQueryFactory INSERT:[object mySQLTable] set:[object mapObject]];
-    NSError *error;
-    [self executeQuery:query error:&error];
-    if (error) { OHLogError(@"Object cannot be inserted: %@", error); }
-    
-    return error == nil;
+- (void)insertObject:(NSObject<OHMappingProtocol> *)object {
+    [self.p_insertedObjects addObject:object];
 }
 
-- (BOOL)updateObject:(NSObject<OHMappingProtocol> *)object {
-    NSString *condition = [object indexKeyCondition];
-    OHMySQLQuery *query = [OHMySQLQueryFactory UPDATE:[object mySQLTable]
-                                                  set:[object mapObject]
-                                            condition:condition];
-    
-    // If object doesn't have index key don't update anything.
-    NSError *error;
-    if (condition) {
-        [self executeQuery:query error:&error];
-        if (error) { OHLogError(@"Object cannot be updated: %@", error); }
-    } else {
-        return NO;
-    }
-    
-    return error == nil;
+- (void)updateObject:(NSObject<OHMappingProtocol> *)object {
+    [self.p_updatedObjects addObject:object];
 }
 
-- (BOOL)deleteObject:(NSObject<OHMappingProtocol> *)object {
-    NSString *condition = [object indexKeyCondition];
-    OHMySQLQuery *query = [OHMySQLQueryFactory DELETE:[object mySQLTable] condition:condition];
-    
-    // If object doesn't have index key don't update anything.
-    NSError *error;
-    if (condition) {
-        if (error) { OHLogError(@"Object cannot be deleted: %@", error); }
-        [self executeQuery:query error:&error];
-    } else {
-        return NO;
+- (void)deleteObject:(NSObject<OHMappingProtocol> *)object {
+    [self.p_deletedObjects addObject:object];
+}
+
+- (BOOL)save:(NSError **)error {
+    for (NSObject<OHMappingProtocol> *objectToInsert in self.p_insertedObjects) {
+        [self insertObject:objectToInsert error:error];
+        if (error && *error) { return NO; }
+        [self.p_insertedObjects removeObject:objectToInsert];
     }
     
-    return error == nil;
+    for (NSObject<OHMappingProtocol> *objectToUpdate in self.p_updatedObjects) {
+        [self updateObject:objectToUpdate error:error];
+        if (error && *error) { return NO; }
+        [self.p_updatedObjects removeObject:objectToUpdate];
+    }
+    
+    for (NSObject<OHMappingProtocol> *objectToDelete in self.p_deletedObjects) {
+        [self deleteObject:objectToDelete error:error];
+        if (error && *error) { return NO; }
+        [self.p_deletedObjects removeObject:objectToDelete];
+    }
+    
+    return YES;
 }
 
 #pragma mark - Private
 
+- (void)insertObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+    OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:[object mySQLTable] set:[object mapObject]];
+    [self executeQueryRequest:query error:error];
+    if (error && *error) { OHLogError(@"Object cannot be inserted: %@", *error); }
+}
+
+- (void)updateObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+    NSString *condition = [object indexKeyCondition];
+    OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:[object mySQLTable]
+                                                                set:[object mapObject]
+                                                          condition:condition];
+    
+    // If object doesn't have index key don't update anything.
+    if (condition) {
+        [self executeQueryRequest:query error:error];
+        if (error && *error) { OHLogError(@"Object cannot be updated: %@", *error); }
+    }
+}
+
+- (void)deleteObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+    NSString *condition = [object indexKeyCondition];
+    OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:[object mySQLTable] condition:condition];
+    
+    // If object doesn't have index key don't update anything.
+    if (condition) {
+        if (error && *error) { OHLogError(@"Object cannot be deleted: %@", *error); }
+        [self executeQueryRequest:query error:error];
+    }
+}
+
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {
     MYSQL *mysql = self.mysql;
+    if (!mysql) { return nil; }
+    
     MYSQL_RES *result  = mysql_store_result(mysql);
+    if (!result) { return nil; }
+    
     MYSQL_FIELD *fields = mysql_fetch_fields(result);
     
     NSMutableArray *arrayOfDictionaries = [NSMutableArray array];
     
-    MYSQL_ROW row;
+    MYSQL_ROW row = nil;
     while ((row = mysql_fetch_row(result))) {
         NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
         NSInteger countOfFields = mysql_num_fields(result);
