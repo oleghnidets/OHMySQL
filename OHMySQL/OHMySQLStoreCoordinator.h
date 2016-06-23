@@ -49,7 +49,7 @@
 /**
  *  Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
  *
- *  @param Options A bit mask composed from any combination.
+ *  @param options A bit mask composed from any combination.
  *
  *  @return Zero for success. Nonzero if an error occurred (see enum).
  */

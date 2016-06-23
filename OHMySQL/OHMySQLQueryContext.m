@@ -18,7 +18,7 @@
 
 static NSString * const kContextDomain = @"mysql.error.domain";
 
-NSError *contextError(OHResultErrorType type, NSString *description) {
+NSError *contextError(NSString *description) {
     return [NSError errorWithDomain:kContextDomain
                                code:OHResultErrorTypeUnknown
                            userInfo:@{ NSLocalizedDescriptionKey : NSLocalizedString(description, nil) }];
@@ -68,14 +68,14 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
     if (!query.queryString) {
         OHLogError(@"Query cannot be empty");
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, @"Required properties in query are absent.");
+            *error = contextError(@"Required properties in query are absent.");
         }
         
         return NO;
     } else if (!self.storeCoordinator.isConnected) {
         OHLogError(@"No database connection.");
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, @"No connection.");
+            *error = contextError(@"No connection.");
         }
         
         return NO;
@@ -85,7 +85,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         OHLogError(@"The connection is broken.");
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, @"Cannot connect to DB. Check your configuration properties.");
+            *error = contextError(@"Cannot connect to DB. Check your configuration properties.");
         }
         
         return NO;
@@ -105,7 +105,7 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
         NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(_mysql)];
         OHLogError(@"Cannot execute query: %@", mysqlError);
         if (error) {
-            *error = contextError(OHResultErrorTypeUnknown, mysqlError);
+            *error = contextError(mysqlError);
             return NO;
         }
     }
