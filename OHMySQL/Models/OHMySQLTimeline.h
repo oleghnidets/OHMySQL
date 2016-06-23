@@ -5,6 +5,7 @@
 @import Foundation;
 @import CoreGraphics.CGBase;
 
+/// An instance of OHMySQLTimeline represents lifecycle of the query.
 @interface OHMySQLTimeline : NSObject
 
 //! The time when the serialization was completed.

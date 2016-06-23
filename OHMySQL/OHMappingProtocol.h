@@ -9,7 +9,7 @@
 //! Dictionary that represents class' properties with table' column names.
 - (NSDictionary *)mappingDictionary;
 
-//! Returns name of table.
+//! Table where current entity can be found.
 - (NSString *)mySQLTable;
 
 //! Returns name of primary property (row).

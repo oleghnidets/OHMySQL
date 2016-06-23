@@ -6,6 +6,7 @@
 @class OHMySQLQueryRequest, OHMySQLStoreCoordinator;
 @protocol OHMappingProtocol;
 
+/// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
 @interface OHMySQLQueryContext : NSObject
 
 //! Should be set by a user of this class.
@@ -53,6 +54,13 @@
 //! Returns bool value which indicates whether an object deleted successfully or not.
 - (void)deleteObject:(nullable NSObject<OHMappingProtocol> *)object;
 
+/**
+ *  Attempts to commit unsaved changes.
+ *
+ *  @param error A pointer to an NSError object. 
+ *
+ *  @return YES if the save succeeds, otherwise NO.
+ */
 - (BOOL)save:(NSError *_Nullable*_Nullable)error;
 
 @end

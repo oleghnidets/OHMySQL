@@ -165,57 +165,55 @@ NSError *contextError(OHResultErrorType type, NSString *description) {
 }
 
 - (BOOL)save:(NSError **)error {
-    for (NSObject<OHMappingProtocol> *objectToInsert in self.p_insertedObjects) {
-        [self insertObject:objectToInsert error:error];
-        if (error && *error) { return NO; }
-        [self.p_insertedObjects removeObject:objectToInsert];
+    @synchronized (self) {
+        for (NSObject<OHMappingProtocol> *objectToInsert in self.p_insertedObjects) {
+            if ([self insertObject:objectToInsert error:error] == NO) { return NO; }
+            [self.p_insertedObjects removeObject:objectToInsert];
+        }
+        
+        for (NSObject<OHMappingProtocol> *objectToUpdate in self.p_updatedObjects) {
+            if ([self updateObject:objectToUpdate error:error] == NO) { return NO; }
+            [self.p_updatedObjects removeObject:objectToUpdate];
+        }
+        
+        for (NSObject<OHMappingProtocol> *objectToDelete in self.p_deletedObjects) {
+            if ([self deleteObject:objectToDelete error:error] == NO) { return NO; }
+            [self.p_deletedObjects removeObject:objectToDelete];
+        }
+        
+        return YES;
     }
-    
-    for (NSObject<OHMappingProtocol> *objectToUpdate in self.p_updatedObjects) {
-        [self updateObject:objectToUpdate error:error];
-        if (error && *error) { return NO; }
-        [self.p_updatedObjects removeObject:objectToUpdate];
-    }
-    
-    for (NSObject<OHMappingProtocol> *objectToDelete in self.p_deletedObjects) {
-        [self deleteObject:objectToDelete error:error];
-        if (error && *error) { return NO; }
-        [self.p_deletedObjects removeObject:objectToDelete];
-    }
-    
-    return YES;
 }
 
 #pragma mark - Private
 
-- (void)insertObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+- (BOOL)insertObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
     OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:[object mySQLTable] set:[object mapObject]];
-    [self executeQueryRequest:query error:error];
-    if (error && *error) { OHLogError(@"Object cannot be inserted: %@", *error); }
+    return [self executeQueryRequest:query error:error];
 }
 
-- (void)updateObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+- (BOOL)updateObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
     NSString *condition = [object indexKeyCondition];
+    // If object doesn't have index key don't update anything.
+    if (!condition) {
+        return NO;
+    }
+    
     OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:[object mySQLTable]
                                                                 set:[object mapObject]
                                                           condition:condition];
-    
-    // If object doesn't have index key don't update anything.
-    if (condition) {
-        [self executeQueryRequest:query error:error];
-        if (error && *error) { OHLogError(@"Object cannot be updated: %@", *error); }
-    }
+    return [self executeQueryRequest:query error:error];
 }
 
-- (void)deleteObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+- (BOOL)deleteObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
     NSString *condition = [object indexKeyCondition];
-    OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:[object mySQLTable] condition:condition];
-    
     // If object doesn't have index key don't update anything.
-    if (condition) {
-        if (error && *error) { OHLogError(@"Object cannot be deleted: %@", *error); }
-        [self executeQueryRequest:query error:error];
+    if (!condition) {
+        return NO;
     }
+    
+    OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:[object mySQLTable] condition:condition];
+    return [self executeQueryRequest:query error:error];
 }
 
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {

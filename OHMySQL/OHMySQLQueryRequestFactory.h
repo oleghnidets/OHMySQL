@@ -5,6 +5,7 @@
 @import Foundation;
 @class OHMySQLQueryRequest;
 
+/// Convenience class for making specific OHMySQLQueryRequest instances.
 @interface OHMySQLQueryRequestFactory : NSObject
 
 @end

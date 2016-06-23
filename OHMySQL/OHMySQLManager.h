@@ -5,7 +5,7 @@
 @import Foundation;
 @class OHMySQLQueryContext, OHMySQLStoreCoordinator;
 
-//! Represents a single (main) context and store coordinator.
+/// Represents a main context and store coordinator.
 @interface OHMySQLManager : NSObject
 
 //! Shared manager.

@@ -10,7 +10,7 @@
 + (nonnull NSString *)JOINString:(nonnull NSString *)joinType
                        fromTable:(nonnull NSString *)table
                      columnNames:(nonnull NSArray<NSString *> *)columnNames
-                       joinInner:(nonnull NSDictionary *)tables;
+                       joinInner:(nonnull NSDictionary<NSString *, NSString *> *)tables;
 
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) LIMIT 1
 + (nonnull NSString *)SELECTFirstString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
@@ -18,7 +18,7 @@
 //! //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) ORDER BY column_name ASC|DESC, column_name ASC|DESC LIMIT 1
 + (nonnull NSString *)SELECTFirstString:(nonnull NSString *)tableName
                               condition:(nullable NSString *)condition
-                                orderBy:(nonnull NSArray *)columnsNames
+                                orderBy:(nonnull NSArray<NSString *> *)columnsNames
                               ascending:(BOOL)isAscending;
 
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value)
@@ -27,19 +27,19 @@
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) ORDER BY column_name ASC|DESC, column_name ASC|DESC
 + (nonnull NSString *)SELECTString:(nonnull NSString *)tableName
                          condition:(nullable NSString *)condition
-                           orderBy:(nullable NSArray *)columnsNames
+                           orderBy:(nullable NSArray<NSString *> *)columnsNames
                          ascending:(BOOL)isAscending;
 
 //! UPDATE table_name SET column1=value1,column2=value2,... (WHERE some_column=some_value)
 + (nonnull NSString *)UPDATEString:(nonnull NSString *)tableName
-                               set:(nonnull NSDictionary *)set
+                               set:(nonnull NSDictionary<NSString *, id> *)set
                          condition:(nullable NSString *)condition;
 
 //! DELETE FROM table_name (WHERE some_column=some_value)
 + (nonnull NSString *)DELETEString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 //! INSERT INTO table_name VALUES (value1,value2,value3,...)
-+ (nonnull NSString *)INSERTString:(nonnull NSString *)tableName set:(nonnull NSDictionary *)set;
++ (nonnull NSString *)INSERTString:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 //! SELECT COUNT(*) FROM
 + (nonnull NSString *)countString:(nonnull NSString *)tableName;
@@ -64,7 +64,7 @@
 - (nonnull NSString *)appendCondition:(nonnull NSString *)condition;
 
 //! Appends ORDER BY and sorting type.
-- (nonnull NSString *)appendOrderBy:(nullable NSArray *)columnNames ascending:(BOOL)isAscending;
+- (nonnull NSString *)appendOrderBy:(nullable NSArray<NSString *> *)columnNames ascending:(BOOL)isAscending;
 
 //! Returns a string like 'string'.
 - (nonnull NSString *)stringWithSingleMarks;
