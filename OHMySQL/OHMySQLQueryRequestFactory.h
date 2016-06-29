@@ -18,7 +18,7 @@
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
- *  @return Array of dictionaries (JSON).
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)SELECT:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
@@ -30,7 +30,7 @@
  *  @param columnNames Result-set of one or more columns.
  *  @param isAscending Ascending or descending order.
  *
- *  @return Array of dictionaries (JSON).
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)SELECT:(nonnull NSString *)tableName
                               condition:(nullable NSString *)condition
@@ -43,7 +43,7 @@
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
- *  @return Array of dictionary (JSON).
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)SELECTFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
@@ -55,7 +55,7 @@
  *  @param columnNames Result-set of one or more columns.
  *  @param isAscending Ascending or descending order.
  *
- *  @return Array of dictionary (JSON).
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)SELECTFirst:(nonnull NSString *)tableName
                                    condition:(nullable NSString *)condition
@@ -72,7 +72,7 @@
  *  @param tableName Name of the target table.
  *  @param set       Key is column' name in table, value is your object.
  *
- *  @return Zero for success. Nonzero if an error occurred.
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)INSERT:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
@@ -87,7 +87,7 @@
  *  @param set       Key is column' name in table, value is your object.
  *  @param condition Likes in real SQL query (e.g: WHERE name='Name'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
- *  @return Zero for success. Nonzero if an error occurred.
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)UPDATE:(nonnull NSString *)tableName
                                     set:(nonnull NSDictionary<NSString *, id> *)set
@@ -103,7 +103,7 @@
  *  @param tableName Name of the target table.
  *  @param condition Likes in real SQL query (e.g: WHERE id>'10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
  *
- *  @return Zero for success. Nonzero if an error occurred.
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)DELETE:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
@@ -119,7 +119,7 @@
  *  @param columnNames Columns to fetch.
  *  @param joinOn      [Table:Condition]. { "Users":"Users.id=Company.userId" }
  *
- *  @return Array of dictionaries (JSON).
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)JOINType:(nonnull NSString *)joinType
                                 fromTable:(nonnull NSString *)tableName
@@ -135,7 +135,7 @@
  *
  *  @param tableName Name of the target table
  *
- *  @return The returns the number of records in a table.
+ *  @return An instance of OHMySQLQueryRequest.
  */
 + (nonnull OHMySQLQueryRequest *)countAll:(nonnull NSString *)tableName;
 

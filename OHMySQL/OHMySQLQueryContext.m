@@ -65,6 +65,7 @@ NSError *contextError(NSString *description) {
 #pragma mark - Execute
 
 - (BOOL)executeQueryRequest:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
+    MYSQL *_mysql = self.mysql;
     if (!query.queryString) {
         OHLogError(@"Query cannot be empty");
         if (error) {
@@ -72,16 +73,7 @@ NSError *contextError(NSString *description) {
         }
         
         return NO;
-    } else if (!self.storeCoordinator.isConnected) {
-        OHLogError(@"No database connection.");
-        if (error) {
-            *error = contextError(@"No connection.");
-        }
-        
-        return NO;
-    }
-    
-    if (self.storeCoordinator.pingMySQL != OHResultErrorTypeNone) {
+    } else if (!self.storeCoordinator.isConnected || !_mysql) {
         OHLogError(@"The connection is broken.");
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
         if (error) {
@@ -92,8 +84,6 @@ NSError *contextError(NSString *description) {
     }
     
     CFAbsoluteTime queryStartTime = CFAbsoluteTimeGetCurrent();
-    
-    MYSQL *_mysql = self.mysql;
     mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
     
     // To get proper length of string in different languages.
@@ -168,6 +158,7 @@ NSError *contextError(NSString *description) {
     @synchronized (self) {
         for (NSObject<OHMappingProtocol> *objectToInsert in self.p_insertedObjects) {
             if ([self insertObject:objectToInsert error:error] == NO) { return NO; }
+            [objectToInsert setValue:self.lastInsertID forKey:objectToInsert.primaryKey];
             [self.p_insertedObjects removeObject:objectToInsert];
         }
         

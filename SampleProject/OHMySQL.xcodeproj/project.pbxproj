@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138041D2162FD001086E8 /* OHTasksFacade.m */; };
+		7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138071D23D9EA001086E8 /* OHEditViewController.m */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
 		7C842D7F1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D7E1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m */; };
@@ -26,7 +28,7 @@
 		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */; };
 		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; };
-		7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHViewController.m */; };
+		7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHListViewController.m */; };
 		7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55D481BB95930004A2FF9 /* Main.storyboard */; };
 		7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E051BB95A48004A2FF9 /* AppDelegate.m */; };
 		7CE55E0C1BB95A48004A2FF9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */; };
@@ -48,6 +50,10 @@
 /* Begin PBXFileReference section */
 		12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OHMySQL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C1138031D2162FD001086E8 /* OHTasksFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTasksFacade.h; sourceTree = SOURCE_ROOT; };
+		7C1138041D2162FD001086E8 /* OHTasksFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTasksFacade.m; sourceTree = SOURCE_ROOT; };
+		7C1138061D23D9EA001086E8 /* OHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHEditViewController.h; sourceTree = SOURCE_ROOT; };
+		7C1138071D23D9EA001086E8 /* OHEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEditViewController.m; sourceTree = SOURCE_ROOT; };
 		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
@@ -92,8 +98,8 @@
 		7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLSerialization.m; sourceTree = "<group>"; };
 		7CE55D211BB95887004A2FF9 /* OHAppDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAppDelegateTest.h; sourceTree = "<group>"; };
 		7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAppDelegateTest.m; sourceTree = "<group>"; };
-		7CE55D451BB95928004A2FF9 /* OHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHViewController.h; sourceTree = SOURCE_ROOT; };
-		7CE55D461BB95928004A2FF9 /* OHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHViewController.m; sourceTree = SOURCE_ROOT; };
+		7CE55D451BB95928004A2FF9 /* OHListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHListViewController.h; sourceTree = SOURCE_ROOT; };
+		7CE55D461BB95928004A2FF9 /* OHListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHListViewController.m; sourceTree = SOURCE_ROOT; };
 		7CE55D491BB95930004A2FF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		7CE55E041BB95A48004A2FF9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7CE55E051BB95A48004A2FF9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -208,8 +214,12 @@
 			isa = PBXGroup;
 			children = (
 				7CBB08C81D18249000B92CA9 /* Model */,
-				7CE55D451BB95928004A2FF9 /* OHViewController.h */,
-				7CE55D461BB95928004A2FF9 /* OHViewController.m */,
+				7C1138031D2162FD001086E8 /* OHTasksFacade.h */,
+				7C1138041D2162FD001086E8 /* OHTasksFacade.m */,
+				7CE55D451BB95928004A2FF9 /* OHListViewController.h */,
+				7CE55D461BB95928004A2FF9 /* OHListViewController.m */,
+				7C1138061D23D9EA001086E8 /* OHEditViewController.h */,
+				7C1138071D23D9EA001086E8 /* OHEditViewController.m */,
 				7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */,
 				7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */,
 				7CE55D481BB95930004A2FF9 /* Main.storyboard */,
@@ -455,7 +465,8 @@
 				7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */,
 				7C842D891D105C9800A6B005 /* OHMySQLQueryRequestFactory.m in Sources */,
 				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
-				7CE55D471BB95928004A2FF9 /* OHViewController.m in Sources */,
+				7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */,
+				7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */,
 				7C842D821D1054E600A6B005 /* OHMySQLQueryContext.m in Sources */,
 				7CBB08C71D1818F300B92CA9 /* OHMySQLManager.m in Sources */,
 				7C842D7F1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m in Sources */,
@@ -465,6 +476,7 @@
 				7CBB08BB1D12F22400B92CA9 /* OHMySQLQueryRequest.m in Sources */,
 				7CBB08BA1D12F22400B92CA9 /* NSString+Utility.m in Sources */,
 				7CBB08BF1D12F22400B92CA9 /* OHSSLConfig.m in Sources */,
+				7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */,
 				7CBB08C01D12F22400B92CA9 /* OHJoinConstants.m in Sources */,
 				7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */,
 				7CBB08BE1D12F22400B92CA9 /* OHMySQLUser.m in Sources */,
@@ -606,7 +618,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_SHADOW = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-Sample.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SyS.OHMySQL;
@@ -628,7 +640,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_SHADOW = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-Sample.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SyS.OHMySQL;

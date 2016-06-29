@@ -11,4 +11,6 @@
 #import "OHMySQLQueryRequestFactory.h"
 #import "OHMySQLStoreCoordinator.h"
 
+#import "NSObject+Mapping.h"
 #import "OHMappingProtocol.h"
+
