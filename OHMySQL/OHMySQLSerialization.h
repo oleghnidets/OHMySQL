@@ -4,6 +4,7 @@
 
 @import Foundation;
 
+/// Responsible for seralization of responses.
 @interface OHMySQLSerialization : NSObject
 
 /**

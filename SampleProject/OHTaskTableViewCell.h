@@ -2,8 +2,7 @@
 //  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
+@import UIKit;
 @class OHTask;
 
 @interface OHTaskTableViewCell : UITableViewCell

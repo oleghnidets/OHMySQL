@@ -4,7 +4,7 @@
 
 @import UIKit;
 
-@interface OHViewController : UIViewController
+@interface OHListViewController : UIViewController
 
 @end
 

@@ -13,7 +13,7 @@
 
 @implementation OHMySQLStore
 
-- (instancetype)initWithMySQL:(MYSQL *)mysql {
+- (instancetype)initWithMySQL:(void *)mysql {
     NSParameterAssert(mysql);
     if (self = [super init]) {
         _mysql = mysql;

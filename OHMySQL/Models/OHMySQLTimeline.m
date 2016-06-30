@@ -4,6 +4,17 @@
 
 #import "OHMySQLTimeline.h"
 
+@interface OHMySQLTimeline ()
+
+@property (nonatomic, assign, readwrite) CFAbsoluteTime totalTime;
+
+@end
+
 @implementation OHMySQLTimeline
+
+- (CFAbsoluteTime)totalTime {
+    _totalTime = self.queryDuration + self.serializationDuration;
+    return _totalTime;
+}
 
 @end

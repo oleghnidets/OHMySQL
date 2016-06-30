@@ -3,12 +3,18 @@
 //
 
 @import Foundation;
-@class OHMySQLQuery, OHMySQLStoreCoordinator;
+@class OHMySQLQueryRequest, OHMySQLStoreCoordinator;
 @protocol OHMappingProtocol;
 
+/// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
 @interface OHMySQLQueryContext : NSObject
 
+//! Should be set by a user of this class.
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
+
+@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *insertedObjects;
+@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *updatedObjects;
+@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *deletedObjects;
 
 /**
  *  Executes a query.
@@ -16,7 +22,7 @@
  *  @param query An query that should be executed.
  *  @param error The error that occurred during the attempt to execute.
  */
-- (void)executeQuery:(nonnull OHMySQLQuery *)query error:(NSError *_Nullable*_Nullable)error;
+- (BOOL)executeQueryRequest:(nonnull OHMySQLQueryRequest *)query error:(NSError *_Nullable*_Nullable)error;
 
 /**
  *  Executes a query and returns result. This method is the most applicable for SELECT queries.
@@ -26,8 +32,8 @@
  *
  *  @return Result parsed as an array of dictionaries.
  */
-- (nullable NSArray<NSDictionary<NSString *,id> *> *)executeQueryAndFetchResult:(nonnull OHMySQLQuery *)query
-                                                                 error:(NSError *_Nullable*_Nullable)error;
+- (nullable NSArray<NSDictionary<NSString *,id> *> *)executeQueryRequestAndFetchResult:(nonnull OHMySQLQueryRequest *)query
+                                                                                 error:(NSError *_Nullable*_Nullable)error;
 
 /**
  *  @return Returns a value representing the first automatically generated value that was set for an AUTO_INCREMENT column by the most recently executed INSERT statement to affect such a column. Returns 0, which reflects that no row was inserted. Or returns 0 if the previous statement does not use an AUTO_INCREMENT value.
@@ -42,10 +48,19 @@
 
 // MARK: Temporary solution... maybe.
 //! Returns bool value which indicates whether an object inserted successfully or not.
-- (BOOL)insertObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)insertObject:(nullable NSObject<OHMappingProtocol> *)object;
 //! Returns bool value which indicates whether an object updated successfully or not.
-- (BOOL)updateObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)updateObject:(nullable NSObject<OHMappingProtocol> *)object;
 //! Returns bool value which indicates whether an object deleted successfully or not.
-- (BOOL)deleteObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)deleteObject:(nullable NSObject<OHMappingProtocol> *)object;
+
+/**
+ *  Attempts to commit unsaved changes.
+ *
+ *  @param error A pointer to an NSError object. 
+ *
+ *  @return YES if the save succeeds, otherwise NO.
+ */
+- (BOOL)save:(NSError *_Nullable*_Nullable)error;
 
 @end

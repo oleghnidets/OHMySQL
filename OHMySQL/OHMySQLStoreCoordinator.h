@@ -5,12 +5,18 @@
 @import Foundation;
 #import "OHConstants.h"
 
-@class OHMySQLUser;
+@class OHMySQLUser, OHMySQLStore;
 
 @interface OHMySQLStoreCoordinator : NSObject
 
+//! Nonnull after connection with DB. 
+@property (nonatomic, strong, readonly, nullable) OHMySQLStore *store;
+
+//! Nonnull after connection with DB.
+@property (nonatomic, strong, readonly, nullable) OHMySQLUser *user;
+
 //! Nonnull after connection with DB. You don't need to use this property at all.
-@property (assign, readonly, nonnull) void *mysql;
+@property (assign, readonly, nullable) void *mysql;
 
 //! Pings the server and indicates whether the connection to the server is working.
 @property (assign, readonly, getter=isConnected) BOOL connected;
@@ -43,7 +49,7 @@
 /**
  *  Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
  *
- *  @param Options A bit mask composed from any combination.
+ *  @param options A bit mask composed from any combination.
  *
  *  @return Zero for success. Nonzero if an error occurred (see enum).
  */

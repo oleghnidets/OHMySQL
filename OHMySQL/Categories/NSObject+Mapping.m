@@ -18,7 +18,7 @@
 
 - (NSDictionary *)mirror {
     NSMutableDictionary *mirroDictionary = [NSMutableDictionary dictionary];
-    [self enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [self enumerateKeysAndObjectsUsingBlock:^(id _Nonnull key, id _Nonnull obj, __unused BOOL * _Nonnull stop) {
         mirroDictionary[obj] = key;
     }];
     
@@ -44,8 +44,11 @@
 #pragma GCC diagnostic ignored "-Wundeclared-selector"
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+
 - (NSString *)indexKeyCondition {
-    NSString *indexKey = self.indexKey;
+    NSString *indexKey = self.primaryKey ?: self.indexKey; // Index Key remove
     // Get object by calling property.
     id object = [self performSelector:NSSelectorFromString(indexKey)];
     
@@ -62,6 +65,8 @@
     
     return nil;
 }
+
+#pragma GCC diagnostic pop
 
 - (NSDictionary *)mapObject {
     NSMutableDictionary *objectDictionary = [NSMutableDictionary dictionary];

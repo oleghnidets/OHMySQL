@@ -5,15 +5,6 @@
 #import "OHMySQLUser.h"
 
 @interface OHMySQLUser ()
-
-@property (nonatomic, copy, readwrite) NSString *userName;
-@property (nonatomic, copy, readwrite) NSString *password;
-@property (nonatomic, copy, readwrite) NSString *serverName;
-@property (nonatomic, copy, readwrite) NSString *dbName;
-@property (nonatomic, copy, readwrite) NSString *socket;
-
-@property (nonatomic, assign, readwrite) NSUInteger port;
-
 @end
 
 @implementation OHMySQLUser

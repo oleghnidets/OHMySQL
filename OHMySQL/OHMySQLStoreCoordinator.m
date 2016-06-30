@@ -6,12 +6,15 @@
 
 #import "OHMySQLUser.h"
 #import "OHSSLConfig.h"
+#import "OHMySQLStore.h"
+
 #import <mysql.h>
 
 @interface OHMySQLStoreCoordinator ()
 
-@property (nonatomic, strong) OHMySQLUser *user;
-@property (assign, readwrite, nonnull) void *mysql;
+@property (nonatomic, strong, readwrite) OHMySQLStore *store;
+@property (nonatomic, strong, readwrite) OHMySQLUser *user;
+@property (assign, readwrite, nullable) void *mysql;
 
 @end
 
@@ -53,19 +56,20 @@
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
     } else {
         _mysql = &local;
+        self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
     }
 }
 
 - (OHResultErrorType)selectDataBase:(NSString *)database {
     NSParameterAssert(database);
     @synchronized (self) {
-        return mysql_select_db(_mysql, database.UTF8String);
+        return _mysql != NULL ? mysql_select_db(_mysql, database.UTF8String) : OHResultErrorTypeGone;
     }
 }
 
 - (OHResultErrorType)shutdown {
     @synchronized (self) {
-        return mysql_shutdown(_mysql, SHUTDOWN_DEFAULT);
+        return _mysql != NULL ? mysql_shutdown(_mysql, SHUTDOWN_DEFAULT) : OHResultErrorTypeGone;
     }
 }
 
@@ -81,13 +85,13 @@
 
 - (OHResultErrorType)refresh:(OHRefreshOptions)options {
     @synchronized (self) {
-        return mysql_refresh(_mysql, options);
+        return _mysql != NULL ? mysql_refresh(_mysql, options) : OHResultErrorTypeGone;
     }
 }
 
 - (OHResultErrorType)pingMySQL {
     @synchronized (self) {
-        return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeUnknown;
+        return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeGone;
     }
 }
 

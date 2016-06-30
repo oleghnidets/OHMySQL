@@ -2,12 +2,12 @@
 //  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
 //
 
-#import "OHMySQLQuery.h"
+#import "OHMySQLQueryRequest.h"
 
-@interface OHMySQLQuery ()
+@interface OHMySQLQueryRequest ()
 @end
 
-@implementation OHMySQLQuery
+@implementation OHMySQLQueryRequest
 
 - (nonnull instancetype)initWithQueryString:(nonnull NSString *)query {
     NSParameterAssert(query);

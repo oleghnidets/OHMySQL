@@ -14,7 +14,7 @@
     if (self = [super init]) {
         _key             = key;
         _certPath        = certPath;
-        _certAuthPath    = certPath;
+        _certAuthPath    = certAuthPath;
         _certAuthPEMPath = certAuthPEMPath;
         _cipher          = cipher;
     }
