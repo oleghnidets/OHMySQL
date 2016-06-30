@@ -20,56 +20,75 @@ At the first you need to connect to the database.
 
 ```objective-c
 OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-                                                 password:@"root"
-                                               serverName:@"localhost"
-                                                   dbName:@"RateIt"
-                                                     port:3306
-                                                   socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
-[[OHMySQLManager sharedManager] connectWithUser:user];
+                                                     password:@"root"
+                                                   serverName:@"localhost"
+                                                       dbName:@"sample"
+                                                         port:3306
+                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
+[coordinator connect];
 ```
 
 To end a connection:
 ```objective-c
-[[OHMySQLManager sharedManager] disconnect];
+[coordinator disconnect];
 ```
+
+## Query Execution
+
+To execute a query you have to create context:
+```objective-c
+OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
+queryContext.storeCoordinator = coordinator;
+```
+
+You will use this context to execute queries or handle objects.
+
 ### SELECT 
 
 The response contains array of dictionaries (like JSON).
 
 ```objective-c
-NSArray *all = [[OHMySQLManager sharedManager] selectAll:@"users" condition:nil]);
-NSArray *orderedAll = [[OHMySQLManager sharedManager] selectAll:@"users" condition:@"" orderBy:@[@"name", @"id"] ascending:YES]);
-NSDictionary *first = [[OHMySQLManager sharedManager] selectFirst:@"users" condition:@"" orderBy:@[@"id"] ascending:NO];
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" condition:nil];
+NSError *error = nil;
+NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:&error];
 ```
 
 ### JOINs
 
 The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
 ```objective-c
-NSArray *response = [[OHMySQLManager sharedManager] selectJOINType:OHJoinInner
-                                                         fromTable:@"Orders"
-                                                       columnNames:@[@"Orders.id", @"Goods.name", @"Goods.description", @"Orders.orderCount", @"Company.companyName", @"Goods.count"]
-                                                            joinOn:@[@"Goods":@"Orders.goodsId=Goods.id", @"Company":@"Orders.companyId=Company.Id"]];
-                                   
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner
+                                                            fromTable:@"tasks"
+                                                          columnNames:@[@"id", @"name", @"description"]
+                                                               joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
+NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
 ```
 
-### INSERT, DELETE
+### INSERT, UPDATE, DELETE
 
-The response returns zero for success or nonzero if an error occurred. 
 ```objective-c
-NSLog(@"%li", [[OHMySQLManager sharedManager] insertInto:@"students" set:@{ @"groupId" : @"1", @"userId" : first[@"id"] }]);
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task" }];
+NSError error;
+[queryContext executeQueryRequest:query error:&error];
 ```
 
 ```objective-c
-NSLog(@"%li", [[OHMySQLManager sharedManager] deleteAllFrom:@"users" condition:@"id>3"]);
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task update" } condition:@"id=5"];
+NSError error;
+[queryContext executeQueryRequest:query error:&error];
+```
+
+```objective-c
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:@"tasks" condition:@"id=10"];
 ```
     
 ### Mapping
 
-Mapping response looks like the following:
+Mapping response looks like the following (you shouldn't use NSManagedObject instances):
 ```objective-c
-OHTask *task = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:context];
-[task mapFromResponse:taskDict];
+[queryContext insertObject:task];
+BOOL result = [queryContext save:nil];
 ```
 
 Also you can send your local changes to DB easily.
@@ -79,17 +98,19 @@ OHTask *task = [OHTask new];
 task.name = @"Code cleanup";
 task.taskDescription = @"Delete unused classes and files";
 task.status = 0;
-[task insert]; // Also update local taskId
+
+[queryContext updateObject:task];
 ...
 task.name = @"Something";
 task.status = 1;
 [task update];
 ...
-[task deleteObject];
+[queryContext deleteObject:task];
+BOOL result = [queryContext save:nil];
 ```
 
 ## Communication
-- If you need help, write [me](oleg.oleksan@gmail.com)
+- If you need help, write email://oleg.oleksan@gmail.com
 - If you found a bug, please provide steps to reproduce it, open an issue.
 - If you want to contribute, submit a pull request.
 
