@@ -56,6 +56,7 @@
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
     } else {
         _mysql = &local;
+        self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
     }
 }
 
@@ -68,7 +69,7 @@
 
 - (OHResultErrorType)shutdown {
     @synchronized (self) {
-        return mysql_shutdown(_mysql, SHUTDOWN_DEFAULT);
+        return _mysql != NULL ? mysql_shutdown(_mysql, SHUTDOWN_DEFAULT) : OHResultErrorTypeLost;
     }
 }
 
@@ -84,7 +85,7 @@
 
 - (OHResultErrorType)refresh:(OHRefreshOptions)options {
     @synchronized (self) {
-        return mysql_refresh(_mysql, options);
+        return _mysql != NULL ? mysql_refresh(_mysql, options) : OHResultErrorTypeGone;
     }
 }
 

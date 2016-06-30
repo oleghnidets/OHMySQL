@@ -65,15 +65,9 @@ NSError *contextError(NSString *description) {
 #pragma mark - Execute
 
 - (BOOL)executeQueryRequest:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
+    NSParameterAssert(query.queryString);
     MYSQL *_mysql = self.mysql;
-    if (!query.queryString) {
-        OHLogError(@"Query cannot be empty");
-        if (error) {
-            *error = contextError(@"Required properties in query are absent.");
-        }
-        
-        return NO;
-    } else if (!self.storeCoordinator.isConnected || !_mysql) {
+    if (!self.storeCoordinator.isConnected || !_mysql) {
         OHLogError(@"The connection is broken.");
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
         if (error) {
@@ -122,6 +116,10 @@ NSError *contextError(NSString *description) {
 
 - (NSNumber *)affectedRows {
     @synchronized (self) {
+        if (!self.mysql) {
+            return @(-1);
+        }
+        
         my_ulonglong affectedRowsResult = mysql_affected_rows(self.mysql);
         if (affectedRowsResult == (my_ulonglong)-1) {
             return @(-1);
