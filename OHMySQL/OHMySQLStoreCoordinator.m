@@ -63,13 +63,13 @@
 - (OHResultErrorType)selectDataBase:(NSString *)database {
     NSParameterAssert(database);
     @synchronized (self) {
-        return mysql_select_db(_mysql, database.UTF8String);
+        return _mysql != NULL ? mysql_select_db(_mysql, database.UTF8String) : OHResultErrorTypeGone;
     }
 }
 
 - (OHResultErrorType)shutdown {
     @synchronized (self) {
-        return _mysql != NULL ? mysql_shutdown(_mysql, SHUTDOWN_DEFAULT) : OHResultErrorTypeLost;
+        return _mysql != NULL ? mysql_shutdown(_mysql, SHUTDOWN_DEFAULT) : OHResultErrorTypeGone;
     }
 }
 
@@ -91,7 +91,7 @@
 
 - (OHResultErrorType)pingMySQL {
     @synchronized (self) {
-        return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeUnknown;
+        return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeGone;
     }
 }
 

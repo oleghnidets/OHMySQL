@@ -158,12 +158,13 @@
     XCTAssert([response isKindOfClass:[NSDictionary class]] && !error);
 }
 
-- (void)test10InsertSet {
+- (void)test10InsertNewRow {
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory INSERT:@"TestTable"
                                                                        set:@{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" }];
     NSError *error;
     BOOL success = [[OHMySQLManager sharedManager].mainQueryContext executeQueryRequest:queryRequest error:&error];
-    XCTAssert(success && !error);
+    NSNumber *lastInsertedID = [[OHMySQLManager sharedManager].mainQueryContext lastInsertID];
+    XCTAssert(success && !error && lastInsertedID.integerValue > 0);
 }
 
 - (void)test11UpdateAll {
