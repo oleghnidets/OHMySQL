@@ -51,8 +51,9 @@ For using this manager you have to assign main context (coordinator is returned 
 To map objects you have to implement the protocol OHMappingProtocol. If you used it before replace method -indexKey with -primaryKey. 
 To insert/update/delete object you have methods in OHMySQLQueryContext class. When you're ready to submit changes just call the method -save:
 
-   [queryContext insertObject:task1];
-   [queryContext updateObject:task2];
-   [queryContext deleteObject:task3];
-   [queryContext save:nil];
-I ignored error here but be sensible and handle errors in proper way.
+    [queryContext insertObject:task1];
+    [queryContext updateObject:task2];
+    [queryContext deleteObject:task3];
+    [queryContext save:nil];
+   
+I ignored the error parameter here but be sensible and handle errors in proper way.
