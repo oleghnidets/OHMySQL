@@ -14,17 +14,20 @@ pod 'OHMySQL', '~> 0.1.0'
 
 Or you can copy files into your project. But be aware you need to copy [mysql-connector-c](https://github.com/ketzusaka/mysql-connector-c) library.
 
+## Migration Guide
+- [OHMySQL 0.2.0 Migration Guide](https://github.com/oleghnidets/OHMySQL/blob/master/Documentation/Migration%20guide.md)
+
 ## Usage
 
 At the first you need to connect to the database.
 
 ```objective-c
 OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-                                                     password:@"root"
-                                                   serverName:@"localhost"
-                                                       dbName:@"sample"
-                                                         port:3306
-                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+                                                 password:@"root"
+                                               serverName:@"localhost"
+                                                   dbName:@"sample"
+                                                     port:3306
+                                                   socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
 OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
 [coordinator connect];
 ```
@@ -34,15 +37,15 @@ To end a connection:
 [coordinator disconnect];
 ```
 
-## Query Execution
+## Query Context
 
-To execute a query you have to create context:
+To execute a query you have to create the context:
 ```objective-c
 OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
 queryContext.storeCoordinator = coordinator;
 ```
 
-You will use this context to execute queries or handle objects.
+You will use this context to execute queries or manipulate the objects.
 
 ### SELECT 
 
@@ -53,19 +56,12 @@ OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" conditi
 NSError *error = nil;
 NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:&error];
 ```
-
-### JOINs
-
-The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
+You will get a response like this:
 ```objective-c
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner
-                                                            fromTable:@"tasks"
-                                                          columnNames:@[@"id", @"name", @"description"]
-                                                               joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
-NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
+[{ @"id": @1, @"name": @"Task name", @"description": @"Task description", @"status": [NSNull null] }]
 ```
 
-### INSERT, UPDATE, DELETE
+### INSERT
 
 ```objective-c
 OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task" }];
@@ -73,32 +69,46 @@ NSError error;
 [queryContext executeQueryRequest:query error:&error];
 ```
 
+### UPDATE
+
 ```objective-c
 OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task update" } condition:@"id=5"];
 NSError error;
 [queryContext executeQueryRequest:query error:&error];
 ```
 
+### DELETE
+
 ```objective-c
 OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:@"tasks" condition:@"id=10"];
 ```
     
-### Mapping
+### JOINs
 
-Mapping response looks like the following (you shouldn't use NSManagedObject instances):
+The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
+```objective-c
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner
+                                                        fromTable:@"tasks"
+                                                      columnNames:@[@"id", @"name", @"description"]
+                                                           joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
+NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
+```
+
+### Object Mapping
+
+You have to implement the protocol OHMappingProtocol for your models. Insertion looks like the following (in this example the NSManagedObject instance).
 ```objective-c
 [queryContext insertObject:task];
 BOOL result = [queryContext save:nil];
 ```
 
-Also you can send your local changes to DB easily.
+You can update/delete the objects easily.
 ```objective-c
-// Use autoincremented id in your DB. So you don't need to specify id here. 
+// You don't need to specify primary index here.  It'll be update for you.
 OHTask *task = [OHTask new];
 task.name = @"Code cleanup";
 task.taskDescription = @"Delete unused classes and files";
 task.status = 0;
-
 [queryContext updateObject:task];
 ...
 task.name = @"Something";
@@ -113,6 +123,9 @@ BOOL result = [queryContext save:nil];
 - If you need help, write email://oleg.oleksan@gmail.com
 - If you found a bug, please provide steps to reproduce it, open an issue.
 - If you want to contribute, submit a pull request.
+- If you want to donate I would be thankful ;]
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CVFAEEZJ9DJ3L)
 
 ## License 
 
