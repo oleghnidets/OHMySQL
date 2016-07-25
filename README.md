@@ -3,7 +3,7 @@ You can connect to your remote MySQL database using OHMySQL API. It allows you d
 
 ## How To Get Started
 - To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
-- Try to use OHMySQL API. 
+- Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/blob/master/Documentation/Demo.md)). 
 - When it'll be ready then transfer your local Data Base(s) to remote MySQL server.
 
 ## Installation
