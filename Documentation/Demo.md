@@ -1,5 +1,6 @@
 # Launch demo project
 To set up demo project you should do the following:
+
 1. Download and install [MySQL](https://dev.mysql.com/downloads/mysql/).
 2. Launch the server. 
 3. Find the connection parameters [here](http://localhost/MAMP/?language=English).
