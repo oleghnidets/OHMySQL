@@ -55,19 +55,23 @@
 }
 
 + (void)addTask:(OHTask *)task :(OHSuccess)success failure:(OHFailure)failure {
-    NSError *error;
-    [[OHMySQLManager sharedManager].mainQueryContext insertObject:task];
-    if (![[OHMySQLManager sharedManager].mainQueryContext save:&error]) {
-        !failure ?: failure();
-        return ;
-    }
+    OHMySQLQueryContext *childContext = [OHMySQLQueryContext new];
+    childContext.parentQueryContext = [OHMySQLManager sharedManager].mainQueryContext;
+    [childContext insertObject:task];
     
-    if (![task.managedObjectContext save:nil]) {
-        !failure ?: failure();
-        return ;
-    }
-    
-    !success ?: success();
+    [childContext saveToPersistantStore:^(NSError *error) {
+        if (error) {
+            !failure ?: failure();
+            return ;
+        }
+        
+        if (![task.managedObjectContext save:nil]) {
+            !failure ?: failure();
+            return ;
+        }
+        
+        !success ?: success();
+    }];
 }
 
 + (void)update:(OHTask *)task :(OHSuccess)success failure:(OHFailure)failure {

@@ -9,6 +9,8 @@
 /// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
 @interface OHMySQLQueryContext : NSObject
 
+@property (strong, nonnull) OHMySQLQueryContext *parentQueryContext;
+
 //! Should be set by a user of this class.
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
 
@@ -47,12 +49,15 @@
 
 
 // MARK: Temporary solution... maybe.
-//! Returns bool value which indicates whether an object inserted successfully or not.
+//! Makes object ready to be inserted.
 - (void)insertObject:(nullable NSObject<OHMappingProtocol> *)object;
-//! Returns bool value which indicates whether an object updated successfully or not.
+//! Makes object ready to be updated.
 - (void)updateObject:(nullable NSObject<OHMappingProtocol> *)object;
-//! Returns bool value which indicates whether an object deleted successfully or not.
+//! Makes object ready to be deleted.
 - (void)deleteObject:(nullable NSObject<OHMappingProtocol> *)object;
+
+//! Removes object from deleted/inserted/updated.
+- (void)refreshObject:(nullable NSObject<OHMappingProtocol> *)object;
 
 /**
  *  Attempts to commit unsaved changes.
@@ -62,5 +67,7 @@
  *  @return YES if the save succeeds, otherwise NO.
  */
 - (BOOL)save:(NSError *_Nullable*_Nullable)error;
+
+- (void)saveToPersistantStore:(nonnull void(^)(NSError *_Nullable))completionHandler;
 
 @end

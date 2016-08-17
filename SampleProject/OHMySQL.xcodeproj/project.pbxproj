@@ -25,6 +25,9 @@
 		7CBB08C71D1818F300B92CA9 /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08C61D1818F300B92CA9 /* OHMySQLManager.m */; };
 		7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */; };
 		7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CC1D18249000B92CA9 /* OHTask.m */; };
+		7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */; };
+		7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */; };
+		7CBFDA351D62019C00F4C828 /* OHObjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBFDA341D62019C00F4C828 /* OHObjectTests.m */; };
 		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */; };
 		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; };
@@ -35,6 +38,7 @@
 		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; };
 		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
 		7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */; };
+		FC6030BFD597E835884F9691 /* libPods-OHMySQL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,11 @@
 		7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHTask+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7CBB08CB1D18249000B92CA9 /* OHTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTask.h; sourceTree = "<group>"; };
 		7CBB08CC1D18249000B92CA9 /* OHTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTask.m; sourceTree = "<group>"; };
+		7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTestPerson.h; sourceTree = "<group>"; };
+		7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTestPerson.m; sourceTree = "<group>"; };
+		7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Database_Basic.h"; sourceTree = "<group>"; };
+		7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+Database_Basic.m"; sourceTree = "<group>"; };
+		7CBFDA341D62019C00F4C828 /* OHObjectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHObjectTests.m; sourceTree = "<group>"; };
 		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61F81B7B5661003A468F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -123,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */,
+				FC6030BFD597E835884F9691 /* libPods-OHMySQL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +242,12 @@
 		7CE55D201BB95887004A2FF9 /* OHMySQLTests */ = {
 			isa = PBXGroup;
 			children = (
+				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
+				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
+				7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */,
+				7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */,
 				7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */,
+				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
 				7CE55E241BB95C13004A2FF9 /* Supporting Files */,
 			);
 			path = OHMySQLTests;
@@ -314,12 +329,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CCC61EC1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQL" */;
 			buildPhases = (
-				F4494C2DF972AED2F12F5C57 /* 📦 Check Pods Manifest.lock */,
+				F4494C2DF972AED2F12F5C57 /* [CP] Check Pods Manifest.lock */,
 				7CCC61C51B7B38BA003A468F /* Sources */,
 				7CCC61C61B7B38BA003A468F /* Frameworks */,
 				7CCC61C71B7B38BA003A468F /* Resources */,
-				DFA5E2A109D4303E9F1731CC /* 📦 Copy Pods Resources */,
-				CE2A75915D97A77B55DEC3A6 /* 📦 Embed Pods Frameworks */,
+				DFA5E2A109D4303E9F1731CC /* [CP] Copy Pods Resources */,
+				CE2A75915D97A77B55DEC3A6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -408,14 +423,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CE2A75915D97A77B55DEC3A6 /* 📦 Embed Pods Frameworks */ = {
+		CE2A75915D97A77B55DEC3A6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,14 +438,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFA5E2A109D4303E9F1731CC /* 📦 Copy Pods Resources */ = {
+		DFA5E2A109D4303E9F1731CC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,19 +453,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4494C2DF972AED2F12F5C57 /* 📦 Check Pods Manifest.lock */ = {
+		F4494C2DF972AED2F12F5C57 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -491,6 +506,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */,
+				7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */,
+				7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */,
+				7CBFDA351D62019C00F4C828 /* OHObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

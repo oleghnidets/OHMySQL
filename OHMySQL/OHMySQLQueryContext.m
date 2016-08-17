@@ -26,9 +26,9 @@ NSError *contextError(NSString *description) {
 
 @interface OHMySQLQueryContext ()
 
-@property (nonatomic, strong) NSMutableArray *p_insertedObjects;
-@property (nonatomic, strong) NSMutableArray *p_updatedObjects;
-@property (nonatomic, strong) NSMutableArray *p_deletedObjects;
+@property (strong) NSMutableArray *p_insertedObjects;
+@property (strong) NSMutableArray *p_updatedObjects;
+@property (strong) NSMutableArray *p_deletedObjects;
 
 @end
 
@@ -138,22 +138,45 @@ NSError *contextError(NSString *description) {
 #pragma mark - Objects
 
 - (void)insertObject:(NSObject<OHMappingProtocol> *)object {
-    if (!object) { return ; }
+    if (!object || [self.p_insertedObjects containsObject:object]) { return ; }
     [self.p_insertedObjects addObject:object];
 }
 
 - (void)updateObject:(NSObject<OHMappingProtocol> *)object {
-    if (!object) { return ; }
+    if (!object || [self.p_updatedObjects containsObject:object]) { return ; }
     [self.p_updatedObjects addObject:object];
 }
 
 - (void)deleteObject:(NSObject<OHMappingProtocol> *)object {
-    if (!object) { return ; }
+    if (!object || [self.p_deletedObjects containsObject:object]) { return ; }
     [self.p_deletedObjects addObject:object];
+}
+
+- (void)refreshObject:(NSObject<OHMappingProtocol> *)object {
+    [self.p_insertedObjects removeObject:object];
+    [self.p_updatedObjects removeObject:object];
+    [self.p_deletedObjects removeObject:object];
 }
 
 - (BOOL)save:(NSError **)error {
     @synchronized (self) {
+        if (self.parentQueryContext) {
+            for (NSObject<OHMappingProtocol> *objectToInsert in self.insertedObjects) {
+                [self.parentQueryContext insertObject:objectToInsert];
+            }
+            
+            for (NSObject<OHMappingProtocol> *objectToUpdate in self.updatedObjects) {
+                [self.parentQueryContext updateObject:objectToUpdate];
+            }
+            
+            for (NSObject<OHMappingProtocol> *objectToDelete in self.deletedObjects) {
+                [self.parentQueryContext deleteObject:objectToDelete];
+            }
+            
+            return YES;
+        }
+        
+        
         for (NSObject<OHMappingProtocol> *objectToInsert in self.p_insertedObjects) {
             if ([self insertObject:objectToInsert error:error] == NO) { return NO; }
             [objectToInsert setValue:self.lastInsertID forKey:objectToInsert.primaryKey];
@@ -172,6 +195,26 @@ NSError *contextError(NSString *description) {
         
         return YES;
     }
+}
+
+- (void)performBlock:(dispatch_block_t)block {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        block();
+    });
+}
+
+- (void)saveToPersistantStore:(void(^)(NSError *))completionHandler {
+    [self performBlock:^{
+        NSError *error;
+        [self save:&error];
+        if (error) {
+            completionHandler(error);
+            return ;
+        }
+        
+        [self.parentQueryContext save:&error];
+        completionHandler(error);
+    }];
 }
 
 #pragma mark - Private
