@@ -9,6 +9,10 @@ extern NSString *const kDatabaseName;
 extern NSString *const kTableName;
 extern NSString *const kDropTableString;
 
+#define AssertIfError() XCTAssert(error == nil)
+#define AssertIfNoError() XCTAssert(error != nil)
+#define AssertIfNotDictionary(obj) XCTAssert([obj isKindOfClass:[NSDictionary class]])
+
 @interface XCTestCase (Database_Basic)
 
 @property (nonatomic, strong) OHMySQLQueryContext *mainQueryContext;
@@ -17,5 +21,6 @@ extern NSString *const kDropTableString;
 + (void)configureDatabase;
 - (void)createTable;
 - (void)createEmptyTable;
+- (NSNumber *)countOfObjects;
 
 @end

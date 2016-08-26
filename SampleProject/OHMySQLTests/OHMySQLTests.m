@@ -9,9 +9,6 @@
 
 @end
 
-#define AssertIfError() XCTAssert(error == nil)
-#define AssertIfNoError() XCTAssert(error != nil)
-
 @implementation OHMySQLTests
 
 #pragma mark - setup
@@ -61,7 +58,7 @@
     id firstResponseObject = response.firstObject;
     
     // then
-    XCTAssert([firstResponseObject isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(firstResponseObject);
 }
 
 - (void)test03SelectAllQueryWithCondition {
@@ -85,7 +82,7 @@
     id firstResponseObject = response.firstObject;
     
     // then
-    XCTAssert([firstResponseObject isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(firstResponseObject);
 }
 
 - (void)test04SelectAllQueryWithOrder {
@@ -103,7 +100,7 @@
     id firstResponseObject = response.firstObject;
     
     // then
-    XCTAssert([firstResponseObject isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(firstResponseObject);
     
     // when
     NSNumber *objectID = firstResponseObject[@"id"];
@@ -140,7 +137,7 @@
     id firstResponseObject = response.firstObject;
     
     // then
-    XCTAssert([firstResponseObject isKindOfClass:[NSDictionary class]] && !error);
+    AssertIfNotDictionary(firstResponseObject);
     
     // when
     NSNumber *objectID = firstResponseObject[@"id"];
@@ -165,7 +162,7 @@
     
     // then
     AssertIfError();
-    XCTAssert([response isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(response);
     
     // when
     NSNumber *firstObjectID = response[@"id"];
@@ -186,7 +183,7 @@
     
     // then
     AssertIfError();
-    XCTAssert([response isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(response);
     
     // when
     NSNumber *firstObjectID = response[@"id"];
@@ -210,7 +207,7 @@
     
     // then
     AssertIfError();
-    XCTAssert([response isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(response);
 }
 
 // TODO: improve
@@ -226,7 +223,7 @@
     
     // then
     AssertIfError();
-    XCTAssert([response isKindOfClass:[NSDictionary class]]);
+    AssertIfNotDictionary(response);
 }
 
 - (void)test10InsertNewRow {
@@ -268,15 +265,11 @@
 }
 
 - (void)test13CountRecords {
-    // given
-    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory countAll:kTableName];
-    
     // when
-    NSError *error;
-    NSDictionary *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
+    NSNumber *countOfObjects = [self countOfObjects];
     
     // then
-    XCTAssert([response.allValues.firstObject integerValue] > 0 && !error);
+    XCTAssertNotEqualObjects(countOfObjects, @0);
 }
 
 - (void)test14UpdateAllWithCondition {

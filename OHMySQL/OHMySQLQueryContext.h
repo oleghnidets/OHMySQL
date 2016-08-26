@@ -9,6 +9,8 @@
 /// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
 @interface OHMySQLQueryContext : NSObject
 
+- (nonnull instancetype)initWithParentQueryContext:(nullable OHMySQLQueryContext *)parentQueryContext NS_DESIGNATED_INITIALIZER;
+
 @property (strong, nonnull) OHMySQLQueryContext *parentQueryContext;
 
 //! Should be set by a user of this class.
@@ -68,6 +70,10 @@
  */
 - (BOOL)save:(NSError *_Nullable*_Nullable)error;
 
-- (void)saveToPersistantStore:(nonnull void(^)(NSError *_Nullable))completionHandler;
+//! Performs block asynchronously.
+- (void)performBlock:(nonnull dispatch_block_t)block;
+
+//! Saves to MySQL store asynchronously in global queue.
+- (void)saveToPersistantStore:(nonnull void(^)(NSError *_Nullable error))completionHandler;
 
 @end

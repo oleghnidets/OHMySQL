@@ -39,10 +39,16 @@ NSError *contextError(NSString *description) {
 }
 
 - (instancetype)init {
+    return [self initWithParentQueryContext:nil];
+}
+
+- (instancetype)initWithParentQueryContext:(OHMySQLQueryContext *)parentQueryContext {
     if (self = [super init]) {
         _p_insertedObjects = [NSMutableArray array];
         _p_updatedObjects  = [NSMutableArray array];
         _p_deletedObjects  = [NSMutableArray array];
+        
+        _parentQueryContext = parentQueryContext;
     }
     
     return self;
@@ -177,18 +183,21 @@ NSError *contextError(NSString *description) {
         }
         
         
-        for (NSObject<OHMappingProtocol> *objectToInsert in self.p_insertedObjects) {
+        NSArray *p_insertedObjectsCopy = [self.p_insertedObjects copy];
+        for (NSObject<OHMappingProtocol> *objectToInsert in p_insertedObjectsCopy) {
             if ([self insertObject:objectToInsert error:error] == NO) { return NO; }
             [objectToInsert setValue:self.lastInsertID forKey:objectToInsert.primaryKey];
             [self.p_insertedObjects removeObject:objectToInsert];
         }
         
-        for (NSObject<OHMappingProtocol> *objectToUpdate in self.p_updatedObjects) {
+        NSArray *p_updatedObjectsCopy = [self.p_updatedObjects copy];
+        for (NSObject<OHMappingProtocol> *objectToUpdate in p_updatedObjectsCopy) {
             if ([self updateObject:objectToUpdate error:error] == NO) { return NO; }
             [self.p_updatedObjects removeObject:objectToUpdate];
         }
         
-        for (NSObject<OHMappingProtocol> *objectToDelete in self.p_deletedObjects) {
+        NSArray *p_deletedObjectsCopy = [self.p_deletedObjects copy];
+        for (NSObject<OHMappingProtocol> *objectToDelete in p_deletedObjectsCopy) {
             if ([self deleteObject:objectToDelete error:error] == NO) { return NO; }
             [self.p_deletedObjects removeObject:objectToDelete];
         }
@@ -212,6 +221,7 @@ NSError *contextError(NSString *description) {
             return ;
         }
         
+        // If it's the main context then this property will be nil and method won't execute.
         [self.parentQueryContext save:&error];
         completionHandler(error);
     }];

@@ -42,13 +42,8 @@
 }
 
 - (void)test03CountObjects {
-    // given
-    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory countAll:kTableName];
-    NSError *error;
-    NSDictionary *persons = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
-    
     // when
-    NSNumber *countOfObjects = persons.allValues.firstObject;
+    NSNumber *countOfObjects = [self countOfObjects];
     
     // then
     XCTAssertEqualObjects(countOfObjects, @1);
@@ -87,7 +82,7 @@
     [self.mainQueryContext save:&error];
     
     // then
-    XCTAssert(!error);
+    AssertIfError();
     
     // given
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName condition:[NSString stringWithFormat:@"id='%@'", person.ID]];
@@ -96,7 +91,8 @@
     NSArray *searchedPersons = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
     
     // then
-    XCTAssert(!error && !searchedPersons.count);
+    AssertIfError();
+    XCTAssert(!searchedPersons.count);
 }
 
 - (void)test07DeleteUndefinedObject {
@@ -110,10 +106,16 @@
     [self.mainQueryContext save:&error];
     
     // then
-    XCTAssert(!error);
+    AssertIfError();
 }
 
 - (void)test08AffectedProperties {
+    // when
+    NSNumber *affectedRowsBefore = self.mainQueryContext.affectedRows;
+    
+    // then
+    XCTAssertEqualObjects(affectedRowsBefore, @0);
+    
     // given
     [self test02InsertObject];
     
@@ -189,7 +191,7 @@
     NSArray *personsDictionary = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
     
     // then
-    XCTAssert(!error);
+    AssertIfError();
     
     NSMutableArray *persons = [NSMutableArray array];
     for (NSDictionary *personDict in personsDictionary) {
@@ -209,7 +211,7 @@
     NSDictionary *personDictionary = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
     
     // then
-    XCTAssert(!error);
+    AssertIfError();
     
     OHTestPerson *person = [OHTestPerson new];
     if (personDictionary) {

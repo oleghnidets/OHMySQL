@@ -68,4 +68,19 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     [self createTableWithQuery:kEmptyTableString];
 }
 
+- (NSNumber *)countOfObjects {
+    // given
+    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory countAll:kTableName];
+    NSError *error;
+    
+    // when
+    NSDictionary *persons = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
+    
+    // then
+    AssertIfNotDictionary(persons);
+    
+    // when
+    return persons.allValues.firstObject;
+}
+
 @end

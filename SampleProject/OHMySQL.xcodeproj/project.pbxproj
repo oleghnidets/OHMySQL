@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0D87B31D6597A700B7AA12 /* OHThreadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */; };
 		7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138041D2162FD001086E8 /* OHTasksFacade.m */; };
 		7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138071D23D9EA001086E8 /* OHEditViewController.m */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		12949A1EFB05B80B43398598 /* libPods-OHMySQL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OHMySQL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		54E7F3918299C1761618F36C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHThreadingTests.m; sourceTree = "<group>"; };
 		7C1138031D2162FD001086E8 /* OHTasksFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTasksFacade.h; sourceTree = SOURCE_ROOT; };
 		7C1138041D2162FD001086E8 /* OHTasksFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTasksFacade.m; sourceTree = SOURCE_ROOT; };
 		7C1138061D23D9EA001086E8 /* OHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHEditViewController.h; sourceTree = SOURCE_ROOT; };
@@ -242,13 +244,14 @@
 		7CE55D201BB95887004A2FF9 /* OHMySQLTests */ = {
 			isa = PBXGroup;
 			children = (
+				7CE55E241BB95C13004A2FF9 /* Supporting Files */,
+				7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */,
+				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
+				7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */,
 				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
 				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
 				7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */,
 				7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */,
-				7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */,
-				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
-				7CE55E241BB95C13004A2FF9 /* Supporting Files */,
 			);
 			path = OHMySQLTests;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */,
 				7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */,
 				7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */,
+				7C0D87B31D6597A700B7AA12 /* OHThreadingTests.m in Sources */,
 				7CBFDA351D62019C00F4C828 /* OHObjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
