@@ -9,7 +9,7 @@ You can connect to your remote MySQL database using OHMySQL API. It allows you d
 ## Installation
 You can use CocoaPods. Add the following line to your Podfile:
 ```objective-c
-pod 'OHMySQL', '~> 0.1.0'
+pod 'OHMySQL'
 ```
 
 Or you can copy files into your project. But be aware you need to copy [mysql-connector-c](https://github.com/ketzusaka/mysql-connector-c) library.
