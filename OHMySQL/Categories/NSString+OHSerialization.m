@@ -1,0 +1,22 @@
+//  Created by Oleg on 1/10/17.
+//  Copyright © 2017 Oleg Hnidets. All rights reserved.
+//
+
+#import "NSString+OHSerialization.h"
+
+
+@implementation NSString (OHSerialization)
+
++ (id)serializeFromCString:(const char *)cString defaultValue:(const char *)defaultValue canBeNull:(BOOL)canBeNull {
+    if (cString) {
+        return [NSString stringWithUTF8String:cString];
+    } else if (!cString && defaultValue) {
+        return [NSString stringWithUTF8String:defaultValue];
+    } else if (!cString && canBeNull == NO) {
+        return @"";
+    }
+    
+    return [NSNull null];
+}
+
+@end

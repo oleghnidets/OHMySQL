@@ -13,7 +13,7 @@
  *  @param cString C array of bytes.
  *  @param field Representation of one row of data.
  *
- *  @return Object of NSString or NSSNumber classes, or [NSNull null] if cannot serialize.
+ *  @return Object of NSString or NSSNumber classes, or [NSNull null] if the value can be 'NULL'. 
  */
 + (nonnull id)objectFromCString:(nullable const char *)cString field:(nonnull const void *)field;
 

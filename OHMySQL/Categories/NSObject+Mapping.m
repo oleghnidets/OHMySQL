@@ -37,7 +37,8 @@
     NSParameterAssert(response);
     NSDictionary *mirrorMappingDictionary = [self.mappingDictionary mirror];
     for (NSString *key in mirrorMappingDictionary.allKeys) {
-        [self setValue:response[key] forKey:mirrorMappingDictionary[key]];
+        id value = response[key] == [NSNull null] ? nil : response[key];
+        [self setValue:value forKey:mirrorMappingDictionary[key]];
     }
 }
 

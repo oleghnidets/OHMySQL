@@ -5,33 +5,30 @@
 #import "OHMySQLSerialization.h"
 #import <mysql.h>
 
+#import "NSNumber+OHSerialization.h"
+#import "NSString+OHSerialization.h"
+
+
 @implementation OHMySQLSerialization
 
 + (id)objectFromCString:(const char *)cString field:(const void *)pointer {
     MYSQL_FIELD *field = (MYSQL_FIELD *)pointer;
-    BOOL notNull = field->flags & NOT_NULL_FLAG;
+    // Indicates whether the value can be 'NULL'.
+    BOOL canBeNull = !IS_NOT_NULL(field->flags);
     BOOL isNumber = IS_NUM(field->type);
+    BOOL hasDefaultValue = (field->def_length > 0 && field->def != nil);
+    char *defaultaValue = hasDefaultValue ? field->def : nil;
     
     if (isNumber) {
-        NSNumber *number = [OHMySQLSerialization numberFromCString:cString];
-        
-        if (number) {
-            return number;
-        } else if (notNull) {
-            return [OHMySQLSerialization numberFromCString:field->def_length ? field->def : "0"];
-        }
-    } else if (notNull) {
-        return [NSString stringWithUTF8String:cString ?: (field->def_length ? field->def : "")];
+        return [NSNumber serializeFromCString:cString
+                                 defaultValue:defaultaValue
+                                    canBeNull:canBeNull];
     }
     
-    return [NSNull null];
-}
-
-+ (NSNumber *)numberFromCString:(const char *)cString {
-    NSString *numberString = [NSString stringWithUTF8String:cString];
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     
-    return [formatter numberFromString:numberString];
+    return [NSString serializeFromCString:cString
+                             defaultValue:defaultaValue
+                                canBeNull:canBeNull];
 }
 
 @end
