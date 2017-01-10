@@ -31,7 +31,7 @@
     [self configureResultsController];
     [self configureMySQL];
     
-    [OHTasksFacade loadTasks:^(NSArray *tasks) {
+    [OHTasksFacade loadTasks:^(__unused NSArray *tasks) {
         [self.allItemsController performFetch:nil];
     } failure:^{
         // handle
@@ -39,7 +39,7 @@
 }
 
 - (void)configureResultsController {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([OHTask class])];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:mysql_key(taskId) ascending:NO]];
     self.allItemsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -64,8 +64,8 @@
     [OHMySQLManager sharedManager].mainQueryContext = queryContext;
 }
 
-- (IBAction)addButtonPressed:(UIBarButtonItem *)sender {
-    AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
+- (IBAction)addButtonPressed:(__unused UIBarButtonItem *)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     OHTask *task = [NSEntityDescription insertNewObjectForEntityForName:NSStringFromClass([OHTask class])
                                                  inManagedObjectContext:appDelegate.managedObjectContext];
     task.name = @"Something important"; 
@@ -78,11 +78,11 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(__unused UITableView *)tableView {
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(__unused UITableView *)tableView numberOfRowsInSection:(__unused NSInteger)section {
     return self.allItemsController.fetchedObjects.count;
 }
 
@@ -93,17 +93,17 @@
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (BOOL)tableView:(__unused UITableView *)tableView canEditRowAtIndexPath:(__unused NSIndexPath *)indexPath {
     return YES;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(__unused UITableView *)tableView didSelectRowAtIndexPath:(__unused NSIndexPath *)indexPath {
     OHEditViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OHEditViewController"];
     viewController.task = self.allItemsController.fetchedObjects[indexPath.row];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(__unused UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         OHTask *task = self.allItemsController.fetchedObjects[indexPath.row];
         [OHTasksFacade deleteTask:task :nil failure:^{
@@ -114,15 +114,15 @@
 
 #pragma mark - NSFetchedResultsController
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerWillChangeContent:(__unused NSFetchedResultsController *)controller {
     [self.tableView beginUpdates];
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+- (void)controllerDidChangeContent:(__unused NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(__unused NSFetchedResultsController *)controller didChangeSection:(__unused id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
     switch (type) {
         case NSFetchedResultsChangeInsert: {
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -143,7 +143,7 @@
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+- (void)controller:(__unused NSFetchedResultsController *)controller didChangeObject:(__unused id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     // Fix for iOS8. Xcode 7 has a bug with FRC.
     if ([indexPath isEqual:newIndexPath]) {
         return ;
