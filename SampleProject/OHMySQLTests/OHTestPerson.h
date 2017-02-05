@@ -8,9 +8,9 @@
 @interface OHTestPerson : NSObject<OHMappingProtocol>
 
 @property (nonatomic, strong) NSNumber *ID;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *surname;
-@property (nonatomic, strong) NSNumber *age;
+@property (nonatomic, strong) id name;
+@property (nonatomic, strong) id surname;
+@property (nonatomic, strong) id age;
 
 @end
 

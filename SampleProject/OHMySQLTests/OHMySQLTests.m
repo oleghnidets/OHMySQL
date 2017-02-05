@@ -2,7 +2,15 @@
 //  Copyright © 2015 Oleg Hnidets. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+
+/* Note:
+    Unit tests must be refactored and separated by functionlities and classes.
+    Current implementation is massive and doesn't apply to best practises.
+    It were my first unit tests that's why they are ugly.
+ */
+
+
+@import XCTest;
 #import "XCTestCase+Database_Basic.h"
 
 @interface OHMySQLTests : XCTestCase
@@ -37,85 +45,78 @@
     [self createTable];
 }
 
-- (void)test02SelectAllQuery {
+- (void)test02SelectAll {
     // given
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName condition:nil];
     
     // when
     NSError *error;
     NSArray *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
-    
     // then
     AssertIfError();
     
     // when
     NSInteger countOfObjects = response.count;
-    
     // then
     XCTAssert(countOfObjects > 0);
     
     // when
     id firstResponseObject = response.firstObject;
-    
     // then
     AssertIfNotDictionary(firstResponseObject);
 }
 
-- (void)test03SelectAllQueryWithCondition {
+- (void)test03SelectAllWithCondition {
     // given
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName condition:@"name='Dustin'"];
     
     // when
     NSError *error;
     NSArray *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
-    
     // then
     AssertIfError();
     
     // when
     NSInteger countOfObjects = response.count;
-    
     // then
     XCTAssert(countOfObjects == 1);
     
     // when
     id firstResponseObject = response.firstObject;
-    
     // then
     AssertIfNotDictionary(firstResponseObject);
 }
 
-- (void)test04SelectAllQueryWithOrder {
+- (void)test04SelectAllWithOrderAsc {
     // given
-    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName condition:nil orderBy:@[@"id"] ascending:YES];
+    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName
+                                                                 condition:nil
+                                                                   orderBy:@[@"id"]
+                                                                 ascending:YES];
     
     // when
     NSError *error;
     NSArray *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
-    
     // then
     AssertIfError();
     
     // when
     id firstResponseObject = response.firstObject;
-    
     // then
     AssertIfNotDictionary(firstResponseObject);
     
     // when
     NSNumber *objectID = firstResponseObject[@"id"];
-    
     // then
     XCTAssertEqualObjects(objectID, @1);
     
     // when
     NSNumber *secondObjectID = response[1][@"id"];
-    
     // then
     XCTAssertEqualObjects(secondObjectID, @2);
 }
 
-- (void)test05SelectAllQueryWithConditionAndOrder {
+- (void)test05SelectAllWithConditionAndOrderDesc {
     // given
     NSNumber *firstObjectIDLimit = @3;
     NSNumber *lastObjectIDLimit  = @20;
@@ -129,25 +130,21 @@
     // when
     NSError *error;
     NSArray *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
-    
     // then
     AssertIfError();
     
     // when
     id firstResponseObject = response.firstObject;
-    
     // then
     AssertIfNotDictionary(firstResponseObject);
     
     // when
     NSNumber *objectID = firstResponseObject[@"id"];
-    
     // then
     XCTAssertEqualObjects(objectID, lastObjectIDLimit);
     
     // when
     NSNumber *lastObjectID = response.lastObject[@"id"];
-    
     // then
     XCTAssertEqualObjects(lastObjectID, firstObjectIDLimit);
 }
@@ -159,14 +156,12 @@
     // when
     NSError *error;
     NSDictionary *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
-    
     // then
     AssertIfError();
     AssertIfNotDictionary(response);
     
     // when
     NSNumber *firstObjectID = response[@"id"];
-    
     // then
     XCTAssertEqualObjects(firstObjectID, @1);
 }
@@ -180,7 +175,6 @@
     // when
     NSError *error;
     NSDictionary *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
-    
     // then
     AssertIfError();
     AssertIfNotDictionary(response);
@@ -188,7 +182,6 @@
     // when
     NSNumber *firstObjectID = response[@"id"];
     NSNumber *nextObjectID = @(conditionID.integerValue+1);
-    
     // then
     XCTAssertEqualObjects(firstObjectID, nextObjectID);
 }
@@ -204,7 +197,6 @@
     // when
     NSError *error;
     NSDictionary *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error].firstObject;
-    
     // then
     AssertIfError();
     AssertIfNotDictionary(response);
@@ -228,31 +220,32 @@
 
 - (void)test10InsertNewRow {
     // given
+    NSDictionary *insertSet = @{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" };
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory INSERT:kTableName
-                                                                       set:@{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" }];
+                                                                       set:insertSet];
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     XCTAssert(success);
     AssertIfError();
     
     // when
     NSInteger lastInsertedID = [self.mainQueryContext lastInsertID].integerValue;
-    
     // then
     XCTAssert(lastInsertedID > 0);
 }
 
 - (void)test11UpdateAll {
     // given
-    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory UPDATE:kTableName set:@{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" } condition:nil];
+    NSDictionary *updateSet = @{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" };
+    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory UPDATE:kTableName
+                                                                       set:updateSet
+                                                                 condition:nil];
     
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     XCTAssert(success);
     AssertIfError();
@@ -267,19 +260,17 @@
 - (void)test13CountRecords {
     // when
     NSNumber *countOfObjects = [self countOfObjects];
-    
     // then
     XCTAssertNotEqualObjects(countOfObjects, @0);
 }
 
 - (void)test14UpdateAllWithCondition {
     // given
-    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory UPDATE:kTableName set:@{ @"age" : @"22" } condition:@"name='Oleg'"];
+    OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory UPDATE:kTableName set:@{ @"age" : @"25" } condition:@"name='Oleg'"];
     
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     XCTAssert(success);
     AssertIfError();
@@ -301,7 +292,6 @@
 - (void)test16Refresh {
     // when
     OHResultErrorType result = [self.storeCoordinator refresh:OHRefreshOptionTables];
-    
     // then
     XCTAssert(result == OHResultErrorTypeNone);
 }
@@ -313,7 +303,6 @@
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     XCTAssert(success);
     AssertIfError();
@@ -326,14 +315,12 @@
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     XCTAssert(success);
     AssertIfError();
     
     // when
     CFAbsoluteTime totalTime = queryRequest.timeline.totalTime;
-    
     // then
     XCTAssert(totalTime > 0);
 }
@@ -346,7 +333,6 @@
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     XCTAssert(success == NO);
     AssertIfNoError();
@@ -360,7 +346,6 @@
     // when
     NSError *error;
     NSArray *response = [self.mainQueryContext executeQueryRequestAndFetchResult:queryRequest error:&error];
-    
     // then
     XCTAssert(response == nil);
     AssertIfNoError();
@@ -369,7 +354,6 @@
 - (void)test21StoreInformation {
     // given
     OHMySQLStore *store = self.storeCoordinator.store;
-    
     // then
     XCTAssert(store.serverInfo && store.hostInfo && store.protocolInfo && store.serverVersion && store.status);
 }
@@ -382,7 +366,6 @@
     // when
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
-    
     // then
     AssertIfNoError();
     XCTAssert(success == NO);
@@ -394,7 +377,6 @@
     
     // when
     BOOL isConnected = self.storeCoordinator.isConnected;
-    
     // then
     XCTAssert(isConnected == NO);
 }
@@ -402,7 +384,6 @@
 - (void)DISABLED_test24ShutdownDatabase {
     // when
     OHResultErrorType result = [self.storeCoordinator shutdown];
-    
     // then
     XCTAssert(result == OHResultErrorTypeNone);
 }

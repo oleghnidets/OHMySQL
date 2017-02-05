@@ -2,7 +2,7 @@
 //  Copyright © 2016 Oleg Hnidets. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
+@import XCTest;
 #import "OHTestPerson.h"
 #import "XCTestCase+Database_Basic.h"
 

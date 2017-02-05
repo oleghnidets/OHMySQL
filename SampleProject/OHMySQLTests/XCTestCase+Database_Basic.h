@@ -5,9 +5,9 @@
 #import <XCTest/XCTest.h>
 #import "OHMySQL.h"
 
-extern NSString *const kDatabaseName;
-extern NSString *const kTableName;
-extern NSString *const kDropTableString;
+extern NSString * const kDatabaseName;
+extern NSString * const kTableName;
+extern NSString * const kDropTableString;
 
 #define AssertIfError() XCTAssert(error == nil)
 #define AssertIfNoError() XCTAssert(error != nil)
@@ -15,12 +15,15 @@ extern NSString *const kDropTableString;
 
 @interface XCTestCase (Database_Basic)
 
-@property (nonatomic, strong) OHMySQLQueryContext *mainQueryContext;
-@property (nonatomic, strong) OHMySQLStoreCoordinator *storeCoordinator;
+@property (nonatomic, strong, readonly) OHMySQLQueryContext *mainQueryContext;
+@property (nonatomic, strong, readonly) OHMySQLStoreCoordinator *storeCoordinator;
 
 + (void)configureDatabase;
+
 - (void)createTable;
+- (void)createTableWithQuery:(NSString *)query;
 - (void)createEmptyTable;
+
 - (NSNumber *)countOfObjects;
 
 @end

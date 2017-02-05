@@ -17,6 +17,8 @@
 		7C842D7F1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D7E1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m */; };
 		7C842D821D1054E600A6B005 /* OHMySQLQueryContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D811D1054E600A6B005 /* OHMySQLQueryContext.m */; };
 		7C842D891D105C9800A6B005 /* OHMySQLQueryRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C842D881D105C9800A6B005 /* OHMySQLQueryRequestFactory.m */; };
+		7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5C81E47910800A978F0 /* OHNullTests.m */; };
+		7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */; };
 		7CBB08B91D12F22400B92CA9 /* NSObject+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A31D12F22400B92CA9 /* NSObject+Mapping.m */; };
 		7CBB08BA1D12F22400B92CA9 /* NSString+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A51D12F22400B92CA9 /* NSString+Utility.m */; };
 		7CBB08BB1D12F22400B92CA9 /* OHMySQLQueryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08A81D12F22400B92CA9 /* OHMySQLQueryRequest.m */; };
@@ -77,6 +79,9 @@
 		7C842D871D105C9800A6B005 /* OHMySQLQueryRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLQueryRequestFactory.h; sourceTree = "<group>"; };
 		7C842D881D105C9800A6B005 /* OHMySQLQueryRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLQueryRequestFactory.m; sourceTree = "<group>"; };
 		7C85C7311BE5387600F7B30C /* OHMappingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMappingProtocol.h; sourceTree = "<group>"; };
+		7CBAB5C81E47910800A978F0 /* OHNullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHNullTests.m; sourceTree = "<group>"; };
+		7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+INSERT.h"; sourceTree = "<group>"; };
+		7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+INSERT.m"; sourceTree = "<group>"; };
 		7CBB08A21D12F22400B92CA9 /* NSObject+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mapping.h"; sourceTree = "<group>"; };
 		7CBB08A31D12F22400B92CA9 /* NSObject+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Mapping.m"; sourceTree = "<group>"; };
 		7CBB08A41D12F22400B92CA9 /* NSString+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utility.h"; sourceTree = "<group>"; };
@@ -168,6 +173,26 @@
 				7C1FD7291E2514DC00515627 /* OHSerializationProtocol.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		7CBAB5C61E478F4900A978F0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */,
+				7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */,
+				7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */,
+				7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		7CBAB5C71E478F5200A978F0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
+				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		7CBB08A11D12F22400B92CA9 /* Categories */ = {
@@ -270,14 +295,13 @@
 		7CE55D201BB95887004A2FF9 /* OHMySQLTests */ = {
 			isa = PBXGroup;
 			children = (
+				7CBAB5C71E478F5200A978F0 /* Mocks */,
+				7CBAB5C61E478F4900A978F0 /* Helpers */,
 				7CE55E241BB95C13004A2FF9 /* Supporting Files */,
 				7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */,
 				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
 				7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */,
-				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
-				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
-				7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */,
-				7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */,
+				7CBAB5C81E47910800A978F0 /* OHNullTests.m */,
 			);
 			path = OHMySQLTests;
 			sourceTree = "<group>";
@@ -525,6 +549,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */,
+				7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */,
+				7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */,
 				7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */,
 				7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */,
 				7C0D87B31D6597A700B7AA12 /* OHThreadingTests.m in Sources */,

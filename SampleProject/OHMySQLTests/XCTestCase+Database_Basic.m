@@ -18,7 +18,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     return [OHMySQLManager sharedManager].mainQueryContext;
 }
 
-- (void)setMainQueryContext:(OHMySQLQueryContext *)mainQueryContext {
+- (void)setMainQueryContext:(__unused OHMySQLQueryContext *)mainQueryContext {
     NSAssert(NO, @"You must not set this property");
 }
 
@@ -26,7 +26,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     return [OHMySQLManager sharedManager].storeCoordinator;
 }
 
-- (void)setStoreCoordinator:(OHMySQLStoreCoordinator *)storeCoordinator {
+- (void)setStoreCoordinator:(__unused OHMySQLStoreCoordinator *)storeCoordinator {
     NSAssert(NO, @"You must not set this property");
 }
 
@@ -51,8 +51,13 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 - (void)createTableWithQuery:(NSString *)query {
+    NSString *formattedQuery = [query stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    // Table name must be the 3rd word
+    NSString *tableName = [formattedQuery componentsSeparatedByString:@" "][2];
+
     // given
-    OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:kDropTableString];
+    NSString *dropQueryString = [self dropTableQuery:tableName];
+    OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
     [self.mainQueryContext executeQueryRequest:dropQueryRequest error:nil];
     
     // when
@@ -62,6 +67,10 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     
     // then
     XCTAssert(success && !error);
+}
+
+- (NSString *)dropTableQuery:(NSString *)tableName {
+    return [@"DROP TABLE " stringByAppendingString:tableName];
 }
 
 - (void)createEmptyTable {
