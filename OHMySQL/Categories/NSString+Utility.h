@@ -67,6 +67,6 @@
 - (nonnull NSString *)appendOrderBy:(nullable NSArray<NSString *> *)columnNames ascending:(BOOL)isAscending;
 
 //! Returns a string like 'string'.
-- (nonnull NSString *)stringWithSingleMarks;
+@property (class, readonly, nonnull) NSString *stringWithSingleMarks;
 
 @end

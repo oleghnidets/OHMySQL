@@ -78,7 +78,7 @@
 #pragma mark INSERT
 + (NSString *)INSERTString:(NSString *)tableName set:(NSDictionary *)set {
     NSString *values = @"";
-    for (NSString *value in set.allValues) {
+    for (id value in set.allValues) {
         values = [values stringByAppendingFormat:@"'%@',", value];
     }
     
@@ -102,6 +102,10 @@
 @implementation NSString (Helper)
 
 - (NSString *)stringByRemovingLastCharacter {
+    if ([self isEqualToString:@""]) {
+        return self;
+    }
+    
     return [self substringToIndex:self.length-1];
 }
 
