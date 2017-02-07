@@ -3,6 +3,7 @@
 //
 
 @import Foundation;
+#import "OHCharsetEncoding.h"
 
 /// Responsible for seralization of responses.
 @interface OHMySQLSerialization : NSObject
@@ -15,6 +16,8 @@
  *
  *  @return Object of NSString or NSSNumber classes, or [NSNull null] if the value can be 'NULL'. 
  */
-+ (nonnull id)objectFromCString:(nullable const char *)cString field:(nonnull const void *)field;
++ (nonnull id)objectFromCString:(nullable const char *)cString
+						  field:(nonnull const void *)field
+					   encoding:(CharsetEncoding)encoding;
 
 @end

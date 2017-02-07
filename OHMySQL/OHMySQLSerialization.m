@@ -11,24 +11,26 @@
 
 @implementation OHMySQLSerialization
 
-+ (id)objectFromCString:(const char *)cString field:(const void *)pointer {
-    MYSQL_FIELD *field = (MYSQL_FIELD *)pointer;
-    // Indicates whether the value can be 'NULL'.
-    BOOL canBeNull = !IS_NOT_NULL(field->flags);
-    BOOL isNumber = IS_NUM(field->type);
-    BOOL hasDefaultValue = (field->def_length > 0 && field->def != nil);
-    char *defaultaValue = hasDefaultValue ? field->def : nil;
-    
-    if (isNumber) {
-        return [NSNumber serializeFromCString:cString
-                                 defaultValue:defaultaValue
-                                    canBeNull:canBeNull];
-    }
-    
-    
-    return [NSString serializeFromCString:cString
-                             defaultValue:defaultaValue
-                                canBeNull:canBeNull];
++ (id)objectFromCString:(const char *)cString field:(const void *)pointer encoding:(CharsetEncoding)encoding {
+	MYSQL_FIELD *field = (MYSQL_FIELD *)pointer;
+	// Indicates whether the value can be 'NULL'.
+	BOOL canBeNull = !IS_NOT_NULL(field->flags);
+	BOOL isNumber = IS_NUM(field->type);
+	BOOL hasDefaultValue = (field->def_length > 0 && field->def != nil);
+	char *defaultaValue = hasDefaultValue ? field->def : nil;
+	
+	if (isNumber) {
+		return [NSNumber serializeFromCString:cString
+								 defaultValue:defaultaValue
+									canBeNull:canBeNull
+									 encoding:encoding];
+	}
+	
+	
+	return [NSString serializeFromCString:cString
+							 defaultValue:defaultaValue
+								canBeNull:canBeNull
+								 encoding:encoding];
 }
 
 @end

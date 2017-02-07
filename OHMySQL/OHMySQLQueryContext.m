@@ -74,8 +74,11 @@ NSError *contextError(NSString *description) {
     NSParameterAssert(query.queryString);
     MYSQL *_mysql = self.mysql;
     if (!self.storeCoordinator.isConnected || !_mysql) {
-        OHLogError(@"The connection is broken.");
+		NSString *errorString = [NSString stringWithUTF8String:mysql_error(_mysql)];
+        OHLogError(@"The connection is broken: %@", errorString);
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
+		
+		
         if (error) {
             *error = contextError(@"Cannot connect to DB. Check your configuration properties.");
         }
@@ -275,7 +278,9 @@ NSError *contextError(NSString *description) {
         NSInteger countOfFields = mysql_num_fields(result);
         for (CFIndex i=0; i<countOfFields; ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
-            id value = [OHMySQLSerialization objectFromCString:row[i] field:&fields[i]];
+            id value = [OHMySQLSerialization objectFromCString:row[i]
+														 field:&fields[i]
+													  encoding:self.storeCoordinator.encoding];
             jsonDict[key] = value;
         }
         

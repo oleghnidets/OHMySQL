@@ -16,13 +16,16 @@
 @property (nonatomic, strong, readonly, nullable) OHMySQLUser *user;
 
 //! Nonnull after connection with DB. You don't need to use this property at all.
-@property (assign, readonly, nullable) void *mysql;
+@property (readonly, nullable) void *mysql;
 
 //! Pings the server and indicates whether the connection to the server is working.
 @property (assign, readonly, getter=isConnected) BOOL connected;
 
 //! One of the protocols. Needs to be set before calling -connect.
 @property (nonatomic, assign) OHProtocolType protocol;
+
+//! The default character set for the current connection. By default UTF-8.
+@property (nonatomic, assign) CharsetEncoding encoding;
 
 - (nonnull instancetype)initWithUser:(nonnull OHMySQLUser *)user;
 

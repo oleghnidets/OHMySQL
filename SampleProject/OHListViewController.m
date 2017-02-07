@@ -53,7 +53,7 @@
     OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
                                                      password:@"root"
                                                    serverName:@"localhost"
-                                                       dbName:@"sample"
+                                                       dbName:@"ohmysql"
                                                          port:3306
                                                        socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];

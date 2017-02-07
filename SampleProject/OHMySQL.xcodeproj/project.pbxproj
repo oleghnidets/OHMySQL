@@ -43,6 +43,7 @@
 		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; };
 		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
 		7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */; };
+		92626B301E49D7EB00646DD1 /* OHCharsetEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 92626B2F1E49D7EB00646DD1 /* OHCharsetEncoding.m */; };
 		9ED295D7A64F8AE460E4593F /* libPods-OHMySQL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150CAA928F7EA7BED09F9AC0 /* libPods-OHMySQL.a */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +135,8 @@
 		7CE55E1C1BB95B77004A2FF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLTests.m; sourceTree = "<group>"; };
 		7CE55E291BB95E79004A2FF9 /* OHMySQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQL.h; sourceTree = "<group>"; };
+		92626B2E1E49D7EB00646DD1 /* OHCharsetEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHCharsetEncoding.h; sourceTree = "<group>"; };
+		92626B2F1E49D7EB00646DD1 /* OHCharsetEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHCharsetEncoding.m; sourceTree = "<group>"; };
 		D1E3C827D94AB4D1A68BCDF9 /* Pods-OHMySQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -237,6 +240,8 @@
 				7CBB08B61D12F22400B92CA9 /* OHProtocolType.h */,
 				7CBB08B71D12F22400B92CA9 /* OHRefreshOptions.h */,
 				7CBB08B81D12F22400B92CA9 /* OHResultErrorType.h */,
+				92626B2E1E49D7EB00646DD1 /* OHCharsetEncoding.h */,
+				92626B2F1E49D7EB00646DD1 /* OHCharsetEncoding.m */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				7CBB08C01D12F22400B92CA9 /* OHJoinConstants.m in Sources */,
 				7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */,
 				7CBB08BE1D12F22400B92CA9 /* OHMySQLUser.m in Sources */,
+				92626B301E49D7EB00646DD1 /* OHCharsetEncoding.m in Sources */,
 				7CBB08BD1D12F22400B92CA9 /* OHMySQLTimeline.m in Sources */,
 				7C1FD7281E2514B200515627 /* NSString+OHSerialization.m in Sources */,
 				7CBB08BC1D12F22400B92CA9 /* OHMySQLStore.m in Sources */,

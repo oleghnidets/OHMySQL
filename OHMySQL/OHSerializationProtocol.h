@@ -3,12 +3,13 @@
 //
 
 @import Foundation;
-
+#import "OHCharsetEncoding.h"
 
 @protocol OHSerialization <NSObject>
 
 + (nonnull id)serializeFromCString:(nullable const char *)cString
                       defaultValue:(nullable const char *)defaultValue
-                         canBeNull:(BOOL)canBeNull;
+                         canBeNull:(BOOL)canBeNull
+						  encoding:(CharsetEncoding)encoding;
 
 @end

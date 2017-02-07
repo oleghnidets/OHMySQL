@@ -7,11 +7,13 @@
 
 @implementation NSString (OHSerialization)
 
-+ (id)serializeFromCString:(const char *)cString defaultValue:(const char *)defaultValue canBeNull:(BOOL)canBeNull {
++ (id)serializeFromCString:(const char *)cString defaultValue:(const char *)defaultValue canBeNull:(BOOL)canBeNull encoding:(CharsetEncoding)encoding {
+	NSStringEncoding nsEncoding = CFStringConvertEncodingToNSStringEncoding(encoding);
+	
     if (cString) {
-        return [NSString stringWithUTF8String:cString];
+        return [[NSString alloc] initWithCString:cString encoding:nsEncoding];
     } else if (!cString && defaultValue) {
-        return [NSString stringWithUTF8String:defaultValue];
+        return [[NSString alloc] initWithCString:defaultValue encoding:nsEncoding];
     } else if (!cString && canBeNull == NO) {
         return @"";
     }

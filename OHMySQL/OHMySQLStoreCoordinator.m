@@ -7,6 +7,7 @@
 #import "OHMySQLUser.h"
 #import "OHSSLConfig.h"
 #import "OHMySQLStore.h"
+#import "OHCharsetEncoding.h"
 
 #import <mysql.h>
 
@@ -14,50 +15,64 @@
 
 @property (nonatomic, strong, readwrite) OHMySQLStore *store;
 @property (nonatomic, strong, readwrite) OHMySQLUser *user;
-@property (assign, readwrite, nullable) void *mysql;
+@property (readwrite, nullable) void *mysql;
 
 @end
 
-@implementation OHMySQLStoreCoordinator 
+@implementation OHMySQLStoreCoordinator
+
+- (void)setEncoding:(CharsetEncoding)encoding {
+	_encoding = encoding;
+	[self configureConnectionForEncoding:encoding];
+}
 
 - (instancetype)initWithUser:(OHMySQLUser *)user {
     NSParameterAssert(user);
     if (self = [super init]) {
         _user = user;
+		_encoding = CharsetEncodingUTF8;
     }
     
     return self;
 }
 
 - (void)dealloc {
-    [self disconnect];
+	mysql_library_end;
 }
 
 - (void)connect {
-    static MYSQL local;
-    
     mysql_library_init;
     
-    mysql_init(&local);
+    _mysql = mysql_init(NULL);
     
-    mysql_options(&local, MYSQL_OPT_COMPRESS, 0);
+    mysql_options(_mysql, MYSQL_OPT_COMPRESS, 0);
     my_bool reconnect = 1;
-    mysql_options(&local, MYSQL_OPT_RECONNECT, &reconnect);
-    mysql_options(&local, MYSQL_OPT_PROTOCOL, &_protocol);
+    mysql_options(_mysql, MYSQL_OPT_RECONNECT, &reconnect);
+    mysql_options(_mysql, MYSQL_OPT_PROTOCOL, &_protocol);
     
     OHSSLConfig *SSLconfig = self.user.sslConfig;
     if (SSLconfig) {
-        mysql_ssl_set(&local, SSLconfig.key.UTF8String, SSLconfig.certPath.UTF8String,
+        mysql_ssl_set(_mysql, SSLconfig.key.UTF8String, SSLconfig.certPath.UTF8String,
                       SSLconfig.certAuthPath.UTF8String, SSLconfig.certAuthPEMPath.UTF8String,
                       SSLconfig.cipher.UTF8String);
     }
     
-    if (!mysql_real_connect(&local, _user.serverName.UTF8String, _user.userName.UTF8String, _user.password.UTF8String, _user.dbName.UTF8String, (unsigned int)_user.port, _user.socket.UTF8String, 0)) {
-        OHLogError(@"Failed to connect to database: Error: %s", mysql_error(&local));
-    } else {
-        _mysql = &local;
-        self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
+    if (!mysql_real_connect(_mysql, _user.serverName.UTF8String, _user.userName.UTF8String, _user.password.UTF8String, _user.dbName.UTF8String, (unsigned int)_user.port, _user.socket.UTF8String, 0)) {
+        OHLogError(@"Failed to connect to database: Error: %s", mysql_error(_mysql));
+		return ;
     }
+	
+	self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
+	[self configureConnectionForEncoding:self.encoding];
+}
+
+- (void)configureConnectionForEncoding:(CharsetEncoding)encoding {
+	NSString *charset = [OHCharsetEncoding charsetForEncoding:encoding];
+	if (charset != nil && _mysql != nil) {
+		if (!mysql_set_character_set(_mysql, charset.UTF8String)) {
+			OHLog(@"New character set: %s", mysql_character_set_name(_mysql));
+		}
+	}
 }
 
 - (OHResultErrorType)selectDataBase:(NSString *)database {
@@ -75,9 +90,8 @@
 
 - (void)disconnect {
     @synchronized (self) {
-        if (_mysql != NULL) {
+        if (self.isConnected) {
             mysql_close(_mysql);
-            _mysql = nil;
             mysql_library_end;
         }
     }
