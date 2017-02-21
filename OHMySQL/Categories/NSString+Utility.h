@@ -4,42 +4,61 @@
 
 @import Foundation;
 
-@interface NSString (SQLQueries)
-
-//! SELECT column_name(s) FROM table1 'join type' table2 ON table1.column_name=table2.column_name
-+ (nonnull NSString *)JOINString:(nonnull NSString *)joinType
-                       fromTable:(nonnull NSString *)table
-                     columnNames:(nonnull NSArray<NSString *> *)columnNames
-                       joinInner:(nonnull NSDictionary<NSString *, NSString *> *)tables;
+@interface NSString (SELECT)
 
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) LIMIT 1
 + (nonnull NSString *)SELECTFirstString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 //! //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) ORDER BY column_name ASC|DESC, column_name ASC|DESC LIMIT 1
 + (nonnull NSString *)SELECTFirstString:(nonnull NSString *)tableName
-                              condition:(nullable NSString *)condition
-                                orderBy:(nonnull NSArray<NSString *> *)columnsNames
-                              ascending:(BOOL)isAscending;
+							  condition:(nullable NSString *)condition
+								orderBy:(nonnull NSArray<NSString *> *)columnsNames
+							  ascending:(BOOL)isAscending;
 
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value)
 + (nonnull NSString *)SELECTString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 //! SELECT column_name,column_name FROM table_name (WHERE column_name operator value) ORDER BY column_name ASC|DESC, column_name ASC|DESC
 + (nonnull NSString *)SELECTString:(nonnull NSString *)tableName
-                         condition:(nullable NSString *)condition
-                           orderBy:(nullable NSArray<NSString *> *)columnsNames
-                         ascending:(BOOL)isAscending;
+						 condition:(nullable NSString *)condition
+						   orderBy:(nullable NSArray<NSString *> *)columnsNames
+						 ascending:(BOOL)isAscending;
+
+@end
+
+@interface NSString (UPDATE)
 
 //! UPDATE table_name SET column1=value1,column2=value2,... (WHERE some_column=some_value)
 + (nonnull NSString *)UPDATEString:(nonnull NSString *)tableName
-                               set:(nonnull NSDictionary<NSString *, id> *)set
-                         condition:(nullable NSString *)condition;
+							   set:(nonnull NSDictionary<NSString *, id> *)set
+						 condition:(nullable NSString *)condition;
+
+@end
+
+@interface NSString (DELETE)
 
 //! DELETE FROM table_name (WHERE some_column=some_value)
 + (nonnull NSString *)DELETEString:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
-//! INSERT INTO table_name VALUES (value1,value2,value3,...)
-+ (nonnull NSString *)INSERTString:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
+@end
+
+@interface NSString (JOIN)
+
++ (nonnull NSString *)JOINString:(nonnull NSString *)joinType
+					   fromTable:(nonnull NSString *)table
+					 columnNames:(nonnull NSArray<NSString *> *)columnNames
+					   joinInner:(nonnull NSDictionary<NSString *, NSString *> *)tables;
+
+@end
+
+@interface NSString (INSERT)
+
++ (nonnull NSString *)INSERTString:(nonnull NSString *)tableName
+							   set:(nonnull NSDictionary<NSString *, id> *)set;
+
+@end
+
+@interface NSString (OTHER)
 
 //! SELECT COUNT(*) FROM
 + (nonnull NSString *)countString:(nonnull NSString *)tableName;
