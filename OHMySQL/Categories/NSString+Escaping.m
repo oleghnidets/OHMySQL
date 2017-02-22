@@ -4,11 +4,6 @@
 
 #import "NSString+Escaping.h"
 
-typedef NS_ENUM(NSInteger, EscapeType) {
-	EscapeTypeNormal,
-	EscapeTypeEscape,
-};
-
 static size_t escape(const char *szOrig, char *szEscaped, size_t bufSize);
 
 @implementation NSString (Escaping)
@@ -35,68 +30,6 @@ static size_t escape(const char *szOrig, char *szEscaped, size_t bufSize);
 }
 
 @end
-
-static int unescape(char *str, size_t strLength, EscapeType state) {
-	int sIndex = 0, dIndex = 0;
-	
-	if (str == 0 || strLength <= 0) { // validate string
-		return 0;
-	}
-	
-	while (sIndex < strLength) {
-		switch (state) {
-				// we are in the NORMAL state until we find a '\\' character
-			case EscapeTypeNormal:
-				if (str[sIndex] == '\\') {
-					state = EscapeTypeEscape;
-				} else {
-					// Simply copy the non '\\' characters from the source
-					// to the destination in the EscapeTypeNormal state.
-					str[dIndex] = str[sIndex];
-					dIndex += 1;
-				}
-				break;
-			case EscapeTypeEscape:
-				// In the EscapeTypeEscape state, copy the sequence,
-				// like '\\\n', '\\\r', etc. as '\n', '\r', etc.
-				if (
-					str[sIndex] == '\0' ||
-					str[sIndex] == '\n' ||
-					str[sIndex] == '\r' ||
-					str[sIndex] == '\\' ||
-					str[sIndex] == '\'' ||
-					str[sIndex] == '\"' ||
-					str[sIndex] == (char) 0x1A /* Ctrl-Z */
-					) {
-					str[dIndex] = str[sIndex];
-					dIndex ++;
-				} else {
-					// we have (mistakenly) entered the EscapeTypeEscape
-					// state, so output the suppressed '\\' character
-					// and the current character
-					str[dIndex] = '\\';
-					dIndex ++;
-					str[dIndex] = str[sIndex];
-					dIndex ++;
-				}
-				
-				state = EscapeTypeNormal;
-				
-				break;
-		}
-		
-		sIndex ++;
-	}
-	
-	// In case the last character is a '\\' indicated by the EscapeTypeEscape state at loop termination
-	// we have to copy the '\\' character
-	if (state == EscapeTypeEscape) {
-		str [dIndex] = '\\';
-		dIndex ++;
-	}
-	
-	return dIndex;
-}
 
 static size_t escape(const char *szOrig, char *szEscaped, size_t bufSize) {
 	size_t newLen = 0;
