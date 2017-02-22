@@ -43,6 +43,8 @@
 		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; };
 		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
 		7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */; };
+		92538D641E5D863100FCE133 /* OHEscapeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92538D631E5D863000FCE133 /* OHEscapeTests.m */; };
+		92538D691E5DCB3D00FCE133 /* NSString+Escaping.m in Sources */ = {isa = PBXBuildFile; fileRef = 92538D681E5DCB3D00FCE133 /* NSString+Escaping.m */; };
 		92626B301E49D7EB00646DD1 /* OHCharsetEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 92626B2F1E49D7EB00646DD1 /* OHCharsetEncoding.m */; };
 		9ED295D7A64F8AE460E4593F /* libPods-OHMySQL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 150CAA928F7EA7BED09F9AC0 /* libPods-OHMySQL.a */; };
 /* End PBXBuildFile section */
@@ -135,6 +137,9 @@
 		7CE55E1C1BB95B77004A2FF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLTests.m; sourceTree = "<group>"; };
 		7CE55E291BB95E79004A2FF9 /* OHMySQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQL.h; sourceTree = "<group>"; };
+		92538D631E5D863000FCE133 /* OHEscapeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEscapeTests.m; sourceTree = "<group>"; };
+		92538D671E5DCB3D00FCE133 /* NSString+Escaping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Escaping.h"; sourceTree = "<group>"; };
+		92538D681E5DCB3D00FCE133 /* NSString+Escaping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Escaping.m"; sourceTree = "<group>"; };
 		92626B2E1E49D7EB00646DD1 /* OHCharsetEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHCharsetEncoding.h; sourceTree = "<group>"; };
 		92626B2F1E49D7EB00646DD1 /* OHCharsetEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHCharsetEncoding.m; sourceTree = "<group>"; };
 		D1E3C827D94AB4D1A68BCDF9 /* Pods-OHMySQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +214,8 @@
 				7C1FD7271E2514B200515627 /* NSString+OHSerialization.m */,
 				7CBB08A41D12F22400B92CA9 /* NSString+Utility.h */,
 				7CBB08A51D12F22400B92CA9 /* NSString+Utility.m */,
+				92538D671E5DCB3D00FCE133 /* NSString+Escaping.h */,
+				92538D681E5DCB3D00FCE133 /* NSString+Escaping.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -307,6 +314,7 @@
 				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
 				7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */,
 				7CBAB5C81E47910800A978F0 /* OHNullTests.m */,
+				92538D631E5D863000FCE133 /* OHEscapeTests.m */,
 			);
 			path = OHMySQLTests;
 			sourceTree = "<group>";
@@ -544,6 +552,7 @@
 				7CBB08BE1D12F22400B92CA9 /* OHMySQLUser.m in Sources */,
 				92626B301E49D7EB00646DD1 /* OHCharsetEncoding.m in Sources */,
 				7CBB08BD1D12F22400B92CA9 /* OHMySQLTimeline.m in Sources */,
+				92538D691E5DCB3D00FCE133 /* NSString+Escaping.m in Sources */,
 				7C1FD7281E2514B200515627 /* NSString+OHSerialization.m in Sources */,
 				7CBB08BC1D12F22400B92CA9 /* OHMySQLStore.m in Sources */,
 				7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */,
@@ -559,6 +568,7 @@
 				7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */,
 				7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */,
 				7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */,
+				92538D641E5D863100FCE133 /* OHEscapeTests.m in Sources */,
 				7C0D87B31D6597A700B7AA12 /* OHThreadingTests.m in Sources */,
 				7CBFDA351D62019C00F4C828 /* OHObjectTests.m in Sources */,
 			);

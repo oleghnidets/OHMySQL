@@ -3,7 +3,7 @@
 //
 
 #import "NSString+Utility.h"
-
+#import "NSString+Escaping.h"
 
 @implementation NSString (SELECT)
 
