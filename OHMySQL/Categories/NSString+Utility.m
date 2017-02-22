@@ -91,14 +91,17 @@
 
 + (NSString *)INSERTString:(NSString *)tableName set:(NSDictionary *)set {
 	NSString *values = @"";
-	for (id value in set.allValues) {
-		values = [values stringByAppendingFormat:@"'%@',", value];
+	NSString *keys = @"";
+	for (id key in set.allKeys) {
+		keys = [keys stringByAppendingFormat:@"%@,", key];
+		values = [values stringByAppendingFormat:@"'%@',", set[key]];
 	}
 	
+	keys = [keys stringByRemovingLastCharacter];
 	values = [values stringByRemovingLastCharacter];
 	
 	// (%@, %@, %@) VALUES ('%@', '%@', '%@')
-	return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", tableName, [@"" stringByCommaWithArray:set.allKeys], values];
+	return [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES (%@)", tableName, keys, values];
 }
 
 @end
