@@ -15,10 +15,6 @@
 /// Returns name of primary property (row).
 - (NSString *)primaryKey;
 
-@optional
-/// Returns name of index property.
-- (NSString *)indexKey __attribute((deprecated("Use -primaryKey method instead of this one.")));
-
 @end
 
 #define mysql_key(name) NSStringFromSelector(@selector(name))

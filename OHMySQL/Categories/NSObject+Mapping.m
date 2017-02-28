@@ -49,7 +49,7 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 
 - (NSString *)indexKeyCondition {
-    NSString *indexKey = self.primaryKey ?: self.indexKey; // Index Key remove
+    NSString *indexKey = self.primaryKey;
     // Get object by calling property.
     id object = [self performSelector:NSSelectorFromString(indexKey)];
     
