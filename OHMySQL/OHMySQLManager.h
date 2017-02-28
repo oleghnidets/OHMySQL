@@ -8,13 +8,13 @@
 /// Represents a main context and store coordinator.
 @interface OHMySQLManager : NSObject
 
-//! Shared manager.
+/// Shared manager.
 + (nonnull OHMySQLManager *)sharedManager;
 
-//! Single context that is used in the app. Context should be set by a user of this class.
+/// Single context that is used in the app. Context should be set by a user of this class.
 @property (nonatomic, strong, nullable) OHMySQLQueryContext *mainQueryContext;
 
-//! Single store coordinator.
+/// Single store coordinator.
 @property (nonatomic, strong, readonly, nullable) OHMySQLStoreCoordinator *storeCoordinator;
 
 @end
