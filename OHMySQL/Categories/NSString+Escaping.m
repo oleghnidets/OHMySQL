@@ -10,7 +10,7 @@ static size_t escape(const char *szOrig, char *szEscaped, size_t bufSize);
 
 - (nonnull NSString *)escapedUsingEncoding:(CharsetEncoding)encoding {
 	// Get current NSString instance as C string.
-	NSStringEncoding nsEncoding = CFStringConvertEncodingToNSStringEncoding(encoding);
+	NSStringEncoding nsEncoding = NSStringEncodingFromCharsetEncoding(encoding);
 	const char *chars = [self cStringUsingEncoding:nsEncoding];
 	
 	// Allocate enought memory for escaped C string.

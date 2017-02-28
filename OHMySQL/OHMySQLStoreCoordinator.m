@@ -67,7 +67,7 @@
 }
 
 - (void)configureConnectionForEncoding:(CharsetEncoding)encoding {
-	NSString *charset = [OHCharsetEncoding charsetForEncoding:encoding];
+	NSString *charset = MySQLCharsetForEncoding(encoding);
 	if (charset != nil && _mysql != nil) {
 		if (!mysql_set_character_set(_mysql, charset.UTF8String)) {
 			OHLog(@"New character set: %s", mysql_character_set_name(_mysql));
