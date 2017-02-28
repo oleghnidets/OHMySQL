@@ -27,7 +27,7 @@
 		7CBB08BE1D12F22400B92CA9 /* OHMySQLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08AE1D12F22400B92CA9 /* OHMySQLUser.m */; };
 		7CBB08BF1D12F22400B92CA9 /* OHSSLConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08B01D12F22400B92CA9 /* OHSSLConfig.m */; };
 		7CBB08C01D12F22400B92CA9 /* OHJoinConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08B41D12F22400B92CA9 /* OHJoinConstants.m */; };
-		7CBB08C71D1818F300B92CA9 /* OHMySQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08C61D1818F300B92CA9 /* OHMySQLManager.m */; };
+		7CBB08C71D1818F300B92CA9 /* OHMySQLContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08C61D1818F300B92CA9 /* OHMySQLContainer.m */; };
 		7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */; };
 		7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CC1D18249000B92CA9 /* OHTask.m */; };
 		7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */; };
@@ -106,8 +106,8 @@
 		7CBB08B61D12F22400B92CA9 /* OHProtocolType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHProtocolType.h; sourceTree = "<group>"; };
 		7CBB08B71D12F22400B92CA9 /* OHRefreshOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHRefreshOptions.h; sourceTree = "<group>"; };
 		7CBB08B81D12F22400B92CA9 /* OHResultErrorType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHResultErrorType.h; sourceTree = "<group>"; };
-		7CBB08C51D1818F300B92CA9 /* OHMySQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLManager.h; sourceTree = "<group>"; };
-		7CBB08C61D1818F300B92CA9 /* OHMySQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLManager.m; sourceTree = "<group>"; };
+		7CBB08C51D1818F300B92CA9 /* OHMySQLContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHMySQLContainer.h; sourceTree = "<group>"; };
+		7CBB08C61D1818F300B92CA9 /* OHMySQLContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLContainer.m; sourceTree = "<group>"; };
 		7CBB08C91D18249000B92CA9 /* OHTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHTask+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHTask+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7CBB08CB1D18249000B92CA9 /* OHTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTask.h; sourceTree = "<group>"; };
@@ -359,8 +359,8 @@
 				7CD43FF91BBABE30001EFEDE /* OHMySQLSerialization.m */,
 				7C842D7D1D104B7F00A6B005 /* OHMySQLStoreCoordinator.h */,
 				7C842D7E1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m */,
-				7CBB08C51D1818F300B92CA9 /* OHMySQLManager.h */,
-				7CBB08C61D1818F300B92CA9 /* OHMySQLManager.m */,
+				7CBB08C51D1818F300B92CA9 /* OHMySQLContainer.h */,
+				7CBB08C61D1818F300B92CA9 /* OHMySQLContainer.m */,
 			);
 			name = OHMySQL;
 			path = ../OHMySQL;
@@ -538,7 +538,7 @@
 				7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */,
 				7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */,
 				7C842D821D1054E600A6B005 /* OHMySQLQueryContext.m in Sources */,
-				7CBB08C71D1818F300B92CA9 /* OHMySQLManager.m in Sources */,
+				7CBB08C71D1818F300B92CA9 /* OHMySQLContainer.m in Sources */,
 				7C842D7F1D104B7F00A6B005 /* OHMySQLStoreCoordinator.m in Sources */,
 				7CD43FFA1BBABE30001EFEDE /* OHMySQLSerialization.m in Sources */,
 				7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */,

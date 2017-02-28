@@ -2,20 +2,24 @@
 //  Copyright © 2016 Oleg Hnidets. All rights reserved.
 //
 
-#import "OHMySQLManager.h"
+#import "OHMySQLContainer.h"
 #import "OHMySQLQueryContext.h"
 
-static OHMySQLManager *_sharedManager = nil;
+static OHMySQLContainer *_sharedManager = nil;
 
-@implementation OHMySQLManager
+@implementation OHMySQLContainer
 
-+ (OHMySQLManager *)sharedManager {
++ (OHMySQLContainer *)sharedManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _sharedManager = [OHMySQLManager new];
+        _sharedManager = [OHMySQLContainer new];
     });
     
     return _sharedManager;
+}
+
++ (OHMySQLContainer *)sharedContainer {
+	return [self sharedManager];
 }
 
 - (OHMySQLStoreCoordinator *)storeCoordinator {

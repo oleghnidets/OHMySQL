@@ -6,10 +6,14 @@
 @class OHMySQLQueryContext, OHMySQLStoreCoordinator;
 
 /// Represents a main context and store coordinator.
-@interface OHMySQLManager : NSObject
+@interface OHMySQLContainer : NSObject
 
 /// Shared manager.
-+ (nonnull OHMySQLManager *)sharedManager;
+/// @warning Will be removed in the future.
++ (nonnull OHMySQLContainer *)sharedManager;
+
+/// Shared container
++ (nonnull OHMySQLContainer *)sharedContainer;
 
 /// Single context that is used in the app. Context should be set by a user of this class.
 @property (nonatomic, strong, nullable) OHMySQLQueryContext *mainQueryContext;
@@ -18,3 +22,5 @@
 @property (nonatomic, strong, readonly, nullable) OHMySQLStoreCoordinator *storeCoordinator;
 
 @end
+
+@compatibility_alias OHMySQLManager OHMySQLContainer;
