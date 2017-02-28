@@ -8,7 +8,7 @@
 @implementation NSString (OHSerialization)
 
 + (id)serializeFromCString:(const char *)cString defaultValue:(const char *)defaultValue canBeNull:(BOOL)canBeNull encoding:(CharsetEncoding)encoding {
-	NSStringEncoding nsEncoding = CFStringConvertEncodingToNSStringEncoding(encoding);
+	NSStringEncoding nsEncoding = NSStringEncodingFromCharsetEncoding(encoding);
 	
     if (cString) {
         return [[NSString alloc] initWithCString:cString encoding:nsEncoding];

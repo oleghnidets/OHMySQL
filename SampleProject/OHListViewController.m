@@ -58,7 +58,9 @@
                                                        socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
     [coordinator connect];
-    
+	
+	[coordinator setEncoding:CharsetEncodingUTF8MB4];
+	
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
     [OHMySQLManager sharedManager].mainQueryContext = queryContext;

@@ -9,27 +9,27 @@
 
 @interface OHMySQLStoreCoordinator : NSObject
 
-//! Nonnull after connection with DB. 
+/// Nonnull after connection with DB. 
 @property (nonatomic, strong, readonly, nullable) OHMySQLStore *store;
 
-//! Nonnull after connection with DB.
+/// Nonnull after connection with DB.
 @property (nonatomic, strong, readonly, nullable) OHMySQLUser *user;
 
-//! Nonnull after connection with DB. You don't need to use this property at all.
+/// Nonnull after connection with DB. You don't need to use this property at all.
 @property (readonly, nullable) void *mysql;
 
-//! Pings the server and indicates whether the connection to the server is working.
+/// Pings the server and indicates whether the connection to the server is working.
 @property (assign, readonly, getter=isConnected) BOOL connected;
 
-//! One of the protocols. Needs to be set before calling -connect.
+/// One of the protocols. Needs to be set before calling -connect.
 @property (nonatomic, assign) OHProtocolType protocol;
 
-//! The default character set for the current connection. By default UTF-8.
+/// The default character set for the current connection. By default UTF-8.
 @property (nonatomic, assign) CharsetEncoding encoding;
 
 - (nonnull instancetype)initWithUser:(nonnull OHMySQLUser *)user;
 
-//! Attempts to establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
+/// Attempts to establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
 - (void)connect;
 
 /**
@@ -39,7 +39,7 @@
  */
 - (OHResultErrorType)selectDataBase:(nonnull NSString *)database;
 
-//! Closes a previously opened connection.
+/// Closes a previously opened connection.
 - (void)disconnect;
 
 /**

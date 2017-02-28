@@ -20,7 +20,7 @@
 }
 
 + (NSNumber *)numberFromCString:(const char *)cString encoding:(CharsetEncoding)encoding {
-	NSStringEncoding nsEncoding = CFStringConvertEncodingToNSStringEncoding(encoding);
+	NSStringEncoding nsEncoding = NSStringEncodingFromCharsetEncoding(encoding);
 	
     NSString *numberString = [[NSString alloc] initWithCString:cString encoding:nsEncoding];
     NSNumberFormatter *formatter = [NSNumberFormatter new];

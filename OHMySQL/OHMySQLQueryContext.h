@@ -13,7 +13,7 @@
 
 @property (strong, nonnull) OHMySQLQueryContext *parentQueryContext;
 
-//! Should be set by a user of this class.
+/// Should be set by a user of this class.
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
 
 @property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *insertedObjects;
@@ -51,14 +51,14 @@
 
 
 // MARK: Temporary solution... maybe.
-//! Makes object ready to be inserted.
+/// Makes object ready to be inserted.
 - (void)insertObject:(nullable NSObject<OHMappingProtocol> *)object;
-//! Makes object ready to be updated.
+/// Makes object ready to be updated.
 - (void)updateObject:(nullable NSObject<OHMappingProtocol> *)object;
-//! Makes object ready to be deleted.
+/// Makes object ready to be deleted.
 - (void)deleteObject:(nullable NSObject<OHMappingProtocol> *)object;
 
-//! Removes object from deleted/inserted/updated.
+/// Removes object from deleted/inserted/updated.
 - (void)refreshObject:(nullable NSObject<OHMappingProtocol> *)object;
 
 /**
@@ -70,10 +70,10 @@
  */
 - (BOOL)save:(NSError *_Nullable*_Nullable)error;
 
-//! Performs block asynchronously.
+/// Performs block asynchronously.
 - (void)performBlock:(nonnull dispatch_block_t)block;
 
-//! Saves to MySQL store asynchronously in global queue.
+/// Saves to MySQL store asynchronously in global queue.
 - (void)saveToPersistantStore:(nonnull void(^)(NSError *_Nullable error))completionHandler;
 
 @end

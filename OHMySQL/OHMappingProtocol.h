@@ -6,18 +6,14 @@
 
 @protocol OHMappingProtocol <NSObject>
 
-//! Dictionary that represents class' properties with table' column names.
+/// Dictionary that represents class' properties with table' column names.
 - (NSDictionary *)mappingDictionary;
 
-//! Table where current entity can be found.
+/// Table where current entity can be found.
 - (NSString *)mySQLTable;
 
-//! Returns name of primary property (row).
+/// Returns name of primary property (row).
 - (NSString *)primaryKey;
-
-@optional
-//! Returns name of index property.
-- (NSString *)indexKey __attribute((deprecated("Use -primaryKey method instead of this one.")));
 
 @end
 

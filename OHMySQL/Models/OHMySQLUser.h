@@ -8,26 +8,26 @@
 /// The entity that has authority to use a store MySQL. 
 @interface OHMySQLUser : NSObject
 
-//! Can be up to 16 characters long. Operating system user names may be of a different maximum length.
+/// Can be up to 16 characters long. Operating system user names may be of a different maximum length.
 @property (nonatomic, copy, nonnull) NSString *userName;
 
-//! User' password for authentication. https://dev.mysql.com/doc/refman/5.5/en/password-security-user.html
+/// User' password for authentication. https://dev.mysql.com/doc/refman/5.5/en/password-security-user.html
 @property (nonatomic, copy, nonnull) NSString *password;
 
-//! A host name or an IP address.
-//! @note Note that the host parameter determines the type of the connection.
+/// A host name or an IP address.
+/// @note Note that the host parameter determines the type of the connection.
 @property (nonatomic, copy, nonnull) NSString *serverName;
 
-//! The string specifies the name of database.
+/// The string specifies the name of database.
 @property (nonatomic, copy, nonnull) NSString *dbName;
 
-//! If it is not NULL, the string specifies the socket or named pipe to use.
+/// If it is not NULL, the string specifies the socket or named pipe to use.
 @property (nonatomic, copy, nullable) NSString *socket;
 
-//! If it is not 0, the value is used as the port number for the TCP/IP connection.
+/// If it is not 0, the value is used as the port number for the TCP/IP connection.
 @property (nonatomic, assign) NSUInteger port;
 
-//! Used for establishing secure connections using SSL.
+/// Used for establishing secure connections using SSL.
 @property (nonatomic, copy, nullable) OHSSLConfig *sslConfig;
 
 - (nullable instancetype)initWithUserName:(nonnull NSString *)name
