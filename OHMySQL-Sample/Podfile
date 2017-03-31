@@ -1,0 +1,5 @@
+
+
+target 'OHMySQL-Sample' do
+    pod 'OHMySQL', :path => ‘../’
+end

@@ -3,7 +3,7 @@
 //
 
 #import "OHMySQLSerialization.h"
-#import <mysql.h>
+#import "mysql.h"
 
 #import "NSNumber+OHSerialization.h"
 #import "NSString+OHSerialization.h"

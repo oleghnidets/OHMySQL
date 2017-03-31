@@ -3,7 +3,7 @@
 //
 
 #import "OHMySQLStore.h"
-#import <mysql.h>
+#import "mysql.h"
 
 @interface OHMySQLStore ()
 
