@@ -14,7 +14,7 @@
 
 #import "NSObject+Mapping.h"
 
-#import "mysql.h"
+#import "lib/include/mysql.h"
 
 static NSString * const kContextDomain = @"mysql.error.domain";
 

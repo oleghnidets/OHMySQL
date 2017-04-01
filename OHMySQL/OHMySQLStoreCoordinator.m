@@ -9,7 +9,7 @@
 #import "OHMySQLStore.h"
 #import "OHCharsetEncoding.h"
 
-#import "mysql.h"
+#import "lib/include/mysql.h"
 
 @interface OHMySQLStoreCoordinator ()
 
