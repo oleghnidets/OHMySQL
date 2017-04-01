@@ -18,6 +18,6 @@ You can connect to your remote MySQL database using OHMySQL API. It allows you d
   s.requires_arc     = true
   s.source_files     = 'OHMySQL/**/*.{h,m}', 'OHMySQL/lib/include/**/*.{h}'
   s.frameworks       = 'Foundation'
-  s.vendored_libraries = 'lib/libmysqlclient.a'
+  s.vendored_libraries = 'OHMySQL/lib/libmysqlclient.a'
   s.library = "c++"
 end
