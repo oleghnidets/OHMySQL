@@ -49,8 +49,8 @@
 		7C1138041D2162FD001086E8 /* OHTasksFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTasksFacade.m; sourceTree = "<group>"; };
 		7C1138061D23D9EA001086E8 /* OHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHEditViewController.h; sourceTree = "<group>"; };
 		7C1138071D23D9EA001086E8 /* OHEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEditViewController.m; sourceTree = "<group>"; };
-		7C5F9BF91E91240000611994 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7C5F9BFA1E91240000611994 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppDelegate.m; sourceTree = "<group>"; };
+		7C5F9BF91E91240000611994 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7C5F9BFA1E91240000611994 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = "<group>"; };
 		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = "<group>"; };
 		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
@@ -113,7 +113,6 @@
 				7C1138031D2162FD001086E8 /* OHTasksFacade.h */,
 				7C1138041D2162FD001086E8 /* OHTasksFacade.m */,
 			);
-			name = "Data Layer";
 			path = "Data Layer";
 			sourceTree = "<group>";
 		};
@@ -123,7 +122,6 @@
 				7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */,
 				7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -135,7 +133,6 @@
 				7CE55D451BB95928004A2FF9 /* OHListViewController.h */,
 				7CE55D461BB95928004A2FF9 /* OHListViewController.m */,
 			);
-			name = "View Controllers";
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
@@ -147,7 +144,6 @@
 				7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */,
 				7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */,
 			);
-			name = Helpers;
 			path = Helpers;
 			sourceTree = "<group>";
 		};
@@ -157,7 +153,6 @@
 				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
 				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
 			);
-			name = Mocks;
 			path = Mocks;
 			sourceTree = "<group>";
 		};
@@ -203,7 +198,6 @@
 				7C5F9BFA1E91240000611994 /* AppDelegate.m */,
 				7CE55D481BB95930004A2FF9 /* Main.storyboard */,
 			);
-			name = OHMySQLProject;
 			path = OHMySQLProject;
 			sourceTree = "<group>";
 		};
@@ -241,7 +235,6 @@
 				7CE55D211BB95887004A2FF9 /* OHAppDelegateTest.h */,
 				7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */,
 			);
-			name = "Supporting Files";
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
@@ -584,7 +577,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/OHMySQL\"",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-Sample.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/OHMySQLProject/Supporting Files/Info-Sample.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -616,7 +609,7 @@
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/OHMySQL\"",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info-Sample.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/OHMySQLProject/Supporting Files/Info-Sample.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
