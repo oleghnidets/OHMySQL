@@ -11,6 +11,7 @@
 		7C0D87B31D6597A700B7AA12 /* OHThreadingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */; };
 		7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138041D2162FD001086E8 /* OHTasksFacade.m */; };
 		7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138071D23D9EA001086E8 /* OHEditViewController.m */; };
+		7C5F9BFB1E91240000611994 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9BFA1E91240000611994 /* AppDelegate.m */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
 		7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5C81E47910800A978F0 /* OHNullTests.m */; };
@@ -24,7 +25,6 @@
 		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; };
 		7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHListViewController.m */; };
 		7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55D481BB95930004A2FF9 /* Main.storyboard */; };
-		7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E051BB95A48004A2FF9 /* AppDelegate.m */; };
 		7CE55E0C1BB95A48004A2FF9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */; };
 		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; };
 		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
@@ -45,12 +45,14 @@
 /* Begin PBXFileReference section */
 		6C4D1C043D6B84F151B3C023 /* Pods_OHMySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHThreadingTests.m; sourceTree = "<group>"; };
-		7C1138031D2162FD001086E8 /* OHTasksFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTasksFacade.h; sourceTree = SOURCE_ROOT; };
-		7C1138041D2162FD001086E8 /* OHTasksFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTasksFacade.m; sourceTree = SOURCE_ROOT; };
-		7C1138061D23D9EA001086E8 /* OHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHEditViewController.h; sourceTree = SOURCE_ROOT; };
-		7C1138071D23D9EA001086E8 /* OHEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEditViewController.m; sourceTree = SOURCE_ROOT; };
-		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		7C1138031D2162FD001086E8 /* OHTasksFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTasksFacade.h; sourceTree = "<group>"; };
+		7C1138041D2162FD001086E8 /* OHTasksFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTasksFacade.m; sourceTree = "<group>"; };
+		7C1138061D23D9EA001086E8 /* OHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHEditViewController.h; sourceTree = "<group>"; };
+		7C1138071D23D9EA001086E8 /* OHEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEditViewController.m; sourceTree = "<group>"; };
+		7C5F9BF91E91240000611994 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7C5F9BFA1E91240000611994 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = AppDelegate.m; sourceTree = "<group>"; };
+		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = "<group>"; };
+		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = "<group>"; };
 		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
 		7CBAB5C81E47910800A978F0 /* OHNullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHNullTests.m; sourceTree = "<group>"; };
 		7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+INSERT.h"; sourceTree = "<group>"; };
@@ -69,11 +71,9 @@
 		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		7CE55D211BB95887004A2FF9 /* OHAppDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAppDelegateTest.h; sourceTree = "<group>"; };
 		7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAppDelegateTest.m; sourceTree = "<group>"; };
-		7CE55D451BB95928004A2FF9 /* OHListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHListViewController.h; sourceTree = SOURCE_ROOT; };
-		7CE55D461BB95928004A2FF9 /* OHListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHListViewController.m; sourceTree = SOURCE_ROOT; };
-		7CE55D491BB95930004A2FF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		7CE55E041BB95A48004A2FF9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7CE55E051BB95A48004A2FF9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7CE55D451BB95928004A2FF9 /* OHListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHListViewController.h; sourceTree = "<group>"; };
+		7CE55D461BB95928004A2FF9 /* OHListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHListViewController.m; sourceTree = "<group>"; };
+		7CE55D491BB95930004A2FF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CE55E071BB95A48004A2FF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7CE55E081BB95A48004A2FF9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7CE55E091BB95A48004A2FF9 /* Info-Sample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Sample.plist"; sourceTree = "<group>"; };
@@ -106,6 +106,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C5F9BF61E91239200611994 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				7CBB08C81D18249000B92CA9 /* Model */,
+				7C1138031D2162FD001086E8 /* OHTasksFacade.h */,
+				7C1138041D2162FD001086E8 /* OHTasksFacade.m */,
+			);
+			name = "Data Layer";
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		7C5F9BF71E91239E00611994 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */,
+				7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7C5F9BF81E9123A600611994 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7C1138061D23D9EA001086E8 /* OHEditViewController.h */,
+				7C1138071D23D9EA001086E8 /* OHEditViewController.m */,
+				7CE55D451BB95928004A2FF9 /* OHListViewController.h */,
+				7CE55D461BB95928004A2FF9 /* OHListViewController.m */,
+			);
+			name = "View Controllers";
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		7CBAB5C61E478F4900A978F0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +148,7 @@
 				7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */,
 			);
 			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		7CBAB5C71E478F5200A978F0 /* Mocks */ = {
@@ -124,6 +158,7 @@
 				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
 			);
 			name = Mocks;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		7CBB08C81D18249000B92CA9 /* Model */ = {
@@ -135,16 +170,16 @@
 				7CBB08CC1D18249000B92CA9 /* OHTask.m */,
 			);
 			path = Model;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		7CCC61C01B7B38BA003A468F = {
 			isa = PBXGroup;
 			children = (
+				FE42F509C0FD8A891F7BA875 /* Frameworks */,
 				7CCC61CB1B7B38BA003A468F /* OHMySQLProject */,
 				7CE55D201BB95887004A2FF9 /* OHMySQLTests */,
-				7CCC61CA1B7B38BA003A468F /* Products */,
-				FE42F509C0FD8A891F7BA875 /* Frameworks */,
 				9481FD4AF0BB3CCFFB913AF8 /* Pods */,
+				7CCC61CA1B7B38BA003A468F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,33 +195,29 @@
 		7CCC61CB1B7B38BA003A468F /* OHMySQLProject */ = {
 			isa = PBXGroup;
 			children = (
-				7CBB08C81D18249000B92CA9 /* Model */,
-				7C1138031D2162FD001086E8 /* OHTasksFacade.h */,
-				7C1138041D2162FD001086E8 /* OHTasksFacade.m */,
-				7CE55D451BB95928004A2FF9 /* OHListViewController.h */,
-				7CE55D461BB95928004A2FF9 /* OHListViewController.m */,
-				7C1138061D23D9EA001086E8 /* OHEditViewController.h */,
-				7C1138071D23D9EA001086E8 /* OHEditViewController.m */,
-				7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */,
-				7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */,
-				7CE55D481BB95930004A2FF9 /* Main.storyboard */,
+				7C5F9BF61E91239200611994 /* Data Layer */,
 				7CE55E031BB95A48004A2FF9 /* Supporting Files */,
+				7C5F9BF81E9123A600611994 /* View Controllers */,
+				7C5F9BF71E91239E00611994 /* Views */,
+				7C5F9BF91E91240000611994 /* AppDelegate.h */,
+				7C5F9BFA1E91240000611994 /* AppDelegate.m */,
+				7CE55D481BB95930004A2FF9 /* Main.storyboard */,
 			);
 			name = OHMySQLProject;
-			path = MySQL;
+			path = OHMySQLProject;
 			sourceTree = "<group>";
 		};
 		7CE55D201BB95887004A2FF9 /* OHMySQLTests */ = {
 			isa = PBXGroup;
 			children = (
-				7CBAB5C71E478F5200A978F0 /* Mocks */,
 				7CBAB5C61E478F4900A978F0 /* Helpers */,
+				7CBAB5C71E478F5200A978F0 /* Mocks */,
 				7CE55E241BB95C13004A2FF9 /* Supporting Files */,
+				92538D631E5D863000FCE133 /* OHEscapeTests.m */,
 				7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */,
+				7CBAB5C81E47910800A978F0 /* OHNullTests.m */,
 				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
 				7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */,
-				7CBAB5C81E47910800A978F0 /* OHNullTests.m */,
-				92538D631E5D863000FCE133 /* OHEscapeTests.m */,
 			);
 			path = OHMySQLTests;
 			sourceTree = "<group>";
@@ -194,25 +225,24 @@
 		7CE55E031BB95A48004A2FF9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */,
-				7CE55E041BB95A48004A2FF9 /* AppDelegate.h */,
-				7CE55E051BB95A48004A2FF9 /* AppDelegate.m */,
-				7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */,
 				7CE55E081BB95A48004A2FF9 /* Images.xcassets */,
 				7CE55E091BB95A48004A2FF9 /* Info-Sample.plist */,
+				7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */,
+				7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */,
 				7CE55E0A1BB95A48004A2FF9 /* main.m */,
 			);
 			path = "Supporting Files";
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		7CE55E241BB95C13004A2FF9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7CE55E1C1BB95B77004A2FF9 /* Info.plist */,
 				7CE55D211BB95887004A2FF9 /* OHAppDelegateTest.h */,
 				7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */,
-				7CE55E1C1BB95B77004A2FF9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9481FD4AF0BB3CCFFB913AF8 /* Pods */ = {
@@ -391,9 +421,9 @@
 				7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */,
 				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
 				7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */,
+				7C5F9BFB1E91240000611994 /* AppDelegate.m in Sources */,
 				7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */,
 				7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */,
-				7CE55E0B1BB95A48004A2FF9 /* AppDelegate.m in Sources */,
 				7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */,
 				7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */,
 				7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */,
@@ -432,6 +462,7 @@
 				7CE55D491BB95930004A2FF9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */ = {
@@ -440,6 +471,7 @@
 				7CE55E071BB95A48004A2FF9 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -601,7 +633,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = OHMySQLTests/Info.plist;
+				INFOPLIST_FILE = "OHMySQLTests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SyS.OHMySQLTests;
@@ -614,7 +646,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = OHMySQLTests/Info.plist;
+				INFOPLIST_FILE = "OHMySQLTests/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SyS.OHMySQLTests;
