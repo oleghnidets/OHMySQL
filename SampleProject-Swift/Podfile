@@ -1,0 +1,5 @@
+
+use_frameworks!
+target 'OHMySQL-Swift' do
+    pod 'OHMySQL', :git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop-experiment'
+end
