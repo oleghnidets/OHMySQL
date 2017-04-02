@@ -27,11 +27,11 @@ At the first you need to connect to the database.
 *Objective-C version:*
 ```objective-c
 OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-												 password:@"root"
-											   serverName:@"localhost"
-												   dbName:@"sample"
-													 port:3306
-												   socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+					 	 password:@"root"
+					       serverName:@"localhost"
+						   dbName:@"sample"
+						     port:3306
+						   socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
 OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
 [coordinator connect];
 ```
@@ -125,10 +125,9 @@ try? mainQueryContext?.execute(query)
 
 The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
 ```objective-c
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner
-														fromTable:@"tasks"
-													  columnNames:@[@"id", @"name", @"description"]
-											joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner													fromTable:@"tasks"
+						      columnNames:@[@"id", @"name", @"description"]
+							   joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
 NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
 ```
 ```swift
