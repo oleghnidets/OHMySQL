@@ -1,5 +1,9 @@
 # OHMySQL
-You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
+OHMySQL supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
+
+## Requirements
+- iOS 8.0+ / macOS 10.10+
+- Xcode 8.1+
 
 ## How To Get Started
 - To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
@@ -20,29 +24,45 @@ Or you can copy files into your project. But be aware you need to copy [mysql-co
 ## Usage
 
 At the first you need to connect to the database.
-
+*Objective-C version:*
 ```objective-c
 OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-                                                 password:@"root"
-                                               serverName:@"localhost"
-                                                   dbName:@"sample"
-                                                     port:3306
-                                                   socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+password:@"root"
+serverName:@"localhost"
+dbName:@"sample"
+port:3306
+socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
 OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
 [coordinator connect];
 ```
+*Swift version:*
+```swift
+let user = OHMySQLUser(userName: "root", password: "root", serverName: "localhost", dbName: "ohmysql", port: 3306, socket: "/Applications/MAMP/tmp/mysql/mysql.sock")
+let coordinator = OHMySQLStoreCoordinator(user: user!)
+coordinator.encoding = .UTF8MB4
+coordinator.connect()
 
+let context = OHMySQLQueryContext()
+context.storeCoordinator = coordinator
+OHMySQLContainer.shared().mainQueryContext = context
+```
 To end a connection:
 ```objective-c
 [coordinator disconnect];
 ```
-
+```swift
+coordinator.disconnect()
+```
 ## Query Context
 
 To execute a query you have to create the context:
 ```objective-c
 OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
 queryContext.storeCoordinator = coordinator;
+```
+```swift
+let context = OHMySQLQueryContext()
+context.storeCoordinator = coordinator
 ```
 
 You will use this context to execute queries or manipulate the objects.
@@ -56,6 +76,10 @@ OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" conditi
 NSError *error = nil;
 NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:&error];
 ```
+```swift
+let query = OHMySQLQueryRequestFactory.select("tasks", condition: nil)
+let response = try? OHMySQLContainer.shared().mainQueryContext?.executeQueryRequestAndFetchResult(query)
+```
 You will get a response like this:
 ```objective-c
 [{ @"id": @1, @"name": @"Task name", @"description": @"Task description", @"status": [NSNull null] }]
@@ -68,38 +92,61 @@ OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:@"tasks" set:@{ 
 NSError error;
 [queryContext executeQueryRequest:query error:&error];
 ```
+```swift
+let query = OHMySQLQueryRequestFactory.insert("tasks", set: ["name": "Something", "desctiption": "new task"])
+try? mainQueryContext?.execute(query)
+```
 
 ### UPDATE
 
 ```objective-c
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task update" } condition:@"id=5"];
+OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:@"tasks" set:@{ @"name": @"Something", @"description": @"new task update" } condition:@"id=5"];
 NSError error;
 [queryContext executeQueryRequest:query error:&error];
+```
+```swift
+let query = OHMySQLQueryRequestFactory.update("tasks", set: ["name": "Something"], condition: "id=7")
+try? mainQueryContext?.execute(query)
 ```
 
 ### DELETE
 
 ```objective-c
 OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:@"tasks" condition:@"id=10"];
+NSError error;
+[queryContext executeQueryRequest:query error:&error];
 ```
-    
+```swift
+let query = OHMySQLQueryRequestFactory.delete("tasks", condition: "id=10")
+try? mainQueryContext?.execute(query)
+```
+
 ### JOINs
 
 The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
 ```objective-c
 OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner
-                                                        fromTable:@"tasks"
-                                                      columnNames:@[@"id", @"name", @"description"]
-                                                           joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
+fromTable:@"tasks"
+columnNames:@[@"id", @"name", @"description"]
+joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
 NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
+```
+```swift
+let query = OHMySQLQueryRequestFactory.joinType(OHJoinInner, fromTable: "tasks", columnNames: ["id", "name", "description"], joinOn: ["subtasks": "tasks.id=subtasks.parentId"])
+let result = try? mainQueryContext?.executeQueryRequestAndFetchResult(query)
 ```
 
 ### Object Mapping
 
-You have to implement the protocol OHMappingProtocol for your models. Insertion looks like the following (in this example the NSManagedObject instance).
+You have to implement the protocol OHMappingProtocol for your models. Insertion looks like the following (in this example the NSManagedObject instance). 
+The library has only a primary logic for mapping, so I would recommend you writing a mapping logic by yourself. If you are using Swift you cannot use fundamental number types (Int, Double), only NSNumber (due to run-time). 
 ```objective-c
 [queryContext insertObject:task];
 BOOL result = [queryContext save:nil];
+```
+```swift
+mainQueryContext?.insertObject(task)
+try? mainQueryContext?.save()
 ```
 
 You can update/delete the objects easily.
@@ -118,10 +165,18 @@ task.status = 1;
 [queryContext deleteObject:task];
 BOOL result = [queryContext save:nil];
 ```
+```swift
+let task = Task()
+task.name = "sample"
+mainQueryContext?.updateObject(task)
+mainQueryContext?.deleteObject(task)
+
+try? mainQueryContext?.save()
+```
 
 ## Communication
-- If you need help, write email://oleg.oleksan@gmail.com
-- If you found a bug, please provide steps to reproduce it, open an issue.
+- If you found a bug, have suggestions or need help, please, open an issue.
+- If you need help, write me oleg.oleksan@gmail.com.
 - If you want to contribute, submit a pull request.
 - If you want to donate I would be thankful ;]
 
@@ -130,4 +185,3 @@ BOOL result = [queryContext save:nil];
 ## License 
 
 The MIT License (MIT)
-    
