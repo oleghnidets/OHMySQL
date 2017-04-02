@@ -1,5 +1,6 @@
-
+platform :osx, '10.9'
 use_frameworks!
-target 'OHMySQL-Swift' do
+
+target 'OHMySQLMac-Swift' do
     pod 'OHMySQL', :git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop-experiment'
 end

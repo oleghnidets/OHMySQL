@@ -2,7 +2,7 @@
 //  Copyright © 2017 Oleg Hnidets. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import OHMySQL
 
 class Task: NSObject, OHMappingProtocol {

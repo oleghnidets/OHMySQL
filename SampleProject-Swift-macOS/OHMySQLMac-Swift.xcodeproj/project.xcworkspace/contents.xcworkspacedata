@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:OHMySQL-Swift.xcodeproj">
+      location = "self:OHMySQLMac-Swift.xcodeproj">
    </FileRef>
 </Workspace>
