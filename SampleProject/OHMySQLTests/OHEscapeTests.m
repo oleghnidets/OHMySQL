@@ -10,7 +10,7 @@
 
 @interface OHEscapeTests : XCTestCase
 
-@property (class, readonly) CharsetEncoding encoding;
+@property (nonatomic, assign) CharsetEncoding encoding;
 
 @end
 

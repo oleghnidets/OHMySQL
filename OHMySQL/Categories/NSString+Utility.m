@@ -170,6 +170,12 @@
     return [self stringByAppendingString:[stringWithComma stringByAppendingString:sortingString]];
 }
 
+@dynamic stringWithSingleMarks;
+
+- (void)stringWithSingleMarks:(NSString *)newString {
+	NSAssert(NO, @"You mustn't set this property.");
+}
+
 - (NSString *)stringWithSingleMarks {
     return [NSString stringWithFormat:@"'%@'", self];
 }

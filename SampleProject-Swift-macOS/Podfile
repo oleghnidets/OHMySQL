@@ -1,6 +1,7 @@
-platform :osx, '10.10’
+source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'OHMySQLMac-Swift' do
+	platform :osx, '10.10'
     pod 'OHMySQL', :git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop-experiment'
 end

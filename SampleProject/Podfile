@@ -1,5 +1,14 @@
 
 use_frameworks!
+
+def mainPods 
+	pod 'OHMySQL', :git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop-experiment'
+end
+
 target 'OHMySQL' do
-    pod 'OHMySQL', :git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop-experiment'
+   mainPods
+end
+
+target 'OHMySQLTests' do
+   mainPods
 end

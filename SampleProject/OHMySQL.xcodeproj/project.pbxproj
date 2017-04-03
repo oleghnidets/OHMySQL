@@ -30,6 +30,7 @@
 		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
 		7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */; };
 		92538D641E5D863100FCE133 /* OHEscapeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 92538D631E5D863000FCE133 /* OHEscapeTests.m */; };
+		BDE0004A460CBFFF79965A51 /* Pods_OHMySQLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACD05A4C84651C48D01CC55 /* Pods_OHMySQLTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		155CDD14CFF0D5433326EBBC /* Pods-OHMySQLTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLTests/Pods-OHMySQLTests.release.xcconfig"; sourceTree = "<group>"; };
 		6C4D1C043D6B84F151B3C023 /* Pods_OHMySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHThreadingTests.m; sourceTree = "<group>"; };
 		7C1138031D2162FD001086E8 /* OHTasksFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTasksFacade.h; sourceTree = "<group>"; };
@@ -83,7 +85,9 @@
 		7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHMySQLTests.m; sourceTree = "<group>"; };
 		92538D631E5D863000FCE133 /* OHEscapeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEscapeTests.m; sourceTree = "<group>"; };
 		C4F43FE8C9F9591D60294582 /* Pods-OHMySQL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.release.xcconfig"; sourceTree = "<group>"; };
+		C8485DFA574A15018E32463F /* Pods-OHMySQLTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLTests/Pods-OHMySQLTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA0099FBAAFE0580C985E4EA /* Pods-OHMySQL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.debug.xcconfig"; sourceTree = "<group>"; };
+		EACD05A4C84651C48D01CC55 /* Pods_OHMySQLTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQLTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDE0004A460CBFFF79965A51 /* Pods_OHMySQLTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +248,8 @@
 			children = (
 				CA0099FBAAFE0580C985E4EA /* Pods-OHMySQL.debug.xcconfig */,
 				C4F43FE8C9F9591D60294582 /* Pods-OHMySQL.release.xcconfig */,
+				C8485DFA574A15018E32463F /* Pods-OHMySQLTests.debug.xcconfig */,
+				155CDD14CFF0D5433326EBBC /* Pods-OHMySQLTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -253,6 +260,7 @@
 				7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */,
 				7CCC61F81B7B5661003A468F /* Foundation.framework */,
 				6C4D1C043D6B84F151B3C023 /* Pods_OHMySQL.framework */,
+				EACD05A4C84651C48D01CC55 /* Pods_OHMySQLTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -284,9 +292,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CE55E1F1BB95B77004A2FF9 /* Build configuration list for PBXNativeTarget "OHMySQLTests" */;
 			buildPhases = (
+				650D93E4A1E471EBB5B39687 /* [CP] Check Pods Manifest.lock */,
 				7CE55E141BB95B77004A2FF9 /* Sources */,
 				7CE55E151BB95B77004A2FF9 /* Frameworks */,
 				7CE55E161BB95B77004A2FF9 /* Resources */,
+				1B4E41E0CEF215DBFC5FB72C /* [CP] Embed Pods Frameworks */,
+				E30D53782768E83DE1C4AD97 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -373,6 +384,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		1B4E41E0CEF215DBFC5FB72C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLTests/Pods-OHMySQLTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2BBFC41B9D354985C50B6F2A /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -401,6 +427,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		650D93E4A1E471EBB5B39687 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E30D53782768E83DE1C4AD97 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLTests/Pods-OHMySQLTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -510,7 +566,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -550,7 +606,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -623,6 +679,7 @@
 		};
 		7CE55E201BB95B77004A2FF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8485DFA574A15018E32463F /* Pods-OHMySQLTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -637,6 +694,7 @@
 		};
 		7CE55E211BB95B77004A2FF9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 155CDD14CFF0D5433326EBBC /* Pods-OHMySQLTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "OHMySQLTests/Supporting Files/Info.plist";

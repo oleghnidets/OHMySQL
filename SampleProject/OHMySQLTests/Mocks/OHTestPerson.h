@@ -2,7 +2,6 @@
 //  Copyright © 2016 Oleg Hnidets. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "OHMySQL.h"
 
 @interface OHTestPerson : NSObject<OHMappingProtocol>

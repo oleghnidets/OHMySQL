@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E087E9926AB68EF9EFA9D76 /* Pods_OHMySQLMac_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BFF80D30ABCA0902A67E0E /* Pods_OHMySQLMac_Swift.framework */; };
 		7C5F9C0D1E912B6C00611994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9C0C1E912B6C00611994 /* AppDelegate.swift */; };
 		7C5F9C111E912B6C00611994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C5F9C101E912B6C00611994 /* Assets.xcassets */; };
 		7C5F9C141E912B6C00611994 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5F9C121E912B6C00611994 /* Main.storyboard */; };
 		7C5F9C201E912B8700611994 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9C1C1E912B8700611994 /* Task.swift */; };
 		7C5F9C211E912B8700611994 /* TasksProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9C1D1E912B8700611994 /* TasksProvider.swift */; };
 		7C5F9C221E912B8700611994 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9C1F1E912B8700611994 /* ViewController.swift */; };
+		BC3EED831FFAD1C2E0092EB2 /* Pods_OHMySQLMac_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4B2B95DD7FCDBF97F6B3CA2 /* Pods_OHMySQLMac_Swift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		68BFF80D30ABCA0902A67E0E /* Pods_OHMySQLMac_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQLMac_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5F9C091E912B6C00611994 /* OHMySQLMac-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OHMySQLMac-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5F9C0C1E912B6C00611994 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C5F9C101E912B6C00611994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -26,8 +25,9 @@
 		7C5F9C1C1E912B8700611994 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		7C5F9C1D1E912B8700611994 /* TasksProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksProvider.swift; sourceTree = "<group>"; };
 		7C5F9C1F1E912B8700611994 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		97C1C8B13344A31F836E6657 /* Pods-OHMySQLMac-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLMac-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift.debug.xcconfig"; sourceTree = "<group>"; };
-		C0ACAAAE998958F5F1CE908B /* Pods-OHMySQLMac-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLMac-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		C4B2B95DD7FCDBF97F6B3CA2 /* Pods_OHMySQLMac_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQLMac_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00248701973E2A522E7F11F /* Pods-OHMySQLMac-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLMac-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift.release.xcconfig"; sourceTree = "<group>"; };
+		FE1C549DCBBD544539EF5AEB /* Pods-OHMySQLMac-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLMac-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,28 +35,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E087E9926AB68EF9EFA9D76 /* Pods_OHMySQLMac_Swift.framework in Frameworks */,
+				BC3EED831FFAD1C2E0092EB2 /* Pods_OHMySQLMac_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B315A052346FE80E024E7C5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				68BFF80D30ABCA0902A67E0E /* Pods_OHMySQLMac_Swift.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		7C5F9C001E912B6C00611994 = {
 			isa = PBXGroup;
 			children = (
-				4B315A052346FE80E024E7C5 /* Frameworks */,
 				7C5F9C0B1E912B6C00611994 /* OHMySQLMac-Swift */,
-				B8DA5BCECDB0CFA429599355 /* Pods */,
 				7C5F9C0A1E912B6C00611994 /* Products */,
+				FF29C58B9BCA945B89DC03E9 /* Pods */,
+				D991FF0ADA1D8D969D4A724D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,11 +90,19 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		B8DA5BCECDB0CFA429599355 /* Pods */ = {
+		D991FF0ADA1D8D969D4A724D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				97C1C8B13344A31F836E6657 /* Pods-OHMySQLMac-Swift.debug.xcconfig */,
-				C0ACAAAE998958F5F1CE908B /* Pods-OHMySQLMac-Swift.release.xcconfig */,
+				C4B2B95DD7FCDBF97F6B3CA2 /* Pods_OHMySQLMac_Swift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF29C58B9BCA945B89DC03E9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE1C549DCBBD544539EF5AEB /* Pods-OHMySQLMac-Swift.debug.xcconfig */,
+				D00248701973E2A522E7F11F /* Pods-OHMySQLMac-Swift.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -114,12 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7C5F9C181E912B6C00611994 /* Build configuration list for PBXNativeTarget "OHMySQLMac-Swift" */;
 			buildPhases = (
-				4AA333362FA191033BC9BBEE /* [CP] Check Pods Manifest.lock */,
+				AE273D12E1F7DA79B4E36577 /* [CP] Check Pods Manifest.lock */,
 				7C5F9C051E912B6C00611994 /* Sources */,
 				7C5F9C061E912B6C00611994 /* Frameworks */,
 				7C5F9C071E912B6C00611994 /* Resources */,
-				AE1EE446C6B25DD7FCE959CD /* [CP] Embed Pods Frameworks */,
-				D0BB587358A6BFECF0377620 /* [CP] Copy Pods Resources */,
+				A40E1577E62354DE85AA08F0 /* [CP] Embed Pods Frameworks */,
+				97C93C5FE1D4D638915A5A1E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,22 +178,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4AA333362FA191033BC9BBEE /* [CP] Check Pods Manifest.lock */ = {
+		97C93C5FE1D4D638915A5A1E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AE1EE446C6B25DD7FCE959CD /* [CP] Embed Pods Frameworks */ = {
+		A40E1577E62354DE85AA08F0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,19 +208,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0BB587358A6BFECF0377620 /* [CP] Copy Pods Resources */ = {
+		AE273D12E1F7DA79B4E36577 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -295,7 +295,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -346,7 +346,7 @@
 		};
 		7C5F9C191E912B6C00611994 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97C1C8B13344A31F836E6657 /* Pods-OHMySQLMac-Swift.debug.xcconfig */;
+			baseConfigurationReference = FE1C549DCBBD544539EF5AEB /* Pods-OHMySQLMac-Swift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -361,7 +361,7 @@
 		};
 		7C5F9C1A1E912B6C00611994 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0ACAAAE998958F5F1CE908B /* Pods-OHMySQLMac-Swift.release.xcconfig */;
+			baseConfigurationReference = D00248701973E2A522E7F11F /* Pods-OHMySQLMac-Swift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
