@@ -74,7 +74,7 @@ NSError *contextError(NSString *description) {
     NSParameterAssert(query.queryString);
     MYSQL *_mysql = self.mysql;
     if (!self.storeCoordinator.isConnected || !_mysql) {
-		NSString *errorString = [NSString stringWithUTF8String:mysql_error(_mysql)];
+		__unused NSString *errorString = [NSString stringWithUTF8String:mysql_error(_mysql)];
         OHLogError(@"The connection is broken: %@", errorString);
         OHLogError(@"Cannot connect to DB. Check your configuration properties.");
 		
