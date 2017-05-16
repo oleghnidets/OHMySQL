@@ -2,7 +2,8 @@
 use_frameworks!
 
 def mainPods 
-	pod 'OHMySQL', :git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop'
+	pod 'OHMySQL', :path => '../'
+#:git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop'
 end
 
 target 'OHMySQL' do

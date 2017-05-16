@@ -52,6 +52,12 @@
     
     OHSSLConfig *SSLconfig = self.user.sslConfig;
     if (SSLconfig) {
+		// https://dev.mysql.com/doc/refman/5.7/en/mysql-options.html
+		// https://bugs.mysql.com/file.php?id=24546&bug_id=83338
+		// https://github.com/sequelpro/sequelpro/issues/2499
+		uint ssl_mode = SSL_MODE_REQUIRED;
+		mysql_options(_mysql, MYSQL_OPT_SSL_MODE, &ssl_mode);
+
         mysql_ssl_set(_mysql, SSLconfig.key.UTF8String, SSLconfig.certPath.UTF8String,
                       SSLconfig.certAuthPath.UTF8String, SSLconfig.certAuthPEMPath.UTF8String,
                       SSLconfig.cipher.UTF8String);
