@@ -50,12 +50,20 @@
 }
 
 - (void)configureMySQL {
+	// Check configurations here.
+	OHSSLConfig *config = [[OHSSLConfig alloc] initWithKey:@"/Users/oleg/Desktop/newcerts/client-key.pem"
+												  certPath:@"/Users/oleg/Desktop/newcerts/client-cert.pem"
+											  certAuthPath:@"/Users/oleg/Desktop/newcerts/ca.pem"
+										   certAuthPEMPath:@"/Users/oleg/Desktop/newcerts/"
+													cipher:nil];
+	// You may delete sslConfig:config if you don't use SSL.
     OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-                                                     password:@"root"
+                                                     password:@""
+													sslConfig:config
                                                    serverName:@"localhost"
                                                        dbName:@"ohmysql"
                                                          port:3306
-                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+                                                       socket:@"/tmp/mysql.sock"];
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
     [coordinator connect];
 	

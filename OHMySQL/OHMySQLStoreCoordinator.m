@@ -67,6 +67,8 @@
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(_mysql));
 		return ;
     }
+
+	OHLog(@"MySQL cipher: %s", mysql_get_ssl_cipher(_mysql));
 	
 	self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
 	[self configureConnectionForEncoding:self.encoding];
