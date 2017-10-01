@@ -17,7 +17,7 @@
 @implementation OHEscapeTests
 
 - (CharsetEncoding)encoding {
-	return [OHMySQLManager sharedManager].storeCoordinator.encoding;
+	return [OHMySQLContainer sharedContainer].storeCoordinator.encoding;
 }
 
 - (void)setUp {
@@ -26,7 +26,7 @@
 }
 
 - (void)tearDown {
-	[[OHMySQLManager sharedManager].storeCoordinator disconnect];
+	[[OHMySQLContainer sharedContainer].storeCoordinator disconnect];
 	[super tearDown];
 }
 

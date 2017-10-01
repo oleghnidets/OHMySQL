@@ -4,9 +4,9 @@
 
 @import Foundation;
 
-typedef void(^OHSuccess)();
+typedef void(^OHSuccess)(void);
 typedef void(^OHGetSuccess)(NSArray *tasks);
-typedef void(^OHFailure)();
+typedef void(^OHFailure)(void);
 
 @class OHTask;
 

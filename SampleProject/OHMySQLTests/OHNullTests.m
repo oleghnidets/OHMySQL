@@ -23,7 +23,7 @@ static NSString * const kTestNullTable = @"TestNull";
 }
 
 - (void)tearDown {
-    [[OHMySQLManager sharedManager].storeCoordinator disconnect];
+    [[OHMySQLContainer sharedContainer].storeCoordinator disconnect];
     [super tearDown];
 }
 

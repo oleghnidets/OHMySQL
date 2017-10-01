@@ -24,7 +24,7 @@
     
     OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" condition:nil];
     NSError *error = nil;
-    NSArray *tasks = [[OHMySQLManager sharedManager].mainQueryContext executeQueryRequestAndFetchResult:query error:&error];
+    NSArray *tasks = [[OHMySQLContainer sharedContainer].mainQueryContext executeQueryRequestAndFetchResult:query error:&error];
     // For example offline mode.
     if (error) {
         NSArray *_tasks = [self.context executeFetchRequest:fetch error:nil];
@@ -56,7 +56,7 @@
 
 + (void)addTask:(OHTask *)task :(OHSuccess)success failure:(OHFailure)failure {
     OHMySQLQueryContext *childContext = [OHMySQLQueryContext new];
-    childContext.parentQueryContext = [OHMySQLManager sharedManager].mainQueryContext;
+    childContext.parentQueryContext = [OHMySQLContainer sharedContainer].mainQueryContext;
     [childContext insertObject:task];
     
     [childContext saveToPersistantStore:^(NSError *error) {
@@ -75,9 +75,9 @@
 }
 
 + (void)update:(OHTask *)task :(OHSuccess)success failure:(OHFailure)failure {
-    [[OHMySQLManager sharedManager].mainQueryContext updateObject:task];
+    [[OHMySQLContainer sharedContainer].mainQueryContext updateObject:task];
     NSError *error;
-    if (![[OHMySQLManager sharedManager].mainQueryContext save:&error]) {
+    if (![[OHMySQLContainer sharedContainer].mainQueryContext save:&error]) {
         !failure ?: failure();
         return ;
     }
@@ -91,9 +91,9 @@
 }
 
 + (void)deleteTask:(OHTask *)task :(OHSuccess)success failure:(OHFailure)failure {
-    [[OHMySQLManager sharedManager].mainQueryContext deleteObject:task];
+    [[OHMySQLContainer sharedContainer].mainQueryContext deleteObject:task];
     NSError *error;
-    if (![[OHMySQLManager sharedManager].mainQueryContext save:&error]) {
+    if (![[OHMySQLContainer sharedContainer].mainQueryContext save:&error]) {
         !failure ?: failure();
         return ;
     }

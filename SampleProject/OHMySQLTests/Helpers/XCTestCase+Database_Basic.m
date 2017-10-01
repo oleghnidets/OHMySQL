@@ -15,7 +15,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 @implementation XCTestCase (Database_Basic)
 
 - (OHMySQLQueryContext *)mainQueryContext {
-    return [OHMySQLManager sharedManager].mainQueryContext;
+    return [OHMySQLContainer sharedContainer].mainQueryContext;
 }
 
 - (void)setMainQueryContext:(__unused OHMySQLQueryContext *)mainQueryContext {
@@ -23,7 +23,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 - (OHMySQLStoreCoordinator *)storeCoordinator {
-    return [OHMySQLManager sharedManager].storeCoordinator;
+    return [OHMySQLContainer sharedContainer].storeCoordinator;
 }
 
 - (void)setStoreCoordinator:(__unused OHMySQLStoreCoordinator *)storeCoordinator {
@@ -43,7 +43,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
     
-    [OHMySQLManager sharedManager].mainQueryContext = queryContext;
+    [OHMySQLContainer sharedContainer].mainQueryContext = queryContext;
 }
 
 - (void)createTable {

@@ -71,7 +71,7 @@
 	
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
-    [OHMySQLManager sharedManager].mainQueryContext = queryContext;
+    [OHMySQLContainer sharedContainer].mainQueryContext = queryContext;
 }
 
 - (IBAction)addButtonPressed:(__unused UIBarButtonItem *)sender {
