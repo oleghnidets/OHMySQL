@@ -10,5 +10,6 @@
 @dynamic name;
 @dynamic taskDescription;
 @dynamic status;
+@dynamic taskData;
 
 @end

@@ -19,7 +19,7 @@ static NSString * const kTestNullTable = @"TestNull";
     [super setUp];
     [OHNullTests configureDatabase];
     
-    [self createTableWithQuery:@"CREATE TABLE TestNull (`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` TEXT NULL, `age` INT NULL);"];
+    [self createTableWithQuery:@"CREATE TABLE TestNull (`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` VARCHAR(255) NULL, `age` INT NULL);"];
 }
 
 - (void)tearDown {
@@ -51,7 +51,7 @@ static NSString * const kTestNullTable = @"TestNull";
     XCTAssert([response.ID isKindOfClass:[NSNumber class]]);
     
     XCTAssert(response.name != nil);
-    XCTAssert([response.name isEqualToString:[NSNull null].description]);
+    XCTAssert([response.name isEqual:[NSNull null].description]);
     
     XCTAssert(response.age != nil);
     XCTAssert([response.age isEqualToNumber:insertSet[@"age"]]);

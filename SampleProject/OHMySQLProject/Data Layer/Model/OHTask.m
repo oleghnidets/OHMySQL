@@ -10,7 +10,9 @@
     return @{ mysql_key(taskId) : @"id",
               mysql_key(name) : @"name",
               mysql_key(taskDescription) : @"description",
-              mysql_key(status) : @"status", };
+              mysql_key(status) : @"status",
+			  mysql_key(taskData) : @"data",
+			  };
 }
 
 - (NSString *)mySQLTable {

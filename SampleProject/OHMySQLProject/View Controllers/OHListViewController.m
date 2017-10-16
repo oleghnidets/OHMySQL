@@ -2,6 +2,8 @@
 //  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
 //
 
+@import Foundation;
+
 #import "OHListViewController.h"
 #import "OHEditViewController.h"
 
@@ -51,19 +53,18 @@
 
 - (void)configureMySQL {
 	// Check configurations here.
-	OHSSLConfig *config = [[OHSSLConfig alloc] initWithKey:@"/Users/oleg/Desktop/newcerts/client-key.pem"
-												  certPath:@"/Users/oleg/Desktop/newcerts/client-cert.pem"
-											  certAuthPath:@"/Users/oleg/Desktop/newcerts/ca.pem"
-										   certAuthPEMPath:@"/Users/oleg/Desktop/newcerts/"
-													cipher:nil];
+//	OHSSLConfig *config = [[OHSSLConfig alloc] initWithKey:@"/Users/oleg/Desktop/newcerts/client-key.pem"
+//												  certPath:@"/Users/oleg/Desktop/newcerts/client-cert.pem"
+//											  certAuthPath:@"/Users/oleg/Desktop/newcerts/ca.pem"
+//										   certAuthPEMPath:@"/Users/oleg/Desktop/newcerts/"
+//													cipher:nil];
 	// You may delete sslConfig:config if you don't use SSL.
     OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-                                                     password:@""
-													sslConfig:config
+                                                     password:@"root"
                                                    serverName:@"localhost"
                                                        dbName:@"ohmysql"
                                                          port:3306
-                                                       socket:@"/tmp/mysql.sock"];
+                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
     [coordinator connect];
 	
@@ -81,6 +82,8 @@
     task.name = @"Something important"; 
     task.taskDescription = [@"Do something important: " stringByAppendingFormat:@"%@", [NSDate date]];
     task.status = @(rand() % 2);
+	task.taskData = [UIDevice.currentDevice.identifierForVendor.UUIDString dataUsingEncoding:NSUTF8StringEncoding];
+
     [OHTasksFacade addTask:task :nil failure:^{
         // Handle
     }];
