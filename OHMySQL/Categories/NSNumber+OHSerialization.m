@@ -9,9 +9,9 @@
 
 + (id)serializeFromCString:(const char *)cString defaultValue:(const char *)defaultValue canBeNull:(BOOL)canBeNull encoding:(CharsetEncoding)encoding {
     if (cString) {
-        return [NSNumber numberFromCString:cString encoding:encoding];
+        return [NSDecimalNumber numberFromCString:cString encoding:encoding];
     } else if (!cString && defaultValue) {
-        return [NSNumber numberFromCString:defaultValue encoding:encoding];
+        return [NSDecimalNumber numberFromCString:defaultValue encoding:encoding];
     } else if (!cString && canBeNull == NO) {
         return @0;
     }
@@ -23,9 +23,8 @@
 	NSStringEncoding nsEncoding = NSStringEncodingFromCharsetEncoding(encoding);
 	
     NSString *numberString = [[NSString alloc] initWithCString:cString encoding:nsEncoding];
-    NSNumberFormatter *formatter = [NSNumberFormatter new];
-    
-    return [formatter numberFromString:numberString];
+
+    return [NSDecimalNumber decimalNumberWithString:numberString];
 }
 
 @end

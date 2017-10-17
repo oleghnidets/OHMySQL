@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *taskDescription;
 @property (nullable, nonatomic, retain) NSNumber *status;
 @property (nullable, nonatomic, retain) NSData *taskData;
+@property (nullable, nonatomic, copy) NSNumber *decimalValue;
 
 @end
 

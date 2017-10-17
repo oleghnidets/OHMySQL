@@ -11,5 +11,6 @@
 @dynamic taskDescription;
 @dynamic status;
 @dynamic taskData;
+@dynamic decimalValue;
 
 @end

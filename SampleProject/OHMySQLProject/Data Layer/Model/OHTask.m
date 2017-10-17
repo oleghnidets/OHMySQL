@@ -12,6 +12,7 @@
               mysql_key(taskDescription) : @"description",
               mysql_key(status) : @"status",
 			  mysql_key(taskData) : @"data",
+			  mysql_key(decimalValue) : @"preciseValue",
 			  };
 }
 
