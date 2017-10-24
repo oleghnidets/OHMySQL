@@ -14,6 +14,7 @@
 		7C5F9BFB1E91240000611994 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9BFA1E91240000611994 /* AppDelegate.m */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
+		7C94453A1F9BB229007DE1D5 /* OHSelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9445391F9BB229007DE1D5 /* OHSelectTests.m */; };
 		7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5C81E47910800A978F0 /* OHNullTests.m */; };
 		7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */; };
 		7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */; };
@@ -56,6 +57,7 @@
 		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = "<group>"; };
 		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = "<group>"; };
 		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
+		7C9445391F9BB229007DE1D5 /* OHSelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHSelectTests.m; sourceTree = "<group>"; };
 		7CBAB5C81E47910800A978F0 /* OHNullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHNullTests.m; sourceTree = "<group>"; };
 		7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+INSERT.h"; sourceTree = "<group>"; };
 		7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+INSERT.m"; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				7CE55E241BB95C13004A2FF9 /* Supporting Files */,
 				92538D631E5D863000FCE133 /* OHEscapeTests.m */,
 				7CE55E221BB95BD6004A2FF9 /* OHMySQLTests.m */,
+				7C9445391F9BB229007DE1D5 /* OHSelectTests.m */,
 				7CBAB5C81E47910800A978F0 /* OHNullTests.m */,
 				7CBFDA341D62019C00F4C828 /* OHObjectTests.m */,
 				7C0D87B21D6597A700B7AA12 /* OHThreadingTests.m */,
@@ -484,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CE55E231BB95BD6004A2FF9 /* OHMySQLTests.m in Sources */,
+				7C94453A1F9BB229007DE1D5 /* OHSelectTests.m in Sources */,
 				7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */,
 				7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */,
 				7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */,

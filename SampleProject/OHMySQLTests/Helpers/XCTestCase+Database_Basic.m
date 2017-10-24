@@ -6,9 +6,9 @@
 
 NSString *const kDatabaseName    = @"mysql";
 NSString *const kTableName       = @"TestTable";
-NSString *const kDropTableString = @"DROP TABLE `TestTable`";
+NSString *const kDropTableString = @"DROP TABLE `TestTable`;";
 
-static NSString *const kCreateTableString = @"CREATE TABLE `TestTable` ( `id` mediumint(8) unsigned NOT NULL auto_increment, `name` varchar(255) default NULL, `surname` varchar(255) default NULL, `age` mediumint default NULL, PRIMARY KEY (`id`) ) AUTO_INCREMENT=1; INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Bradley','Oneill',90),('Levi','Moses',25),('Orlando','Cummings',9),('Hasad','Maldonado',5),('Carlos','Lowery',57),('Axel','Doyle',74),('Hasad','Booth',60),('Hall','Walters',84),('Dustin','Velazquez',84),('Randall','Riggs',91); INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Harper','Knowles',67),('Jasper','Massey',95),('Hop','Casey',2),('Timon','Bright',25),('Lionel','Mcintyre',74),('Denton','Kennedy',35),('Ethan','Jarvis',43),('Hasad','Stevens',56),('Benedict','Dudley',29),('Shad','Pace',94); INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Asher','Williamson',70),('Sylvester','Baldwin',37),('Lucas','Bush',62),('Nissim','Harvey',43),('Anthony','Adkins',4),('Norman','Snow',26),('Coby','Oneill',82);";
+NSString * const kCreateTestTableQuery = @"CREATE TABLE `TestTable` ( `id` mediumint(8) unsigned NOT NULL auto_increment, `name` varchar(255) default NULL, `surname` varchar(255) default NULL, `age` mediumint default NULL, PRIMARY KEY (`id`) ) AUTO_INCREMENT=1; INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Bradley','Oneill',90),('Levi','Moses',25),('Orlando','Cummings',9),('Hasad','Maldonado',5),('Carlos','Lowery',57),('Axel','Doyle',74),('Hasad','Booth',60),('Hall','Walters',84),('Dustin','Velazquez',84),('Randall','Riggs',91); INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Harper','Knowles',67),('Jasper','Massey',95),('Hop','Casey',2),('Timon','Bright',25),('Lionel','Mcintyre',74),('Denton','Kennedy',35),('Ethan','Jarvis',43),('Hasad','Stevens',56),('Benedict','Dudley',29),('Shad','Pace',94); INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Asher','Williamson',70),('Sylvester','Baldwin',37),('Lucas','Bush',62),('Nissim','Harvey',43),('Anthony','Adkins',4),('Norman','Snow',26),('Coby','Oneill',82);";
 
 static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` mediumint(8) unsigned NOT NULL auto_increment, `name` varchar(255) default NULL, `surname` varchar(255) default NULL, `age` mediumint default NULL, PRIMARY KEY (`id`) ) AUTO_INCREMENT=1; INSERT INTO `TestTable` (`name`,`surname`,`age`);";
 
@@ -47,7 +47,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 - (void)createTable {
-    [self createTableWithQuery:kCreateTableString];
+    [self createTableWithQuery:kCreateTestTableQuery];
 }
 
 - (void)createTableWithQuery:(NSString *)query {
@@ -56,9 +56,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     NSString *tableName = [formattedQuery componentsSeparatedByString:@" "][2];
 
     // given
-    NSString *dropQueryString = [self dropTableQuery:tableName];
-    OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
-    [self.mainQueryContext executeQueryRequest:dropQueryRequest error:nil];
+	[self dropTableNamed:tableName];
     
     // when
     OHMySQLQueryRequest *queryRequest = [[OHMySQLQueryRequest alloc] initWithQueryString:query];
@@ -69,8 +67,10 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     XCTAssert(success && !error);
 }
 
-- (NSString *)dropTableQuery:(NSString *)tableName {
-    return [@"DROP TABLE " stringByAppendingString:tableName];
+- (void)dropTableNamed:(NSString *)tableName {
+	NSString *dropQueryString = [NSString stringWithFormat:@"DROP TABLE %@;", tableName];
+	OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
+	[self.mainQueryContext executeQueryRequest:dropQueryRequest error:nil];
 }
 
 - (void)createEmptyTable {

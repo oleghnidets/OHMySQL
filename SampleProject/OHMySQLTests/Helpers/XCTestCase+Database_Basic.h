@@ -8,6 +8,7 @@
 extern NSString * const kDatabaseName;
 extern NSString * const kTableName;
 extern NSString * const kDropTableString;
+extern NSString * const kCreateTestTableQuery;
 
 #define AssertIfError() XCTAssert(error == nil)
 #define AssertIfNoError() XCTAssert(error != nil)
@@ -23,6 +24,7 @@ extern NSString * const kDropTableString;
 - (void)createTable;
 - (void)createTableWithQuery:(NSString *)query;
 - (void)createEmptyTable;
+- (void)dropTableNamed:(NSString *)tableName;
 
 - (NSNumber *)countOfObjects;
 
