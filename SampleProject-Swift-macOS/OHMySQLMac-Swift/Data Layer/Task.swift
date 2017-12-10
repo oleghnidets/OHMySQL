@@ -7,10 +7,10 @@ import OHMySQL
 
 class Task: NSObject, OHMappingProtocol {
 	
-	var taskId: NSNumber?
-	var name: String?
-	var taskDescription: String?
-	var status: NSNumber?
+	@objc var taskId: NSNumber?
+	@objc var name: String?
+	@objc var taskDescription: String?
+	@objc var status: NSNumber?
 	
 	func mappingDictionary() -> [AnyHashable : Any]! {
 		return ["taskId": "id",

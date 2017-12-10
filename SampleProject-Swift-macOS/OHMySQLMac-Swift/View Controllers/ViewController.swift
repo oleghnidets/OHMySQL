@@ -41,9 +41,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	}
 	
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		let cell = tableView.make(withIdentifier: "CellIdentifier", owner: nil) as? NSTableCellView
+		let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CellIdentifier"), owner: nil) as? NSTableCellView
 		let task = tasks[row]
-		cell?.textField?.stringValue = task.name!
+		cell?.textField?.stringValue = task.name ?? ""
 		
 		return cell
 	}
