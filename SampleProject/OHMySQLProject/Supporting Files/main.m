@@ -2,8 +2,8 @@
 //  main.m
 //  MySQL
 //
-//  Created by Oleg on 8/12/15.
-//  Copyright (c) 2015 Oleg Hnidets. All rights reserved.
+//  Created by Oleg Hnidets on 8/12/15.
+//  Copyright © 2015-2017 Oleg Hnidets. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -1,4 +1,4 @@
-//  Created by Oleg on 2/5/17.
+//  Created by Oleg Hnidets on 2/5/17.
 //  Copyright © 2017 Oleg Hnidets. All rights reserved.
 //
 
