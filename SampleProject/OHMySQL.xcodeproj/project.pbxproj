@@ -14,6 +14,7 @@
 		7C5F9BFB1E91240000611994 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9BFA1E91240000611994 /* AppDelegate.m */; };
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
+		7C91ACBA2020FD8F00BED2AC /* OHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */; };
 		7C94453A1F9BB229007DE1D5 /* OHSelectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9445391F9BB229007DE1D5 /* OHSelectTests.m */; };
 		7CBAB5C91E47910800A978F0 /* OHNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5C81E47910800A978F0 /* OHNullTests.m */; };
 		7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */; };
@@ -57,6 +58,8 @@
 		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = "<group>"; };
 		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = "<group>"; };
 		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
+		7C91ACB82020FD8F00BED2AC /* OHSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHSettingsViewController.h; sourceTree = "<group>"; };
+		7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHSettingsViewController.m; sourceTree = "<group>"; };
 		7C9445391F9BB229007DE1D5 /* OHSelectTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHSelectTests.m; sourceTree = "<group>"; };
 		7CBAB5C81E47910800A978F0 /* OHNullTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHNullTests.m; sourceTree = "<group>"; };
 		7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+INSERT.h"; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				7C1138071D23D9EA001086E8 /* OHEditViewController.m */,
 				7CE55D451BB95928004A2FF9 /* OHListViewController.h */,
 				7CE55D461BB95928004A2FF9 /* OHListViewController.m */,
+				7C91ACB82020FD8F00BED2AC /* OHSettingsViewController.h */,
+				7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */,
+				7C91ACBA2020FD8F00BED2AC /* OHSettingsViewController.m in Sources */,
 				7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */,
 				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
 				7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */,

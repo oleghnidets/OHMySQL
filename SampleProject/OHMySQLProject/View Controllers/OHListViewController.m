@@ -31,13 +31,18 @@
     [super viewDidLoad];
 
     [self configureResultsController];
-    [self configureMySQL];
-    
-    [OHTasksFacade loadTasks:^(__unused NSArray *tasks) {
-        [self.allItemsController performFetch:nil];
-    } failure:^{
-        // handle
-    }];
+
+	[self performSegueWithIdentifier:@"settings" sender:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	[OHTasksFacade loadTasks:^(__unused NSArray *tasks) {
+		[self.allItemsController performFetch:nil];
+	} failure:^{
+		// handle
+	}];
 }
 
 - (void)configureResultsController {
@@ -49,30 +54,6 @@
                                                                     sectionNameKeyPath:nil
                                                                              cacheName:nil];
     self.allItemsController.delegate = self;
-}
-
-- (void)configureMySQL {
-	// Check configurations here.
-//	OHSSLConfig *config = [[OHSSLConfig alloc] initWithKey:@"/Users/oleg/Desktop/newcerts/client-key.pem"
-//												  certPath:@"/Users/oleg/Desktop/newcerts/client-cert.pem"
-//											  certAuthPath:@"/Users/oleg/Desktop/newcerts/ca.pem"
-//										   certAuthPEMPath:@"/Users/oleg/Desktop/newcerts/"
-//													cipher:nil];
-	// You may delete sslConfig:config if you don't use SSL.
-    OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
-                                                     password:@"root"
-                                                   serverName:@"localhost"
-                                                       dbName:@"ohmysql"
-                                                         port:3306
-                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
-    OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
-    [coordinator connect];
-	
-	[coordinator setEncoding:CharsetEncodingUTF8MB4];
-	
-    OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
-    queryContext.storeCoordinator = coordinator;
-    [OHMySQLContainer sharedContainer].mainQueryContext = queryContext;
 }
 
 - (IBAction)addButtonPressed:(__unused UIBarButtonItem *)sender {
