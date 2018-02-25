@@ -1,5 +1,22 @@
 # OHMySQL
-OHMySQL supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
+The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
+
+- [Requirements](#requirements)
+- [How To Get Started](#how-to-get-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Communication](#communication)
+- [Installation](#installation)
+- [Usage](Documentation/Usage.md)
+    - [Query Context](#query-context)
+    - [SELECT](#select)
+    - [INSERT](#insert)
+    - [UPDATE](#update)
+    - [DELETE](#delete)
+    - [JOINs](#joins)
+    - [Object Mapping](#object-mapping)
+- [Communication](#communication)
+- [License](#license)
 
 ## Requirements
 - iOS 8.0+ / macOS 10.9+
@@ -7,19 +24,16 @@ OHMySQL supports Objective-C and Swift, iOS and macOS. You can connect to your r
 
 ## How To Get Started
 - To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
-- Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/blob/master/Documentation/Demo.md)). 
+- Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-demo-project)). 
 - When it'll be ready then transfer your local Data Base(s) to remote MySQL server.
 
 ## Installation
 You can use CocoaPods. Add the following line to your Podfile:
-```objective-c
+```ruby
 pod 'OHMySQL'
 ```
 
-If you are using Swift do not forget to add `use_frameworks!` at the top of Podfile. Also it is recommended to add platform `platform :osx, '10.10'`.
-
-## Migration Guide
-- [OHMySQL 0.2.0 Migration Guide](https://github.com/oleghnidets/OHMySQL/blob/master/Documentation/Migration%20guide.md)
+If you are using Swift do not forget to add `use_frameworks!` at the top of Podfile. Add platform, example `platform :osx, '10.10'`.
 
 ## Usage
 
@@ -174,10 +188,11 @@ try? mainQueryContext?.save()
 - If you found a bug, have suggestions or need help, please, open an issue.
 - If you need help, write me oleg.oleksan@gmail.com.
 - If you want to contribute, submit a pull request.
-- If you want to donate I would be thankful ;]
+- Make me feel happier ;]
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CVFAEEZJ9DJ3L)
 
 ## License 
 
-The MIT License (MIT)
+OHMySQL is released under the MIT license. See [LICENSE](LICENSE) for details.
+
