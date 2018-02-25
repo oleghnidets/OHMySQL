@@ -1,5 +1,5 @@
 //  Created by Oleg Hnidets on 8/15/16.
-//  Copyright © 2016-2017 Oleg Hnidets. All rights reserved.
+//  Copyright © 2016-2018 Oleg Hnidets. All rights reserved.
 //
 
 #import "XCTestCase+Database_Basic.h"

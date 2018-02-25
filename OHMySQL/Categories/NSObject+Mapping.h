@@ -1,5 +1,5 @@
 //  Created by Oleg Hnidets on 10/31/15.
-//  Copyright © 2015-2017 Oleg Hnidets. All rights reserved.
+//  Copyright © 2015-2018 Oleg Hnidets. All rights reserved.
 //
 
 @import Foundation;
