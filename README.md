@@ -21,7 +21,8 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
 
 ## Features
 
-- [x] Easy to integrate
+- [x] Easy to integrate and use
+- [x] Many functionality features
 - [x] Requires minimal knowledge in SQL
 - [x] Supports iOS and macOS
 - [x] Clean code with unit tests

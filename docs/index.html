@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OHMySQL  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="OHMySQL  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">OHMySQL Docs</a> (62% documented)</p>
+        <p class="header-right"><a href="https://github.com/oleghnidets/OHMySQL"><img src="img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">OHMySQL Reference</a>
+        <img id="carat" src="img/carat.png" />
+        OHMySQL  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Categories/NSObject(Mapping).html">NSObject(Mapping)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Categories/NSString(Escaping).html">NSString(Escaping)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLContainer.html">OHMySQLContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLQueryContext.html">OHMySQLQueryContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLQueryRequest.html">OHMySQLQueryRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLQueryRequestFactory.html">OHMySQLQueryRequestFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLStore.html">OHMySQLStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLStoreCoordinator.html">OHMySQLStoreCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLTimeline.html">OHMySQLTimeline</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHMySQLUser.html">OHMySQLUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OHSSLConfig.html">OHSSLConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OHJoinFull">OHJoinFull</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OHJoinInner">OHJoinInner</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OHJoinLeft">OHJoinLeft</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Constants.html#/c:@OHJoinRight">OHJoinRight</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CharsetEncoding.html">CharsetEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OHProtocolType.html">OHProtocolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OHRefreshOptions.html">OHRefreshOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/OHResultErrorType.html">OHResultErrorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/OHMappingProtocol.html">OHMappingProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@MySQLCharsetForEncoding">MySQLCharsetForEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/c:@F@NSStringEncodingFromCharsetEncoding">NSStringEncodingFromCharsetEncoding</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='ohmysql' class='heading'>OHMySQL</h1>
+
+<p>The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don&rsquo;t need to dive into MySQL C API.</p>
+
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#how-to-get-started">How To Get Started</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#communication">Communication</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="Documentation/Usage.md">Usage</a>
+
+<ul>
+<li><a href="#query-context">Query Context</a></li>
+<li><a href="#select">SELECT</a></li>
+<li><a href="#insert">INSERT</a></li>
+<li><a href="#update">UPDATE</a></li>
+<li><a href="#delete">DELETE</a></li>
+<li><a href="#joins">JOINs</a></li>
+<li><a href="#object-mapping">Object Mapping</a></li>
+</ul></li>
+<li><a href="#communication">Communication</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>[x] Easy to integrate</li>
+<li>[x] Requires minimal knowledge in SQL</li>
+<li>[x] Supports iOS and macOS</li>
+<li>[x] Clean code with unit tests</li>
+<li>[x] Complete documentation and support
+## Requirements</li>
+<li>iOS 8.0+ / macOS 10.9+</li>
+<li>Xcode 8.1+</li>
+</ul>
+<h2 id='how-to-get-started' class='heading'>How To Get Started</h2>
+
+<ul>
+<li>To test locally you can install <a href="https://dev.mysql.com/downloads/mysql/">MySQL</a> or <a href="https://www.mamp.info/en/">MAMP local server</a>.</li>
+<li>Try to use OHMySQL API (<a href="https://github.com/oleghnidets/OHMySQL/wiki/Set-up-demo-project">set up demo project</a>).</li>
+<li>When it&rsquo;ll be ready then transfer your local Data Base(s) to remote MySQL server.</li>
+</ul>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>You can use CocoaPods. Add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'OHMySQL'</span>
+</code></pre>
+
+<p>If you are using Swift do not forget to add <code>use_frameworks!</code> at the top of Podfile. Add platform, example <code>platform :osx, &#39;10.10&#39;</code>.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+
+<p>At the first you need to connect to the database.</p>
+
+<p><em>Objective-C version:</em></p>
+<pre class="highlight plaintext"><code>OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
+                         password:@"root"
+                           serverName:@"localhost"
+                           dbName:@"sample"
+                             port:3306
+                           socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
+[coordinator connect];
+</code></pre>
+
+<p><em>Swift version:</em></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">user</span> <span class="o">=</span> <span class="kt">OHMySQLUser</span><span class="p">(</span><span class="nv">userName</span><span class="p">:</span> <span class="s">"root"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"root"</span><span class="p">,</span> <span class="nv">serverName</span><span class="p">:</span> <span class="s">"localhost"</span><span class="p">,</span> <span class="nv">dbName</span><span class="p">:</span> <span class="s">"ohmysql"</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="mi">3306</span><span class="p">,</span> <span class="nv">socket</span><span class="p">:</span> <span class="s">"/Applications/MAMP/tmp/mysql/mysql.sock"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">coordinator</span> <span class="o">=</span> <span class="kt">OHMySQLStoreCoordinator</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="n">user</span><span class="o">!</span><span class="p">)</span>
+<span class="n">coordinator</span><span class="o">.</span><span class="n">encoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">UTF8MB4</span>
+<span class="n">coordinator</span><span class="o">.</span><span class="nf">connect</span><span class="p">()</span>
+</code></pre>
+
+<p>To end a connection:</p>
+<pre class="highlight plaintext"><code>[coordinator disconnect];
+</code></pre>
+<pre class="highlight swift"><code><span class="n">coordinator</span><span class="o">.</span><span class="nf">disconnect</span><span class="p">()</span>
+</code></pre>
+<h2 id='query-context' class='heading'>Query Context</h2>
+
+<p>To execute a query you have to create the context:</p>
+<pre class="highlight plaintext"><code>OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
+queryContext.storeCoordinator = coordinator;
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">context</span> <span class="o">=</span> <span class="kt">OHMySQLQueryContext</span><span class="p">()</span>
+<span class="n">context</span><span class="o">.</span><span class="n">storeCoordinator</span> <span class="o">=</span> <span class="n">coordinator</span>
+</code></pre>
+
+<p>You will use this context to execute queries or manipulate the objects.</p>
+<h3 id='select' class='heading'>SELECT</h3>
+
+<p>The response contains array of dictionaries (like JSON).</p>
+<pre class="highlight plaintext"><code>OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" condition:nil];
+NSError *error = nil;
+NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:&amp;error];
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">OHMySQLQueryRequestFactory</span><span class="o">.</span><span class="nf">select</span><span class="p">(</span><span class="s">"tasks"</span><span class="p">,</span> <span class="nv">condition</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">response</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="kt">OHMySQLContainer</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">executeQueryRequestAndFetchResult</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre>
+
+<p>You will get a response like this:</p>
+<pre class="highlight plaintext"><code>[{ @"id": @1, @"name": @"Task name", @"description": @"Task description", @"status": [NSNull null] }]
+</code></pre>
+<h3 id='insert' class='heading'>INSERT</h3>
+<pre class="highlight plaintext"><code>OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task" }];
+NSError error;
+[queryContext executeQueryRequest:query error:&amp;error];
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">OHMySQLQueryRequestFactory</span><span class="o">.</span><span class="nf">insert</span><span class="p">(</span><span class="s">"tasks"</span><span class="p">,</span> <span class="nv">set</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Something"</span><span class="p">,</span> <span class="s">"desctiption"</span><span class="p">:</span> <span class="s">"new task"</span><span class="p">])</span>
+<span class="k">try</span><span class="p">?</span> <span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre>
+<h3 id='update' class='heading'>UPDATE</h3>
+<pre class="highlight plaintext"><code>OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:@"tasks" set:@{ @"name": @"Something", @"description": @"new task update" } condition:@"id=5"];
+NSError error;
+[queryContext executeQueryRequest:query error:&amp;error];
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">OHMySQLQueryRequestFactory</span><span class="o">.</span><span class="nf">update</span><span class="p">(</span><span class="s">"tasks"</span><span class="p">,</span> <span class="nv">set</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Something"</span><span class="p">],</span> <span class="nv">condition</span><span class="p">:</span> <span class="s">"id=7"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">?</span> <span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre>
+<h3 id='delete' class='heading'>DELETE</h3>
+<pre class="highlight plaintext"><code>OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:@"tasks" condition:@"id=10"];
+NSError error;
+[queryContext executeQueryRequest:query error:&amp;error];
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">OHMySQLQueryRequestFactory</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="s">"tasks"</span><span class="p">,</span> <span class="nv">condition</span><span class="p">:</span> <span class="s">"id=10"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">?</span> <span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre>
+<h3 id='joins' class='heading'>JOINs</h3>
+
+<p>The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.</p>
+<pre class="highlight plaintext"><code>OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner                                                   fromTable:@"tasks"
+                              columnNames:@[@"id", @"name", @"description"]
+                               joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
+NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">query</span> <span class="o">=</span> <span class="kt">OHMySQLQueryRequestFactory</span><span class="o">.</span><span class="nf">joinType</span><span class="p">(</span><span class="kt">OHJoinInner</span><span class="p">,</span> <span class="nv">fromTable</span><span class="p">:</span> <span class="s">"tasks"</span><span class="p">,</span> <span class="nv">columnNames</span><span class="p">:</span> <span class="p">[</span><span class="s">"id"</span><span class="p">,</span> <span class="s">"name"</span><span class="p">,</span> <span class="s">"description"</span><span class="p">],</span> <span class="nv">joinOn</span><span class="p">:</span> <span class="p">[</span><span class="s">"subtasks"</span><span class="p">:</span> <span class="s">"tasks.id=subtasks.parentId"</span><span class="p">])</span>
+<span class="k">let</span> <span class="nv">result</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">executeQueryRequestAndFetchResult</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</code></pre>
+<h3 id='object-mapping' class='heading'>Object Mapping</h3>
+
+<p>You have to implement the protocol OHMappingProtocol for your models. Insertion looks like the following (in this example the NSManagedObject instance). 
+The library has only a primary logic for mapping, so I would recommend you writing a mapping logic by yourself. If you are using Swift you cannot use fundamental number types (Int, Double), only NSNumber (due to run-time). </p>
+<pre class="highlight plaintext"><code>[queryContext insertObject:task];
+BOOL result = [queryContext save:nil];
+</code></pre>
+<pre class="highlight swift"><code><span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">insertObject</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+<span class="k">try</span><span class="p">?</span> <span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">save</span><span class="p">()</span>
+</code></pre>
+
+<p>You can update/delete the objects easily.</p>
+<pre class="highlight plaintext"><code>// You don't need to specify primary index here.  It'll be update for you.
+OHTask *task = [OHTask new];
+task.name = @"Code cleanup";
+task.taskDescription = @"Delete unused classes and files";
+task.status = 0;
+[queryContext updateObject:task];
+...
+task.name = @"Something";
+task.status = 1;
+[task update];
+...
+[queryContext deleteObject:task];
+BOOL result = [queryContext save:nil];
+</code></pre>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">task</span> <span class="o">=</span> <span class="kt">Task</span><span class="p">()</span>
+<span class="n">task</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"sample"</span>
+<span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">updateObject</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+<span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">deleteObject</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">?</span> <span class="n">mainQueryContext</span><span class="p">?</span><span class="o">.</span><span class="nf">save</span><span class="p">()</span>
+</code></pre>
+<h2 id='communication' class='heading'>Communication</h2>
+
+<ul>
+<li>If you found a bug, have suggestions or need help, please, open an issue.</li>
+<li>If you want to contribute, submit a pull request.</li>
+<li>If you need help, write me <a href="mailto:oleg.oleksan@gmail.com">oleg.oleksan@gmail.com</a>.</li>
+<li>Make me feel happier ;]</li>
+</ul>
+
+<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CVFAEEZJ9DJ3L"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="paypal"></a></p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>OHMySQL is released under the MIT license. See <a href="LICENSE">LICENSE</a> for details.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/oleghnidets" target="_blank" rel="external">Oleg</a>. All rights reserved. (Last updated: 2018-02-25)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

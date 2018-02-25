@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OHSSLConfig Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/OHSSLConfig" class="dashAnchor"></a>
+    <a title="OHSSLConfig Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">OHMySQL Docs</a> (62% documented)</p>
+        <p class="header-right"><a href="https://github.com/oleghnidets/OHMySQL"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">OHMySQL Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        OHSSLConfig Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Categories/NSObject(Mapping).html">NSObject(Mapping)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Categories/NSString(Escaping).html">NSString(Escaping)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLContainer.html">OHMySQLContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryContext.html">OHMySQLQueryContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryRequest.html">OHMySQLQueryRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryRequestFactory.html">OHMySQLQueryRequestFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLStore.html">OHMySQLStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLStoreCoordinator.html">OHMySQLStoreCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLTimeline.html">OHMySQLTimeline</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLUser.html">OHMySQLUser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHSSLConfig.html">OHSSLConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinFull">OHJoinFull</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinInner">OHJoinInner</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinLeft">OHJoinLeft</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinRight">OHJoinRight</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CharsetEncoding.html">CharsetEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OHProtocolType.html">OHProtocolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OHRefreshOptions.html">OHRefreshOptions</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OHResultErrorType.html">OHResultErrorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/OHMappingProtocol.html">OHMappingProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@MySQLCharsetForEncoding">MySQLCharsetForEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@NSStringEncodingFromCharsetEncoding">NSStringEncodingFromCharsetEncoding</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>OHSSLConfig</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">OHSSLConfig</span> <span class="p">:</span> <span class="nc">NSObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>This class is used for establishing secure connections using SSL.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Please, see <a href="http://dev.mysql.com/doc/refman/5.7/en/mysql-ssl-set.html">http://dev.mysql.com/doc/refman/5.7/en/mysql-ssl-set.html</a> for more details.
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OHSSLConfig(py)key"></a>
+                    <a name="//apple_ref/objc/Property/key" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OHSSLConfig(py)key">key</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The path name to the key file.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">key</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OHSSLConfig(py)certPath"></a>
+                    <a name="//apple_ref/objc/Property/certPath" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OHSSLConfig(py)certPath">certPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The path name to the certificate file.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">certPath</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">certPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OHSSLConfig(py)certAuthPath"></a>
+                    <a name="//apple_ref/objc/Property/certAuthPath" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OHSSLConfig(py)certAuthPath">certAuthPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The path name to the certificate authority file.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">certAuthPath</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">certAuthPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OHSSLConfig(py)certAuthPEMPath"></a>
+                    <a name="//apple_ref/objc/Property/certAuthPEMPath" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OHSSLConfig(py)certAuthPEMPath">certAuthPEMPath</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The path name to a directory that contains trusted SSL CA certificates in PEM format.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">certAuthPEMPath</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">certAuthPEMPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OHSSLConfig(py)cipher"></a>
+                    <a name="//apple_ref/objc/Property/cipher" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OHSSLConfig(py)cipher">cipher</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A list of permissible ciphers to use for SSL encryption.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readwrite</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">cipher</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">cipher</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)OHSSLConfig(im)initWithKey:certPath:certAuthPath:certAuthPEMPath:cipher:"></a>
+                    <a name="//apple_ref/objc/Method/-initWithKey:certPath:certAuthPath:certAuthPEMPath:cipher:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)OHSSLConfig(im)initWithKey:certPath:certAuthPath:certAuthPEMPath:cipher:">-initWithKey:certPath:certAuthPath:certAuthPEMPath:cipher:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithKey</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">key</span>
+                            <span class="nf">certPath</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">certPath</span>
+                        <span class="nf">certAuthPath</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">certAuthPath</span>
+                     <span class="nf">certAuthPEMPath</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">certAuthPEMPath</span>
+                              <span class="nf">cipher</span><span class="p">:(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">cipher</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="p">?(</span><span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">certPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">certAuthPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">certAuthPEMPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">cipher</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/oleghnidets" target="_blank" rel="external">Oleg</a>. All rights reserved. (Last updated: 2018-02-25)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
