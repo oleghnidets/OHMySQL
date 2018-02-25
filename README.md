@@ -14,7 +14,7 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
 - [Usage](#usage)
 - [Communication](#communication)
 - [Installation](#installation)
-- [Usage](Documentation/Usage.md)
+- [Usage](#usage)
     - [Query Context](#query-context)
     - [SELECT](#select)
     - [INSERT](#insert)
@@ -44,7 +44,6 @@ If you are interested in and want to know [how it can be applied](https://github
 
 ## How To Get Started
 - To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
-- 
 - Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-demo-project), [read documentation](http://oleghnidets.github.io/OHMySQL/)). 
 - When it'll be ready then transfer your local Data Base(s) to remote MySQL server.
 
