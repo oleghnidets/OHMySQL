@@ -1,6 +1,7 @@
 # OHMySQL
 The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
 
+- [Goal](https://github.com/oleghnidets/OHMySQL/wiki/Goal)
 - [Features](#features)
 - [Requirements](#requirements)
 - [How To Get Started](#how-to-get-started)
@@ -16,8 +17,13 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
     - [DELETE](#delete)
     - [JOINs](#joins)
     - [Object Mapping](#object-mapping)
+    - [Set up SSL](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-SSL)
 - [Communication](#communication)
 - [License](#license)
+
+## Goal
+
+If you are interested in and want to know [how it can be applied](https://github.com/oleghnidets/OHMySQL/wiki/Goal) in your project too. 
 
 ## Features
 
@@ -26,14 +32,15 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
 - [x] Requires minimal knowledge in SQL
 - [x] Supports iOS and macOS
 - [x] Clean code with unit tests
-- [x] Complete documentation and support
+- [x] [Complete documentation](http://oleghnidets.github.io/OHMySQL/) and [support](https://github.com/oleghnidets/OHMySQL/issues?q=is%3Aissue+is%3Aclosed)
 ## Requirements
 - iOS 8.0+ / macOS 10.9+
 - Xcode 8.1+
 
 ## How To Get Started
 - To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
-- Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-demo-project)). 
+- 
+- Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-demo-project), [read documentation](http://oleghnidets.github.io/OHMySQL/)). 
 - When it'll be ready then transfer your local Data Base(s) to remote MySQL server.
 
 ## Installation
@@ -194,8 +201,8 @@ try? mainQueryContext?.save()
 ```
 
 ## Communication
-- If you found a bug, have suggestions or need help, please, open an issue.
-- If you want to contribute, submit a pull request.
+- If you found a bug, have suggestions or need help, please, [open an issue](https://github.com/oleghnidets/OHMySQL/issues/new).
+- If you want to contribute, [submit a pull request](https://github.com/oleghnidets/OHMySQL/pulls).
 - If you need help, write me oleg.oleksan@gmail.com.
 - Make me feel happier ;]
 
