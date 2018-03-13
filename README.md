@@ -1,9 +1,11 @@
+# OHMySQL
+
 [![License][license-image]][license-url]
 [![License][platform-image]][platform-url]
 [![Documentation][docs-image]][docs-url]
 
+<p align="center" >★★ <b>Every star is appreciated!</b> ★★</p>
 
-# OHMySQL
 The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
 
 - [Goal](https://github.com/oleghnidets/OHMySQL/wiki/Goal)
