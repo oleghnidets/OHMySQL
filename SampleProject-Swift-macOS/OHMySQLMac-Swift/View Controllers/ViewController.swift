@@ -31,7 +31,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 		
 		let context = OHMySQLQueryContext()
 		context.storeCoordinator = coordinator
-		OHMySQLContainer.shared().mainQueryContext = context
+		OHMySQLContainer.shared.mainQueryContext = context
 	}
 	
 	// MARK: - NSTableViewDataSource -

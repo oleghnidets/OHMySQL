@@ -1,404 +1,131 @@
 {
   "warnings": [
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 7,
       "symbol": "NSObject(Mapping)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 9,
       "symbol": "NSObject(Mapping).-mapFromResponse:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 10,
       "symbol": "NSObject(Mapping).-indexKeyCondition",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 11,
       "symbol": "NSObject(Mapping).-mapObject",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
       "line": 8,
       "symbol": "NSString(Escaping)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
       "line": 10,
       "symbol": "NSString(Escaping).-escapedUsingEncoding:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 39,
-      "symbol": "CharsetEncoding.CharsetEncodingBig5",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 40,
-      "symbol": "CharsetEncoding.CharsetEncodingCP850",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 41,
-      "symbol": "CharsetEncoding.CharsetEncodingKOI8_R",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 42,
-      "symbol": "CharsetEncoding.CharsetEncodingLatin1",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 43,
-      "symbol": "CharsetEncoding.CharsetEncodingLatin2",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 44,
-      "symbol": "CharsetEncoding.CharsetEncodingASCII",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 45,
-      "symbol": "CharsetEncoding.CharsetEncodingUJIS",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 46,
-      "symbol": "CharsetEncoding.CharsetEncodingSJIS",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 47,
-      "symbol": "CharsetEncoding.CharsetEncodingHebrew",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 48,
-      "symbol": "CharsetEncoding.CharsetEncodingEUCKR",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 49,
-      "symbol": "CharsetEncoding.CharsetEncodingKOI8U",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 50,
-      "symbol": "CharsetEncoding.CharsetEncodingGreek",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 51,
-      "symbol": "CharsetEncoding.CharsetEncodingLatin5",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 52,
-      "symbol": "CharsetEncoding.CharsetEncodingUTF8",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 53,
-      "symbol": "CharsetEncoding.CharsetEncodingCP866",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 54,
-      "symbol": "CharsetEncoding.CharsetEncodingMacRoman",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 55,
-      "symbol": "CharsetEncoding.CharsetEncodingCP852",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 56,
-      "symbol": "CharsetEncoding.CharsetEncodingLatin7",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 57,
-      "symbol": "CharsetEncoding.CharsetEncodingCP1250",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 58,
-      "symbol": "CharsetEncoding.CharsetEncodingCP1251",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 59,
-      "symbol": "CharsetEncoding.CharsetEncodingUTF16",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 60,
-      "symbol": "CharsetEncoding.CharsetEncodingUTF16LE",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 61,
-      "symbol": "CharsetEncoding.CharsetEncodingCP1256",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 62,
-      "symbol": "CharsetEncoding.CharsetEncodingUTF32",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 63,
-      "symbol": "CharsetEncoding.CharsetEncodingCP932",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 64,
-      "symbol": "CharsetEncoding.CharsetEncodingGB2312",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHCharsetEncoding.h",
-      "line": 65,
-      "symbol": "CharsetEncoding.CharsetEncodingUTF8MB4",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.enumcase",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHJoinConstants.h",
-      "line": 7,
-      "symbol": "OHJoinInner",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHJoinConstants.h",
-      "line": 8,
-      "symbol": "OHJoinRight",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHJoinConstants.h",
-      "line": 9,
-      "symbol": "OHJoinLeft",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Constants/OHJoinConstants.h",
-      "line": 10,
-      "symbol": "OHJoinFull",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.constant",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Models/OHMySQLQueryRequest.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Models/OHMySQLQueryRequest.h",
       "line": 17,
       "symbol": "OHMySQLQueryRequest.-initWithQueryString:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Models/OHMySQLStore.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/Models/OHMySQLStore.h",
       "line": 10,
       "symbol": "OHMySQLStore.-initWithMySQL:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Models/OHMySQLUser.h",
-      "line": 33,
-      "symbol": "OHMySQLUser.-initWithUserName:password:serverName:dbName:port:socket:",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Models/OHMySQLUser.h",
-      "line": 40,
-      "symbol": "OHMySQLUser.-initWithUserName:password:sslConfig:serverName:dbName:port:socket:",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/Models/OHSSLConfig.h",
-      "line": 26,
-      "symbol": "OHSSLConfig.-initWithKey:certPath:certAuthPath:certAuthPEMPath:cipher:",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMappingProtocol.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMappingProtocol.h",
       "line": 7,
       "symbol": "OHMappingProtocol",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLContainer.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLContainer.h",
       "line": 26,
       "symbol": "OHMySQLManager",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.unexposed",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryContext.h",
-      "line": 12,
-      "symbol": "OHMySQLQueryContext.-initWithParentQueryContext:",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryContext.h",
-      "line": 14,
-      "symbol": "OHMySQLQueryContext.parentQueryContext",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryContext.h",
-      "line": 19,
-      "symbol": "OHMySQLQueryContext.insertedObjects",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryContext.h",
-      "line": 20,
-      "symbol": "OHMySQLQueryContext.updatedObjects",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryContext.h",
-      "line": 21,
-      "symbol": "OHMySQLQueryContext.deletedObjects",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 13,
       "symbol": "OHMySQLQueryRequestFactory(SELECT)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 67,
       "symbol": "OHMySQLQueryRequestFactory(INSERT)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 81,
       "symbol": "OHMySQLQueryRequestFactory(UPDATE)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 98,
       "symbol": "OHMySQLQueryRequestFactory(DELETE)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 112,
       "symbol": "OHMySQLQueryRequestFactory(JOIN)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 131,
       "symbol": "OHMySQLQueryRequestFactory(Other)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
       "line": 10,
       "symbol": "OHMySQLStoreCoordinator",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/OGnidets/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
+      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
       "line": 30,
       "symbol": "OHMySQLStoreCoordinator.-initWithUser:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/OGnidets/OHMySQL"
+  "source_directory": "/Users/oleg/OHMySQL"
 }

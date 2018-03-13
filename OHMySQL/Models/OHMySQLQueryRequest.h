@@ -14,6 +14,13 @@
 /// SQL query string.
 @property (nonatomic, copy, nonnull) NSString *queryString;
 
+
+/**
+ Initialize request object with SQL string.
+
+ @param query SQL query string.
+ @return Instance of the class with set SQL query.
+ */
 - (nonnull instancetype)initWithQueryString:(nonnull NSString *)query;
 
 @end

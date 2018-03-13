@@ -9,15 +9,26 @@
 /// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
 @interface OHMySQLQueryContext : NSObject
 
+
+/**
+ Initializes a context with a given parent context.
+
+ @param parentQueryContext The parent of the context.
+ @return Initialized context with set parent context.
+ */
 - (nonnull instancetype)initWithParentQueryContext:(nullable OHMySQLQueryContext *)parentQueryContext NS_DESIGNATED_INITIALIZER;
 
-@property (strong, nonnull) OHMySQLQueryContext *parentQueryContext;
+/// The parent of the context.
+@property (strong, nullable) OHMySQLQueryContext *parentQueryContext;
 
 /// Should be set by a user of this class.
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
 
+/// The set of objects that have been inserted into the context but not yet saved in a persistent store.
 @property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *insertedObjects;
+/// The set of objects that have been updated into the context but not yet saved in a persistent store.
 @property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *updatedObjects;
+/// The set of objects that have been deleted into the context but not yet saved in a persistent store.
 @property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *deletedObjects;
 
 /**

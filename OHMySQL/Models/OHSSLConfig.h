@@ -23,6 +23,7 @@
 /// A list of permissible ciphers to use for SSL encryption.
 @property (nonatomic, copy, nullable) NSString *cipher;
 
+/// Initializes and returns a newly allocated SSL config object with the specified parameters.
 - (nullable instancetype)initWithKey:(nullable NSString *)key
                             certPath:(nullable NSString *)certPath
                         certAuthPath:(nullable NSString *)certAuthPath

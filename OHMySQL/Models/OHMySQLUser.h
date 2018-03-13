@@ -30,6 +30,18 @@
 /// Used for establishing secure connections using SSL.
 @property (nonatomic, copy, nullable) OHSSLConfig *sslConfig;
 
+
+/**
+ Initializes and returns a newly allocated object.
+
+ @param name The name of connecting user.
+ @param password User' password.
+ @param serverName A host name or an IP address.
+ @param dbName The name of database
+ @param port Port number for TCP/IP connection.
+ @param socket The socket or named pipe to use
+ @return User object with the specified parameters
+ */
 - (nullable instancetype)initWithUserName:(nonnull NSString *)name
                                  password:(nonnull NSString *)password
                                serverName:(nonnull NSString *)serverName
@@ -37,6 +49,19 @@
                                      port:(NSUInteger)port
                                    socket:(nullable NSString *)socket;
 
+
+/**
+ Initializes and returns a newly allocated object.
+
+ @param name The name of connecting user.
+ @param password User' password.
+ @param sslConfig SSL config object to estable SSL connection.
+ @param serverName A host name or an IP address.
+ @param dbName The name of database.
+ @param port Port number for TCP/IP connection.
+ @param socket The socket or named pipe to use
+ @return User object with the specified parameters
+ */
 - (nullable instancetype)initWithUserName:(nonnull NSString *)name
                                  password:(nonnull NSString *)password
                                 sslConfig:(nonnull OHSSLConfig *)sslConfig

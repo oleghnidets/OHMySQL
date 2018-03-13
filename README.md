@@ -106,7 +106,7 @@ NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:&er
 ```
 ```swift
 let query = OHMySQLQueryRequestFactory.select("tasks", condition: nil)
-let response = try? OHMySQLContainer.shared().mainQueryContext?.executeQueryRequestAndFetchResult(query)
+let response = try? OHMySQLContainer.shared.mainQueryContext?.executeQueryRequestAndFetchResult(query)
 ```
 You will get a response like this:
 ```objective-c
