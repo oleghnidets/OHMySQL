@@ -10,7 +10,7 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
 - [Features](#features)
 - [Requirements](#requirements)
 - [How To Get Started](#how-to-get-started)
-- [Installation](#installation))
+- [Installation](#installation)
 - [Usage](#usage)
     - [Query Context](#query-context)
     - [SELECT](#select)
