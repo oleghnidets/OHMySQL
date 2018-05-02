@@ -1,117 +1,117 @@
 {
   "warnings": [
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 7,
       "symbol": "NSObject(Mapping)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 9,
       "symbol": "NSObject(Mapping).-mapFromResponse:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 10,
       "symbol": "NSObject(Mapping).-indexKeyCondition",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/Categories/NSObject+Mapping.h",
       "line": 11,
       "symbol": "NSObject(Mapping).-mapObject",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
       "line": 8,
       "symbol": "NSString(Escaping)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Models/OHMySQLStore.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/Models/OHMySQLStore.h",
       "line": 10,
       "symbol": "OHMySQLStore.-initWithMySQL:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMappingProtocol.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMappingProtocol.h",
       "line": 7,
       "symbol": "OHMappingProtocol",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.protocol",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLContainer.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLContainer.h",
       "line": 26,
       "symbol": "OHMySQLManager",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.unexposed",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 13,
       "symbol": "OHMySQLQueryRequestFactory(SELECT)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 67,
       "symbol": "OHMySQLQueryRequestFactory(INSERT)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 81,
       "symbol": "OHMySQLQueryRequestFactory(UPDATE)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 98,
       "symbol": "OHMySQLQueryRequestFactory(DELETE)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 112,
       "symbol": "OHMySQLQueryRequestFactory(JOIN)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLQueryRequestFactory.h",
       "line": 131,
       "symbol": "OHMySQLQueryRequestFactory(Other)",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.category",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
       "line": 10,
       "symbol": "OHMySQLStoreCoordinator",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
+      "file": "/Users/oleg/Desktop/start/my-projects/OHMySQL/OHMySQL/OHMySQLStoreCoordinator.h",
       "line": 30,
       "symbol": "OHMySQLStoreCoordinator.-initWithUser:",
       "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/oleg/OHMySQL"
+  "source_directory": "/Users/oleg/Desktop/start/my-projects/OHMySQL"
 }

@@ -36,20 +36,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Categories/NSString+Escaping.h",
-      "line": 10,
-      "symbol": "NSString(Escaping).-escapedUsingEncoding:",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/oleg/OHMySQL/OHMySQL/Models/OHMySQLQueryRequest.h",
-      "line": 17,
-      "symbol": "OHMySQLQueryRequest.-initWithQueryString:",
-      "symbol_kind": "sourcekitten.source.lang.objc.decl.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/oleg/OHMySQL/OHMySQL/Models/OHMySQLStore.h",
       "line": 10,
       "symbol": "OHMySQLStore.-initWithMySQL:",
