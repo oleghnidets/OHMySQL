@@ -38,11 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	[OHTasksFacade loadTasks:^(__unused NSArray *tasks) {
-		[self.allItemsController performFetch:nil];
-	} failure:^{
-		// handle
-	}];
+    [self refresh:nil];
 }
 
 - (void)configureResultsController {
@@ -54,6 +50,10 @@
                                                                     sectionNameKeyPath:nil
                                                                              cacheName:nil];
     self.allItemsController.delegate = self;
+}
+
+- (IBAction)refresh:(__unused id)sender {
+    [self.tableView reloadData];
 }
 
 - (IBAction)addButtonPressed:(__unused UIBarButtonItem *)sender {

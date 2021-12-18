@@ -119,7 +119,6 @@
 				7C5F9C061E912B6C00611994 /* Frameworks */,
 				7C5F9C071E912B6C00611994 /* Resources */,
 				A40E1577E62354DE85AA08F0 /* [CP] Embed Pods Frameworks */,
-				97C93C5FE1D4D638915A5A1E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,37 +178,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		97C93C5FE1D4D638915A5A1E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A40E1577E62354DE85AA08F0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/OHMySQL/OHMySQL.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OHMySQL/MySQL.framework/MySQL",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHMySQL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MySQL.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OHMySQLMac-Swift/Pods-OHMySQLMac-Swift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		AE273D12E1F7DA79B4E36577 /* [CP] Check Pods Manifest.lock */ = {

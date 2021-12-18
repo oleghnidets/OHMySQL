@@ -1,7 +1,10 @@
-source 'https://github.com/CocoaPods/Specs.git'
+platform :osx, '11.0'
 use_frameworks!
 
+def shared_pods 
+	pod 'OHMySQL', :path => '../'
+end
+
 target 'OHMySQLMac-Swift' do
-	platform :osx, '10.10'
-    pod 'OHMySQL'
+    shared_pods
 end

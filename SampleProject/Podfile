@@ -1,15 +1,14 @@
-
+platform :ios, '14.0'
 use_frameworks!
 
-def mainPods 
+def shared_pods 
 	pod 'OHMySQL', :path => '../'
-#:git => 'https://github.com/oleghnidets/OHMySQL', :branch => 'develop'
 end
 
 target 'OHMySQL' do
-   mainPods
+   shared_pods
 end
 
 target 'OHMySQLTests' do
-   mainPods
+   shared_pods
 end
