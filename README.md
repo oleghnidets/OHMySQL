@@ -32,7 +32,7 @@ If you are interested in and want to know [how it can be applied](https://github
 
 ## Support
 
-I wish to support the library and extend API and functionality. If you donate me $1, it makes me motivated and happy 🙂 You may support me via [PayPal](
+I wish to support the library and extend API and functionality. If you donate me some money 💵, it keeps me motivated and happy 🙂 You may support me via [PayPal](
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCAKYM4XCT2DG&source=url ) or let me know any other method convenient for you.
 
 ## Features
