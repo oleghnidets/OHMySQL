@@ -4,17 +4,18 @@
 [![License][platform-image]][platform-url]
 [![Documentation][docs-image]][docs-url]
 
+The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
 <p align="center" >★★ <b>Every star is appreciated!</b> ★★</p>
 
-The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
-
 - [Goal](https://github.com/oleghnidets/OHMySQL/wiki/Goal)
+- [Support](#support)
 - [Features](#features)
 - [Requirements](#requirements)
 - [How To Get Started](#how-to-get-started)
 - [Installation](#installation)
 - [Usage](#usage)
     - [Query Context](#query-context)
+    - [Execute Query](#execute-query)
     - [SELECT](#select)
     - [INSERT](#insert)
     - [UPDATE](#update)
@@ -29,6 +30,11 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
 
 If you are interested in and want to know [how it can be applied](https://github.com/oleghnidets/OHMySQL/wiki/Goal) in your project too. 
 
+## Support
+
+I wish to support the library and extend API and functionality. If you donate me $1, it makes me motivated and happy 🙂 You may support me via [PayPal](
+https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCAKYM4XCT2DG&source=url ) or let me know any other method convenient for you.
+
 ## Features
 
 - [x] Easy to integrate and use
@@ -38,8 +44,8 @@ If you are interested in and want to know [how it can be applied](https://github
 - [x] Clean code with unit tests
 - [x] [Complete documentation](http://oleghnidets.github.io/OHMySQL/) and [support](https://github.com/oleghnidets/OHMySQL/issues?q=is%3Aissue+is%3Aclosed)
 ## Requirements
-- iOS 8.0+ / macOS 10.9+
-- Xcode 8.1+
+- iOS 14.0+ / macOS 11.0+ (for more previous versions use [2.1.3](https://github.com/oleghnidets/OHMySQL/releases/tag/2.1.3))
+- Xcode 12.0+
 
 ## How To Get Started
 - To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
@@ -52,13 +58,12 @@ You can use CocoaPods. Add the following line to your Podfile:
 pod 'OHMySQL'
 ```
 
-If you are using Swift do not forget to add `use_frameworks!` at the top of Podfile. Add platform, example `platform :osx, '10.10'`.
+If you are using Swift do not forget to add `use_frameworks!` at the top of Podfile. Add platform, example `platform :osx, '11.0'`.
 
 ## Usage
 
-At the first you need to connect to the database.
+Connect to the database.
 
-*Objective-C version:*
 ```objective-c
 OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
 					 	 password:@"root"
@@ -69,7 +74,6 @@ OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
 OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
 [coordinator connect];
 ```
-*Swift version:*
 ```swift
 let user = OHMySQLUser(userName: "root", password: "root", serverName: "localhost", dbName: "ohmysql", port: 3306, socket: "/Applications/MAMP/tmp/mysql/mysql.sock")
 let coordinator = OHMySQLStoreCoordinator(user: user!)
@@ -96,6 +100,22 @@ context.storeCoordinator = coordinator
 ```
 
 You will use this context to execute queries or manipulate the objects.
+
+### Execute Query
+
+```objective-c
+NSString *dropQueryString = @"DROP TABLE `MyTable`";
+OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
+    
+NSError *error;
+[self.mainQueryContext executeQueryRequest:dropQueryRequest error:&error];
+```
+
+```swift
+let dropQueryString = "DROP TABLE `MyTable`"
+let dropQueryRequest =OHMySQLQueryRequest(queryString: dropQueryString)
+try? self.mainQueryContext.execute(dropQueryRequest)
+```
 
 ### SELECT 
 
