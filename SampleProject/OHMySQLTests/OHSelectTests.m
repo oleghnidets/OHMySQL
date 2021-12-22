@@ -11,20 +11,11 @@
 
 @implementation OHSelectTests
 
-+ (void)tearDown {
-
-	[OHSelectTests configureDatabase];
-
-	NSString *dropQueryString = [NSString stringWithFormat:@"DROP TABLE %@;", kTableName];
-	OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
-	[OHMySQLContainer.sharedContainer.mainQueryContext executeQueryRequest:dropQueryRequest error:nil];
-
-	[super tearDown];
-}
-
 - (void)setUp {
 	[super setUp];
 	[OHSelectTests configureDatabase];
+    
+    [self createTable];
 }
 
 - (void)tearDown {
@@ -34,11 +25,7 @@
 
 #pragma mark - Testing
 
-- (void)test00ACreateTable {
-	[self createTable];
-}
-
-- (void)test01SelectAll {
+- (void)testSelectAll {
 	// given
 	OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName condition:nil];
 
@@ -54,7 +41,7 @@
 	AssertIfNotDictionary(firstResponseObject);
 }
 
-- (void)test02SelectAllWithCondition {
+- (void)testSelectAllWithCondition {
 	// given
 	OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName condition:@"name='Dustin'"];
 
@@ -70,7 +57,7 @@
 	AssertIfNotDictionary(firstResponseObject);
 }
 
-- (void)test03SelectAllWithOrderAsc {
+- (void)testSelectAllWithOrderAsc {
 	// given
 	OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECT:kTableName
 																 condition:nil
@@ -91,7 +78,7 @@
 	XCTAssertEqualObjects(secondObjectID, @2);
 }
 
-- (void)test04SelectAllWithConditionAndOrderDesc {
+- (void)testSelectAllWithConditionAndOrderDesc {
 	// given
 	NSNumber *firstObjectIDLimit = @3;
 	NSNumber *lastObjectIDLimit  = @20;
@@ -116,7 +103,7 @@
 	XCTAssertEqualObjects(lastObjectID, firstObjectIDLimit);
 }
 
-- (void)test05SelectFirst {
+- (void)testSelectFirst {
 	// given
 	OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECTFirst:kTableName condition:nil];
 
@@ -132,7 +119,7 @@
 	XCTAssertEqualObjects(firstObjectID, @1);
 }
 
-- (void)test07SelectFirstWithCondition {
+- (void)testSelectFirstWithCondition {
 	// given
 	NSNumber *conditionID = @5;
 	NSString *condition = [NSString stringWithFormat:@"id>%@", conditionID.stringValue];
@@ -151,7 +138,7 @@
 }
 
 // TODO: improve
-- (void)test08SelectFirstWithConditionOrderedAsc {
+- (void)testSelectFirstWithConditionOrderedAsc {
 	// given
 	OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECTFirst:kTableName
 																	  condition:@"id>1"
@@ -169,7 +156,7 @@
 }
 
 // TODO: improve
-- (void)test09SelectFirstWithConditionOrderedDesc {
+- (void)testSelectFirstWithConditionOrderedDesc {
 	// given
 	OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory SELECTFirst:kTableName
 																	  condition:@"id>1"

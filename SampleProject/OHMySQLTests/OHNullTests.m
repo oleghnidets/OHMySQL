@@ -27,7 +27,7 @@ static NSString * const kTestNullTable = @"TestNull";
     [super tearDown];
 }
 
-- (void)test01CreateNullRecord {
+- (void)testCreateNullRecord {
     // given
     OHTestPerson *response = [self createPersonWithSet:@{ } in:kTestNullTable];
     
@@ -42,7 +42,7 @@ static NSString * const kTestNullTable = @"TestNull";
     XCTAssert(response.age == [NSNull null]);
 }
 
-- (void)test02CreateWithNullAndNotNullRecord {
+- (void)testCreateWithNullAndNotNullRecord {
     // given
     NSDictionary *insertSet = @{ @"name": [NSNull null], @"age": @22 };
     OHTestPerson *response = [self createPersonWithSet:insertSet in:kTestNullTable];
@@ -57,7 +57,7 @@ static NSString * const kTestNullTable = @"TestNull";
     XCTAssert([response.age isEqualToNumber:insertSet[@"age"]]);
 }
 
-- (void)test03CreateRecord {
+- (void)testCreateRecord {
     // given
     NSDictionary *insertSet = @{ @"name": @"Oleg", @"age": @22 };
     OHTestPerson *response = [self createPersonWithSet:insertSet in:kTestNullTable];
@@ -72,20 +72,14 @@ static NSString * const kTestNullTable = @"TestNull";
     XCTAssert([response.age isEqualToNumber:insertSet[@"age"]]);
 }
 
-- (void)test04CreateIncorrectRecord {
+- (void)testCreateIncorrectRecord {
     // given
     NSDictionary *insertSet = @{ @"name": @22, @"age": @"Oleg" };
     OHTestPerson *response = [self createPersonWithSet:insertSet in:kTestNullTable];
     // then
-    XCTAssert(response.ID != nil);
-    XCTAssert([response.ID isKindOfClass:[NSNumber class]]);
-    
-    XCTAssert(response.name != nil);
-    XCTAssert([response.name isKindOfClass:[NSString class]]);
-    XCTAssert([response.name isEqualToString:[insertSet[@"name"] stringValue]]);
-    
-    XCTAssert(response.age != nil);
-    XCTAssert([response.age isKindOfClass:[NSNumber class]]);
+    XCTAssert(response.ID == nil);
+    XCTAssert(response.name == nil);
+    XCTAssert(response.age == nil);
 }
 
 @end

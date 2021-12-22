@@ -29,8 +29,11 @@
 
 - (nonnull instancetype)initWithUser:(nonnull OHMySQLUser *)user;
 
+/// Attempts to disconnect and then establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
+- (BOOL)reconnect;
+
 /// Attempts to establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
-- (void)connect;
+- (BOOL)connect;
 
 /**
  *  @param database Name of the target db.

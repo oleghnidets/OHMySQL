@@ -15,6 +15,8 @@
 - (void)setUp {
     [super setUp];
     [OHObjectTests configureDatabase];
+    
+    [self createEmptyTable];
 }
 
 - (void)tearDown {
@@ -24,11 +26,7 @@
 
 #pragma mark - Testing
 
-- (void)test01CreateTable {
-    [self createEmptyTable];
-}
-
-- (void)test02InsertObject {
+- (void)testInsertObject {
     // given
     OHTestPerson *person = [OHTestPerson mockObject];
     [self.mainQueryContext insertObject:person];
@@ -39,17 +37,19 @@
     
     // then
     XCTAssert(insertError == nil && person.ID);
-}
-
-- (void)test03CountObjects {
+    
     // when
     NSNumber *countOfObjects = [self countOfObjects];
+    OHTestPerson *firstPerson = [self firstPerson];
     
     // then
     XCTAssertEqualObjects(countOfObjects, @1);
+    XCTAssert(firstPerson && firstPerson.ID && firstPerson.name && firstPerson.surname && firstPerson.age);
 }
 
-- (void)test04UpdateObject {
+- (void)testUpdateObject {
+    [self testInsertObject];
+    
     // given
     OHTestPerson *person = [OHTestPerson mockObject];
     person.ID = [self.mainQueryContext lastInsertID];
@@ -64,15 +64,9 @@
     XCTAssert(error == nil && person.ID);
 }
 
-- (void)test05GetObject {
-    // when
-    OHTestPerson *person = [self firstPerson];
+- (void)testDeleteObject {
+    [self testInsertObject];
     
-    // then
-    XCTAssert(person && person.ID && person.name && person.surname && person.age);
-}
-
-- (void)test06DeleteObject {
     // given
     OHTestPerson *person = [self firstPerson];
     
@@ -95,7 +89,7 @@
     XCTAssert(!searchedPersons.count);
 }
 
-- (void)test07DeleteUndefinedObject {
+- (void)testDeleteUndefinedObject {
     // given
     OHTestPerson *person = [OHTestPerson mockObject];
     person.ID = @1234567890;
@@ -109,7 +103,7 @@
     AssertIfError();
 }
 
-- (void)test08AffectedProperties {
+- (void)testAffectedProperties {
     // when
     NSNumber *affectedRowsBefore = self.mainQueryContext.affectedRows;
     
@@ -117,7 +111,7 @@
     XCTAssertEqualObjects(affectedRowsBefore, @0);
     
     // given
-    [self test02InsertObject];
+    [self testInsertObject];
     
     BOOL result;
     OHTestPerson *person = [self firstPerson];

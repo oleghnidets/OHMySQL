@@ -24,6 +24,8 @@ static NSInteger const kIterations = 1000;
 - (void)setUp {
     [super setUp];
     [OHThreadingTests configureDatabase];
+    
+    [self createEmptyTable];
 }
 
 - (void)tearDown {
@@ -33,11 +35,7 @@ static NSInteger const kIterations = 1000;
 
 #pragma mark - Testing
 
-- (void)test01CreateTable {
-    [self createEmptyTable];
-}
-
-- (void)test02InsertObject {
+- (void)testInsertObject {
     // given
     OHTestPerson *person = [OHTestPerson mockObject];
     
@@ -55,7 +53,9 @@ static NSInteger const kIterations = 1000;
     waitExpectactions();
 }
 
-- (void)test03UpdateObject {
+- (void)testUpdateObject {
+    [self testInsertObject];
+    
     // given
     OHTestPerson *person = [OHTestPerson mockObject];
     person.ID = self.mainQueryContext.lastInsertID;
@@ -74,9 +74,7 @@ static NSInteger const kIterations = 1000;
     }];
     
     waitExpectactions();
-}
-
-- (void)test04CountAfterUpdate {
+    
     // when
     NSNumber *countOfObjects = [self countOfObjects];
     // then
@@ -106,7 +104,7 @@ static NSInteger const kIterations = 1000;
     XCTAssertEqualObjects(countOfObjects, @0);
 }
 
-- (void)test07InsertionOfManyObjects {
+- (void)testInsertionOfManyObjects {
     {
         // given
         createExpectation();

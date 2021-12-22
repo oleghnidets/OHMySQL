@@ -40,7 +40,13 @@
 	mysql_library_end;
 }
 
-- (void)connect {
+- (BOOL)reconnect {
+    [self disconnect];
+    
+    return [self connect];
+}
+
+- (BOOL)connect {
     mysql_library_init;
     
     _mysql = mysql_init(NULL);
@@ -65,13 +71,15 @@
     
     if (!mysql_real_connect(_mysql, _user.serverName.UTF8String, _user.userName.UTF8String, _user.password.UTF8String, _user.dbName.UTF8String, (unsigned int)_user.port, _user.socket.UTF8String, 0)) {
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(_mysql));
-		return ;
+		return NO;
     }
 
 	OHLog(@"MySQL cipher: %s", mysql_get_ssl_cipher(_mysql));
 	
 	self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
 	[self configureConnectionForEncoding:self.encoding];
+    
+    return YES;
 }
 
 - (void)configureConnectionForEncoding:(CharsetEncoding)encoding {

@@ -24,16 +24,19 @@
 - (void)setUp {
     [super setUp];
     [OHMySQLTests configureDatabase];
+    
+    [self createTable];
 }
 
 - (void)tearDown {
-    
     [super tearDown];
 }
 
 #pragma mark - Testing
 
-- (void)test00SelectDatabase {
+- (void)testSelectDatabase {
+    [self dropTableNamed:kTableName];
+    
     // when
     OHResultErrorType result = [self.storeCoordinator selectDataBase:kDatabaseName];
     
@@ -41,11 +44,7 @@
     XCTAssert(result == OHResultErrorTypeNone);
 }
 
-- (void)test01CreateTable {
-    [self createTable];
-}
-
-- (void)test10InsertNewRow {
+- (void)testInsertNewRow {
     // given
     NSDictionary *insertSet = @{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" };
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory INSERT:kTableName
@@ -63,7 +62,7 @@
     XCTAssert(lastInsertedID > 0);
 }
 
-- (void)test11UpdateAll {
+- (void)testUpdateAll {
     // given
     NSDictionary *updateSet = @{ @"name" : @"Oleg", @"surname" : @"Hnidets", @"age" : @"21" };
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory UPDATE:kTableName
@@ -78,21 +77,22 @@
     AssertIfError();
 }
 
-- (void)test12AffectedRows {
+- (void)testAffectedRows {
     // when
     NSInteger numberOfRows = [self.mainQueryContext affectedRows].integerValue;
     XCTAssert(numberOfRows != -1);
 }
 
-- (void)test13CountRecords {
+- (void)testCountRecords {
     // when
     NSNumber *countOfObjects = [self countOfObjects];
     // then
     XCTAssertNotEqualObjects(countOfObjects, @0);
 }
 
-- (void)test14UpdateAllWithCondition {
+- (void)testUpdateAllWithCondition {
     // given
+    [self testInsertNewRow];
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory UPDATE:kTableName set:@{ @"age" : @"25" } condition:@"name='Oleg'"];
     
     // when
@@ -103,8 +103,9 @@
     AssertIfError();
 }
 
-- (void)test15DeleAllWithCondition {
+- (void)testDeleAllWithCondition {
     // given
+    [self testInsertNewRow];
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory DELETE:kTableName condition:@"name='Oleg'"];
     
     // when
@@ -116,15 +117,17 @@
     AssertIfError();
 }
 
-- (void)test16Refresh {
+- (void)testRefresh {
     // when
+    [self testInsertNewRow];
     OHResultErrorType result = [self.storeCoordinator refresh:OHRefreshOptionTables];
     // then
     XCTAssert(result == OHResultErrorTypeNone);
 }
 
-- (void)test17DeleteAllRecords {
+- (void)testDeleteAllRecords {
     // given
+    [self testInsertNewRow];
     OHMySQLQueryRequest *queryRequest = [OHMySQLQueryRequestFactory DELETE:kTableName condition:nil];
     
     // when
@@ -135,7 +138,7 @@
     AssertIfError();
 }
 
-- (void)test18DropTable {
+- (void)testDropTable {
     // given
     OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:kDropTableString];
     
@@ -152,7 +155,7 @@
     XCTAssert(totalTime > 0);
 }
 
-- (void)test19IncorrectPlainQuery {
+- (void)testIncorrectPlainQuery {
     // given
     NSString *incorrectQueryString = [kDropTableString stringByReplacingOccurrencesOfString:@"TABLE" withString:@"TABL"];
     OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:incorrectQueryString];
@@ -165,7 +168,7 @@
     AssertIfNoError();
 }
 
-- (void)test20IncorrectSelectQuery {
+- (void)testIncorrectSelectQuery {
     // given
     NSString *incorrectQueryString = @"SELECT qwe FROM 'something'";
     OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:incorrectQueryString];
@@ -178,14 +181,14 @@
     AssertIfNoError();
 }
 
-- (void)test21StoreInformation {
+- (void)testStoreInformation {
     // given
     OHMySQLStore *store = self.storeCoordinator.store;
     // then
     XCTAssert(store.serverInfo && store.hostInfo && store.protocolInfo && store.serverVersion && store.status);
 }
 
-- (void)test22NotConnected {
+- (void)testNotConnected {
     // given
     [self.storeCoordinator disconnect];
     OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:kDropTableString];
@@ -194,11 +197,11 @@
     NSError *error;
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
     // then
-    AssertIfNoError();
-    XCTAssert(success == NO);
+    AssertIfError();
+    XCTAssert(success == YES);
 }
 
-- (void)test23CheckConnection {
+- (void)testCheckConnection {
     // given
     [self.storeCoordinator disconnect];
     

@@ -72,45 +72,50 @@ NSError *contextError(NSString *description) {
 #pragma mark - Execute
 
 - (BOOL)executeQueryRequest:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
-    NSParameterAssert(query.queryString);
-    MYSQL *_mysql = self.mysql;
-    if (!self.storeCoordinator.isConnected || !_mysql) {
-		__unused NSString *errorString = [NSString stringWithUTF8String:mysql_error(_mysql)];
-        OHLogError(@"The connection is broken: %@", errorString);
-        OHLogError(@"Cannot connect to DB. Check your configuration properties.");
-		
-		
-        if (error) {
-            *error = contextError(@"Cannot connect to DB. Check your configuration properties.");
-        }
+    @synchronized(self) {
+        NSParameterAssert(query.queryString);
         
-        return NO;
-    }
-    
-    CFAbsoluteTime queryStartTime = CFAbsoluteTimeGetCurrent();
-    mysql_set_server_option(_mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
-    
-    // To get proper length of string in different languages.
-    NSInteger queryStringLength = strlen(query.queryString.UTF8String);
-    NSInteger errorCode = mysql_real_query(_mysql, query.queryString.UTF8String, queryStringLength);
-    
-    query.timeline.queryDuration = CFAbsoluteTimeGetCurrent() - queryStartTime;
-    if (errorCode) {
-        NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(_mysql)];
-        OHLogError(@"Cannot execute query: %@", mysqlError);
-        if (error) {
-            *error = contextError(mysqlError);
+        if ((!self.storeCoordinator.isConnected || !self.mysql) && ![self.storeCoordinator reconnect]) {
+            __unused NSString *errorString = [NSString stringWithUTF8String:mysql_error(self.mysql)];
+            OHLogError(@"The connection is broken: %@", errorString);
+            OHLogError(@"Cannot connect to DB. Check your configuration properties.");
+            
+            if (error) {
+                *error = contextError(@"Cannot connect to DB. Check your configuration properties.");
+            }
+            
             return NO;
         }
+        
+        CFAbsoluteTime queryStartTime = CFAbsoluteTimeGetCurrent();
+        mysql_set_server_option(self.mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
+        
+        // To get proper length of string in different languages.
+        NSInteger queryStringLength = strlen(query.queryString.UTF8String);
+        NSInteger errorCode = mysql_real_query(self.mysql, query.queryString.UTF8String, queryStringLength);
+        
+        query.timeline.queryDuration = CFAbsoluteTimeGetCurrent() - queryStartTime;
+        if (errorCode) {
+            [self.storeCoordinator reconnect];
+            
+            NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(self.mysql)];
+            OHLogError(@"Cannot execute query: %@", mysqlError);
+            
+            if (error) {
+                *error = contextError(mysqlError);
+                return NO;
+            }
+        }
+        
+        return YES;
     }
-    
-    return YES;
 }
 
 - (NSArray<NSDictionary<NSString *,id> *> *)executeQueryRequestAndFetchResult:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
     // http://dev.mysql.com/doc/refman/5.7/en/c-api-threaded-clients.html
     @synchronized (self) {
         [self executeQueryRequest:query error:error];
+        
         if (error && *error) {
             OHLogError(@"Cannot get results: %@", *error);
             return nil;
@@ -264,10 +269,21 @@ NSError *contextError(NSString *description) {
 
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {
     MYSQL *mysql = self.mysql;
-    if (!mysql) { return nil; }
     
-    MYSQL_RES *result  = mysql_store_result(mysql);
-    if (!result) { return nil; }
+    if (!mysql) {
+        return nil;
+    }
+    
+    MYSQL_RES *result = mysql_use_result(mysql);
+    if (!result) {
+        if (mysql_field_count(mysql) == 0) {
+            OHLog(@"%@ rows affected\n", self.affectedRows);
+        } else {
+            OHLogWarn(@"Could not retrieve result set\n");
+        }
+        
+        return nil;
+    }
     
     MYSQL_FIELD *fields = mysql_fetch_fields(result);
     
@@ -280,8 +296,8 @@ NSError *contextError(NSString *description) {
         for (CFIndex i=0; i<countOfFields; ++i) {
             NSString *key = [NSString stringWithUTF8String:fields[i].name];
             id value = [OHMySQLSerialization objectFromCString:row[i]
-														 field:&fields[i]
-													  encoding:self.storeCoordinator.encoding];
+                                                         field:&fields[i]
+                                                      encoding:self.storeCoordinator.encoding];
             jsonDict[key] = value;
         }
         
