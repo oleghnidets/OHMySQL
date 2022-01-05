@@ -1,5 +1,23 @@
-//  Created by Oleg Hnidets on 6/14/16.
-//  Copyright © 2016-2018 Oleg Hnidets. All rights reserved.
+//
+// Copyright (c) 2015-Present Oleg Hnidets
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 //
 
 #import "OHMySQLQueryContext.h"
@@ -73,7 +91,7 @@ NSError *contextError(NSString *description) {
 
 - (BOOL)executeQueryRequest:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
     @synchronized(self) {
-        NSParameterAssert(query.queryString);
+        NSParameterAssert(query.query);
         
         if ((!self.storeCoordinator.isConnected || !self.mysql) && ![self.storeCoordinator reconnect]) {
             __unused NSString *errorString = [NSString stringWithUTF8String:mysql_error(self.mysql)];
@@ -91,8 +109,8 @@ NSError *contextError(NSString *description) {
         mysql_set_server_option(self.mysql, MYSQL_OPTION_MULTI_STATEMENTS_ON);
         
         // To get proper length of string in different languages.
-        NSInteger queryStringLength = strlen(query.queryString.UTF8String);
-        NSInteger errorCode = mysql_real_query(self.mysql, query.queryString.UTF8String, queryStringLength);
+        NSInteger queryStringLength = strlen(query.query.UTF8String);
+        NSInteger errorCode = mysql_real_query(self.mysql, query.query.UTF8String, queryStringLength);
         
         query.timeline.queryDuration = CFAbsoluteTimeGetCurrent() - queryStartTime;
         if (errorCode) {

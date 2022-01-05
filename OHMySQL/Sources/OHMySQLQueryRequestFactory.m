@@ -1,5 +1,23 @@
-//  Created by Oleg Hnidets on 6/14/16.
-//  Copyright © 2016-2018 Oleg Hnidets. All rights reserved.
+//
+// Copyright (c) 2015-Present Oleg Hnidets
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 //
 
 #import "OHMySQLQueryRequestFactory.h"
@@ -15,7 +33,7 @@
 
 + (OHMySQLQueryRequest *)SELECT:(NSString *)tableName condition:(NSString *)condition {
     NSString *queryString = [NSString SELECTString:tableName condition:condition];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 + (OHMySQLQueryRequest *)SELECT:(NSString *)tableName
@@ -25,7 +43,7 @@
     NSParameterAssert(tableName && columnNames.count);
     
     NSString *queryString = [NSString SELECTString:tableName condition:condition orderBy:columnNames ascending:isAscending];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 
@@ -33,7 +51,7 @@
     NSParameterAssert(tableName);
     
     NSString *queryString = [NSString SELECTFirstString:tableName condition:condition];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 + (OHMySQLQueryRequest *)SELECTFirst:(NSString *)tableName
@@ -43,7 +61,7 @@
     NSParameterAssert(tableName && columnNames.count);
     
     NSString *queryString = [NSString SELECTFirstString:tableName condition:condition orderBy:columnNames ascending:isAscending];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 @end
@@ -54,7 +72,7 @@
     NSParameterAssert(tableName && set);
     
     NSString *queryString = [NSString INSERTString:tableName set:set];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 @end
@@ -65,7 +83,7 @@
     NSParameterAssert(tableName && set);
     
     NSString *queryString = [NSString UPDATEString:tableName set:set condition:condition];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 @end
@@ -76,7 +94,7 @@
     NSParameterAssert(tableName);
     
     NSString *queryString = [NSString DELETEString:tableName condition:condition];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 @end
@@ -93,7 +111,7 @@
                                        fromTable:tableName
                                      columnNames:columnNames
                                        joinInner:joinOn];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 @end
@@ -103,7 +121,7 @@
 
 + (OHMySQLQueryRequest *)countAll:(NSString *)tableName {
     NSString *queryString = [NSString countString:tableName];
-    return [[OHMySQLQueryRequest alloc] initWithQueryString:queryString];
+    return [[OHMySQLQueryRequest alloc] initWithQuery:queryString];
 }
 
 @end
