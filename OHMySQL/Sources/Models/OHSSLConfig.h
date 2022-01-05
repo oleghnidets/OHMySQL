@@ -22,30 +22,31 @@
 
 @import Foundation;
 
+NS_SWIFT_NAME(MySQLSSLConfig)
 /// This class is used for establishing secure connections using SSL.
 /// @note Please, see http://dev.mysql.com/doc/refman/5.7/en/mysql-ssl-set.html for more details.
 @interface OHSSLConfig : NSObject
 
 /// The path name to the key file.
-@property (nonatomic, copy, nullable) NSString *key;
+@property (nonatomic, copy, nullable, readonly) NSString *key;
 
 /// The path name to the certificate file.
-@property (nonatomic, copy, nullable) NSString *certPath;
+@property (nonatomic, copy, nullable, readonly) NSString *certPath;
 
 /// The path name to the certificate authority file.
-@property (nonatomic, copy, nullable) NSString *certAuthPath;
+@property (nonatomic, copy, nullable, readonly) NSString *certAuthPath;
 
 /// The path name to a directory that contains trusted SSL CA certificates in PEM format.
-@property (nonatomic, copy, nullable) NSString *certAuthPEMPath;
+@property (nonatomic, copy, nullable, readonly) NSString *certAuthPEMPath;
 
 /// A list of permissible ciphers to use for SSL encryption.
-@property (nonatomic, copy, nullable) NSString *cipher;
+@property (nonatomic, copy, nullable, readonly) NSString *cipher;
 
 /// Initializes and returns a newly allocated SSL config object with the specified parameters.
-- (nullable instancetype)initWithKey:(nullable NSString *)key
-                            certPath:(nullable NSString *)certPath
-                        certAuthPath:(nullable NSString *)certAuthPath
-                     certAuthPEMPath:(nullable NSString *)certAuthPEMPath
-                              cipher:(nullable NSString *)cipher;
+- (nonnull instancetype)initWithKey:(nullable NSString *)key
+                           certPath:(nullable NSString *)certPath
+                       certAuthPath:(nullable NSString *)certAuthPath
+                    certAuthPEMPath:(nullable NSString *)certAuthPEMPath
+                             cipher:(nullable NSString *)cipher;
 
 @end

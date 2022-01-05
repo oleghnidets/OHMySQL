@@ -31,7 +31,7 @@
     NSParameterAssert(query);
     if (self = [self init]) {
         _query = query;
-        _timeline = [OHMySQLTimeline new];
+        _timeline = [OHMySQLQueryTimeline new];
     }
     
     return self;

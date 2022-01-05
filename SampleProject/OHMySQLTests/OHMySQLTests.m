@@ -140,7 +140,7 @@
 
 - (void)testDropTable {
     // given
-    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:kDropTableString];
+    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:kDropTableString];
     
     // when
     NSError *error;
@@ -158,7 +158,7 @@
 - (void)testIncorrectPlainQuery {
     // given
     NSString *incorrectQueryString = [kDropTableString stringByReplacingOccurrencesOfString:@"TABLE" withString:@"TABL"];
-    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:incorrectQueryString];
+    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:incorrectQueryString];
     
     // when
     NSError *error;
@@ -171,7 +171,7 @@
 - (void)testIncorrectSelectQuery {
     // given
     NSString *incorrectQueryString = @"SELECT qwe FROM 'something'";
-    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:incorrectQueryString];
+    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:incorrectQueryString];
     
     // when
     NSError *error;
@@ -191,7 +191,7 @@
 - (void)testNotConnected {
     // given
     [self.storeCoordinator disconnect];
-    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:kDropTableString];
+    OHMySQLQueryRequest *queryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:kDropTableString];
     
     // when
     NSError *error;

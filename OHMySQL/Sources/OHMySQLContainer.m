@@ -27,17 +27,13 @@ static OHMySQLContainer *_sharedManager = nil;
 
 @implementation OHMySQLContainer
 
-+ (OHMySQLContainer *)sharedManager {
-	return [self sharedContainer];
-}
++ (OHMySQLContainer *)shared {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedManager = [OHMySQLContainer new];
+    });
 
-+ (OHMySQLContainer *)sharedContainer {
-	static dispatch_once_t onceToken;
-	dispatch_once(&onceToken, ^{
-		_sharedManager = [OHMySQLContainer new];
-	});
-
-	return _sharedManager;
+    return _sharedManager;
 }
 
 - (OHMySQLStoreCoordinator *)storeCoordinator {

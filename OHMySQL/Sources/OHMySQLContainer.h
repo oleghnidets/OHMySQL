@@ -23,15 +23,12 @@
 @import Foundation;
 @class OHMySQLQueryContext, OHMySQLStoreCoordinator;
 
+NS_SWIFT_NAME(MySQLContainer)
 /// Represents a main context and store coordinator.
 @interface OHMySQLContainer : NSObject
 
-/// Shared manager.
-/// @warning Will be removed in the future.
-+ (nonnull OHMySQLContainer *)sharedManager __deprecated;
-
 /// Shared container
-@property (class, strong, readonly, nonnull) OHMySQLContainer *sharedContainer;
+@property (class, strong, readonly, nonnull) OHMySQLContainer *shared;
 
 /// Single context that is used in the app. Context should be set by a user of this class.
 @property (nonatomic, strong, nullable) OHMySQLQueryContext *mainQueryContext;

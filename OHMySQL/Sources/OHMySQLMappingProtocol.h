@@ -22,20 +22,21 @@
 
 @import Foundation;
 
-#ifdef DEBUG
-#define OHLog(frmt, ...) NSLog(@"%s -[INFO] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
-#else
-#define OHLog(frmt, ...) ;
-#endif
+@protocol OHMySQLMappingProtocol <NSObject>
 
-#ifdef DEBUG
-#define OHLogError(frmt, ...) NSLog(@"%s -[ERROR] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
-#else
-#define OHLogError(frmt, ...) ;
-#endif
+/// Dictionary that represents class' properties with table' column names.
+- (NSDictionary *)mappingDictionary;
 
-#ifdef DEBUG
-#define OHLogWarn(frmt, ...) NSLog(@"%s -[WARNING] %@", __PRETTY_FUNCTION__, [NSString stringWithFormat:(frmt), ##__VA_ARGS__]);
-#else
-#define OHLogWarn(frmt, ...) ;
-#endif
+/// Table where current entity can be found.
+- (NSString *)mySQLTable;
+
+/// Returns name of primary property (row).
+- (NSString *)primaryKey;
+
+@end
+
+#define mysql_key(name) NSStringFromSelector(@selector(name))
+
+@protocol OHMappingProtocol <NSObject, OHMySQLMappingProtocol>
+
+@end

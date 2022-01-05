@@ -27,7 +27,7 @@
 #import "OHMySQLQueryRequest.h"
 #import "OHMySQLSerialization.h"
 
-#import "OHMappingProtocol.h"
+#import "OHMySQLMappingProtocol.h"
 #import "OHMySQLQueryRequestFactory.h"
 
 #import "NSObject+Mapping.h"
@@ -114,7 +114,9 @@ NSError *contextError(NSString *description) {
         
         query.timeline.queryDuration = CFAbsoluteTimeGetCurrent() - queryStartTime;
         if (errorCode) {
-            [self.storeCoordinator reconnect];
+            if ([self.storeCoordinator reconnect]) {
+                OHLog(@"Reconnection succeeded.");
+            }
             
             NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(self.mysql)];
             OHLogError(@"Cannot execute query: %@", mysqlError);

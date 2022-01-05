@@ -20,10 +20,12 @@
 // SOFTWARE.
 //
 
+@import Foundation;
+
 /**
  *  Client error codes and messages.
  */
-typedef NS_ENUM(NSUInteger, OHResultErrorType){
+typedef NS_OPTIONS(NSUInteger, OHResultErrorType) {
     /**
      *  Success.
      */
@@ -44,4 +46,10 @@ typedef NS_ENUM(NSUInteger, OHResultErrorType){
      *  An unknown error occurred.
      */
     OHResultErrorTypeUnknown = 2000,
+    /**
+     *  An unknown error code received. Look at debug console.
+     */
+    OHResultErrorTypeUnknownCode = 1071994,
 };
+
+OHResultErrorType ResultErrorConvertion(NSInteger input) NS_REFINED_FOR_SWIFT;

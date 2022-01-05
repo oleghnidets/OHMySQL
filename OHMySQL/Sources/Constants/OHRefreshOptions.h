@@ -20,10 +20,14 @@
 // SOFTWARE.
 //
 
+@import Foundation;
+
 /**
  *  Refresh options.
  */
-typedef NS_OPTIONS(NSUInteger, OHRefreshOptions){
+typedef NS_ENUM(NSUInteger, OHRefreshOption) {
+    OHRefreshOptionNone = 0,
+    
     /**
      *  Refresh the grant tables, like FLUSH PRIVILEGES.
      */

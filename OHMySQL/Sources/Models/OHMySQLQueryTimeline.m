@@ -20,15 +20,15 @@
 // SOFTWARE.
 //
 
-#import "OHMySQLTimeline.h"
+#import "OHMySQLQueryTimeline.h"
 
-@interface OHMySQLTimeline ()
+@interface OHMySQLQueryTimeline ()
 
 @property (nonatomic, assign, readwrite) CFAbsoluteTime totalTime;
 
 @end
 
-@implementation OHMySQLTimeline
+@implementation OHMySQLQueryTimeline
 
 - (CFAbsoluteTime)totalTime {
     _totalTime = self.queryDuration + self.serializationDuration;

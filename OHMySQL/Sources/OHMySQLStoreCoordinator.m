@@ -22,7 +22,7 @@
 
 #import "OHMySQLStoreCoordinator.h"
 
-#import "OHMySQLUser.h"
+#import "OHMySQLConfiguration.h"
 #import "OHSSLConfig.h"
 #import "OHMySQLStore.h"
 #import "OHCharsetEncoding.h"
@@ -32,7 +32,7 @@
 @interface OHMySQLStoreCoordinator ()
 
 @property (nonatomic, strong, readwrite) OHMySQLStore *store;
-@property (nonatomic, strong, readwrite) OHMySQLUser *user;
+@property (nonatomic, strong, readwrite) OHMySQLConfiguration *configuration;
 @property (readwrite, nullable) void *mysql;
 
 @end
@@ -44,10 +44,10 @@
 	[self configureConnectionForEncoding:encoding];
 }
 
-- (instancetype)initWithUser:(OHMySQLUser *)user {
-    NSParameterAssert(user);
+- (instancetype)initWithConfiguration:(OHMySQLConfiguration *)configuration {
+    NSParameterAssert(configuration);
     if (self = [super init]) {
-        _user = user;
+        _configuration = configuration;
 		_encoding = CharsetEncodingUTF8;
     }
     
@@ -74,7 +74,7 @@
     mysql_options(_mysql, MYSQL_OPT_RECONNECT, &reconnect);
     mysql_options(_mysql, MYSQL_OPT_PROTOCOL, &_protocol);
     
-    OHSSLConfig *SSLconfig = self.user.sslConfig;
+    OHSSLConfig *SSLconfig = self.configuration.sslConfig;
     if (SSLconfig) {
 		// https://dev.mysql.com/doc/refman/5.7/en/mysql-options.html
 		// https://bugs.mysql.com/file.php?id=24546&bug_id=83338
@@ -87,7 +87,7 @@
                       SSLconfig.cipher.UTF8String);
     }
     
-    if (!mysql_real_connect(_mysql, _user.serverName.UTF8String, _user.userName.UTF8String, _user.password.UTF8String, _user.dbName.UTF8String, (unsigned int)_user.port, _user.socket.UTF8String, 0)) {
+    if (!mysql_real_connect(_mysql, _configuration.serverName.UTF8String, _configuration.username.UTF8String, _configuration.password.UTF8String, _configuration.dbName.UTF8String, (unsigned int)_configuration.port, _configuration.socket.UTF8String, 0)) {
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(_mysql));
 		return NO;
     }
@@ -112,13 +112,17 @@
 - (OHResultErrorType)selectDataBase:(NSString *)database {
     NSParameterAssert(database);
     @synchronized (self) {
-        return _mysql != NULL ? mysql_select_db(_mysql, database.UTF8String) : OHResultErrorTypeGone;
+        return _mysql != NULL ?
+        ResultErrorConvertion(mysql_select_db(_mysql, database.UTF8String)) :
+        OHResultErrorTypeGone;
     }
 }
 
 - (OHResultErrorType)shutdown {
     @synchronized (self) {
-        return _mysql != NULL ? mysql_shutdown(_mysql, SHUTDOWN_DEFAULT) : OHResultErrorTypeGone;
+        return _mysql != NULL ?
+        ResultErrorConvertion(mysql_shutdown(_mysql, SHUTDOWN_DEFAULT)) :
+        OHResultErrorTypeGone;
     }
 }
 
@@ -131,20 +135,24 @@
     }
 }
 
-- (OHResultErrorType)refresh:(OHRefreshOptions)options {
+- (OHResultErrorType)refresh:(OHRefreshOption)options {
     @synchronized (self) {
-        return _mysql != NULL ? mysql_refresh(_mysql, (uint)options) : OHResultErrorTypeGone;
+        return _mysql != NULL ?
+        ResultErrorConvertion(mysql_refresh(_mysql, (uint)options)) :
+        OHResultErrorTypeGone;
     }
 }
 
 - (OHResultErrorType)pingMySQL {
     @synchronized (self) {
-        return _mysql != NULL ? mysql_ping(_mysql) : OHResultErrorTypeGone;
+        return _mysql != NULL ?
+        ResultErrorConvertion(mysql_ping(_mysql)) :
+        OHResultErrorTypeGone;
     }
 }
 
 - (BOOL)isConnected {
-    return (_mysql != NULL) && ![self pingMySQL];
+    return (_mysql != NULL) && ([self pingMySQL] == OHResultErrorTypeNone);
 }
 
 @end

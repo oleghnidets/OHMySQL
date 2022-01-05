@@ -22,10 +22,11 @@
 
 @import Foundation;
 
+NS_SWIFT_NAME(MySQLStore)
 /// An object of this class contains details about a store MySQL.  
 @interface OHMySQLStore : NSObject
 
-- (nonnull instancetype)initWithMySQL:(nonnull void *const)mysql;
+- (nonnull instancetype)initWithMySQL:(nonnull void *const)mysql NS_REFINED_FOR_SWIFT;
 
 /// Returns a string that represents the MySQL server version; for example, "5.7.14".
 @property (nonatomic, copy, readonly, nonnull) NSString *serverInfo;

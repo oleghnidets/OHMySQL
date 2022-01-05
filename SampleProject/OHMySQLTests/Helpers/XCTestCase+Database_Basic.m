@@ -15,7 +15,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 @implementation XCTestCase (Database_Basic)
 
 - (OHMySQLQueryContext *)mainQueryContext {
-    return [OHMySQLContainer sharedContainer].mainQueryContext;
+    return OHMySQLContainer.shared.mainQueryContext;
 }
 
 - (void)setMainQueryContext:(__unused OHMySQLQueryContext *)mainQueryContext {
@@ -23,7 +23,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 - (OHMySQLStoreCoordinator *)storeCoordinator {
-    return [OHMySQLContainer sharedContainer].storeCoordinator;
+    return OHMySQLContainer.shared.storeCoordinator;
 }
 
 - (void)setStoreCoordinator:(__unused OHMySQLStoreCoordinator *)storeCoordinator {
@@ -31,19 +31,19 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 + (void)configureDatabase {
-    OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:@"root"
+    OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:@"root"
                                                      password:@"root"
                                                    serverName:@"localhost"
                                                        dbName:kDatabaseName
                                                          port:3306
                                                        socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
-    OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
+    OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithConfiguration:user];
     [coordinator connect];
     
     OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
     queryContext.storeCoordinator = coordinator;
     
-    [OHMySQLContainer sharedContainer].mainQueryContext = queryContext;
+    OHMySQLContainer.shared.mainQueryContext = queryContext;
 }
 
 - (void)createTable {
@@ -59,7 +59,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 	[self dropTableNamed:tableName];
     
     // when
-    OHMySQLQueryRequest *queryRequest = [[OHMySQLQueryRequest alloc] initWithQueryString:query];
+    OHMySQLQueryRequest *queryRequest = [[OHMySQLQueryRequest alloc] initWithQuery:query];
     NSError *error;
     
     BOOL success = [self.mainQueryContext executeQueryRequest:queryRequest error:&error];
@@ -70,7 +70,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 
 - (void)dropTableNamed:(NSString *)tableName {
 	NSString *dropQueryString = [NSString stringWithFormat:@"DROP TABLE %@", tableName];
-	OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
+	OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:dropQueryString];
     
     NSError *error;
 	[self.mainQueryContext executeQueryRequest:dropQueryRequest error:&error];

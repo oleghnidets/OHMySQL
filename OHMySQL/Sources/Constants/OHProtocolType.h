@@ -20,6 +20,8 @@
 // SOFTWARE.
 //
 
+@import Foundation;
+
 /**
  *  Represents protocol types that can be used during session.
  */
@@ -27,7 +29,7 @@ typedef NS_ENUM(NSUInteger, OHProtocolType) {
     /**
      *  Default connection.
      */
-    OHProtocolTypeDefault,
+    OHProtocolTypeDefault = 0,
     /**
      *  TCP/IP connection to local or remote server.
      */

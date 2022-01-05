@@ -20,7 +20,7 @@
 // SOFTWARE.
 //
 
-#import "OHMySQLUser.h"
+#import "OHMySQLConfiguration.h"
 #import "OHMySQLStore.h"
 #import "OHMySQLQueryRequest.h"
 
@@ -31,5 +31,5 @@
 
 #import "NSObject+Mapping.h"
 #import "NSString+Escaping.h"
-#import "OHMappingProtocol.h"
+#import "OHMySQLMappingProtocol.h"
 

@@ -23,6 +23,7 @@
 @import Foundation;
 @class OHMySQLQueryRequest;
 
+NS_SWIFT_NAME(MySQLQueryRequestFactory)
 /// Convenience class for making specific OHMySQLQueryRequest instances.
 @interface OHMySQLQueryRequestFactory : NSObject
 

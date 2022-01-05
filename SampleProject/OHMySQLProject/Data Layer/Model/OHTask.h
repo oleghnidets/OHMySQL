@@ -4,7 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "OHMappingProtocol.h"
+#import "OHMySQLMappingProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

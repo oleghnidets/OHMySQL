@@ -23,18 +23,19 @@
 @import Foundation;
 #import "OHConstants.h"
 
-@class OHMySQLUser, OHMySQLStore;
+@class OHMySQLConfiguration, OHMySQLStore;
 
+NS_SWIFT_NAME(MySQLStoreCoordinator)
 @interface OHMySQLStoreCoordinator : NSObject
 
 /// Nonnull after connection with DB. 
 @property (nonatomic, strong, readonly, nullable) OHMySQLStore *store;
 
 /// Nonnull after connection with DB.
-@property (nonatomic, strong, readonly, nullable) OHMySQLUser *user;
+@property (nonatomic, strong, readonly, nullable) OHMySQLConfiguration *configuration;
 
 /// Nonnull after connection with DB. You don't need to use this property at all.
-@property (readonly, nullable) void *mysql;
+@property (readonly, nullable) void *mysql NS_REFINED_FOR_SWIFT;
 
 /// Pings the server and indicates whether the connection to the server is working.
 @property (assign, readonly, getter=isConnected) BOOL connected;
@@ -45,7 +46,7 @@
 /// The default character set for the current connection. By default UTF-8.
 @property (nonatomic, assign) CharsetEncoding encoding;
 
-- (nonnull instancetype)initWithUser:(nonnull OHMySQLUser *)user;
+- (nonnull instancetype)initWithConfiguration:(nonnull OHMySQLConfiguration *)configuration;
 
 /// Attempts to disconnect and then establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
 - (BOOL)reconnect;
@@ -77,7 +78,7 @@
  *
  *  @return Zero for success. Nonzero if an error occurred (see enum).
  */
-- (OHResultErrorType)refresh:(OHRefreshOptions)options;
+- (OHResultErrorType)refresh:(OHRefreshOption)options;
 
 /**
  *  Checks whether the connection to the server is working. If the connection has gone down and auto-reconnect is enabled an attempt to reconnect is made.

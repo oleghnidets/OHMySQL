@@ -24,9 +24,9 @@
 @class OHMySQLQueryRequest, OHMySQLStoreCoordinator;
 @protocol OHMappingProtocol;
 
+NS_SWIFT_NAME(MySQLQueryContext)
 /// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
 @interface OHMySQLQueryContext : NSObject
-
 
 /**
  Initializes a context with a given parent context.

@@ -23,6 +23,7 @@
 @import Foundation;
 #import "OHCharsetEncoding.h"
 
+NS_SWIFT_NAME(MySQLSerialization)
 /// Responsible for seralization of responses.
 @interface OHMySQLSerialization : NSObject
 

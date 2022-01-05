@@ -22,14 +22,16 @@
 
 @import Foundation;
 
+typedef NSString *_Nonnull OHJoin NS_TYPED_EXTENSIBLE_ENUM;
+
 /// INNER JOIN type for combining records from two tables.
-extern NSString *_Nonnull const OHJoinInner;
+extern OHJoin const OHJoinInner;
 
 /// RIGHT JOIN type for performing a join starting with the second (right-most) table and then any matching first (left-most) table records.
-extern NSString *_Nonnull const OHJoinRight;
+extern OHJoin const OHJoinRight;
 
 /// LEFT JOIN type for performing a join starting with the first (left-most) table and then any matching second (right-most) table records.
-extern NSString *_Nonnull const OHJoinLeft;
+extern OHJoin const OHJoinLeft;
 
 /// FULL JOIN type for all matching records from both tables whether the other table matches or not.
-extern NSString *_Nonnull const OHJoinFull;
+extern OHJoin const OHJoinFull;

@@ -21,18 +21,19 @@
 //
 
 @import Foundation;
+@import CoreGraphics.CGBase;
 
-@protocol OHMappingProtocol <NSObject>
+NS_SWIFT_NAME(MySQLQueryTimeline)
+/// An instance of OHMySQLTimeline represents lifecycle of the query.
+@interface OHMySQLQueryTimeline : NSObject
 
-/// Dictionary that represents class' properties with table' column names.
-- (NSDictionary *)mappingDictionary;
+/// The time when the serialization was completed.
+@property (nonatomic, assign) CFAbsoluteTime serializationDuration;
 
-/// Table where current entity can be found.
-- (NSString *)mySQLTable;
+/// The time interval from the time the request started to the time the request completed.
+@property (nonatomic, assign) CFAbsoluteTime queryDuration;
 
-/// Returns name of primary property (row).
-- (NSString *)primaryKey;
+/// The time interval in seconds from the time the request started to the time response serialization completed.
+@property (nonatomic, assign, readonly) CFAbsoluteTime totalTime;
 
 @end
-
-#define mysql_key(name) NSStringFromSelector(@selector(name))

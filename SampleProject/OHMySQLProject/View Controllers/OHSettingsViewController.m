@@ -26,14 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	OHMySQLStoreCoordinator *coordinator = [OHMySQLContainer sharedContainer].storeCoordinator;
+	OHMySQLStoreCoordinator *coordinator = OHMySQLContainer.shared.storeCoordinator;
 
-	self.usernameTextField.text = coordinator.user.userName ?: @"root";
-	self.passwordTextField.text = coordinator.user.password ?: @"root";
-	self.serverTextField.text = coordinator.user.serverName ?: @"localhost";
-	self.databaseTextField.text = coordinator.user.dbName ?: @"ohmysql";
-	self.portTextField.text = [NSString stringWithFormat:@"%lu", coordinator.user.port != 0 ? coordinator.user.port : 3306];
-	self.socketTextField.text = coordinator.user.socket ?: @"/Applications/MAMP/tmp/mysql/mysql.sock";
+	self.usernameTextField.text = coordinator.configuration.username ?: @"root";
+	self.passwordTextField.text = coordinator.configuration.password ?: @"root";
+	self.serverTextField.text = coordinator.configuration.serverName ?: @"localhost";
+	self.databaseTextField.text = coordinator.configuration.dbName ?: @"ohmysql";
+	self.portTextField.text = [NSString stringWithFormat:@"%lu", coordinator.configuration.port != 0 ? coordinator.configuration.port : 3306];
+	self.socketTextField.text = coordinator.configuration.socket ?: @"/Applications/MAMP/tmp/mysql/mysql.sock";
 }
 
 - (IBAction)submit {
@@ -50,20 +50,23 @@
 	//										   certAuthPEMPath:@"/Users/oleg/Desktop/newcerts/"
 	//													cipher:nil];
 	// You may delete sslConfig:config if you don't use SSL.
-	OHMySQLUser *user = [[OHMySQLUser alloc] initWithUserName:self.usernameTextField.text
+	OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:self.usernameTextField.text
 													 password:self.passwordTextField.text
 												   serverName:self.serverTextField.text
 													   dbName:self.databaseTextField.text
 														 port:self.portTextField.text.integerValue
 													   socket:self.socketTextField.text];
-	OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:user];
-	[coordinator connect];
+	OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithConfiguration:user];
+    if (![coordinator connect]) {
+        NSLog(@"Cannot connect to MySQL server.");
+        return ;
+    }
 
 	[coordinator setEncoding:CharsetEncodingUTF8MB4];
 
 	OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
 	queryContext.storeCoordinator = coordinator;
-	[OHMySQLContainer sharedContainer].mainQueryContext = queryContext;
+    OHMySQLContainer.shared.mainQueryContext = queryContext;
 }
 
 @end

@@ -20,21 +20,21 @@
 // SOFTWARE.
 //
 
-#import "OHMySQLUser.h"
+#import "OHMySQLConfiguration.h"
 
-@interface OHMySQLUser ()
+@interface OHMySQLConfiguration ()
 @end
 
-@implementation OHMySQLUser
+@implementation OHMySQLConfiguration
 
-- (instancetype)initWithUserName:(NSString *)name
-                        password:(NSString *)password
-                      serverName:(NSString *)serverName
-                          dbName:(NSString *)dbName
-                            port:(NSUInteger)port
-                          socket:(NSString *)socket {
+- (instancetype)initWithUser:(NSString *)user
+                    password:(NSString *)password
+                  serverName:(NSString *)serverName
+                      dbName:(NSString *)dbName
+                        port:(NSUInteger)port
+                      socket:(NSString *)socket {
     if (self = [super init]) {
-        _userName   = name;
+        _username   = user;
         _password   = password;
         _serverName = serverName;
         _dbName     = dbName;
@@ -45,14 +45,14 @@
     return self;
 }
 
-- (instancetype)initWithUserName:(NSString *)name
-                        password:(NSString *)password
-                       sslConfig:(OHSSLConfig *)sslConfig
-                      serverName:(NSString *)serverName
-                          dbName:(NSString *)dbName
-                            port:(NSUInteger)port
-                          socket:(NSString *)socket {
-    self = [self initWithUserName:name password:password serverName:serverName dbName:dbName port:port socket:socket];
+- (instancetype)initWithUser:(NSString *)user
+                    password:(NSString *)password
+                   sslConfig:(OHSSLConfig *)sslConfig
+                  serverName:(NSString *)serverName
+                      dbName:(NSString *)dbName
+                        port:(NSUInteger)port
+                      socket:(NSString *)socket {
+    self = [self initWithUser:user password:password serverName:serverName dbName:dbName port:port socket:socket];
     if (self) {
         _sslConfig = sslConfig;
     }

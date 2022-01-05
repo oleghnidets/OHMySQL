@@ -29,7 +29,7 @@ static NSInteger const kIterations = 1000;
 }
 
 - (void)tearDown {
-    [[OHMySQLContainer sharedContainer].storeCoordinator disconnect];
+    [OHMySQLContainer.shared.storeCoordinator disconnect];
     [super tearDown];
 }
 

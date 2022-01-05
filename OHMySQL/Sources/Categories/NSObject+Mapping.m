@@ -20,7 +20,7 @@
 // SOFTWARE.
 //
 
-#import "OHMappingProtocol.h"
+#import "OHMySQLMappingProtocol.h"
 #import "OHConstants.h"
 
 #import "NSObject+Mapping.h"

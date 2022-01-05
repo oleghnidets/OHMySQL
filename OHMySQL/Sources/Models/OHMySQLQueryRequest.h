@@ -21,13 +21,14 @@
 //
 
 @import Foundation;
-#import "OHMySQLTimeline.h"
+#import "OHMySQLQueryTimeline.h"
 
+NS_SWIFT_NAME(MySQLQueryRequest)
 /// An instance of OHMySQLQueryRequest describes SQL query used to retrieve data from a MySQL store.
 @interface OHMySQLQueryRequest : NSObject
 
 /// The timeline of lifecycle of query.
-@property (strong, nonnull, readonly) OHMySQLTimeline *timeline;
+@property (strong, nonnull, readonly) OHMySQLQueryTimeline *timeline;
 
 /// SQL query string.
 @property (nonatomic, copy, nonnull, readonly) NSString *query;

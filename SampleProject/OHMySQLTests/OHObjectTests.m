@@ -20,7 +20,7 @@
 }
 
 - (void)tearDown {
-    [[OHMySQLContainer sharedContainer].storeCoordinator disconnect];
+    [OHMySQLContainer.shared.storeCoordinator disconnect];
     [super tearDown];
 }
 
