@@ -37,5 +37,3 @@ NS_SWIFT_NAME(MySQLContainer)
 @property (nonatomic, strong, readonly, nullable) OHMySQLStoreCoordinator *storeCoordinator;
 
 @end
-
-@compatibility_alias OHMySQLManager OHMySQLContainer;

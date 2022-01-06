@@ -34,4 +34,4 @@ typedef NS_ENUM(NSUInteger, OHProtocolType) {
      *  TCP/IP connection to local or remote server.
      */
     OHProtocolTypeTCP,
-};
+} NS_SWIFT_NAME(ProtocolType);

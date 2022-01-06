@@ -22,6 +22,7 @@
 
 @import Foundation;
 
+NS_SWIFT_NAME(MySQLMappingProtocol)
 @protocol OHMySQLMappingProtocol <NSObject>
 
 /// Dictionary that represents class' properties with table' column names.
@@ -37,6 +38,9 @@
 
 #define mysql_key(name) NSStringFromSelector(@selector(name))
 
+NS_SWIFT_NAME(MappingProtocol)
+__attribute__ ((deprecated))
+/// Deprecated. Use `OHMySQLMappingProtocol` (Swift: `MySQLMappingProtocol`) instead.
 @protocol OHMappingProtocol <NSObject, OHMySQLMappingProtocol>
 
 @end

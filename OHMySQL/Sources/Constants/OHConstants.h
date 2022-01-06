@@ -25,7 +25,7 @@
 #import "OHLogging.h"
 #import "OHProtocolType.h"
 #import "OHJoinConstants.h"
-#import "OHRefreshOptions.h"
+#import "OHRefreshOption.h"
 #import "OHResultErrorType.h"
-#import "OHCharsetEncoding.h"
+#import "CharsetEncoding.h"
 

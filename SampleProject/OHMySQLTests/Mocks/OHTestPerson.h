@@ -4,7 +4,7 @@
 
 #import "OHMySQL.h"
 
-@interface OHTestPerson : NSObject<OHMappingProtocol>
+@interface OHTestPerson : NSObject<OHMySQLMappingProtocol>
 
 @property (nonatomic, strong) NSNumber *ID;
 @property (nonatomic, strong) id name;

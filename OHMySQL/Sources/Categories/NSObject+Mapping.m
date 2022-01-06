@@ -45,7 +45,7 @@
 
 @end
 
-@interface NSObject () <OHMappingProtocol>
+@interface NSObject () <OHMySQLMappingProtocol>
 
 @end
 

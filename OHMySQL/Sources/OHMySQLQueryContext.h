@@ -22,7 +22,7 @@
 
 @import Foundation;
 @class OHMySQLQueryRequest, OHMySQLStoreCoordinator;
-@protocol OHMappingProtocol;
+@protocol OHMySQLMappingProtocol;
 
 NS_SWIFT_NAME(MySQLQueryContext)
 /// An instance of this class is responsible for executing queries, saving/updating/deleting objects.
@@ -39,15 +39,15 @@ NS_SWIFT_NAME(MySQLQueryContext)
 /// The parent of the context.
 @property (strong, nullable) OHMySQLQueryContext *parentQueryContext;
 
-/// Should be set by a user of this class.
+/// Should be set before using the class.
 @property (strong, nonnull) OHMySQLStoreCoordinator *storeCoordinator;
 
 /// The set of objects that have been inserted into the context but not yet saved in a persistent store.
-@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *insertedObjects;
+@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMySQLMappingProtocol> *> *insertedObjects;
 /// The set of objects that have been updated into the context but not yet saved in a persistent store.
-@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *updatedObjects;
+@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMySQLMappingProtocol> *> *updatedObjects;
 /// The set of objects that have been deleted into the context but not yet saved in a persistent store.
-@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMappingProtocol> *> *deletedObjects;
+@property (nonatomic, readonly, strong, nullable) NSSet<__kindof NSObject<OHMySQLMappingProtocol> *> *deletedObjects;
 
 /**
  *  Executes a query.
@@ -81,14 +81,14 @@ NS_SWIFT_NAME(MySQLQueryContext)
 
 // MARK: Temporary solution... maybe.
 /// Makes object ready to be inserted.
-- (void)insertObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)insertObject:(nullable NSObject<OHMySQLMappingProtocol> *)object;
 /// Makes object ready to be updated.
-- (void)updateObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)updateObject:(nullable NSObject<OHMySQLMappingProtocol> *)object;
 /// Makes object ready to be deleted.
-- (void)deleteObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)deleteObject:(nullable NSObject<OHMySQLMappingProtocol> *)object;
 
 /// Removes object from deleted/inserted/updated.
-- (void)refreshObject:(nullable NSObject<OHMappingProtocol> *)object;
+- (void)refreshObject:(nullable NSObject<OHMySQLMappingProtocol> *)object;
 
 /**
  *  Attempts to commit unsaved changes.

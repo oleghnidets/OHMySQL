@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>OHRefreshOption Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Enum/OHRefreshOption" class="dashAnchor"></a>
+    <a title="OHRefreshOption Enumeration Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">OHMySQL 3.0.0 Docs</a> (87% documented)</p>
+        <p class="header-right"><a href="https://github.com/oleghnidets/OHMySQL"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">OHMySQL Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        OHRefreshOption Enumeration Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Categories.html">Categories</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Categories/NSObject%28Mapping%29.html">NSObject(Mapping)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Categories/NSString%28Escaping%29.html">NSString(Escaping)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLConfiguration.html">OHMySQLConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLContainer.html">OHMySQLContainer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryContext.html">OHMySQLQueryContext</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryRequest.html">OHMySQLQueryRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryRequestFactory.html">OHMySQLQueryRequestFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLQueryTimeline.html">OHMySQLQueryTimeline</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLStore.html">OHMySQLStore</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHMySQLStoreCoordinator.html">OHMySQLStoreCoordinator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/OHSSLConfig.html">OHSSLConfig</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Constants.html">Constants</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinFull">OHJoinFull</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinInner">OHJoinInner</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinLeft">OHJoinLeft</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Constants.html#/c:@OHJoinRight">OHJoinRight</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CharsetEncoding.html">CharsetEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OHProtocolType.html">OHProtocolType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OHRefreshOption.html">OHRefreshOption</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OHResultErrorType.html">OHResultErrorType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/c:objc(pl)OHMappingProtocol">OHMappingProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OHMySQLMappingProtocol.html">OHMySQLMappingProtocol</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type%20Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type%20Definitions.html#/c:OHJoinConstants.h@T@OHJoin">OHJoin</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@MySQLCharsetForEncoding">MySQLCharsetForEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@NSStringEncodingFromCharsetEncoding">NSStringEncodingFromCharsetEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/c:@F@ResultErrorConvertion">ResultErrorConvertion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>OHRefreshOption</h1>
+              <div class="declaration">
+                <div class="language">
+                  <p class="aside-title">Objective-C</p>
+                  <pre class="highlight objective_c"><code><span class="k">enum</span> <span class="n">OHRefreshOption</span> <span class="o">:</span> <span class="n">NSUInteger</span> <span class="p">{}</span></code></pre>
+
+                </div>
+                <div class="language">
+                  <p class="aside-title">Swift</p>
+                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">RefreshOption</span> <span class="p">:</span> <span class="kt">UInt</span></code></pre>
+
+                </div>
+              </div>
+            <p>Refresh options.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionNone"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionNone" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionNone">OHRefreshOptionNone</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionNone</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="k">none</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionGrant"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionGrant" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionGrant">OHRefreshOptionGrant</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Refresh the grant tables, like FLUSH PRIVILEGES.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionGrant</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">grant</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionLog"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionLog" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionLog">OHRefreshOptionLog</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flush the logs, like FLUSH LOGS.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionLog</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">log</span> <span class="o">=</span> <span class="mi">2</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionTables"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionTables" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionTables">OHRefreshOptionTables</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flush the table cache, like FLUSH TABLES.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionTables</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">tables</span> <span class="o">=</span> <span class="mi">4</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionHosts"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionHosts" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionHosts">OHRefreshOptionHosts</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flush the host cache, like FLUSH HOSTS.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionHosts</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">hosts</span> <span class="o">=</span> <span class="mi">8</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionStatus"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionStatus">OHRefreshOptionStatus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Reset status variables, like FLUSH STATUS.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionStatus</span> <span class="o">=</span> <span class="mi">16</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">status</span> <span class="o">=</span> <span class="mi">16</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionThreads"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionThreads" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionThreads">OHRefreshOptionThreads</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flush the thread cache.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionThreads</span> <span class="o">=</span> <span class="mi">32</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">threads</span> <span class="o">=</span> <span class="mi">32</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionSlave"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionSlave" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionSlave">OHRefreshOptionSlave</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>On a slave replication server, reset the master server information and restart the slave, like RESET SLAVE.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionSlave</span> <span class="o">=</span> <span class="mi">64</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">slave</span> <span class="o">=</span> <span class="mi">64</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@E@OHRefreshOption@OHRefreshOptionMaster"></a>
+                    <a name="//apple_ref/objc/Case/OHRefreshOptionMaster" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@E@OHRefreshOption@OHRefreshOptionMaster">OHRefreshOptionMaster</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>On a master replication server, remove the binary log files listed in the binary log index and truncate the index file, like RESET MASTER.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="n">OHRefreshOptionMaster</span> <span class="o">=</span> <span class="mi">128</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">master</span> <span class="o">=</span> <span class="mi">128</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://github.com/oleghnidets" target="_blank" rel="external noopener">Oleg</a>. All rights reserved. (Last updated: 2022-01-07)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

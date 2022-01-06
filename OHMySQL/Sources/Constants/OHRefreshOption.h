@@ -60,4 +60,4 @@ typedef NS_ENUM(NSUInteger, OHRefreshOption) {
      *  On a master replication server, remove the binary log files listed in the binary log index and truncate the index file, like RESET MASTER.
      */
     OHRefreshOptionMaster = 128,
-};
+} NS_SWIFT_NAME(RefreshOption);

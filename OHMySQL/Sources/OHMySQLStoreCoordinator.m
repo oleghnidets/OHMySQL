@@ -25,7 +25,7 @@
 #import "OHMySQLConfiguration.h"
 #import "OHSSLConfig.h"
 #import "OHMySQLStore.h"
-#import "OHCharsetEncoding.h"
+#import "CharsetEncoding.h"
 
 @import MySQL;
 
@@ -87,7 +87,14 @@
                       SSLconfig.cipher.UTF8String);
     }
     
-    if (!mysql_real_connect(_mysql, _configuration.serverName.UTF8String, _configuration.username.UTF8String, _configuration.password.UTF8String, _configuration.dbName.UTF8String, (unsigned int)_configuration.port, _configuration.socket.UTF8String, 0)) {
+    if (!mysql_real_connect(_mysql,
+                            _configuration.serverName.UTF8String,
+                            _configuration.username.UTF8String,
+                            _configuration.password.UTF8String,
+                            _configuration.dbName.UTF8String,
+                            (uint)_configuration.port,
+                            _configuration.socket.UTF8String,
+                            0)) {
         OHLogError(@"Failed to connect to database: Error: %s", mysql_error(_mysql));
 		return NO;
     }

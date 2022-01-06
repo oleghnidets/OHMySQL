@@ -21,7 +21,7 @@
 //
 
 @import Foundation;
-#import "OHCharsetEncoding.h"
+#import "CharsetEncoding.h"
 
 @protocol OHSerialization <NSObject>
 

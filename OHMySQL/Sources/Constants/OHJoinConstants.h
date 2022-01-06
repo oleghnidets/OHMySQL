@@ -22,7 +22,7 @@
 
 @import Foundation;
 
-typedef NSString *_Nonnull OHJoin NS_TYPED_EXTENSIBLE_ENUM;
+typedef NSString *_Nonnull OHJoin NS_TYPED_EXTENSIBLE_ENUM NS_SWIFT_NAME(Join);
 
 /// INNER JOIN type for combining records from two tables.
 extern OHJoin const OHJoinInner;

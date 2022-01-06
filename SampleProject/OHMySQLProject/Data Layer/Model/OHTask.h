@@ -8,7 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface OHTask : NSManagedObject<OHMappingProtocol>
+@interface OHTask : NSManagedObject<OHMySQLMappingProtocol>
 
 @end
 

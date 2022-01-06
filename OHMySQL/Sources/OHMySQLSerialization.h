@@ -21,7 +21,7 @@
 //
 
 @import Foundation;
-#import "OHCharsetEncoding.h"
+#import "CharsetEncoding.h"
 
 NS_SWIFT_NAME(MySQLSerialization)
 /// Responsible for seralization of responses.

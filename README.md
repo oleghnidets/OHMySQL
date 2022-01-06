@@ -43,6 +43,7 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCAKYM4XCT2
 - [x] Supports iOS and macOS
 - [x] Clean code with unit tests
 - [x] [Complete documentation](http://oleghnidets.github.io/OHMySQL/) and [support](https://github.com/oleghnidets/OHMySQL/issues?q=is%3Aissue+is%3Aclosed)
+
 ## Requirements
 - iOS 14.0+ / macOS 11.0+ (for more previous versions use [2.1.3](https://github.com/oleghnidets/OHMySQL/releases/tag/2.1.3))
 - Xcode 12.0+

@@ -50,6 +50,6 @@ typedef NS_OPTIONS(NSUInteger, OHResultErrorType) {
      *  An unknown error code received. Look at debug console.
      */
     OHResultErrorTypeUnknownCode = 1071994,
-};
+} NS_SWIFT_NAME(ResultErrorType);
 
 OHResultErrorType ResultErrorConvertion(NSInteger input) NS_REFINED_FOR_SWIFT;

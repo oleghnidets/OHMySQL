@@ -75,15 +75,15 @@ NSError *contextError(NSString *description) {
 
 #pragma mark - Public
 
-- (NSSet<NSObject<OHMappingProtocol> *> *)insertedObjects {
+- (NSSet<NSObject<OHMySQLMappingProtocol> *> *)insertedObjects {
     return [NSSet setWithArray:self.p_insertedObjects];
 }
 
-- (NSSet<NSObject<OHMappingProtocol> *> *)updatedObjects {
+- (NSSet<NSObject<OHMySQLMappingProtocol> *> *)updatedObjects {
     return [NSSet setWithArray:self.p_updatedObjects];
 }
 
-- (NSSet<NSObject<OHMappingProtocol> *> *)deletedObjects {
+- (NSSet<NSObject<OHMySQLMappingProtocol> *> *)deletedObjects {
     return [NSSet setWithArray:self.p_deletedObjects];
 }
 
@@ -172,22 +172,22 @@ NSError *contextError(NSString *description) {
 
 #pragma mark - Objects
 
-- (void)insertObject:(NSObject<OHMappingProtocol> *)object {
+- (void)insertObject:(NSObject<OHMySQLMappingProtocol> *)object {
     if (!object || [self.p_insertedObjects containsObject:object]) { return ; }
     [self.p_insertedObjects addObject:object];
 }
 
-- (void)updateObject:(NSObject<OHMappingProtocol> *)object {
+- (void)updateObject:(NSObject<OHMySQLMappingProtocol> *)object {
     if (!object || [self.p_updatedObjects containsObject:object]) { return ; }
     [self.p_updatedObjects addObject:object];
 }
 
-- (void)deleteObject:(NSObject<OHMappingProtocol> *)object {
+- (void)deleteObject:(NSObject<OHMySQLMappingProtocol> *)object {
     if (!object || [self.p_deletedObjects containsObject:object]) { return ; }
     [self.p_deletedObjects addObject:object];
 }
 
-- (void)refreshObject:(NSObject<OHMappingProtocol> *)object {
+- (void)refreshObject:(NSObject<OHMySQLMappingProtocol> *)object {
     [self.p_insertedObjects removeObject:object];
     [self.p_updatedObjects removeObject:object];
     [self.p_deletedObjects removeObject:object];
@@ -196,15 +196,15 @@ NSError *contextError(NSString *description) {
 - (BOOL)save:(NSError **)error {
     @synchronized (self) {
         if (self.parentQueryContext) {
-            for (NSObject<OHMappingProtocol> *objectToInsert in self.insertedObjects) {
+            for (NSObject<OHMySQLMappingProtocol> *objectToInsert in self.insertedObjects) {
                 [self.parentQueryContext insertObject:objectToInsert];
             }
             
-            for (NSObject<OHMappingProtocol> *objectToUpdate in self.updatedObjects) {
+            for (NSObject<OHMySQLMappingProtocol> *objectToUpdate in self.updatedObjects) {
                 [self.parentQueryContext updateObject:objectToUpdate];
             }
             
-            for (NSObject<OHMappingProtocol> *objectToDelete in self.deletedObjects) {
+            for (NSObject<OHMySQLMappingProtocol> *objectToDelete in self.deletedObjects) {
                 [self.parentQueryContext deleteObject:objectToDelete];
             }
             
@@ -213,20 +213,20 @@ NSError *contextError(NSString *description) {
         
         
         NSArray *p_insertedObjectsCopy = [self.p_insertedObjects copy];
-        for (NSObject<OHMappingProtocol> *objectToInsert in p_insertedObjectsCopy) {
+        for (NSObject<OHMySQLMappingProtocol> *objectToInsert in p_insertedObjectsCopy) {
             if ([self insertObject:objectToInsert error:error] == NO) { return NO; }
             [objectToInsert setValue:self.lastInsertID forKey:objectToInsert.primaryKey];
             [self.p_insertedObjects removeObject:objectToInsert];
         }
         
         NSArray *p_updatedObjectsCopy = [self.p_updatedObjects copy];
-        for (NSObject<OHMappingProtocol> *objectToUpdate in p_updatedObjectsCopy) {
+        for (NSObject<OHMySQLMappingProtocol> *objectToUpdate in p_updatedObjectsCopy) {
             if ([self updateObject:objectToUpdate error:error] == NO) { return NO; }
             [self.p_updatedObjects removeObject:objectToUpdate];
         }
         
         NSArray *p_deletedObjectsCopy = [self.p_deletedObjects copy];
-        for (NSObject<OHMappingProtocol> *objectToDelete in p_deletedObjectsCopy) {
+        for (NSObject<OHMySQLMappingProtocol> *objectToDelete in p_deletedObjectsCopy) {
             if ([self deleteObject:objectToDelete error:error] == NO) { return NO; }
             [self.p_deletedObjects removeObject:objectToDelete];
         }
@@ -258,12 +258,12 @@ NSError *contextError(NSString *description) {
 
 #pragma mark - Private
 
-- (BOOL)insertObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+- (BOOL)insertObject:(NSObject<OHMySQLMappingProtocol> *)object error:(NSError **)error {
     OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:[object mySQLTable] set:[object mapObject]];
     return [self executeQueryRequest:query error:error];
 }
 
-- (BOOL)updateObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+- (BOOL)updateObject:(NSObject<OHMySQLMappingProtocol> *)object error:(NSError **)error {
     NSString *condition = [object indexKeyCondition];
     // If object doesn't have index key don't update anything.
     if (!condition) {
@@ -276,7 +276,7 @@ NSError *contextError(NSString *description) {
     return [self executeQueryRequest:query error:error];
 }
 
-- (BOOL)deleteObject:(NSObject<OHMappingProtocol> *)object error:(NSError **)error {
+- (BOOL)deleteObject:(NSObject<OHMySQLMappingProtocol> *)object error:(NSError **)error {
     NSString *condition = [object indexKeyCondition];
     // If object doesn't have index key don't update anything.
     if (!condition) {

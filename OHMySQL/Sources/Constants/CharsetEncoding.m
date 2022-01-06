@@ -20,7 +20,7 @@
 // SOFTWARE.
 //
 
-#import "OHCharsetEncoding.h"
+#import "CharsetEncoding.h"
 
 NSString *_Nullable MySQLCharsetForEncoding(CharsetEncoding encoding) {
 	switch (encoding) {
