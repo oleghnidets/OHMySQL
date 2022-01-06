@@ -8,8 +8,8 @@ import OHMySQL
 class TasksProvider {
 	
 	func loadTasks(_ completion: @escaping ([Task]) -> ()) {
-		let query = OHMySQLQueryRequestFactory.select("tasks", condition: nil)
-		let response = try? OHMySQLContainer.shared.mainQueryContext?.executeQueryRequestAndFetchResult(query)
+        let query = MySQLQueryRequestFactory.select("tasks", condition: nil)
+		let response = ((try? MySQLContainer.shared.mainQueryContext?.executeQueryRequestAndFetchResult(query)) as [[String : Any]]??)
 		
 		guard let responseObject = response as? [[String : Any]] else {
 			completion([])

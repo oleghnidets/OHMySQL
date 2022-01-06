@@ -5,7 +5,7 @@
 import Foundation
 import OHMySQL
 
-class Task: NSObject, OHMappingProtocol {
+class Task: NSObject, MySQLMappingProtocol {
 	
 	@objc var taskId: NSNumber?
 	@objc var name: String?

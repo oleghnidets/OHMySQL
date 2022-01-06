@@ -24,14 +24,14 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	}
 	
 	private func configureMySQL() {
-		let user = OHMySQLUser(userName: "root", password: "root", serverName: "localhost", dbName: "ohmysql", port: 3306, socket: "/Applications/MAMP/tmp/mysql/mysql.sock")
-		let coordinator = OHMySQLStoreCoordinator(user: user!)
+        let configuration = MySQLConfiguration(user: "root", password: "root", serverName: "localhost", dbName: "ohmysql", port: 3306, socket: "/Applications/MAMP/tmp/mysql/mysql.sock")
+		let coordinator = MySQLStoreCoordinator(configuration: configuration)
 		coordinator.encoding = .UTF8MB4
 		coordinator.connect()
 		
-		let context = OHMySQLQueryContext()
+		let context = MySQLQueryContext()
 		context.storeCoordinator = coordinator
-		OHMySQLContainer.shared.mainQueryContext = context
+		MySQLContainer.shared.mainQueryContext = context
 	}
 	
 	// MARK: - NSTableViewDataSource -
