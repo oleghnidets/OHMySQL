@@ -20,21 +20,17 @@
 // SOFTWARE.
 //
 
+@import OHMySQL;
+
 #import "OHSettingsViewController.h"
-#import <OHMySQL/OHMySQL.h>
 
 @interface OHSettingsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *serverTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *databaseTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *socketTextField;
-
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 
 @end

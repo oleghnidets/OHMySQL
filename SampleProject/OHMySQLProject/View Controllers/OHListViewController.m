@@ -53,12 +53,6 @@
 	[self performSegueWithIdentifier:@"settings" sender:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	
-    [self refresh:nil];
-}
-
 - (void)configureResultsController {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([OHTask class])];
@@ -68,10 +62,16 @@
                                                                     sectionNameKeyPath:nil
                                                                              cacheName:nil];
     self.allItemsController.delegate = self;
+    
+    [self.allItemsController performFetch:nil];
 }
 
 - (IBAction)refresh:(__unused id)sender {
-    [self.tableView reloadData];
+    [OHTasksFacade loadTasks:^(__unused NSArray *tasks) {
+        
+    } failure:^{
+        // handle
+    }];
 }
 
 - (IBAction)addButtonPressed:(__unused UIBarButtonItem *)sender {
@@ -156,11 +156,6 @@
 }
 
 - (void)controller:(__unused NSFetchedResultsController *)controller didChangeObject:(__unused id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    // Fix for iOS8. Xcode 7 has a bug with FRC.
-    if ([indexPath isEqual:newIndexPath]) {
-        return ;
-    }
-    
     switch (type) {
         case NSFetchedResultsChangeInsert: {
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
