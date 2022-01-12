@@ -25,7 +25,7 @@
 
 @interface OHMySQLStore ()
 
-@property (nonatomic, assign) MYSQL *mysql;
+@property (nonatomic, nullable) void *mysql;
 
 @end
 
@@ -41,23 +41,33 @@
 }
 
 - (NSString *)serverInfo {
-    return [NSString stringWithUTF8String:mysql_get_server_info(_mysql)];
+    return _mysql != NULL ?
+    [NSString stringWithUTF8String:mysql_get_server_info(_mysql)] :
+    nil;
 }
 
 - (NSString *)hostInfo {
-    return [NSString stringWithUTF8String:mysql_get_host_info(_mysql)];
+    return _mysql != NULL ?
+    [NSString stringWithUTF8String:mysql_get_host_info(_mysql)] :
+    nil;
 }
 
 - (NSUInteger)protocolInfo {
-    return mysql_get_proto_info(_mysql);
+    return _mysql != NULL ?
+    mysql_get_proto_info(_mysql) :
+    0;
 }
 
 - (NSInteger)serverVersion {
-    return mysql_get_server_version(_mysql);
+    return _mysql != NULL ?
+    mysql_get_server_version(_mysql) :
+    -1;
 }
 
 - (NSString *)status {
-    return [NSString stringWithUTF8String:mysql_stat(_mysql)];
+    return _mysql != NULL ?
+    [NSString stringWithUTF8String:mysql_stat(_mysql)] :
+    nil;
 }
 
 @end

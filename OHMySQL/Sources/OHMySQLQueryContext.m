@@ -76,24 +76,31 @@ NSError *contextError(NSString *description) {
 #pragma mark - Public
 
 - (NSSet<NSObject<OHMySQLMappingProtocol> *> *)insertedObjects {
-    return [NSSet setWithArray:self.p_insertedObjects];
+    @synchronized (self.p_insertedObjects) {
+        return [NSSet setWithArray:self.p_insertedObjects];
+    }
 }
 
 - (NSSet<NSObject<OHMySQLMappingProtocol> *> *)updatedObjects {
-    return [NSSet setWithArray:self.p_updatedObjects];
+    @synchronized (self.p_updatedObjects) {
+        return [NSSet setWithArray:self.p_updatedObjects];
+    }
 }
 
 - (NSSet<NSObject<OHMySQLMappingProtocol> *> *)deletedObjects {
-    return [NSSet setWithArray:self.p_deletedObjects];
+    @synchronized (self.p_deletedObjects) {
+        return [NSSet setWithArray:self.p_deletedObjects];
+    }
 }
 
 #pragma mark - Execute
 
 - (BOOL)executeQueryRequest:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
+    // http://dev.mysql.com/doc/refman/5.7/en/c-api-threaded-clients.html
     @synchronized(self) {
         NSParameterAssert(query.query);
         
-        if ((!self.storeCoordinator.isConnected || !self.mysql) && ![self.storeCoordinator reconnect]) {
+        if ((!self.storeCoordinator.isConnected || self.mysql == NULL) && ![self.storeCoordinator reconnect]) {
             __unused NSString *errorString = [NSString stringWithUTF8String:mysql_error(self.mysql)];
             OHLogError(@"The connection is broken: %@", errorString);
             OHLogError(@"Cannot connect to DB. Check your configuration properties.");
@@ -119,7 +126,7 @@ NSError *contextError(NSString *description) {
             }
             
             NSString *mysqlError = [NSString stringWithUTF8String:mysql_error(self.mysql)];
-            OHLogError(@"Cannot execute query: %@", mysqlError);
+            OHLogError(@"Cannot execute the query: %@", mysqlError);
             
             if (error) {
                 *error = contextError(mysqlError);
@@ -132,26 +139,23 @@ NSError *contextError(NSString *description) {
 }
 
 - (NSArray<NSDictionary<NSString *,id> *> *)executeQueryRequestAndFetchResult:(OHMySQLQueryRequest *)query error:(NSError *__autoreleasing *)error {
-    // http://dev.mysql.com/doc/refman/5.7/en/c-api-threaded-clients.html
-    @synchronized (self) {
-        [self executeQueryRequest:query error:error];
-        
-        if (error && *error) {
-            OHLogError(@"Cannot get results: %@", *error);
-            return nil;
-        }
-        
-        CFAbsoluteTime seralizationStartTime = CFAbsoluteTimeGetCurrent();
-        NSArray *result = [self fetchResult];
-        query.timeline.serializationDuration = CFAbsoluteTimeGetCurrent() - seralizationStartTime;
-        
-        return result;
+    [self executeQueryRequest:query error:error];
+    
+    if (error && *error) {
+        OHLogError(@"Cannot get the results: %@", *error);
+        return nil;
     }
+    
+    CFAbsoluteTime seralizationStartTime = CFAbsoluteTimeGetCurrent();
+    NSArray *result = [self fetchResult];
+    query.timeline.serializationDuration = CFAbsoluteTimeGetCurrent() - seralizationStartTime;
+    
+    return result;
 }
 
 - (NSNumber *)affectedRows {
     @synchronized (self) {
-        if (!self.mysql) {
+        if (self.mysql == NULL) {
             return @(-1);
         }
         
@@ -173,24 +177,38 @@ NSError *contextError(NSString *description) {
 #pragma mark - Objects
 
 - (void)insertObject:(NSObject<OHMySQLMappingProtocol> *)object {
-    if (!object || [self.p_insertedObjects containsObject:object]) { return ; }
-    [self.p_insertedObjects addObject:object];
+    @synchronized (self.p_insertedObjects) {
+        if (!object || [self.p_insertedObjects containsObject:object]) { return ; }
+        [self.p_insertedObjects addObject:object];
+    }
 }
 
 - (void)updateObject:(NSObject<OHMySQLMappingProtocol> *)object {
-    if (!object || [self.p_updatedObjects containsObject:object]) { return ; }
-    [self.p_updatedObjects addObject:object];
+    @synchronized (self.p_updatedObjects) {
+        if (!object || [self.p_updatedObjects containsObject:object]) { return ; }
+        [self.p_updatedObjects addObject:object];
+    }
 }
 
 - (void)deleteObject:(NSObject<OHMySQLMappingProtocol> *)object {
-    if (!object || [self.p_deletedObjects containsObject:object]) { return ; }
-    [self.p_deletedObjects addObject:object];
+    @synchronized (self.p_deletedObjects) {
+        if (!object || [self.p_deletedObjects containsObject:object]) { return ; }
+        [self.p_deletedObjects addObject:object];
+    }
 }
 
 - (void)refreshObject:(NSObject<OHMySQLMappingProtocol> *)object {
-    [self.p_insertedObjects removeObject:object];
-    [self.p_updatedObjects removeObject:object];
-    [self.p_deletedObjects removeObject:object];
+    @synchronized (self.p_insertedObjects) {
+        [self.p_insertedObjects removeObject:object];
+    }
+    
+    @synchronized (self.p_updatedObjects) {
+        [self.p_updatedObjects removeObject:object];
+    }
+        
+    @synchronized (self.p_deletedObjects) {
+        [self.p_deletedObjects removeObject:object];
+    }
 }
 
 - (BOOL)save:(NSError **)error {
@@ -288,45 +306,47 @@ NSError *contextError(NSString *description) {
 }
 
 - (NSArray<NSDictionary<NSString *,id> *> *)fetchResult {
-    MYSQL *mysql = self.mysql;
-    
-    if (!mysql) {
-        return nil;
-    }
-    
-    MYSQL_RES *result = mysql_use_result(mysql);
-    if (!result) {
-        if (mysql_field_count(mysql) == 0) {
-            OHLog(@"%@ rows affected\n", self.affectedRows);
-        } else {
-            OHLogWarn(@"Could not retrieve result set\n");
+    @synchronized (self) {
+        MYSQL *mysql = self.mysql;
+        
+        if (!mysql) {
+            return nil;
         }
         
-        return nil;
-    }
-    
-    MYSQL_FIELD *fields = mysql_fetch_fields(result);
-    
-    NSMutableArray *arrayOfDictionaries = [NSMutableArray array];
-    
-    MYSQL_ROW row = nil;
-    while ((row = mysql_fetch_row(result))) {
-        NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
-        NSInteger countOfFields = mysql_num_fields(result);
-        for (CFIndex i=0; i<countOfFields; ++i) {
-            NSString *key = [NSString stringWithUTF8String:fields[i].name];
-            id value = [OHMySQLSerialization objectFromCString:row[i]
-                                                         field:&fields[i]
-                                                      encoding:self.storeCoordinator.encoding];
-            jsonDict[key] = value;
+        MYSQL_RES *result = mysql_use_result(mysql);
+        if (!result) {
+            if (mysql_field_count(mysql) == 0) {
+                OHLog(@"%@ rows affected\n", self.affectedRows);
+            } else {
+                OHLogWarn(@"Could not retrieve a result set\n");
+            }
+            
+            return nil;
         }
         
-        [arrayOfDictionaries addObject:jsonDict];
+        MYSQL_FIELD *fields = mysql_fetch_fields(result);
+        
+        NSMutableArray *arrayOfDictionaries = [NSMutableArray array];
+        
+        MYSQL_ROW row = nil;
+        while ((row = mysql_fetch_row(result))) {
+            NSMutableDictionary *jsonDict = [NSMutableDictionary dictionary];
+            NSInteger countOfFields = mysql_num_fields(result);
+            for (CFIndex i=0; i<countOfFields; ++i) {
+                NSString *key = [NSString stringWithUTF8String:fields[i].name];
+                id value = [OHMySQLSerialization objectFromCString:row[i]
+                                                             field:&fields[i]
+                                                          encoding:self.storeCoordinator.encoding];
+                jsonDict[key] = value;
+            }
+            
+            [arrayOfDictionaries addObject:jsonDict];
+        }
+        
+        mysql_free_result(result);
+        
+        return arrayOfDictionaries;
     }
-    
-    mysql_free_result(result);
-    
-    return arrayOfDictionaries;
 }
 
 @end

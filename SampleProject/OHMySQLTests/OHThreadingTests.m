@@ -167,12 +167,4 @@ static NSInteger const kIterations = 1000;
         waitExpectactions();
     }
 }
-
-- (void)DISABLED_test08CountAfterBigInsert {
-    // when
-    NSNumber *countOfObjects = [self countOfObjects];
-    // then
-    XCTAssert(countOfObjects.integerValue >= 2*kIterations);
-}
-
 @end

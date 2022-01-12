@@ -26,13 +26,15 @@ NS_SWIFT_NAME(MySQLStore)
 /// An object of this class contains details about a store MySQL.  
 @interface OHMySQLStore : NSObject
 
-- (nonnull instancetype)initWithMySQL:(nonnull void *const)mysql NS_REFINED_FOR_SWIFT;
+- (nonnull instancetype)initWithMySQL:(void *_Nonnull const)mysql NS_REFINED_FOR_SWIFT;
+
+@property (nonatomic, nullable, readonly) void *mysql NS_REFINED_FOR_SWIFT;
 
 /// Returns a string that represents the MySQL server version; for example, "5.7.14".
-@property (nonatomic, copy, readonly, nonnull) NSString *serverInfo;
+@property (nonatomic, copy, readonly, nullable) NSString *serverInfo;
 
 /// Returns a string describing the type of connection in use, including the server host name.
-@property (nonatomic, copy, readonly, nonnull) NSString *hostInfo;
+@property (nonatomic, copy, readonly, nullable) NSString *hostInfo;
 
 /// An unsigned integer representing the protocol version used by the current connection.
 @property (nonatomic, assign, readonly) NSUInteger protocolInfo;

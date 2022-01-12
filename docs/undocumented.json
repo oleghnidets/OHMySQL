@@ -71,6 +71,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/ognidets/Desktop/OHMySQL/OHMySQL/Sources/Models/OHMySQLStore.h",
+      "line": 31,
+      "symbol": "OHMySQLStore.mysql",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.property",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/ognidets/Desktop/OHMySQL/OHMySQL/Sources/OHMySQLMappingProtocol.h",
       "line": 26,
       "symbol": "OHMySQLMappingProtocol",

@@ -34,7 +34,7 @@ NS_SWIFT_NAME(MySQLQueryContext)
  @param parentQueryContext The parent of the context.
  @return Initialized context with set parent context.
  */
-- (nonnull instancetype)initWithParentQueryContext:(nullable OHMySQLQueryContext *)parentQueryContext NS_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithParentQueryContext:(nullable OHMySQLQueryContext *)parentQueryContext;
 
 /// The parent of the context.
 @property (strong, nullable) OHMySQLQueryContext *parentQueryContext;
