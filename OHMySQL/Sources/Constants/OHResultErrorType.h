@@ -25,7 +25,7 @@
 /**
  *  Client error codes and messages.
  */
-typedef NS_OPTIONS(NSUInteger, OHResultErrorType) {
+typedef NS_ENUM(NSUInteger, OHResultErrorType) {
     /**
      *  Success.
      */
