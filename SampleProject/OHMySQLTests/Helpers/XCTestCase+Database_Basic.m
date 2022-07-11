@@ -49,12 +49,18 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 + (void)configureDatabase {
-    OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:@"root"
-                                                     password:@"root"
-                                                   serverName:@"localhost"
-                                                       dbName:kDatabaseName
-                                                         port:3306
-                                                       socket:@"/Applications/MAMP/tmp/mysql/mysql.sock"];
+    NSString *username = [NSProcessInfo processInfo].environment[@"USER_NAME"];
+    NSString *password = [NSProcessInfo processInfo].environment[@"USER_PASSWORD"];
+    NSString *serverName = [NSProcessInfo processInfo].environment[@"DB_HOST"];
+    NSString *port = [NSProcessInfo processInfo].environment[@"DB_PORT"];
+    NSString *socket = [NSProcessInfo processInfo].environment[@"DB_SOCKET"];
+    
+    OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:username
+                                                                   password:password
+                                                                 serverName:serverName
+                                                                     dbName:kDatabaseName
+                                                                       port:(NSUInteger)[port integerValue]
+                                                                     socket:socket];
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithConfiguration:user];
     [coordinator connect];
     
@@ -72,9 +78,9 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     NSString *formattedQuery = [query stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     // Table name must be the 3rd word
     NSString *tableName = [formattedQuery componentsSeparatedByString:@" "][2];
-
+    
     // given
-	[self dropTableNamed:tableName];
+    [self dropTableNamed:tableName];
     
     // when
     OHMySQLQueryRequest *queryRequest = [[OHMySQLQueryRequest alloc] initWithQuery:query];
@@ -87,11 +93,11 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 - (void)dropTableNamed:(NSString *)tableName {
-	NSString *dropQueryString = [NSString stringWithFormat:@"DROP TABLE %@", tableName];
-	OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:dropQueryString];
+    NSString *dropQueryString = [NSString stringWithFormat:@"DROP TABLE %@", tableName];
+    OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:dropQueryString];
     
     NSError *error;
-	[self.mainQueryContext executeQueryRequest:dropQueryRequest error:&error];
+    [self.mainQueryContext executeQueryRequest:dropQueryRequest error:&error];
 }
 
 - (void)createEmptyTable {

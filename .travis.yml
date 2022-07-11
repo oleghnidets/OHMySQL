@@ -1,0 +1,15 @@
+language: swift
+osx_image: xcode13.4
+services:
+    - mysql
+
+branches:
+  only:
+    - develop
+    - master
+
+before_install: 
+    - sudo mysql --version
+
+script:
+    - echo "Test"
