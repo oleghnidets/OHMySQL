@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2015-Present Oleg Hnidets
+// Copyright (c) 2022-Present Oleg Hnidets
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,27 +20,34 @@
 // SOFTWARE.
 //
 
-@import Foundation;
+import Foundation
 
-NS_SWIFT_NAME(MySQLMappingProtocol)
-@protocol OHMySQLMappingProtocol <NSObject>
+class TaskItem: NSObject {
+    @objc var decimalValue: NSNumber?
+    @objc var name: NSString?
+    @objc var status: NSNumber?
+    @objc var taskData: NSData?
+    @objc var taskDescription: NSString?
+    @objc var taskId: NSNumber?
+}
 
-/// Dictionary that represents class' properties with table' column names.
-- (nonnull NSDictionary *)mappingDictionary;
-
-/// Table where current entity can be found.
-- (nonnull NSString *)mySQLTable;
-
-/// Returns name of primary property (row).
-- (nonnull NSString *)primaryKey;
-
-@end
-
-#define mysql_key(name) NSStringFromSelector(@selector(name))
-
-NS_SWIFT_NAME(MappingProtocol)
-__attribute__ ((deprecated))
-/// Deprecated. Use `OHMySQLMappingProtocol` (Swift: `MySQLMappingProtocol`) instead.
-@protocol OHMappingProtocol <NSObject, OHMySQLMappingProtocol>
-
-@end
+extension TaskItem: MySQLMappingProtocol {
+    func mappingDictionary() -> [AnyHashable: Any] {
+        [
+            "taskId" : "id",
+            "name" : "name",
+            "taskDescription" : "description",
+            "status" : "status",
+            "taskData" : "data",
+            "decimalValue" : "preciseValue"
+        ]
+    }
+    
+    func mySQLTable() -> String {
+        "tasks"
+    }
+    
+    func primaryKey() -> String {
+        "taskId"
+    }
+}

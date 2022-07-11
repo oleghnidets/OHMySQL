@@ -47,7 +47,7 @@
 	self.serverTextField.text = coordinator.configuration.serverName ?: @"localhost";
 	self.databaseTextField.text = coordinator.configuration.dbName ?: @"ohmysql";
 	self.portTextField.text = [NSString stringWithFormat:@"%lu", coordinator.configuration.port != 0 ? coordinator.configuration.port : 3306];
-	self.socketTextField.text = coordinator.configuration.socket ?: @"/Applications/MAMP/tmp/mysql/mysql.sock";
+	self.socketTextField.text = coordinator.configuration.socket ?: @"/tmp/mysql.sock";
 }
 
 - (IBAction)submit {

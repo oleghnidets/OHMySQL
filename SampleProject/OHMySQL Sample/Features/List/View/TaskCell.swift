@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2015-Present Oleg Hnidets
+// Copyright (c) 2022-Present Oleg Hnidets
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,27 +20,21 @@
 // SOFTWARE.
 //
 
-@import Foundation;
+import UIKit
 
-NS_SWIFT_NAME(MySQLMappingProtocol)
-@protocol OHMySQLMappingProtocol <NSObject>
-
-/// Dictionary that represents class' properties with table' column names.
-- (nonnull NSDictionary *)mappingDictionary;
-
-/// Table where current entity can be found.
-- (nonnull NSString *)mySQLTable;
-
-/// Returns name of primary property (row).
-- (nonnull NSString *)primaryKey;
-
-@end
-
-#define mysql_key(name) NSStringFromSelector(@selector(name))
-
-NS_SWIFT_NAME(MappingProtocol)
-__attribute__ ((deprecated))
-/// Deprecated. Use `OHMySQLMappingProtocol` (Swift: `MySQLMappingProtocol`) instead.
-@protocol OHMappingProtocol <NSObject, OHMySQLMappingProtocol>
-
-@end
+final class TaskCell: UITableViewCell {
+    
+    @IBOutlet private(set) weak var label: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        label.text = nil
+    }
+}
