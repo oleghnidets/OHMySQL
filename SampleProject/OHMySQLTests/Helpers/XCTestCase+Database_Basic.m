@@ -49,6 +49,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 + (void)configureDatabase {
+    NSString *database = [NSProcessInfo processInfo].environment[@"DB_NAME"];
     NSString *username = [NSProcessInfo processInfo].environment[@"USER_NAME"];
     NSString *password = [NSProcessInfo processInfo].environment[@"USER_PASSWORD"];
     NSString *serverName = [NSProcessInfo processInfo].environment[@"DB_HOST"];
@@ -58,7 +59,7 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
     OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:username
                                                                    password:password
                                                                  serverName:serverName
-                                                                     dbName:kDatabaseName
+                                                                     dbName:database
                                                                        port:(NSUInteger)[port integerValue]
                                                                      socket:socket];
     OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithConfiguration:user];

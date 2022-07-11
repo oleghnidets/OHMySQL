@@ -1,0 +1,34 @@
+name: Okta OIDC iOS
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  UnitTests:
+    runs-on: macos-11
+    steps:
+    - uses: ankane/setup-mysql@v1
+      with:
+        mysql-version: 8.0
+        database: test
+    - run: mysql -e 'SELECT DATABASE()'
+    - run: mysql -e "SHOW VARIABLES LIKE 'socket'"
+    # - uses: actions/checkout@v2
+    # - name: Install deps
+    #   run: |
+    #     pod install --project-directory=SampleProject
+    # - name: Run tests 
+    #   run: |
+    #     xcodebuild -workspace SampleProject/OHMySQL.xcworkspace -scheme "OHMySQLTests" -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test \
+    #     USER_NAME=root \
+    #     USER_PASSWORD='' \
+    #     DB_HOST=localhost \
+    #     DB_PORT=3306 \
+    #     DB_SOCKET=/tmp/mysql.sock 
+  PackageValidation:
+    runs-on: macos-11
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cocoapods
+      run: pod lib lint

@@ -35,10 +35,25 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7CCC61C81B7B38BA003A468F"
+            BuildableName = "OHMySQL.app"
+            BlueprintName = "OHMySQL"
+            ReferencedContainer = "container:OHMySQL.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "USER_NAME"
             value = "$(USER_NAME)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "DB_NAME"
+            value = "$(DB_NAME)"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
@@ -69,6 +84,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7CCC61C81B7B38BA003A468F"
+            BuildableName = "OHMySQL.app"
+            BlueprintName = "OHMySQL"
+            ReferencedContainer = "container:OHMySQL.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
