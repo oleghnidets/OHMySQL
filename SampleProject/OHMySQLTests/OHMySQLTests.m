@@ -101,13 +101,6 @@
     XCTAssert(numberOfRows != -1);
 }
 
-- (void)testCountRecords {
-    // when
-    NSNumber *countOfObjects = [self countOfObjects];
-    // then
-    XCTAssertNotEqualObjects(countOfObjects, @0);
-}
-
 - (void)testUpdateAllWithCondition {
     // given
     [self testInsertNewRow];
@@ -133,6 +126,9 @@
     // then
     XCTAssert(success);
     AssertIfError();
+    
+    // then
+    XCTAssertNotEqualObjects([self countOfObjects], @0);
 }
 
 - (void)testRefresh {

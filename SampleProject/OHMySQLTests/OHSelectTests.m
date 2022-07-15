@@ -29,16 +29,11 @@
 
 @implementation OHSelectTests
 
-- (void)setUp {
-	[super setUp];
-	[OHSelectTests configureDatabase];
++ (void)setUp {
+    [super setUp];
+    [OHSelectTests configureDatabase];
     
-    [self createTable];
-}
-
-- (void)tearDown {
-	[self.storeCoordinator disconnect];
-	[super tearDown];
+    [[OHSelectTests new] createTable];
 }
 
 #pragma mark - Testing
