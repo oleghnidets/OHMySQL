@@ -19,12 +19,12 @@ jobs:
     - name: Run tests 
       run: |
         xcodebuild -workspace SampleProject/OHMySQL.xcworkspace -scheme "OHMySQLTests" -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test \
-        USER_NAME=root \
-        DB_NAME=tests
+        USER_NAME='root' \
         USER_PASSWORD='' \
-        DB_HOST=localhost \
-        DB_PORT=3306 \
-        DB_SOCKET=/tmp/mysql.sock
+        DB_NAME='tests' \
+        DB_HOST='localhost' \
+        DB_PORT='3306' \
+        DB_SOCKET='/tmp/mysql.sock'
   # PackageValidation:
   #   runs-on: macos-11
   #   steps:
