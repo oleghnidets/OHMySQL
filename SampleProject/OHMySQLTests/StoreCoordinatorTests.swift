@@ -45,14 +45,12 @@ final class StoreCoordinatorTests: XCTestCase {
         XCTAssertEqual(mainQueryContext.storeCoordinator.protocol, .default)
     }
     
-    func testEncodingChange() {
+    func testEncodingChangeAndDisconnection() {
         // when
         mainQueryContext.storeCoordinator.encoding = .ASCII
         // then
         XCTAssertEqual(mainQueryContext.storeCoordinator.encoding, .ASCII)
-    }
-    
-    func testDisconnect() {
+        
         // when
         mainQueryContext.storeCoordinator.disconnect()
         // then
