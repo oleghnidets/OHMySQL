@@ -70,7 +70,6 @@ final class ObjectTests: XCTestCase {
     }
      
     func testAffectedObjects() throws {
-        XCTAssertEqual(mainQueryContext.affectedRows(), 0)
         // given
         try testInsertObject()
         let person = try! fetchFirstPerson()

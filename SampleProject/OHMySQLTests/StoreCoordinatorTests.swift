@@ -33,19 +33,14 @@ final class StoreCoordinatorTests: XCTestCase {
     }
     
     func testConnection() {
-        // then
-        XCTAssertEqual(mainQueryContext.storeCoordinator.pingMySQL(), .none)
-        XCTAssertTrue(mainQueryContext.storeCoordinator.isConnected)
-    }
-    
-    func testConfiguration() {
         XCTAssertNotNil(mainQueryContext.storeCoordinator.configuration)
         XCTAssertNotNil(mainQueryContext.storeCoordinator.store)
         XCTAssertEqual(mainQueryContext.storeCoordinator.encoding, .UTF8)
         XCTAssertEqual(mainQueryContext.storeCoordinator.protocol, .default)
-    }
-    
-    func testEncodingChangeAndDisconnection() {
+        
+        XCTAssertEqual(mainQueryContext.storeCoordinator.pingMySQL(), .none)
+        XCTAssertTrue(mainQueryContext.storeCoordinator.isConnected)
+        
         // when
         mainQueryContext.storeCoordinator.encoding = .ASCII
         // then
