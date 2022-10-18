@@ -30,6 +30,8 @@ final class ObjectTests: XCTestCase {
         
         configureDatabase()
         Self().createEmptyTable()
+        
+        MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
     }
     
     override func tearDown() {

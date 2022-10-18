@@ -31,6 +31,8 @@ final class SelectTests: XCTestCase {
         
         configureDatabase()
         SelectTests().createTable()
+        
+        MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
     }
     
     func testSelectAll() throws {

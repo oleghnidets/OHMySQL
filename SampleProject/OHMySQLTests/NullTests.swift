@@ -36,6 +36,8 @@ final class NullTests: XCTestCase {
         NullTests().createTable(withQuery: """
                     CREATE TABLE TestNull (`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `surname` VARCHAR(1) NOT NULL DEFAULT '', `name` VARCHAR(255) NULL, `age` INT NULL, `data` BLOB(20) NULL);
                     """)
+        
+        MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
     }
     
     override func setUp() {
