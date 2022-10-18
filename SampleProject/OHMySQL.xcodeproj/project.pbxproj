@@ -42,7 +42,7 @@
 		9271549A28BBBD13005CFBD4 /* QueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271549928BBBD13005CFBD4 /* QueryTests.swift */; };
 		9271549C28BBCFB6005CFBD4 /* StoreCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271549B28BBCFB6005CFBD4 /* StoreCoordinatorTests.swift */; };
 		928F049F28FF265000C34568 /* ObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F049E28FF265000C34568 /* ObjectTests.swift */; };
-		928F04A128FF2D6200C34568 /* ThreadingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F04A028FF2D6200C34568 /* ThreadingTests.swift */; };
+		928F04A328FF32C000C34568 /* TestPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F04A228FF32C000C34568 /* TestPerson.swift */; };
 		BDE0004A460CBFFF79965A51 /* Pods_OHMySQLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACD05A4C84651C48D01CC55 /* Pods_OHMySQLTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,7 +118,7 @@
 		928073FC275AC13C00087127 /* libssl-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libssl-arm64.a"; path = "../../../Downloads/OpenSSL-1.1.1g.Xcode12b4-darwin-macOS_x86_64_arm64/libssl-arm64.a"; sourceTree = "<group>"; };
 		928073FD275AC13C00087127 /* libcrypto-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcrypto-arm64.a"; path = "../../../Downloads/OpenSSL-1.1.1g.Xcode12b4-darwin-macOS_x86_64_arm64/libcrypto-arm64.a"; sourceTree = "<group>"; };
 		928F049E28FF265000C34568 /* ObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTests.swift; sourceTree = "<group>"; };
-		928F04A028FF2D6200C34568 /* ThreadingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadingTests.swift; sourceTree = "<group>"; };
+		928F04A228FF32C000C34568 /* TestPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPerson.swift; sourceTree = "<group>"; };
 		B50F749FA4A71FFBC93220CD /* Pods-OHMySQL-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL-Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL-Sample/Pods-OHMySQL-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5C50888F91909881019145 /* Pods_OHMySQL_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQL_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F43FE8C9F9591D60294582 /* Pods-OHMySQL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.release.xcconfig"; sourceTree = "<group>"; };
@@ -204,6 +204,7 @@
 			children = (
 				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
 				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
+				928F04A228FF32C000C34568 /* TestPerson.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -267,7 +268,6 @@
 				9271549928BBBD13005CFBD4 /* QueryTests.swift */,
 				9271549B28BBCFB6005CFBD4 /* StoreCoordinatorTests.swift */,
 				928F049E28FF265000C34568 /* ObjectTests.swift */,
-				928F04A028FF2D6200C34568 /* ThreadingTests.swift */,
 				9271549228B7FEF3005CFBD4 /* OHMySQLTests-Bridging-Header.h */,
 			);
 			path = OHMySQLTests;
@@ -674,6 +674,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				928F04A328FF32C000C34568 /* TestPerson.swift in Sources */,
 				9271549828BBAC4F005CFBD4 /* SelectTests.swift in Sources */,
 				9271549A28BBBD13005CFBD4 /* QueryTests.swift in Sources */,
 				7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */,
@@ -683,7 +684,6 @@
 				9271549428B7FEF3005CFBD4 /* EscapeTests.swift in Sources */,
 				9271549628B7FF7B005CFBD4 /* NullTests.swift in Sources */,
 				928F049F28FF265000C34568 /* ObjectTests.swift in Sources */,
-				928F04A128FF2D6200C34568 /* ThreadingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
