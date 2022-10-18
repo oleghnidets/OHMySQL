@@ -49,12 +49,12 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 + (void)configureDatabase {
-    NSString *database = @"mysql"; // [NSProcessInfo processInfo].environment[@"DB_NAME"];
-    NSString *username = @"root"; // [NSProcessInfo processInfo].environment[@"USER_NAME"];
-    NSString *password = @"12345678"; // [NSProcessInfo processInfo].environment[@"USER_PASSWORD"];
-    NSString *serverName = @"localhost";  // [NSProcessInfo processInfo].environment[@"DB_HOST"];
-    NSString *port = @"3306"; // [NSProcessInfo processInfo].environment[@"DB_PORT"];
-    NSString *socket = @"/tmp/mysql.sock"; // [NSProcessInfo processInfo].environment[@"DB_SOCKET"];
+    NSString *database = [NSProcessInfo processInfo].environment[@"DB_NAME"]; // mysql
+    NSString *username = [NSProcessInfo processInfo].environment[@"USER_NAME"]; // root
+    NSString *password = [NSProcessInfo processInfo].environment[@"USER_PASSWORD"]; // 12345678
+    NSString *serverName = [NSProcessInfo processInfo].environment[@"DB_HOST"]; // localhost
+    NSString *port = [NSProcessInfo processInfo].environment[@"DB_PORT"]; // 3306
+    NSString *socket = [NSProcessInfo processInfo].environment[@"DB_SOCKET"]; // /tmp/mysql.sock
     
     OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:username
                                                                    password:password
