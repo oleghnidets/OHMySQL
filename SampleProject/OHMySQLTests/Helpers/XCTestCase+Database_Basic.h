@@ -43,6 +43,7 @@ extern NSString * const kCreateTestTableQuery;
 - (void)createTableWithQuery:(NSString *)query;
 - (void)createEmptyTable;
 - (void)dropTableNamed:(NSString *)tableName;
+- (void)clearTableNamed:(NSString *)tableName;
 
 - (NSNumber *)countOfObjects;
 

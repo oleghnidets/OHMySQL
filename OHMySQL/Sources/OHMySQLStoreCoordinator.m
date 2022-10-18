@@ -26,6 +26,7 @@
 #import "OHSSLConfig.h"
 #import "OHMySQLStore.h"
 #import "CharsetEncoding.h"
+#import "OHResultErrorType.h"
 
 @import MySQL;
 
@@ -168,7 +169,9 @@
 }
 
 - (BOOL)isConnected {
-    return (self.mysql != NULL) && ([self pingMySQL] == OHResultErrorTypeNone);
+    @synchronized (self) {
+        return (self.mysql != NULL) && ([self pingMySQL] == OHResultErrorTypeNone);
+    }
 }
 
 @end

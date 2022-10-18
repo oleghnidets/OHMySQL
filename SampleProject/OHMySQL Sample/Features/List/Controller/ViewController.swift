@@ -21,11 +21,12 @@
 //
 
 import UIKit
+import OHMySQL
 
 final class PersistentCoordinator {
     static let coordinator: MySQLStoreCoordinator = {
         let configuration = MySQLConfiguration(user: "root",
-                                               password: "root",
+                                               password: "12345678",
                                                serverName: "localhost",
                                                dbName: "ohmysql",
                                                port: 3306,

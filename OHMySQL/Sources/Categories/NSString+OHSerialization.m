@@ -28,15 +28,19 @@
 + (id)serializeFromCString:(const char *)cString defaultValue:(const char *)defaultValue canBeNull:(BOOL)canBeNull encoding:(CharsetEncoding)encoding {
 	NSStringEncoding nsEncoding = NSStringEncodingFromCharsetEncoding(encoding);
 	
-    if (cString) {
+    NSNull *nullObject = [NSNull null];
+    
+    if (cString && canBeNull && [[[NSString alloc] initWithCString:cString encoding:nsEncoding] isEqualToString:[nullObject description]]) {
+        return [NSNull null];
+    } else if (cString) {
         return [[NSString alloc] initWithCString:cString encoding:nsEncoding];
     } else if (!cString && defaultValue) {
         return [[NSString alloc] initWithCString:defaultValue encoding:nsEncoding];
-    } else if (!cString && canBeNull == NO) {
+    } else if (!cString && !canBeNull) {
         return @"";
     }
     
-    return [NSNull null];
+    return nullObject;
 }
 
 @end

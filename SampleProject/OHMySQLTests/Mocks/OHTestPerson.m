@@ -36,7 +36,9 @@
     return @{ mysql_key(ID): @"id",
               mysql_key(name): @"name",
               mysql_key(surname): @"surname",
-              mysql_key(age): @"age" };
+              mysql_key(age): @"age",
+              mysql_key(data): @"data"
+    };
 }
 
 @end
@@ -46,8 +48,9 @@
 + (instancetype)mockObject {
     OHTestPerson *person = [OHTestPerson new];
     person.name    = @"Mock name";
-    person.surname = @"Mock surname";
+//    person.surname = @"Mock surname";
     person.age     = @22;
+    person.data    = [NSData new];
     return person;
 }
 

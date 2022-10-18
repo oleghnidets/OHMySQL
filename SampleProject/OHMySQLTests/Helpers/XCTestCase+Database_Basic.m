@@ -28,7 +28,7 @@ NSString *const kDropTableString = @"DROP TABLE `TestTable`";
 
 NSString * const kCreateTestTableQuery = @"CREATE TABLE `TestTable` ( `id` mediumint(8) unsigned NOT NULL auto_increment, `name` varchar(255) default NULL, `surname` varchar(255) default NULL, `age` mediumint default NULL, PRIMARY KEY (`id`) ) AUTO_INCREMENT=1; INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Bradley','Oneill',90),('Levi','Moses',25),('Orlando','Cummings',9),('Hasad','Maldonado',5),('Carlos','Lowery',57),('Axel','Doyle',74),('Hasad','Booth',60),('Hall','Walters',84),('Dustin','Velazquez',84),('Randall','Riggs',91); INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Harper','Knowles',67),('Jasper','Massey',95),('Hop','Casey',2),('Timon','Bright',25),('Lionel','Mcintyre',74),('Denton','Kennedy',35),('Ethan','Jarvis',43),('Hasad','Stevens',56),('Benedict','Dudley',29),('Shad','Pace',94); INSERT INTO `TestTable` (`name`,`surname`,`age`) VALUES ('Asher','Williamson',70),('Sylvester','Baldwin',37),('Lucas','Bush',62),('Nissim','Harvey',43),('Anthony','Adkins',4),('Norman','Snow',26),('Coby','Oneill',82);";
 
-static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` mediumint(8) unsigned NOT NULL auto_increment, `name` varchar(255) default NULL, `surname` varchar(255) default NULL, `age` mediumint default NULL, PRIMARY KEY (`id`) ) AUTO_INCREMENT=1; INSERT INTO `TestTable` (`name`,`surname`,`age`)";
+static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` mediumint(8) unsigned NOT NULL auto_increment, `name` varchar(255) default NULL, `surname` varchar(255) default NOT NULL, `age` mediumint default NULL, PRIMARY KEY (`id`) ) AUTO_INCREMENT=1; INSERT INTO `TestTable` (`name`,`surname`,`age`)";
 
 @implementation XCTestCase (Database_Basic)
 
@@ -49,12 +49,12 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 + (void)configureDatabase {
-    NSString *database = [NSProcessInfo processInfo].environment[@"DB_NAME"];
-    NSString *username = [NSProcessInfo processInfo].environment[@"USER_NAME"];
-    NSString *password = [NSProcessInfo processInfo].environment[@"USER_PASSWORD"];
-    NSString *serverName = [NSProcessInfo processInfo].environment[@"DB_HOST"];
-    NSString *port = [NSProcessInfo processInfo].environment[@"DB_PORT"];
-    NSString *socket = [NSProcessInfo processInfo].environment[@"DB_SOCKET"];
+    NSString *database = @"mysql"; // [NSProcessInfo processInfo].environment[@"DB_NAME"];
+    NSString *username = @"root"; // [NSProcessInfo processInfo].environment[@"USER_NAME"];
+    NSString *password = @"12345678"; // [NSProcessInfo processInfo].environment[@"USER_PASSWORD"];
+    NSString *serverName = @"localhost";  // [NSProcessInfo processInfo].environment[@"DB_HOST"];
+    NSString *port = @"3306"; // [NSProcessInfo processInfo].environment[@"DB_PORT"];
+    NSString *socket = @"/tmp/mysql.sock"; // [NSProcessInfo processInfo].environment[@"DB_SOCKET"];
     
     OHMySQLConfiguration *user = [[OHMySQLConfiguration alloc] initWithUser:username
                                                                    password:password
@@ -102,7 +102,15 @@ static NSString *const kEmptyTableString = @"CREATE TABLE `TestTable` ( `id` med
 }
 
 - (void)createEmptyTable {
-    [self createTableWithQuery:kEmptyTableString];
+    [self createTableWithQuery:@"CREATE TABLE TestTable (`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `surname` VARCHAR(1) NOT NULL DEFAULT '', `name` VARCHAR(255) NULL, `age` INT NULL, `data` BLOB(20) NULL);"];
+}
+
+- (void)clearTableNamed:(NSString *)tableName {
+    NSString *deleteQueryString = [NSString stringWithFormat:@"DELETE FROM %@", tableName];
+    OHMySQLQueryRequest *dropQueryRequest =[[OHMySQLQueryRequest alloc] initWithQuery:deleteQueryString];
+    
+    NSError *error;
+    [self.mainQueryContext executeQueryRequest:dropQueryRequest error:&error];
 }
 
 - (NSNumber *)countOfObjects {

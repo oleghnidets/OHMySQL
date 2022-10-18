@@ -33,13 +33,15 @@
     NSString *conditionString = [NSString stringWithFormat:@"id=%@", [self.mainQueryContext lastInsertID]];
     OHMySQLQueryRequest *firstRequest = [OHMySQLQueryRequestFactory SELECTFirst:tableName
                                                                       condition:conditionString];
-    
-    NSDictionary *response = [self.mainQueryContext executeQueryRequestAndFetchResult:firstRequest error:nil].firstObject;
+    NSError *error;
+    NSDictionary *response = [self.mainQueryContext executeQueryRequestAndFetchResult:firstRequest error:&error].firstObject;
     
     OHTestPerson *person = [OHTestPerson new];
     person.ID = response[@"id"];
     person.name = response[@"name"];
+    person.surname = response[@"surname"];
     person.age = response[@"age"];
+    person.data = response[@"data"];
     
     return person;
 }

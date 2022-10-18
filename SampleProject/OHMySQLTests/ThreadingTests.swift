@@ -1,5 +1,5 @@
 //
-// Copyright (c) 2015-Present Oleg Hnidets
+// Copyright (c) 2022-Present Oleg Hnidets
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,20 +20,17 @@
 // SOFTWARE.
 //
 
-#import "OHMySQL.h"
+import Foundation
+import OHMySQL
+import XCTest
 
-@interface OHTestPerson : NSObject<OHMySQLMappingProtocol>
-
-@property (nonatomic, strong) NSNumber *ID;
-@property (nonatomic, strong) id name;
-@property (nonatomic, strong) id surname;
-@property (nonatomic, strong) id age;
-@property (nonatomic, strong) id data;
-
-@end
-
-@interface OHTestPerson (MockObject)
-
-+ (instancetype)mockObject;
-
-@end
+final class ThreadingTests: XCTestCase {
+    override class func setUp() {
+        super.setUp()
+        
+        configureDatabase()
+        Self().createEmptyTable()
+    }
+    
+    
+}
