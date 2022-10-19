@@ -17,7 +17,7 @@ jobs:
       run: |
         pod install --project-directory=SampleProject
     - name: Run tests 
-      run: xcodebuild -workspace SampleProject/OHMySQL.xcworkspace -scheme "OHMySQLTests" -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test \
+      run: xcodebuild -workspace SampleProject/OHMySQL.xcworkspace -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test \
         USER_NAME='root' \
         USER_PASSWORD='' \
         DB_NAME='tests' \
