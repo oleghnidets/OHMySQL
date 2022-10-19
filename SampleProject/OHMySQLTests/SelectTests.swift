@@ -31,8 +31,6 @@ final class SelectTests: XCTestCase {
         
         configureDatabase()
         SelectTests().createTable()
-        
-        MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
     }
     
     func testSelectAll() throws {
@@ -50,7 +48,7 @@ final class SelectTests: XCTestCase {
         // given
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: "name='Dustin'")
         // when
-        let response = try XCTUnwrap( mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
+        let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
         
         XCTAssertNotNil(response.first)
@@ -61,7 +59,7 @@ final class SelectTests: XCTestCase {
         // given
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: nil, orderBy: ["id"], ascending: true)
         // when
-        let response = try XCTUnwrap( mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
+        let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
         XCTAssertNotNil(response.first)
         XCTAssertEqual(response.first?["id"] as? Int, 1)
@@ -75,7 +73,7 @@ final class SelectTests: XCTestCase {
         let condition = "id>=\(firstObjectIDLimit) AND id<=\(lastObjectIDLimit)"
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: condition, orderBy: ["id"], ascending: false)
         // when
-        let response = try XCTUnwrap( mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
+        let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
         XCTAssertEqual(response.first?["id"] as? Int, lastObjectIDLimit)
         XCTAssertEqual(response.last?["id"] as? Int, firstObjectIDLimit)
