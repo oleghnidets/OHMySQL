@@ -31,7 +31,7 @@
     NSNull *nullObject = [NSNull null];
     
     if (cString && canBeNull && [[[NSString alloc] initWithCString:cString encoding:nsEncoding] isEqualToString:[nullObject description]]) {
-        return [NSNull null];
+        return nullObject;
     } else if (cString) {
         return [[NSString alloc] initWithCString:cString encoding:nsEncoding];
     } else if (!cString && defaultValue) {

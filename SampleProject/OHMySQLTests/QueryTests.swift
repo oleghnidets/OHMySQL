@@ -42,10 +42,11 @@ final class QueryTests: XCTestCase {
     }
     
     func testInsertNewRow() throws {
+        // given
         let insertSet = ["name": "Oleg", "surname": "Hnidets", "age": "23"] as [String : Any]
-        
+        // when
         let queryRequest = MySQLQueryRequestFactory.insert(kTableName, set: insertSet)
-        
+        // then
         XCTAssertNoThrow(try mainQueryContext.execute(queryRequest))
     }
     
@@ -95,6 +96,17 @@ final class QueryTests: XCTestCase {
         
         let numberOfRows = try XCTUnwrap(mainQueryContext.affectedRows() as? Int)
         XCTAssertEqual(numberOfRows, 1)
+    }
+    
+    func testInsertAndSelect() throws {
+        try testInsertNewRow()
+        
+        let queryRequest = MySQLQueryRequestFactory.selectFirst(kTableName, condition: nil)
+        let result = try mainQueryContext.executeQueryRequestAndFetchResult(queryRequest)
+        
+        XCTAssertTrue(result.isEmpty == false)
+        XCTAssertNotNil(result.first)
+        XCTAssertEqual(result.first?["name"] as? String, "Oleg")
     }
     
 }

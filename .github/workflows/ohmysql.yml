@@ -23,7 +23,7 @@ jobs:
         DB_NAME='tests' \
         DB_HOST='localhost' \
         DB_PORT='3306' \
-        DB_SOCKET='/tmp/mysql.sock'
+        DB_SOCKET='/tmp/mysql.sock' | xcpretty
   # PackageValidation:
   #   runs-on: macos-11
   #   steps:
