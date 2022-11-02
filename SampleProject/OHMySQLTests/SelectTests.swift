@@ -33,7 +33,7 @@ final class SelectTests: XCTestCase {
         SelectTests().createTable()
     }
     
-    func testSelectAll() throws {
+    func DISABLE_testSelectAll() throws {
         // given
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: nil)
         // when
@@ -44,7 +44,7 @@ final class SelectTests: XCTestCase {
         XCTAssertEqual(response.first?["id"] as? Int, 1)
     }
     
-    func testSelectAllWithCondition() throws {
+    func DISABLE_testSelectAllWithCondition() throws {
         // given
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: "name='Dustin'")
         // when
@@ -55,7 +55,7 @@ final class SelectTests: XCTestCase {
         XCTAssertEqual(response.count, 1)
     }
     
-    func testSelectAllWithOrderAsc() throws {
+    func DISABLE_testSelectAllWithOrderAsc() throws {
         // given
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: nil, orderBy: ["id"], ascending: true)
         // when
@@ -66,7 +66,7 @@ final class SelectTests: XCTestCase {
         XCTAssertEqual(response[1]["id"] as? Int, 2)
     }
     
-    func testSelectAllWithConditionAndOrderDesc() throws {
+    func DISABLE_testSelectAllWithConditionAndOrderDesc() throws {
         // given
         let firstObjectIDLimit = 3
         let lastObjectIDLimit  = 20
@@ -79,7 +79,7 @@ final class SelectTests: XCTestCase {
         XCTAssertEqual(response.last?["id"] as? Int, firstObjectIDLimit)
     }
     
-    func testSelectFirstWithConditionOrderedAsc() throws {
+    func DISABLE_testSelectFirstWithConditionOrderedAsc() throws {
         // given
         let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: "id>1", orderBy: ["name"], ascending: true)
         // when
