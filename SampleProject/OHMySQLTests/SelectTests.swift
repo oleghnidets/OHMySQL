@@ -30,12 +30,12 @@ final class SelectTests: XCTestCase {
         super.setUp()
         
         configureDatabase()
-        SelectTests().createTable()
+        try XCTAssertNoThrow(createTable(.defaultTestQuery))
     }
     
     func DISABLE_testSelectAll() throws {
         // given
-        let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: nil)
+        let queryRequest = MySQLQueryRequestFactory.select(DatabaseTable.defaultTestQuery.tableName, condition: nil)
         // when
         let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
@@ -46,7 +46,7 @@ final class SelectTests: XCTestCase {
     
     func DISABLE_testSelectAllWithCondition() throws {
         // given
-        let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: "name='Dustin'")
+        let queryRequest = MySQLQueryRequestFactory.select(DatabaseTable.defaultTestQuery.tableName, condition: "name='Dustin'")
         // when
         let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
@@ -57,7 +57,7 @@ final class SelectTests: XCTestCase {
     
     func DISABLE_testSelectAllWithOrderAsc() throws {
         // given
-        let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: nil, orderBy: ["id"], ascending: true)
+        let queryRequest = MySQLQueryRequestFactory.select(DatabaseTable.defaultTestQuery.tableName, condition: nil, orderBy: ["id"], ascending: true)
         // when
         let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
@@ -71,7 +71,7 @@ final class SelectTests: XCTestCase {
         let firstObjectIDLimit = 3
         let lastObjectIDLimit  = 20
         let condition = "id>=\(firstObjectIDLimit) AND id<=\(lastObjectIDLimit)"
-        let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: condition, orderBy: ["id"], ascending: false)
+        let queryRequest = MySQLQueryRequestFactory.select(DatabaseTable.defaultTestQuery.tableName, condition: condition, orderBy: ["id"], ascending: false)
         // when
         let response = try XCTUnwrap(mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then
@@ -81,7 +81,7 @@ final class SelectTests: XCTestCase {
     
     func DISABLE_testSelectFirstWithConditionOrderedAsc() throws {
         // given
-        let queryRequest = MySQLQueryRequestFactory.select(kTableName, condition: "id>1", orderBy: ["name"], ascending: true)
+        let queryRequest = MySQLQueryRequestFactory.select(DatabaseTable.defaultTestQuery.tableName, condition: "id>1", orderBy: ["name"], ascending: true)
         // when
         let response = try XCTUnwrap( mainQueryContext.executeQueryRequestAndFetchResult(queryRequest))
         // then

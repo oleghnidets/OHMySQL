@@ -30,6 +30,7 @@ final class StoreCoordinatorTests: XCTestCase {
         super.setUp()
         
         configureDatabase()
+        try? createTable(.defaultTestQuery)
     }
     
     func testConnection() {
@@ -38,7 +39,7 @@ final class StoreCoordinatorTests: XCTestCase {
         XCTAssertEqual(mainQueryContext.storeCoordinator.encoding, .UTF8)
         XCTAssertEqual(mainQueryContext.storeCoordinator.protocol, .default)
         
-        XCTAssertEqual(mainQueryContext.storeCoordinator.pingMySQL(), .none)
+        XCTAssertTrue(mainQueryContext.storeCoordinator.reconnect())
         XCTAssertTrue(mainQueryContext.storeCoordinator.isConnected)
         
         // when

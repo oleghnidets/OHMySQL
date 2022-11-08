@@ -30,7 +30,7 @@ final class QueryTests: XCTestCase {
         super.setUp()
         
         configureDatabase()
-        QueryTests().createTable()
+        try XCTAssertNoThrow(createTable(.defaultTestQuery))
         
         MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
     }
@@ -38,14 +38,14 @@ final class QueryTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        clearTableNamed(kTableName)
+        try XCTAssertNoThrow(Self.clearTable(.defaultTestQuery)) 
     }
     
     func testInsertNewRow() throws {
         // given
         let insertSet = ["name": "Oleg", "surname": "Hnidets", "age": "23"] as [String : Any]
         // when
-        let queryRequest = MySQLQueryRequestFactory.insert(kTableName, set: insertSet)
+        let queryRequest = MySQLQueryRequestFactory.insert(DatabaseTable.defaultTestQuery.tableName, set: insertSet)
         // then
         XCTAssertNoThrow(try mainQueryContext.execute(queryRequest))
     }
@@ -55,7 +55,7 @@ final class QueryTests: XCTestCase {
         
         let updateSet = ["name": "Oleg", "surname": "Hnidets", "age": "23"]
         
-        let queryRequest = MySQLQueryRequestFactory.update(kTableName, set: updateSet, condition: nil)
+        let queryRequest = MySQLQueryRequestFactory.update(DatabaseTable.defaultTestQuery.tableName, set: updateSet, condition: nil)
         
         XCTAssertNoThrow(try mainQueryContext.execute(queryRequest))
     }
@@ -63,7 +63,7 @@ final class QueryTests: XCTestCase {
     func testUpdateAllWithCondition() throws {
         try testInsertNewRow()
         
-        let queryRequest = MySQLQueryRequestFactory.update(kTableName, set: ["age": "25"], condition: "name='Oleg'")
+        let queryRequest = MySQLQueryRequestFactory.update(DatabaseTable.defaultTestQuery.tableName, set: ["age": "25"], condition: "name='Oleg'")
         
         XCTAssertNoThrow(try mainQueryContext.execute(queryRequest))
     }
@@ -71,7 +71,7 @@ final class QueryTests: XCTestCase {
     func testDeleAllWithCondition() throws {
         try testInsertNewRow()
         
-        let queryRequest = MySQLQueryRequestFactory.delete(kTableName, condition: "name='Oleg'")
+        let queryRequest = MySQLQueryRequestFactory.delete(DatabaseTable.defaultTestQuery.tableName, condition: "name='Oleg'")
         
         XCTAssertNoThrow(try mainQueryContext.execute(queryRequest))
     }
@@ -79,7 +79,7 @@ final class QueryTests: XCTestCase {
     func testDeleteAll() throws {
         try testInsertNewRow()
         
-        let queryRequest = MySQLQueryRequestFactory.delete(kTableName, condition: nil)
+        let queryRequest = MySQLQueryRequestFactory.delete(DatabaseTable.defaultTestQuery.tableName, condition: nil)
         
         XCTAssertNoThrow(try mainQueryContext.execute(queryRequest))
     }
@@ -101,7 +101,7 @@ final class QueryTests: XCTestCase {
     func testInsertAndSelect() throws {
         try testInsertNewRow()
         
-        let queryRequest = MySQLQueryRequestFactory.selectFirst(kTableName, condition: nil)
+        let queryRequest = MySQLQueryRequestFactory.selectFirst(DatabaseTable.defaultTestQuery.tableName, condition: nil)
         let result = try mainQueryContext.executeQueryRequestAndFetchResult(queryRequest)
         
         XCTAssertTrue(result.isEmpty == false)

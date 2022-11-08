@@ -29,7 +29,7 @@ final class ObjectTests: XCTestCase {
         super.setUp()
         
         configureDatabase()
-        Self().createEmptyTable()
+        try XCTAssertNoThrow(createTable(.objectTableQuery))
         
         MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
     }
@@ -37,19 +37,19 @@ final class ObjectTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         
-        clearTableNamed(kTableName)
+        try XCTAssertNoThrow(Self.clearTable(.objectTableQuery))
     }
     
     func testInsertObject() throws {
         // given
-        let person = OHTestPerson.mockObject()
+        let person = TestPerson.mockObject()
         // when
         mainQueryContext.insertObject(person)
         
         // then
         XCTAssertNoThrow(try mainQueryContext.save())
         
-        let firstPerson = try! fetchFirstPerson()
+        let firstPerson = try XCTUnwrap(fetchFirstPerson())
         
         XCTAssertEqual(countOfObjects(), 1)
         XCTAssertNotNil(firstPerson.id)
@@ -58,12 +58,12 @@ final class ObjectTests: XCTestCase {
         XCTAssertNotNil(firstPerson.age)
     }
     
-    func fetchFirstPerson() throws -> OHTestPerson {
-        let queryRequest = MySQLQueryRequestFactory.selectFirst(kTableName, condition: nil)
+    func fetchFirstPerson() throws -> TestPerson {
+        let queryRequest = MySQLQueryRequestFactory.selectFirst(DatabaseTable.objectTableQuery.tableName, condition: nil)
         
         let dictionary = try mainQueryContext.executeQueryRequestAndFetchResult(queryRequest).first
         
-        let person = OHTestPerson()
+        let person = TestPerson()
         person.map(fromResponse: dictionary ?? [:])
         
         return person
@@ -101,7 +101,7 @@ final class ObjectTests: XCTestCase {
     }
     
     func testInsertObjectWithChildContext() {
-        let person = OHTestPerson.mockObject()
+        let person = TestPerson.mockObject()
         let persistantStoreExpectation = expectation(description: "Saved successfully")
         
         let childContext = MySQLQueryContext(parentQueryContext: mainQueryContext)
@@ -118,9 +118,9 @@ final class ObjectTests: XCTestCase {
     func testUpdateObjectWithChildContext() throws {
         try testInsertObject()
         
-        let person = OHTestPerson.mockObject()
-        person?.id = mainQueryContext.lastInsertID()
-        person?.name = person?.id.stringValue
+        let person = TestPerson.mockObject()
+        person.id = mainQueryContext.lastInsertID()
+        person.name = person.id?.stringValue
         
         let persistantStoreExpectation = expectation(description: "Saved successfully")
         let childContext = MySQLQueryContext(parentQueryContext: mainQueryContext)
@@ -142,7 +142,7 @@ final class ObjectTests: XCTestCase {
         
         childContext.perform {
             DispatchQueue.concurrentPerform(iterations: 1000) { _ in
-                let person = OHTestPerson.mockObject()
+                let person = TestPerson.mockObject() as MySQLMappingProtocol
                 childContext.insertObject(person)
             }
             
@@ -155,5 +155,12 @@ final class ObjectTests: XCTestCase {
         }
         
         wait(for: [threadingExpectation], timeout: 10)
+    }
+    
+    private func countOfObjects() -> Int {
+        let queryRequest = MySQLQueryRequestFactory.countAll(DatabaseTable.objectTableQuery.tableName)
+        let result = try? mainQueryContext.executeQueryRequestAndFetchResult(queryRequest).first ?? [:]
+        
+        return result?.values.first as? Int ?? -1
     }
 }

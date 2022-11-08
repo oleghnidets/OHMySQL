@@ -25,76 +25,61 @@ import OHMySQL
 import XCTest
 
 final class NullTests: XCTestCase {
-    
-    static let tableName = "TestNull"
-    
     override class func setUp() {
         super.setUp()
         
-        Self.configureDatabase()
-        
-        NullTests().createTable(withQuery: """
-                    CREATE TABLE TestNull (`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY, `surname` VARCHAR(1) NOT NULL DEFAULT '', `name` VARCHAR(255) NULL, `age` INT NULL, `data` BLOB(20) NULL);
-                    """)
-        
-        MySQLContainer.shared.mainQueryContext?.storeCoordinator.reconnect()
+        configureDatabase()
     }
     
     override func setUp() {
         super.setUp()
         
-        clearTableNamed(Self.tableName)
+        XCTAssertNoThrow(try Self.createTable(.nullTableQuery))
     }
     
-    func testCreateNullRecord() {
-        let insertSet: [AnyHashable: Any] = [:]
+    func testCreateNullRecord() throws {
+        // given
+        let insertSet: [String: Any] = [:]
         // when
-        let response = createPerson(withSet: insertSet, in: Self.tableName)
+        let person = try insertPersonObject(insertSet, table: .nullTableQuery)
         // then
-        XCTAssertNotNil(response?.id)
-        XCTAssertEqual(response?.name as? NSNull, NSNull())
-        XCTAssertEqual(response?.surname as? String, "")
-        XCTAssertEqual(response?.age as? NSNull, NSNull())
-        XCTAssertEqual(response?.data as? NSNull, NSNull())
+        XCTAssertNotNil(person.id)
+        XCTAssertNil(person.name)
+        XCTAssertEqual(person.surname, "")
+        XCTAssertNil(person.age)
+        XCTAssertNil(person.data)
     }
     
-    func testCreateWithNullAndNotNullRecord() {
+    func testCreateWithNullAndNotNullRecord() throws {
+        // given
+        let insertSet = ["name": NSNull(), "age": 22] as [String: Any]
         // when
-        let insertSet = ["name": NSNull(), "age": 22] as [AnyHashable: Any]
+        let person = try insertPersonObject(insertSet, table: .nullTableQuery)
         // then
-        let response = createPerson(withSet: insertSet, in: Self.tableName)
-        
-        XCTAssertNotNil(response?.id)
-        XCTAssertEqual(response?.name as? NSNull, NSNull())
-        XCTAssertEqual(response?.surname as? String, "")
-        XCTAssertEqual(response?.age as? Int, 22)
-        XCTAssertEqual(response?.data as? NSNull, NSNull())
+        XCTAssertNotNil(person.id)
+        XCTAssertNil(person.name)
+        XCTAssertEqual(person.surname, "")
+        XCTAssertEqual(person.age, 22)
+        XCTAssertNil(person.data)
     }
-    
-    func testCreateRecord() {
+
+    func testCreateRecord() throws {
+        // given
+        let insertSet = ["name": "Oleg", "age": 23, "surname": "H", "data": "Data(123)"] as [String : Any]
         // when
-        let insertSet = ["name": "Oleg", "age": 23, "surname": "H", "data": "Data(123)"] as [AnyHashable : Any]
+        let person = try insertPersonObject(insertSet, table: .nullTableQuery)
         // then
-        let response = createPerson(withSet: insertSet, in: Self.tableName)
-        
-        XCTAssertNotNil(response?.id)
-        XCTAssertEqual(response?.name as? String, "Oleg")
-        XCTAssertEqual(response?.surname as? String, "H")
-        XCTAssertEqual(response?.age as? Int, 23)
-        XCTAssertEqual(response?.data as? Data, "Data(123)".data(using: .utf8))
+        XCTAssertNotNil(person.id)
+        XCTAssertEqual(person.name, "Oleg")
+        XCTAssertEqual(person.surname, "H")
+        XCTAssertEqual(person.age, 23)
+        XCTAssertEqual(person.data, "Data(123)".data(using: .utf8) as? NSData)
     }
-    
-    func testCreateIncorrectRecord() {
-        // when
-        let insertSet = ["name": 24, "age": "Oleg", "data": 245] as [AnyHashable : Any]
-        // then
-        let response = createPerson(withSet: insertSet, in: Self.tableName)
-        
-        XCTAssertNotNil(response)
-        XCTAssertNil(response?.id)
-        XCTAssertNil(response?.name)
-        XCTAssertNil(response?.surname)
-        XCTAssertNil(response?.age)
-        XCTAssertNil(response?.data)
+
+    func testCreateIncorrectRecord() throws {
+        // given
+        let insertSet = ["name": 24, "age": "Oleg", "data": 245] as [String : Any]
+        // when/then
+        try XCTAssertThrowsError(insertPersonObject(insertSet, table: .nullTableQuery))
     }
 }

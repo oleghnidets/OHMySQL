@@ -15,11 +15,8 @@
 		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
 		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
 		7C91ACBA2020FD8F00BED2AC /* OHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */; };
-		7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */; };
 		7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */; };
 		7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CC1D18249000B92CA9 /* OHTask.m */; };
-		7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */; };
-		7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */; };
 		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; };
 		7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHListViewController.m */; };
@@ -43,6 +40,7 @@
 		9271549C28BBCFB6005CFBD4 /* StoreCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271549B28BBCFB6005CFBD4 /* StoreCoordinatorTests.swift */; };
 		928F049F28FF265000C34568 /* ObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F049E28FF265000C34568 /* ObjectTests.swift */; };
 		928F04A328FF32C000C34568 /* TestPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928F04A228FF32C000C34568 /* TestPerson.swift */; };
+		92AE45FA2914346F007AA366 /* XCTestCase+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AE45F92914346F007AA366 /* XCTestCase+Utility.swift */; };
 		BDE0004A460CBFFF79965A51 /* Pods_OHMySQLTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EACD05A4C84651C48D01CC55 /* Pods_OHMySQLTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,16 +68,10 @@
 		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
 		7C91ACB82020FD8F00BED2AC /* OHSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHSettingsViewController.h; sourceTree = "<group>"; };
 		7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHSettingsViewController.m; sourceTree = "<group>"; };
-		7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+INSERT.h"; sourceTree = "<group>"; };
-		7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+INSERT.m"; sourceTree = "<group>"; };
 		7CBB08C91D18249000B92CA9 /* OHTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHTask+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHTask+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7CBB08CB1D18249000B92CA9 /* OHTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTask.h; sourceTree = "<group>"; };
 		7CBB08CC1D18249000B92CA9 /* OHTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTask.m; sourceTree = "<group>"; };
-		7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTestPerson.h; sourceTree = "<group>"; };
-		7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTestPerson.m; sourceTree = "<group>"; };
-		7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Database_Basic.h"; sourceTree = "<group>"; };
-		7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+Database_Basic.m"; sourceTree = "<group>"; };
 		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61F81B7B5661003A468F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -119,6 +111,7 @@
 		928073FD275AC13C00087127 /* libcrypto-arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcrypto-arm64.a"; path = "../../../Downloads/OpenSSL-1.1.1g.Xcode12b4-darwin-macOS_x86_64_arm64/libcrypto-arm64.a"; sourceTree = "<group>"; };
 		928F049E28FF265000C34568 /* ObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTests.swift; sourceTree = "<group>"; };
 		928F04A228FF32C000C34568 /* TestPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPerson.swift; sourceTree = "<group>"; };
+		92AE45F92914346F007AA366 /* XCTestCase+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Utility.swift"; sourceTree = "<group>"; };
 		B50F749FA4A71FFBC93220CD /* Pods-OHMySQL-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL-Sample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL-Sample/Pods-OHMySQL-Sample.debug.xcconfig"; sourceTree = "<group>"; };
 		BA5C50888F91909881019145 /* Pods_OHMySQL_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQL_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4F43FE8C9F9591D60294582 /* Pods-OHMySQL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL/Pods-OHMySQL.release.xcconfig"; sourceTree = "<group>"; };
@@ -191,10 +184,7 @@
 		7CBAB5C61E478F4900A978F0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7CBFDA301D61FDC600F4C828 /* XCTestCase+Database_Basic.h */,
-				7CBFDA311D61FDC600F4C828 /* XCTestCase+Database_Basic.m */,
-				7CBAB5CA1E47A18000A978F0 /* XCTestCase+INSERT.h */,
-				7CBAB5CB1E47A18000A978F0 /* XCTestCase+INSERT.m */,
+				92AE45F92914346F007AA366 /* XCTestCase+Utility.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -202,8 +192,6 @@
 		7CBAB5C71E478F5200A978F0 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				7CBFDA2A1D61FC0A00F4C828 /* OHTestPerson.h */,
-				7CBFDA2B1D61FC0A00F4C828 /* OHTestPerson.m */,
 				928F04A228FF32C000C34568 /* TestPerson.swift */,
 			);
 			path = Mocks;
@@ -677,12 +665,10 @@
 				928F04A328FF32C000C34568 /* TestPerson.swift in Sources */,
 				9271549828BBAC4F005CFBD4 /* SelectTests.swift in Sources */,
 				9271549A28BBBD13005CFBD4 /* QueryTests.swift in Sources */,
-				7CBAB5CC1E47A18000A978F0 /* XCTestCase+INSERT.m in Sources */,
-				7CBFDA321D61FDC600F4C828 /* XCTestCase+Database_Basic.m in Sources */,
-				7CBFDA2C1D61FC0A00F4C828 /* OHTestPerson.m in Sources */,
 				9271549C28BBCFB6005CFBD4 /* StoreCoordinatorTests.swift in Sources */,
 				9271549428B7FEF3005CFBD4 /* EscapeTests.swift in Sources */,
 				9271549628B7FF7B005CFBD4 /* NullTests.swift in Sources */,
+				92AE45FA2914346F007AA366 /* XCTestCase+Utility.swift in Sources */,
 				928F049F28FF265000C34568 /* ObjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
