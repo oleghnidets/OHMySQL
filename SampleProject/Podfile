@@ -5,14 +5,14 @@ def shared_pods
 	pod 'OHMySQL', :path => '../'
 end
 
-target 'OHMySQL-Sample' do
-   shared_pods
-end
-
 target 'OHMySQL' do
    shared_pods
 end
 
 target 'OHMySQLTests' do
+   shared_pods
+end
+
+target 'OHMySQLDemo' do
    shared_pods
 end
