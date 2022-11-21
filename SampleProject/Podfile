@@ -12,3 +12,7 @@ end
 target 'OHMySQLTests' do
    shared_pods
 end
+
+target 'OHMySQLDemo' do
+   shared_pods
+end
