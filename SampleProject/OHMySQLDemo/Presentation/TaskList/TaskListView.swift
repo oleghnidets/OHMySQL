@@ -33,25 +33,15 @@ struct TaskListView: View {
                     .progressViewStyle(.circular)
             case .fetched:
                 List {
-                    Section {
-                        ForEach(viewModel.tasks) { task in
-                            NavigationLink {
-                                TaskDetailsView()
-                            } label: {
-                                Text(task.name ?? "-")
-                            }
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    viewModel.delete()
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
+                    ForEach(viewModel.tasks) { task in
+                        VStack(alignment: .leading) {
+                            Text(task.name ?? "-").font(.headline)
+                            Text(task.taskDescription ?? "-").font(.subheadline)
                         }
                     }
                 }
             case .emptyList:
-                Text("List is empty")
+                Text("The list is empty")
             case .error(let message):
                 Text(message)
             case .fetching:
@@ -61,9 +51,11 @@ struct TaskListView: View {
             viewModel.configureData()
         }.toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
-                Button("+") {
+                Button(action: {
                     viewModel.addRandomTask()
-                }
+                }, label: {
+                    Label("", systemImage: "doc.badge.plus")
+                })
             }
         }
     }

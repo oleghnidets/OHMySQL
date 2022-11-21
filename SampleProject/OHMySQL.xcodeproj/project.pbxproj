@@ -48,12 +48,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7CE55E1D1BB95B77004A2FF9 /* PBXContainerItemProxy */ = {
+		927C68ED292C0B9E000CB655 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CCC61C11B7B38BA003A468F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7CCC61C81B7B38BA003A468F;
-			remoteInfo = OHMySQL;
+			remoteGlobalIDString = 924BF1B6292411B8009A9F69;
+			remoteInfo = OHMySQLDemo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -313,11 +313,11 @@
 		924BF1CE29243187009A9F69 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				924BF1D3292431CA009A9F69 /* Configuration */,
-				924BF1D2292431BA009A9F69 /* TaskDetails */,
 				924BF1D1292431B1009A9F69 /* Common */,
-				924BF1D02924319F009A9F69 /* TaskList */,
+				924BF1D3292431CA009A9F69 /* Configuration */,
 				92775C88291ADD630097B49C /* MainView.swift */,
+				924BF1D2292431BA009A9F69 /* TaskDetails */,
+				924BF1D02924319F009A9F69 /* TaskList */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -432,7 +432,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				7CE55E1E1BB95B77004A2FF9 /* PBXTargetDependency */,
+				927C68EE292C0B9E000CB655 /* PBXTargetDependency */,
 			);
 			name = OHMySQLTests;
 			productName = OHMySQLTests;
@@ -477,7 +477,7 @@
 					7CE55E171BB95B77004A2FF9 = {
 						CreatedOnToolsVersion = 7.0;
 						LastSwiftMigration = 1340;
-						TestTargetID = 7CCC61C81B7B38BA003A468F;
+						TestTargetID = 924BF1B6292411B8009A9F69;
 					};
 					924BF1B6292411B8009A9F69 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -709,10 +709,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7CE55E1E1BB95B77004A2FF9 /* PBXTargetDependency */ = {
+		927C68EE292C0B9E000CB655 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7CCC61C81B7B38BA003A468F /* OHMySQL */;
-			targetProxy = 7CE55E1D1BB95B77004A2FF9 /* PBXContainerItemProxy */;
+			target = 924BF1B6292411B8009A9F69 /* OHMySQLDemo */;
+			targetProxy = 927C68ED292C0B9E000CB655 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -935,7 +935,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "OHMySQLTests/OHMySQLTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OHMySQL.app/OHMySQL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OHMySQLDemo.app/OHMySQLDemo";
 			};
 			name = Debug;
 		};
@@ -951,7 +951,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OHMySQLTests/OHMySQLTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OHMySQL.app/OHMySQL";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OHMySQLDemo.app/OHMySQLDemo";
 			};
 			name = Release;
 		};

@@ -27,4 +27,5 @@ struct TaskPresentationItem: Identifiable {
     var name: String?
     var status: Int?
     var taskDescription: String?
+    var taskUUID: String?
 }

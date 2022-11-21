@@ -44,14 +44,12 @@ extension XCTestCase {
             return
         }
         
-        /*
-        let database = "mysql"
-        let username = "root"
-        let password = ""
-        let serverName = "localhost"
-        let port: UInt = 3306
-        let socket = "/tmp/mysql.sock"
-         */
+//        let database = "mysql"
+//        let username = "root"
+//        let password = ""
+//        let serverName = "localhost"
+//        let port: UInt = 3306
+//        let socket = "/tmp/mysql.sock"
         
         let configuration = MySQLConfiguration(user: username,
                                                password: password,

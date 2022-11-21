@@ -27,10 +27,13 @@ struct MainView: View {
         
         TabView {
             NavigationView {
-                TaskListView().tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("First")
-                }
+                TaskListView()
+            }.tabItem {
+                Label("Tasks", systemImage: "list.bullet")
+            }
+            
+            ConfigurationView().tabItem {
+                Label("Settings", systemImage: "gear")
             }
         }
     }

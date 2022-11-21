@@ -24,7 +24,6 @@ import Foundation
 import OHMySQL
 
 final class TaskListViewModel: ObservableObject {
-    
     enum State {
         case idle
         case fetching
