@@ -7,6 +7,7 @@ targets:
     platform: iOS
     deploymentTarget: "14.0"
     sources: [OHMySQL/Sources]
+    scheme: {}
     settings:
       configs:
         debug:
@@ -25,6 +26,7 @@ targets:
     platform: macOS
     deploymentTarget: "10.13"
     sources: [OHMySQL/Sources]
+    scheme: {}
     settings:
       configs:
         debug:
