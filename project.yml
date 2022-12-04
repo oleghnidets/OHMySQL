@@ -1,0 +1,39 @@
+name: OHMySQL
+options:
+  bundleIdPrefix: com.github.oleghnidets
+targets:
+  OHMySQL:
+    type: framework
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources: [OHMySQL/Sources]
+    scheme: {}
+    settings:
+      configs:
+        debug:
+          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+          GENERATE_INFOPLIST_FILE: YES
+        release:
+          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+          GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - framework: OHMySQL/lib/MySQL.xcframework
+      - sdk: Foundation.framework
+      - sdk: libc++.tbd
+
+  OHMySQL-macOS:
+    type: framework
+    platform: macOS
+    deploymentTarget: "10.13"
+    sources: [OHMySQL/Sources]
+    scheme: {}
+    settings:
+      configs:
+        debug:
+          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+        release:
+          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+    dependencies:
+      - framework: OHMySQL/lib/MySQL.xcframework
+      - sdk: Foundation.framework
+      - sdk: libc++.tbd

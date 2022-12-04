@@ -13,6 +13,8 @@ The library supports Objective-C and Swift, iOS and macOS. You can connect to yo
 - [Requirements](#requirements)
 - [How To Get Started](#how-to-get-started)
 - [Installation](#installation)
+    - [CocoaPods](#cocoapods)
+    - [Carthage](#carthage)
 - [Usage](#usage)
     - [Query Context](#query-context)
     - [Execute Query](#execute-query)
@@ -57,12 +59,28 @@ https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCAKYM4XCT2
 
 ## Installation
 
+### CocoaPods
+
 You can use CocoaPods. Add the following line to your Podfile:
 ```ruby
 pod 'OHMySQL' --repo-update
 ```
 
 If you are using Swift do not forget to add `use_frameworks!` at the top of Podfile. Add platform, example `platform :osx, '11.0'`.
+
+### Carthage
+
+You can also use Carthage. 
+
+Add the following to your Cartfile:
+
+```
+github "oleghnidets/OHMySQL"
+```
+
+Run your usual command for updating carthage dependencies, eg. `carthage update --use-xcframeworks OHMySQL`
+
+In addition to manually adding xcframework of OHMySQL from `Carthage/Build` folder you will need to manually add `MySQL.xcframework` as well. `MySQL.xcframework` is a part of this repo (`OHMySQL/lib/MySQL.xcframework`).
 
 ## Usage
 
