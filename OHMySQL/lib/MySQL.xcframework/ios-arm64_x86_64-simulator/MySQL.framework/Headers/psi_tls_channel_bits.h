@@ -1,4 +1,4 @@
-/* Copyright (c) 2020, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2020, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,11 +20,11 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENT_SERVICES_PSI_TLS_CHANNEL_BITS_H
-#define COMPONENT_SERVICES_PSI_TLS_CHANNEL_BITS_H
+#ifndef COMPONENT_SERVICES_BITS_PSI_TLS_CHANNEL_BITS_H
+#define COMPONENT_SERVICES_BITS_PSI_TLS_CHANNEL_BITS_H
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_tls_channel_bits.h
   Instrumentation helpers for TLS channels.
   This header file provides necessary declarations to instrument
   TLS context information.
@@ -133,4 +133,4 @@ typedef void (*unregister_tls_channel_v1_t)(
     TLS_channel_property_iterator *provider);
 
 /** @} (end of group psi_abi_tls_channel) */
-#endif  // !COMPONENT_SERVICES_PSI_TLS_CHANNEL_BITS_H
+#endif  // !COMPONENT_SERVICES_BITS_PSI_TLS_CHANNEL_BITS_H

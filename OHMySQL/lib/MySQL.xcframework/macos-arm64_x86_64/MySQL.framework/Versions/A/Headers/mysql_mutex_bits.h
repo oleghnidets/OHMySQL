@@ -1,4 +1,4 @@
-/* Copyright (c) 2008, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2008, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,15 +20,15 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_MYSQL_MUTEX_BITS_H
-#define COMPONENTS_SERVICES_MYSQL_MUTEX_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_MYSQL_MUTEX_BITS_H
+#define COMPONENTS_SERVICES_BITS_MYSQL_MUTEX_BITS_H
 
 /**
-  @file
+  @file mysql/components/services/bits/mysql_mutex_bits.h
   ABI for instrumented mutexes.
 */
 
-#include <mysql/components/services/thr_mutex_bits.h>
+#include <mysql/components/services/bits/thr_mutex_bits.h>
 
 /**
   @defgroup psi_api_mutex Mutex Instrumentation (API)
@@ -59,4 +59,4 @@ struct mysql_mutex_t {
 
 /** @} (end of group psi_api_mutex) */
 
-#endif /* COMPONENTS_SERVICES_MYSQL_MUTEX_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_MYSQL_MUTEX_BITS_H */

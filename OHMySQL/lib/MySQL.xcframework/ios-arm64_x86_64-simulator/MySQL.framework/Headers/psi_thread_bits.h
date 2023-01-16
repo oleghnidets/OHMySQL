@@ -1,4 +1,4 @@
-/* Copyright (c) 2008, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2008, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,19 +20,19 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_THREAD_BITS_H
-#define COMPONENTS_SERVICES_PSI_THREAD_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_THREAD_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_THREAD_BITS_H
 
 #ifndef MYSQL_ABI_CHECK
 #include <stddef.h> /* size_t */
 #endif
 
+#include <mysql/components/services/bits/my_io_bits.h> /* sockaddr_storage */
+#include <mysql/components/services/bits/my_thread_bits.h> /* my_thread_handle */
 #include <mysql/components/services/bits/psi_bits.h>
-#include <mysql/components/services/my_io_bits.h>     /* sockaddr_storage */
-#include <mysql/components/services/my_thread_bits.h> /* my_thread_handle */
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_thread_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_thread Thread Instrumentation (ABI)
@@ -355,6 +355,12 @@ typedef void (*set_thread_state_v1_t)(const char *state);
 typedef void (*set_thread_info_v1_t)(const char *info, unsigned int info_len);
 
 /**
+  Set a thread EXECUTION_ENGINE attribute.
+  @param secondary True for SECONDARY, false for PRIMARY.
+*/
+typedef void (*set_thread_secondary_engine_v6_t)(bool secondary);
+
+/**
   Assign a resource group name to the current thread.
 
   @param group_name resource group name string
@@ -590,4 +596,4 @@ typedef struct PSI_thread_info_v5 PSI_thread_info;
 
 /** @} (end of group psi_abi_thread) */
 
-#endif /* COMPONENTS_SERVICES_PSI_THREAD_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_THREAD_BITS_H */

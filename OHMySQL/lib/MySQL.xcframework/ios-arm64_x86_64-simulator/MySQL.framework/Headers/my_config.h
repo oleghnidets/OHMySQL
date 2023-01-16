@@ -1,4 +1,4 @@
-/* Copyright (c) 2009, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2009, 2022, Oracle and/or its affiliates.
  
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License, version 2.0,
@@ -162,11 +162,11 @@
 /* Code tests*/
 #define HAVE_CLOCK_GETTIME 1
 #define HAVE_CLOCK_REALTIME 1
-#define STACK_DIRECTION -1
+#define STACK_DIRECTION 1
 #define TIME_WITH_SYS_TIME 1
 /* #undef NO_FCNTL_NONBLOCK */
-#define HAVE_PAUSE_INSTRUCTION 1
-/* #undef HAVE_FAKE_PAUSE_INSTRUCTION */
+/* #undef HAVE_PAUSE_INSTRUCTION */
+#define HAVE_FAKE_PAUSE_INSTRUCTION 1
 /* #undef HAVE_HMT_PRIORITY_INSTRUCTION */
 #define HAVE_ABI_CXA_DEMANGLE 1
 #define HAVE_BUILTIN_UNREACHABLE 1
@@ -187,17 +187,21 @@
 /*
  * Platform specific CMake files
  */
-#define MACHINE_TYPE "x86_64"
+#define MACHINE_TYPE "arm64"
 /* #undef LINUX_ALPINE */
 /* #undef LINUX_SUSE */
+/* #undef LINUX_RHEL6 */
+/* #undef LINUX_RHEL7 */
+/* #undef LINUX_RHEL8 */
 /* #undef HAVE_LINUX_LARGE_PAGES */
 /* #undef HAVE_SOLARIS_LARGE_PAGES */
 /* #undef HAVE_SOLARIS_ATOMIC */
 /* #undef WITH_SYSTEMD_DEBUG */
-#define SYSTEM_TYPE "macos11.6"
+#define SYSTEM_TYPE "macos12.6"
 /* This should mean case insensitive file system */
 /* #undef FN_NO_CASE_SENSE */
-/* #undef APPLE_ARM */
+#define APPLE_ARM 1
+/* #undef HAVE_BUILD_ID_SUPPORT */
 
 /*
  * From main CMakeLists.txt
@@ -222,15 +226,17 @@
 /* #undef WITH_LOCK_ORDER */
 
 /* Character sets and collations */
-#define DEFAULT_MYSQL_HOME "/usr/local"
-#define SHAREDIR "/usr/local/share"
-#define DEFAULT_BASEDIR "/usr/local"
-#define MYSQL_DATADIR "/usr/local/data"
-#define MYSQL_KEYRINGDIR "/usr/local/keyring"
-#define DEFAULT_CHARSET_HOME "/usr/local"
-#define PLUGINDIR "/usr/local/lib/plugin"
-#define DEFAULT_SYSCONFDIR "/usr/local/etc"
+#define DEFAULT_MYSQL_HOME "/usr/local/mysql"
+#define SHAREDIR "/usr/local/mysql/share"
+#define DEFAULT_BASEDIR "/usr/local/mysql"
+#define MYSQL_DATADIR "/usr/local/mysql/data"
+#define MYSQL_KEYRINGDIR "/usr/local/mysql/keyring"
+#define DEFAULT_CHARSET_HOME "/usr/local/mysql"
+#define PLUGINDIR "/usr/local/mysql/lib/plugin"
+#define DEFAULT_SYSCONFDIR "/usr/local/mysql/etc"
 #define DEFAULT_TMPDIR P_tmpdir
+#define MYSQL_ICU_DATADIR "/usr/local/mysql/lib/private"
+#define ICUDT_DIR "icudt69l"
 /*
  * Readline
  */
@@ -240,7 +246,7 @@
 #define HAVE_WCHAR_T 1
 #define HAVE_WINT_T 1
 #define HAVE_CURSES_H 1
-/* #undef HAVE_NCURSES_H */
+#define HAVE_NCURSES_H 1
 #define USE_LIBEDIT_INTERFACE 1
 #define HAVE_HIST_ENTRY 1
 #define USE_NEW_EDITLINE_INTERFACE 1
@@ -292,11 +298,11 @@
  */
 #define MYSQL_VERSION_MAJOR 8
 #define MYSQL_VERSION_MINOR 0
-#define MYSQL_VERSION_PATCH 27
+#define MYSQL_VERSION_PATCH 31
 #define MYSQL_VERSION_EXTRA ""
 #define PACKAGE "mysql"
-#define PACKAGE_VERSION "8.0.27"
-#define VERSION "8.0.27"
+#define PACKAGE_VERSION "8.0.31"
+#define VERSION "8.0.31"
 #define PROTOCOL_VERSION 10
 
 /*
@@ -308,9 +314,9 @@
 /*
  * NDB
  */
-/* #undef HAVE_GETRLIMIT */
-/* #undef WITH_NDBCLUSTER_STORAGE_ENGINE */
-/* #undef HAVE_PTHREAD_SETSCHEDPARAM */
+#define HAVE_GETRLIMIT 1
+#define WITH_NDBCLUSTER_STORAGE_ENGINE 1
+#define HAVE_PTHREAD_SETSCHEDPARAM 1
 
 /*
  * Other
@@ -324,10 +330,6 @@
 #define HAVE_FCNTL_H 1
 #define HAVE_GETADDRINFO 1
 #define HAVE_INTTYPES_H 1
-/* libevent's select.c is not Windows compatible */
-#ifndef _WIN32
-#define HAVE_SELECT 1
-#endif
 #define HAVE_SIGNAL_H 1
 #define HAVE_STDARG_H 1
 #define HAVE_STDINT_H 1

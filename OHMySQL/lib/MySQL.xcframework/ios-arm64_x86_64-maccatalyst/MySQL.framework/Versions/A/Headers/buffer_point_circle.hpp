@@ -2,9 +2,8 @@
 
 // Copyright (c) 2018-2019 Barend Gehrels, Amsterdam, the Netherlands.
 
-// This file was modified by Oracle on 2020.
-// Modifications copyright (c) 2020 Oracle and/or its affiliates.
-
+// This file was modified by Oracle on 2020-2021.
+// Modifications Copyright (c) 2020, 2022, Oracle and/or its affiliates.
 // Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
 
 // Use, modification and distribution is subject to the Boost Software License,
@@ -16,9 +15,10 @@
 
 #include <cstddef>
 
-#include <boost/range.hpp>
+#include <boost/range/value_type.hpp>
 
 #include <boost/geometry/util/math.hpp>
+#include <boost/geometry/util/select_calculation_type.hpp>
 
 #include <boost/geometry/strategies/buffer.hpp>
 
@@ -62,7 +62,7 @@ public :
         : m_count((count < 3u) ? 3u : count)
     {}
 
-    geographic_point_circle(std::size_t count, Spheroid const& spheroid)
+    explicit geographic_point_circle(std::size_t count, Spheroid const& spheroid)
         : m_count((count < 3u) ? 3u : count)
         , m_spheroid(spheroid)
     {}
@@ -81,10 +81,9 @@ public :
     {
         typedef typename boost::range_value<OutputRange>::type output_point_type;
 
-        typedef typename select_most_precise
+        typedef typename select_calculation_type
             <
-                typename geometry::coordinate_type<Point>::type,
-                typename geometry::coordinate_type<output_point_type>::type,
+                Point, output_point_type,
                 CalculationType
                 //double
             >::type calculation_type;

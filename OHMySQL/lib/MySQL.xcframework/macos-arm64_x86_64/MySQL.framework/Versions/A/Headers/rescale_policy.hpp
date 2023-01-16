@@ -5,9 +5,8 @@
 // Copyright (c) 2014-2015 Mateusz Loskot, London, UK.
 // Copyright (c) 2014-2015 Adam Wulkiewicz, Lodz, Poland.
 
-// This file was modified by Oracle on 2015, 2018, 2020.
-// Modifications Copyright (c) 2015, 2021, Oracle and/or its affiliates.
-
+// This file was modified by Oracle on 2015-2021.
+// Modifications Copyright (c) 2015, 2022, Oracle and/or its affiliates.
 // Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
 
 // Use, modification and distribution is subject to the Boost Software License,

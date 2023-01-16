@@ -1,4 +1,4 @@
-/* Copyright (c) 2008, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2008, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,13 +20,13 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_STAGE_BITS_H
-#define COMPONENTS_SERVICES_PSI_STAGE_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_STAGE_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_STAGE_BITS_H
 
 #include <mysql/components/services/bits/psi_bits.h>
 
 /**
-  @file
+  @file mponents/services/bits/psi_stage_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_stage Stage Instrumentation (ABI)
@@ -119,4 +119,4 @@ typedef struct PSI_stage_progress_v1 PSI_stage_progress;
 
 /** @} (end of group psi_abi_stage) */
 
-#endif /* COMPONENTS_SERVICES_PSI_STAGE_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_STAGE_BITS_H */

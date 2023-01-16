@@ -1,4 +1,4 @@
-/* Copyright (c) 2008, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2008, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,11 +20,11 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_TABLE_BITS_H
-#define COMPONENTS_SERVICES_PSI_TABLE_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_TABLE_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_TABLE_BITS_H
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_table_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_table Table Instrumentation (ABI)
@@ -228,4 +228,4 @@ typedef void (*unlock_table_v1_t)(struct PSI_table *table);
 
 /** @} (end of group psi_abi_table) */
 
-#endif /* COMPONENTS_SERVICES_PSI_TABLE_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_TABLE_BITS_H */

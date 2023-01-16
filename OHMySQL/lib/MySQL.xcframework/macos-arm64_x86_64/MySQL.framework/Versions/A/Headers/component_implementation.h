@@ -1,4 +1,4 @@
-/* Copyright (c) 2016, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2016, 2022, Oracle and/or its affiliates.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2.0,
@@ -324,6 +324,29 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
         static_cast < void **>(static_cast <void *>(                           \
                           const_cast <mysql_service_##service##_t **>(&name))) \
   }
+
+/**
+  Use this macro to reference the service placeholder as defined by the
+  REQUIRES_SERVICE_PLACEHOLDER macro.
+
+Example:
+  REQUIRES_SERVICE_PLACEHOLDER(foo);
+
+  ...
+
+  code() {
+  ....
+  SERVICE_PLACEHOLDER(foo)->bar(1);
+  ...
+  }
+
+  BEGIN_COMPONENT_REQUIRES(comp)
+    REQUIRES_SERVICE(foo);
+  END_COMPONENT_REQUIRES(comp)
+
+  @param service A valid service name.
+*/
+#define SERIVCE_PLACEHOLDER(service) mysql_service_##service
 
 /**
   A macro to end the last declaration started with the BEGIN_COMPONENT_REQUIRES.

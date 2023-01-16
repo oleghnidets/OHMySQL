@@ -1,7 +1,7 @@
 #ifndef SQL_COMMON_INCLUDED
 #define SQL_COMMON_INCLUDED
 
-/* Copyright (c) 2003, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2003, 2022, Oracle and/or its affiliates.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License, version 2.0,
@@ -22,8 +22,6 @@
    You should have received a copy of the GNU General Public License
    along with this program; if not, write to the Free Software
    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
-
-#define SQL_COMMON_INCLUDED
 
 /**
   @file include/sql_common.h
@@ -95,6 +93,7 @@ struct STATE_INFO {
 */
 
 struct st_mysql_trace_info;
+struct mysql_async_connect;
 
 struct MYSQL_EXTENSION {
   struct st_mysql_trace_info *trace_data;
@@ -104,6 +103,8 @@ struct MYSQL_EXTENSION {
 #ifdef MYSQL_SERVER
   // Used by replication to pass around compression context data.
   NET_SERVER *server_extn;
+  /* used by mysql_init() api for mysql command service related information */
+  void *mcs_extn;
 #endif
   struct {
     uint n_params;
@@ -148,7 +149,7 @@ void mysql_extension_bind_free(MYSQL_EXTENSION *ext);
 inline void mysql_extension_set_server_extn(MYSQL *mysql, NET_SERVER *extn) {
   MYSQL_EXTENSION_PTR(mysql)->server_extn = extn;
 }
-#endif
+#endif /* MYSQL_SERVER*/
 
 /*
   Maximum allowed authentication plugins for a given user account.
@@ -185,9 +186,11 @@ struct st_mysql_options_extention {
   bool connection_compressed;
   char *load_data_dir;
   struct client_authentication_info client_auth_info[MAX_AUTHENTICATION_FACTOR];
+  void *ssl_session_data; /** the session serialization to use */
 };
 
 struct MYSQL_METHODS {
+  MYSQL *(*connect_method)(mysql_async_connect *connect_args);
   bool (*read_query_result)(MYSQL *mysql);
   bool (*advanced_command)(MYSQL *mysql, enum enum_server_command command,
                            const unsigned char *header, size_t header_length,
@@ -196,6 +199,7 @@ struct MYSQL_METHODS {
   MYSQL_DATA *(*read_rows)(MYSQL *mysql, MYSQL_FIELD *mysql_fields,
                            unsigned int fields);
   MYSQL_RES *(*use_result)(MYSQL *mysql);
+  MYSQL_ROW (*fetch_row)(MYSQL_RES *);
   void (*fetch_lengths)(unsigned long *to, MYSQL_ROW column,
                         unsigned int field_count);
   void (*flush_use_result)(MYSQL *mysql, bool flush_all_results);
@@ -255,6 +259,8 @@ MYSQL_FIELD *cli_read_metadata_ex(MYSQL *mysql, MEM_ROOT *alloc,
                                   unsigned int fields);
 MYSQL_FIELD *cli_read_metadata(MYSQL *mysql, unsigned long field_count,
                                unsigned int fields);
+MYSQL_RES *use_result(MYSQL *mysql);
+MYSQL *connect_helper(mysql_async_connect *ctx);
 void free_rows(MYSQL_DATA *cur);
 void free_old_query(MYSQL *mysql);
 void end_server(MYSQL *mysql);

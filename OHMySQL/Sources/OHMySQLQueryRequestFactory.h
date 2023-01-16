@@ -24,58 +24,42 @@
 @class OHMySQLQueryRequest;
 
 NS_SWIFT_NAME(MySQLQueryRequestFactory)
-/// Convenience class for making specific OHMySQLQueryRequest instances.
+/// Convenience class for making specific ``OHMySQLQueryRequest`` instances.
 @interface OHMySQLQueryRequestFactory : NSObject
 
 @end
 
 @interface OHMySQLQueryRequestFactory (SELECT)
 
-/**
- *  Select all records.
- *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Select all records with condition.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - condition: SQL condition (e.g: WHERE id='10').
 + (nonnull OHMySQLQueryRequest *)SELECT:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
-/**
- *  Select all records with sorting.
- *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *  @param columnNames Result-set of one or more columns.
- *  @param isAscending Ascending or descending order.
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Select all records with condition, ordering and sorting.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - condition: SQL condition (e.g: WHERE id='10').
+///   - columnNames: Set of one or more columns.
+///   - isAscending: Indicates if ascending order.
 + (nonnull OHMySQLQueryRequest *)SELECT:(nonnull NSString *)tableName
                               condition:(nullable NSString *)condition
                                 orderBy:(nonnull NSArray<NSString *> *)columnNames
                               ascending:(BOOL)isAscending;
 
-/**
- *  Select the first record of the selected table.
- *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Select the first record of the selected table with condition.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - condition: SQL condition (e.g: WHERE id='10').
 + (nonnull OHMySQLQueryRequest *)SELECTFirst:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
-/**
- *  Select the first record of the selected table.
- *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id='10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *  @param columnNames Result-set of one or more columns.
- *  @param isAscending Ascending or descending order.
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Select the first record of the selected table with condition, ordering and sorting.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - condition: SQL condition (e.g: WHERE id='10').
+///   - columnNames: Set of one or more columns.
+///   - isAscending: Indicates if ascending order.
 + (nonnull OHMySQLQueryRequest *)SELECTFirst:(nonnull NSString *)tableName
                                    condition:(nullable NSString *)condition
                                      orderBy:(nonnull NSArray<NSString *> *)columnNames
@@ -85,29 +69,21 @@ NS_SWIFT_NAME(MySQLQueryRequestFactory)
 
 @interface OHMySQLQueryRequestFactory (INSERT)
 
-/**
- *  Insert a new record.
- *
- *  @param tableName Name of the target table.
- *  @param set       Key is column' name in table, value is your object.
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Insert a new record.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - set: Key is column' name in table, value is your object.
 + (nonnull OHMySQLQueryRequest *)INSERT:(nonnull NSString *)tableName set:(nonnull NSDictionary<NSString *, id> *)set;
 
 @end
 
 @interface OHMySQLQueryRequestFactory (UPDATE)
 
-/**
- *  Update all records with condition.
- *
- *  @param tableName Name of the target table.
- *  @param set       Key is column' name in table, value is your object.
- *  @param condition Likes in real SQL query (e.g: WHERE name='Name'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Updates all records with condition.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - set: Key is column' name in table, value is your object.
+///   - condition: SQL condition (e.g: WHERE id='10').
 + (nonnull OHMySQLQueryRequest *)UPDATE:(nonnull NSString *)tableName
                                     set:(nonnull NSDictionary<NSString *, id> *)set
                               condition:(nullable NSString *)condition;
@@ -116,30 +92,22 @@ NS_SWIFT_NAME(MySQLQueryRequestFactory)
 
 @interface OHMySQLQueryRequestFactory (DELETE)
 
-/**
- *  Deletes all records with condition.
- *
- *  @param tableName Name of the target table.
- *  @param condition Likes in real SQL query (e.g: WHERE id>'10'). https://en.wikipedia.org/wiki/Where_%28SQL%29
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Deletes all records with condition.
+/// - Parameters:
+///   - tableName: Name of the target table.
+///   - condition: SQL condition (e.g: WHERE id='10').
 + (nonnull OHMySQLQueryRequest *)DELETE:(nonnull NSString *)tableName condition:(nullable NSString *)condition;
 
 @end
 
 @interface OHMySQLQueryRequestFactory (JOIN)
 
-/**
- *  Combines rows from two or more tables, based on a common field between them.
- *
- *  @param joinType    Type of join (Use one of the constants from OHJoinConstants).
- *  @param tableName   Destination table.
- *  @param columnNames Columns to fetch.
- *  @param joinOn      [Table:Condition]. { "Users":"Users.id=Company.userId" }
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Combines rows from two or more tables, based on a common field between them.
+/// - Parameters:
+///   - joinType: Type of join (Use one of the constants from ``OHJoin``).
+///   - tableName: Name of the target table.
+///   - columnNames: Columns to fetch.
+///   - joinOn: In format `[Table:Condition]`. Example: `{ "Users":"Users.id=Company.userId" }`.
 + (nonnull OHMySQLQueryRequest *)JOINType:(nonnull NSString *)joinType
                                 fromTable:(nonnull NSString *)tableName
                               columnNames:(nonnull NSArray<NSString *> *)columnNames
@@ -149,13 +117,8 @@ NS_SWIFT_NAME(MySQLQueryRequestFactory)
 
 @interface OHMySQLQueryRequestFactory (Other)
 
-/**
- *  Counts records in a table.
- *
- *  @param tableName Name of the target table
- *
- *  @return An instance of OHMySQLQueryRequest.
- */
+/// Counts records in a table.
+/// - Parameter tableName: Name of the target table.
 + (nonnull OHMySQLQueryRequest *)countAll:(nonnull NSString *)tableName;
 
 @end

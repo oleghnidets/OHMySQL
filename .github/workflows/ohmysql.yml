@@ -2,9 +2,15 @@ name: MySQL iOS
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master, develop ]
 
 jobs:
+  PackageValidation:
+    runs-on: macos-11
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cocoapods
+      run: pod lib lint --allow-warnings
   UnitTests:
     runs-on: macos-11
     steps:
@@ -24,9 +30,3 @@ jobs:
         DB_HOST='localhost' \
         DB_PORT='3306' \
         DB_SOCKET='/tmp/mysql.sock' | xcpretty
-  # PackageValidation:
-  #   runs-on: macos-11
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Cocoapods
-  #     run: pod lib lint

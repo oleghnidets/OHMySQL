@@ -26,6 +26,7 @@
 @class OHMySQLConfiguration, OHMySQLStore;
 
 NS_SWIFT_NAME(MySQLStoreCoordinator)
+/// Manages a connection to the database. Stores the configuration and information about a connection.
 @interface OHMySQLStoreCoordinator : NSObject
 
 /// Nonnull after connection with DB. 
@@ -54,37 +55,25 @@ NS_SWIFT_NAME(MySQLStoreCoordinator)
 /// Attempts to establish a connection to a MySQL database engine. Also tries establish SSL connection if it is specified.
 - (BOOL)connect;
 
-/**
- *  @param database Name of the target db.
- *
- *  @return Zero for success. Nonzero if an error occurred (see enum).
- */
+/// Selects new database in scope of current connection.
+/// - Parameter database: Name of the target db.
+/// - Returns: Zero for success. Nonzero if an error occurred (see ``OHResultErrorType``).
 - (OHResultErrorType)selectDataBase:(nonnull NSString *)database;
 
 /// Closes a previously opened connection.
 - (void)disconnect;
 
-/**
- *  Asks the database server to shut down. The connected user must have the SHUTDOWN privilege.
- *
- *  @return Zero for success. Nonzero if an error occurred.
- */
+/// Asks the database server to shut down. The connected user must have the SHUTDOWN privilege.
+/// - Returns: Zero for success. Nonzero if an error occurred (see ``OHResultErrorType``).
 - (OHResultErrorType)shutdown;
 
-/**
- *  Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
- *
- *  @param options A bit mask composed from any combination.
- *
- *  @return Zero for success. Nonzero if an error occurred (see enum).
- */
+/// Flushes tables or caches, or resets replication server information. The connected user must have the RELOAD privilege.
+/// - Parameter options: A bit mask composed from any combination.
+/// - Returns: Zero for success. Nonzero if an error occurred (see ``OHResultErrorType``).
 - (OHResultErrorType)refresh:(OHRefreshOption)options;
 
-/**
- *  Checks whether the connection to the server is working. If the connection has gone down and auto-reconnect is enabled an attempt to reconnect is made.
- *
- *  @return Zero if the connection to the server is active. Nonzero if an error occurred. A nonzero return does not indicate whether the MySQL server itself is down; the connection might be broken for other reasons such as network problems.
- */
+/// Checks whether the connection to the server is working. If the connection has gone down and auto-reconnect is enabled an attempt to reconnect is made.
+/// - Returns: Zero if the connection to the server is active. Nonzero if an error occurred. A nonzero return does not indicate whether the MySQL server itself is down; the connection might be broken for other reasons such as network problems.
 - (OHResultErrorType)pingMySQL __attribute__((warn_unused_result));
 
 @end

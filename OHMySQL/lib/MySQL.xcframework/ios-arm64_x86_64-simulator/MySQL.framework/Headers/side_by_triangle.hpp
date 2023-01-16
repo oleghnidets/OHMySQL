@@ -4,8 +4,8 @@
 // Copyright (c) 2008-2015 Bruno Lalande, Paris, France.
 // Copyright (c) 2009-2015 Mateusz Loskot, London, UK.
 
-// This file was modified by Oracle on 2015, 2017, 2018, 2019.
-// Modifications Copyright (c) 2015, 2021, Oracle and/or its affiliates.
+// This file was modified by Oracle on 2015-2021.
+// Modifications Copyright (c) 2015, 2022, Oracle and/or its affiliates.
 
 // Contributed and/or modified by Menelaos Karavelas, on behalf of Oracle
 // Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
@@ -20,23 +20,21 @@
 #ifndef BOOST_GEOMETRY_STRATEGIES_CARTESIAN_SIDE_BY_TRIANGLE_HPP
 #define BOOST_GEOMETRY_STRATEGIES_CARTESIAN_SIDE_BY_TRIANGLE_HPP
 
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_void.hpp>
+
+#include <type_traits>
 
 #include <boost/geometry/arithmetic/determinant.hpp>
+
 #include <boost/geometry/core/access.hpp>
-#include <boost/geometry/util/select_coordinate_type.hpp>
 
 #include <boost/geometry/strategies/cartesian/disjoint_segment_box.hpp>
-#include <boost/geometry/strategies/cartesian/envelope.hpp>
 #include <boost/geometry/strategies/cartesian/point_in_point.hpp>
 #include <boost/geometry/strategies/compare.hpp>
 #include <boost/geometry/strategies/side.hpp>
 
-#include <boost/geometry/algorithms/detail/equals/point_point.hpp>
+#include <boost/geometry/strategy/cartesian/envelope.hpp>
 
-#include <boost/multiprecision/cpp_int.hpp>
+#include <boost/geometry/util/select_most_precise.hpp>
 
 
 namespace boost { namespace geometry
@@ -74,26 +72,6 @@ class side_by_triangle
 
 public :
     typedef cartesian_tag cs_tag;
-
-    typedef strategy::envelope::cartesian<CalculationType> envelope_strategy_type;
-
-    static inline envelope_strategy_type get_envelope_strategy()
-    {
-        return envelope_strategy_type();
-    }
-
-    typedef strategy::disjoint::segment_box disjoint_strategy_type;
-
-    static inline disjoint_strategy_type get_disjoint_strategy()
-    {
-        return disjoint_strategy_type();
-    }
-
-    typedef strategy::within::cartesian_point_point equals_point_point_strategy_type;
-    static inline equals_point_point_strategy_type get_equals_point_point_strategy()
-    {
-        return equals_point_point_strategy_type();
-    }
 
     // Template member function, because it is not always trivial
     // or convenient to explicitly mention the typenames in the
@@ -231,19 +209,17 @@ public :
         typedef typename coordinate_type<P2>::type coordinate_type2;
         typedef typename coordinate_type<P>::type coordinate_type3;
 
-        typedef typename boost::mpl::if_c
+        typedef std::conditional_t
             <
-                boost::is_void<CalculationType>::type::value,
+                std::is_void<CalculationType>::value,
                 typename select_most_precise
                     <
-                        typename select_most_precise
-                            <
-                                coordinate_type1, coordinate_type2
-                            >::type,
+                        coordinate_type1,
+                        coordinate_type2,
                         coordinate_type3
                     >::type,
                 CalculationType
-            >::type coordinate_type;
+            > coordinate_type;
 
         // Promote float->double, small int->int
         typedef typename select_most_precise
@@ -252,10 +228,10 @@ public :
                 double
             >::type promoted_type;
 
-        static bool const are_all_integral_coordinates =
-            boost::is_integral<coordinate_type1>::value
-            && boost::is_integral<coordinate_type2>::value
-            && boost::is_integral<coordinate_type3>::value;
+        bool const are_all_integral_coordinates =
+            std::is_integral<coordinate_type1>::value
+            && std::is_integral<coordinate_type2>::value
+            && std::is_integral<coordinate_type3>::value;
 
         typedef typename boost::mpl::if_c
             <
@@ -289,8 +265,7 @@ private:
     template <typename P1, typename P2>
     static inline bool equals_point_point(P1 const& p1, P2 const& p2)
     {
-        typedef equals_point_point_strategy_type strategy_t;
-        return geometry::detail::equals::equals_point_point(p1, p2, strategy_t());
+        return strategy::within::cartesian_point_point::apply(p1, p2);
     }
 };
 

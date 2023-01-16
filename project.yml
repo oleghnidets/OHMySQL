@@ -1,6 +1,13 @@
 name: OHMySQL
 options:
-  bundleIdPrefix: com.github.oleghnidets
+  bundleIdPrefix: com.ohmysql.apple
+settings:
+  configs:
+    debug:
+      OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+    release:
+      OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+
 targets:
   OHMySQL:
     type: framework
@@ -11,10 +18,8 @@ targets:
     settings:
       configs:
         debug:
-          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
           GENERATE_INFOPLIST_FILE: YES
         release:
-          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
           GENERATE_INFOPLIST_FILE: YES
     dependencies:
       - framework: OHMySQL/lib/MySQL.xcframework
@@ -24,15 +29,31 @@ targets:
   OHMySQL-macOS:
     type: framework
     platform: macOS
-    deploymentTarget: "10.13"
+    deploymentTarget: "11.0"
     sources: [OHMySQL/Sources]
     scheme: {}
-    settings:
-      configs:
-        debug:
-          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
-        release:
-          OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+    dependencies:
+      - framework: OHMySQL/lib/MySQL.xcframework
+      - sdk: Foundation.framework
+      - sdk: libc++.tbd
+
+  OHMySQL-watchOS:
+    type: framework
+    platform: watchOS
+    deploymentTarget: "8.0"
+    sources: [OHMySQL/Sources]
+    scheme: {}
+    dependencies:
+      - framework: OHMySQL/lib/MySQL.xcframework
+      - sdk: Foundation.framework
+      - sdk: libc++.tbd
+
+  OHMySQL-tvOS:
+    type: framework
+    platform: tvOS
+    deploymentTarget: "15.0"
+    sources: [OHMySQL/Sources]
+    scheme: {}
     dependencies:
       - framework: OHMySQL/lib/MySQL.xcframework
       - sdk: Foundation.framework
