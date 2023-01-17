@@ -13,14 +13,16 @@ targets:
     type: framework
     platform: iOS
     deploymentTarget: "14.0"
-    sources: [OHMySQL/Sources]
+    sources: [OHMySQL/Sources, 'OHMySQL.docc']
     scheme: {}
     settings:
       configs:
         debug:
           GENERATE_INFOPLIST_FILE: YES
+          DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS: YES
         release:
           GENERATE_INFOPLIST_FILE: YES
+          DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS: YES
     dependencies:
       - framework: OHMySQL/lib/MySQL.xcframework
       - sdk: Foundation.framework

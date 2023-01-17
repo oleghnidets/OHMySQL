@@ -47,6 +47,7 @@
 		243576990EE6B1D271E3964E /* OHMySQLSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 41DEC8F2733508C1207AE09C /* OHMySQLSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2486AF49D22FEE920426630A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E362352B7CD1893B51B3E606 /* libc++.tbd */; };
 		2585FDC46A84A013F2A6A7AB /* CharsetEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 40C2551D0475779E22E3C105 /* CharsetEncoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		28F7974B0B1C777196137E7D /* OHMySQL.docc in Sources */ = {isa = PBXBuildFile; fileRef = D3D05CFA604B03FB957D3A76 /* OHMySQL.docc */; };
 		290EB97A1DE3A79D4DCF86E1 /* OHSSLConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 78C4EFDB51A00C06C828ACF1 /* OHSSLConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		291458F4063714E8D842FB95 /* OHMySQLMappingProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 47105C5061A672559C75E4D0 /* OHMySQLMappingProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29C75B381C2315C76664A364 /* OHMySQLQueryContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EE99441999A137908029090 /* OHMySQLQueryContext.m */; };
@@ -245,6 +246,7 @@
 		CCD4EE2692BBF08E1135E596 /* OHSSLConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHSSLConfig.m; sourceTree = "<group>"; };
 		CF6E113C7B1E1F43F6E289F2 /* OHMySQLStoreCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHMySQLStoreCoordinator.m; sourceTree = "<group>"; };
 		D386C12C577B071B5386C471 /* OHMySQLContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHMySQLContainer.h; sourceTree = "<group>"; };
+		D3D05CFA604B03FB957D3A76 /* OHMySQL.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = OHMySQL.docc; sourceTree = "<group>"; };
 		DB5DEB27B7B68688529056B0 /* OHResultErrorType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHResultErrorType.m; sourceTree = "<group>"; };
 		DE242D80A01F5A9E50D12F7F /* NSObject+Mapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Mapping.h"; sourceTree = "<group>"; };
 		DEEEEF538AE9BF689B278EE2 /* NSData+OHSerialization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+OHSerialization.h"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 		45B20BA11ECA90BDE5EA3D5A = {
 			isa = PBXGroup;
 			children = (
+				D3D05CFA604B03FB957D3A76 /* OHMySQL.docc */,
 				18DFDFF8059A5C7FEE7AF586 /* Sources */,
 				34A11A2A36990DF365F24152 /* Frameworks */,
 				9E7AA0D74862D8992157F014 /* Products */,
@@ -656,6 +659,7 @@
 				062DDCC2233C29DB0B8D620F /* NSString+OHSerialization.m in Sources */,
 				2368DBBC1D660C0170B2D95B /* NSString+Utility.m in Sources */,
 				E1B6DBB08CA3E575A235DA25 /* OHJoinConstants.m in Sources */,
+				28F7974B0B1C777196137E7D /* OHMySQL.docc in Sources */,
 				C53F7B245861D5AEB5F892DF /* OHMySQLConfiguration.m in Sources */,
 				6A3506330E1C34EBAD516D47 /* OHMySQLContainer.m in Sources */,
 				29C75B381C2315C76664A364 /* OHMySQLQueryContext.m in Sources */,
@@ -885,6 +889,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -913,6 +918,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
