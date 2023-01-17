@@ -4,6 +4,9 @@ on:
   push:
     branches: [ master, develop ]
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
+
 jobs:
   PackageValidation:
     runs-on: macos-11
