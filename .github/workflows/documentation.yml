@@ -4,9 +4,6 @@ on:
   push:
     branches: [ master, develop ]
 
-env:
-  DEVELOPER_DIR: /Applications/Xcode_14.app/Contents/Developer
-
 jobs:
   Generate:
     runs-on: macos-11

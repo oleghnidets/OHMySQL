@@ -2,10 +2,7 @@ name: MySQL iOS
 
 on:
   push:
-    branches: [ master, develop ]
-
-env:
-  DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
+    branches: [  ]
 
 jobs:
   PackageValidation:
