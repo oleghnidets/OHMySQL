@@ -6,6 +6,7 @@ on:
 
 jobs:
   Generate:
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - uses: maxim-lobanov/setup-xcode@v1
