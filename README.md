@@ -1,86 +1,64 @@
 # OHMySQL
 
-[![License][license-image]][license-url]
 [![License][platform-image]][platform-url]
+[![License][license-image]][license-url]
+[![CocoaPods Compatible][cocoapods-image]][cocoapods-url]
+[![Carthage Compatible][carthage-image]][carthage-url]
 [![Documentation][docs-image]][docs-url]
 
-The library supports Objective-C and Swift, iOS and macOS. You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
-<p align="center" >★★ <b>Every star is appreciated!</b> ★★</p>
+OHMySQL can connect to remote or local MySQL database and execute CRUD operations. The framework is built upon MySQL C API, but you don’t need to dive into low-level. The following diagram represents a general architecture. Logic (saving, editing, removing etc.) is aggregated in the app. The database is just a shared storage.
 
-- [Goal](https://github.com/oleghnidets/OHMySQL/wiki/Goal)
-- [Support](#support)
-- [Features](#features)
-- [Requirements](#requirements)
-- [How To Get Started](#how-to-get-started)
-- [Installation](#installation)
-    - [CocoaPods](#cocoapods)
-    - [Carthage](#carthage)
-- [Usage](#usage)
-    - [Query Context](#query-context)
-    - [Execute Query](#execute-query)
-    - [SELECT](#select)
-    - [INSERT](#insert)
-    - [UPDATE](#update)
-    - [DELETE](#delete)
-    - [JOINs](#joins)
-    - [Object Mapping](#object-mapping)
-    - [Set up SSL](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-SSL)
-- [Communication](#communication)
-- [License](#license)
+<p align="center" >⭐️ <b>Every star is appreciated!</b> ⭐️</p>
 
-## Goal
 
-If you are interested in and want to know [how it can be applied](https://github.com/oleghnidets/OHMySQL/wiki/Goal) in your project too. 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
-## Support
+<!-- code_chunk_output -->
+
+- [Features](#-features)
+- [Platforms](#-platforms)
+- [Project Support](#-project-support)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Query Context](#-query-context)
+  - [Execute Query](#-execute-query)
+  - [SELECT](#-select-)
+  - [INSERT](#-insert)
+  - [UPDATE](#-update)
+  - [DELETE](#-delete)
+  - [JOINs](#-joins)
+  - [Object Mapping](#-object-mapping)
+- [Communication](#-communication)
+- [License](#-license-)
+
+<!-- /code_chunk_output -->
+
+## Features
+
+- [x] Requires minimal knowledge in SQL
+- [x] Easy to integrate and use
+- [x] Many functionality features
+- [x] Up-to-date MySQL library
+- [x] [Documentation](https://oleghnidets.github.io/OHMySQL/documentation/ohmysql/) and [support](https://github.com/oleghnidets/OHMySQL/issues?q=is%3Aissue+is%3Aclosed)
+
+## Platforms
+
+| Platform    | Supported  | 
+| ----------- | ---------  | 
+| iOS         | 14.0+      | 
+| macOS       | 11.0+      | 
+| Mac Catalyst| 14.0+      | 
+| watchOS     | 8.0+       | 
+| tvOS        | 15.0+      |
+
+## Project Support
 
 I wish to support the library and extend API and functionality. If you donate me some money 💵, it keeps me motivated and happy 🙂 You may support me via [PayPal](
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YCAKYM4XCT2DG&source=url ) or let me know any other method convenient for you.
 
-## Features
-
-- [x] Easy to integrate and use
-- [x] Many functionality features
-- [x] Requires minimal knowledge in SQL
-- [x] Supports iOS and macOS
-- [x] Clean code with unit tests
-- [x] [Complete documentation](http://oleghnidets.github.io/OHMySQL/) and [support](https://github.com/oleghnidets/OHMySQL/issues?q=is%3Aissue+is%3Aclosed)
-
-## Requirements
-
-- iOS 14.0+ / macOS 11.0+ (for more previous versions use [2.1.3](https://github.com/oleghnidets/OHMySQL/releases/tag/2.1.3))
-- Xcode 12.0+
-
-## How To Get Started
-
-- To test locally you can install [MySQL](https://dev.mysql.com/downloads/mysql/) or [MAMP local server](https://www.mamp.info/en/).
-- Try to use OHMySQL API ([set up demo project](https://github.com/oleghnidets/OHMySQL/wiki/Set-up-demo-project), [read documentation](http://oleghnidets.github.io/OHMySQL/)). 
-- When it'll be ready then transfer your local Data Base(s) to remote MySQL server.
-
 ## Installation
 
-### CocoaPods
-
-You can use CocoaPods. Add the following line to your Podfile:
-```ruby
-pod 'OHMySQL' --repo-update
-```
-
-If you are using Swift do not forget to add `use_frameworks!` at the top of Podfile. Add platform, example `platform :osx, '11.0'`.
-
-### Carthage
-
-You can also use Carthage. 
-
-Add the following to your Cartfile:
-
-```
-github "oleghnidets/OHMySQL"
-```
-
-Run your usual command for updating carthage dependencies, eg. `carthage update --use-xcframeworks OHMySQL`
-
-In addition to manually adding xcframework of OHMySQL from `Carthage/Build` folder you will need to manually add `MySQL.xcframework` as well. `MySQL.xcframework` is a part of this repo (`OHMySQL/lib/MySQL.xcframework`).
+Read [documentation](https://oleghnidets.github.io/OHMySQL/documentation/ohmysql/installation) how to install the library as a dependency in your project.
 
 ## Usage
 
@@ -92,23 +70,11 @@ let coordinator = MySQLStoreCoordinator(user: user!)
 coordinator.encoding = .UTF8MB4
 coordinator.connect()
 ```
-```objc
-OHMySQLConfiguration *config = [[OHMySQLConfiguration alloc] initWithUserName:@"root"
-                                                                     password:@"root"
-                                                                   serverName:@"localhost"
-                                                                       dbName:@"dbname"
-                                                                         port:3306
-                                                                       socket:@"/mysql/mysql.sock"];
-OHMySQLStoreCoordinator *coordinator = [[OHMySQLStoreCoordinator alloc] initWithUser:config];
-[coordinator connect];
-```
 To end a connection:
 ```swift
 coordinator.disconnect()
 ```
-```objc
-[coordinator disconnect];
-```
+
 ## Query Context
 
 To execute a query you have to create the context:
@@ -116,12 +82,6 @@ To execute a query you have to create the context:
 let context = MySQLQueryContext()
 context.storeCoordinator = coordinator
 ```
-```objc
-OHMySQLQueryContext *queryContext = [OHMySQLQueryContext new];
-queryContext.storeCoordinator = coordinator;
-```
-
-You will use this context to execute queries or manipulate the objects.
 
 ### Execute Query
 
@@ -250,20 +210,21 @@ BOOL result = [queryContext save:nil];
 
 ## Communication
 
-- If you found a bug, have suggestions or need help, please, [open an issue](https://github.com/oleghnidets/OHMySQL/issues/new).
+- If you found a bug, have a suggestion or need help, [open the issue](https://github.com/oleghnidets/OHMySQL/issues/new).
 - If you want to contribute, [submit a pull request](https://github.com/oleghnidets/OHMySQL/pulls).
-- If you need help, write me oleg.oleksan@gmail.com.
-- Make me feel happier ;]
-
-  [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CVFAEEZJ9DJ3L)
+- If you need help, [write me](oleg.oleksan@gmail.com).
 
 ## License 
 
-OHMySQL is released under the MIT license. See [LICENSE](LICENSE) for details.
+See [LICENSE](LICENSE).
 
-[platform-image]: https://img.shields.io/badge/platform-ios%20%7C%20macOS-lightgrey.svg
-[platform-url]: https://github.com/oleghnidets/OHMySQL
-[docs-image]: https://github.com/oleghnidets/OHMySQL/blob/master/docs/badge.svg
-[docs-url]: http://oleghnidets.github.io/OHMySQL/
-[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
+[platform-image]: https://img.shields.io/badge/platforms-ios%20|%20macOS%20|%20catalyst%20|%20tvOS%20|%20watchOS-orange.svg
+[platform-url]: https://oleghnidets.github.io/OHMySQL/documentation/ohmysql
+[license-image]: https://img.shields.io/badge/License-MIT-green.svg
 [license-url]: LICENSE
+[cocoapods-image]: https://img.shields.io/cocoapods/v/OHMySQL.svg?style=flat-square
+[cocoapods-url]: OHMySQL.podspec
+[carthage-image]: https://img.shields.io/badge/carthage-compatible-blue.svg
+[carthage-url]: https://github.com/Carthage/Carthage
+[docs-image]: https://img.shields.io/badge/documentation-DocC-lightgrey.svg
+[docs-url]: https://oleghnidets.github.io/OHMySQL/documentation/ohmysql

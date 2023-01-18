@@ -1,8 +1,0 @@
-jazzy \
---objc \
---author Oleg Hnidets \
---author_url https://github.com/oleghnidets \
---github_url https://github.com/oleghnidets/OHMySQL \
---umbrella-header OHMySQL/OHMySQL.h \
---module OHMySQL \
---framework-root OHMySQL
