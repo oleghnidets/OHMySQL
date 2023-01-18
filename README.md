@@ -35,6 +35,7 @@ OHMySQL can connect to remote or local MySQL database and execute CRUD operation
 
 ## Features
 
+- [x] Supports Swift and Objective-C 
 - [x] Requires minimal knowledge in SQL
 - [x] Easy to integrate and use
 - [x] Many functionality features
@@ -65,7 +66,13 @@ Read [documentation](https://oleghnidets.github.io/OHMySQL/documentation/ohmysql
 Connect to the database.
 
 ```swift
-let user = MySQLConfiguration(userName: "root", password: "root", serverName: "localhost", dbName: "dbname", port: 3306, socket: "/mysql/mysql.sock")
+let user = MySQLConfiguration(userName: "root", 
+                              password: "root", 
+                            serverName: "localhost", 
+                                dbName: "dbname", 
+                                  port: 3306, 
+                                socket: "/mysql/mysql.sock")
+
 let coordinator = MySQLStoreCoordinator(user: user!)
 coordinator.encoding = .UTF8MB4
 coordinator.connect()
@@ -88,98 +95,56 @@ context.storeCoordinator = coordinator
 ```swift
 let dropQueryString = "DROP TABLE `MyTable`"
 let dropQueryRequest = MySQLQueryRequest(queryString: dropQueryString)
-try? self.mainQueryContext.execute(dropQueryRequest)
-```
-
-```objc
-NSString *dropQueryString = @"DROP TABLE `MyTable`";
-OHMySQLQueryRequest *dropQueryRequest = [[OHMySQLQueryRequest alloc] initWithQueryString:dropQueryString];
-    
-NSError *error;
-[self.mainQueryContext executeQueryRequest:dropQueryRequest error:&error];
+try? context.execute(dropQueryRequest)
 ```
 
 ### SELECT 
 
-The response contains array of dictionaries (like JSON).
+The response contains the array of the dictionaries.
 
 ```swift
 let query = MySQLQueryRequestFactory.select("tasks", condition: nil)
-let response = try? MySQLContainer.shared.mainQueryContext?.executeQueryRequestAndFetchResult(query)
-```
-```objc
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory SELECT:@"tasks" condition:nil];
-NSError *error = nil;
-NSArray *tasks = [queryContext executeQueryRequestAndFetchResult:query error:&error];
-```
-You will get a response like this:
-```objc
-[{ @"id": @1, @"name": @"Task name", @"description": @"Task description", @"status": [NSNull null] }]
+let response = try? context.executeQueryRequestAndFetchResult(query)
 ```
 
 ### INSERT
 
 ```swift
 let query = MySQLQueryRequestFactory.insert("tasks", set: ["name": "Something", "desctiption": "new task"])
-try? mainQueryContext?.execute(query)
-```
-```objc
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory INSERT:@"tasks" set:@{ @"name": @"Something", @"desctiption": @"new task" }];
-NSError error;
-[queryContext executeQueryRequest:query error:&error];
+try? context.execute(query)
 ```
 
 ### UPDATE
 
 ```swift
 let query = MySQLQueryRequestFactory.update("tasks", set: ["name": "Something"], condition: "id=7")
-try? mainQueryContext?.execute(query)
-```
-```objc
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory UPDATE:@"tasks" set:@{ @"name": @"Something", @"description": @"new task update" } condition:@"id=5"];
-NSError error;
-[queryContext executeQueryRequest:query error:&error];
+try? context.execute(query)
 ```
 
 ### DELETE
 
 ```swift
 let query = MySQLQueryRequestFactory.delete("tasks", condition: "id=10")
-try? mainQueryContext?.execute(query)
-```
-```objc
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory DELETE:@"tasks" condition:@"id=10"];
-NSError error;
-[queryContext executeQueryRequest:query error:&error];
+try? context.execute(query)
 ```
 
 ### JOINs
 
-The response contains array of dictionaries (like JSON). You can do 4 types of joins (INNER, RIGHT, LEFT, FULL) using string constants.
+You can execute 4 types of joins - `INNER`, `RIGHT`, `LEFT`, `FULL`.
 
 ```swift
 let query = MySQLQueryRequestFactory.joinType(OHJoinInner, fromTable: "tasks", columnNames: ["id", "name", "description"], joinOn: ["subtasks": "tasks.id=subtasks.parentId"])
-let result = try? mainQueryContext?.executeQueryRequestAndFetchResult(query)
-```
-```objc
-OHMySQLQueryRequest *query = [OHMySQLQueryRequestFactory JOINType:OHJoinInner					
-                                                        fromTable:@"tasks" 
-                                                      columnNames:@[@"id", @"name", @"description"] 
-                                                           joinOn:@{ @"subtasks":@"tasks.id=subtasks.parentId" }];
-NSArray *results = [queryContext executeQueryRequestAndFetchResult:query error:nil];
+let result = try? context.executeQueryRequestAndFetchResult(query)
 ```
 
 ### Object Mapping
 
-You have to implement the protocol OHMappingProtocol for your models. Insertion looks like the following (in this example the NSManagedObject instance). 
-The library has only a primary logic for mapping, so I would recommend you writing a mapping logic by yourself. If you are using Swift you cannot use fundamental number types (Int, Double), only NSNumber (due to run-time). 
+You have to implement the protocol `OHMappingProtocol` for your models. 
+The library has only a primary logic for mapping, so I would recommend you writing a mapping logic by yourself. If you are using Swift you cannot use fundamental number types (`Int`, `Double`), only `NSNumber` (due to run-time). 
+
 ```swift
-mainQueryContext?.insertObject(task)
-try? mainQueryContext?.save()
-```
-```objc
-[queryContext insertObject:task];
-BOOL result = [queryContext save:nil];
+context.insertObject(task)
+try? context.save()
 ```
 
 You can update/delete the objects easily.
@@ -187,25 +152,10 @@ You can update/delete the objects easily.
 ```swift
 let task = Task()
 task.name = "sample"
-mainQueryContext?.updateObject(task)
-mainQueryContext?.deleteObject(task)
+context.updateObject(task)
+context.deleteObject(task)
 
-try? mainQueryContext?.save()
-```
-```objc
-// You don't need to specify primary index here.  It'll be updated automatically.
-OHTask *task = [OHTask new];
-task.name = @"Code cleanup";
-task.taskDescription = @"Delete unused classes and files";
-task.status = 0;
-[queryContext updateObject:task];
-...
-task.name = @"Something";
-task.status = 1;
-[task update];
-...
-[queryContext deleteObject:task];
-BOOL result = [queryContext save:nil];
+try? context.save()
 ```
 
 ## Communication
