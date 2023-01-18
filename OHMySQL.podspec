@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
 You can connect to your remote MySQL database using OHMySQL API. It allows you doing queries in easy and object-oriented way. Common queries such as SELECT, INSERT, DELETE, JOIN are wrapped by Objective-C code and you don't need to dive into MySQL C API.
                        DESC
 
-  spec.documentation_url = 'http://oleghnidets.github.io/OHMySQL/'
+  spec.documentation_url = 'https://oleghnidets.github.io/OHMySQL/documentation/ohmysql/'
   spec.homepage          = 'https://github.com/oleghnidets/OHMySQL'
   spec.license           = 'MIT'
   spec.authors           = { 'Oleg Hnidets' => 'oleg.oleksan@gmail.com' }
