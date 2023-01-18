@@ -10,13 +10,13 @@ on:
 
 jobs:
   CocoaPodsValidation:
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
     - uses: actions/checkout@v2
     - name: Cocoapods
       run: pod lib lint --allow-warnings
   UnitTests:
-    runs-on: macos-latest
+    runs-on: macos-12
     steps:
     - name: Setup MySQL
       uses: ankane/setup-mysql@v1
