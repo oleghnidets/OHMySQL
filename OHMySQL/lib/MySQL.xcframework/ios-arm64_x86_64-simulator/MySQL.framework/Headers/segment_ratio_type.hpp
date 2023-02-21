@@ -5,8 +5,8 @@
 // Copyright (c) 2013 Mateusz Loskot, London, UK.
 // Copyright (c) 2013 Adam Wulkiewicz, Lodz, Poland.
 
-// This file was modified by Oracle on 2020.
-// Modifications Copyright (c) 2020, 2021, Oracle and/or its affiliates.
+// This file was modified by Oracle on 2020-2021.
+// Modifications Copyright (c) 2020, 2022, Oracle and/or its affiliates.
 // Contributed and/or modified by Adam Wulkiewicz, on behalf of Oracle
 
 // Use, modification and distribution is subject to the Boost Software License,
@@ -16,12 +16,13 @@
 #ifndef BOOST_GEOMETRY_POLICIES_ROBUSTNESS_SEGMENT_RATIO_TYPE_HPP
 #define BOOST_GEOMETRY_POLICIES_ROBUSTNESS_SEGMENT_RATIO_TYPE_HPP
 
+#include <type_traits>
+
+#include <boost/config.hpp>
+
 #include <boost/geometry/core/coordinate_type.hpp>
 #include <boost/geometry/policies/robustness/rescale_policy_tags.hpp>
 #include <boost/geometry/policies/robustness/robust_type.hpp>
-
-#include <boost/config.hpp>
-#include <boost/mpl/if.hpp>
 
 
 namespace boost { namespace geometry { namespace detail
@@ -33,16 +34,16 @@ struct segment_ratio_type
 {
     // Type in segment ratio is either the coordinate type, or for
     // deprecated robust point types it is a long_long type
-    typedef typename boost::mpl::if_c
-    <
-        boost::is_same
+    typedef std::conditional_t
         <
-            typename rescale_policy_type<Policy>::type,
-            no_rescale_policy_tag
-        >::value,
-        typename geometry::coordinate_type<Point>::type,
-        geometry::detail::robust_signed_integral_type
-    >::type coordinate_type;
+            std::is_same
+                <
+                    typename rescale_policy_type<Policy>::type,
+                    no_rescale_policy_tag
+                >::value,
+            typename geometry::coordinate_type<Point>::type,
+            geometry::detail::robust_signed_integral_type
+        > coordinate_type;
 
     // Define segment ratio based on the coordinate type
     typedef geometry::segment_ratio<coordinate_type> type;

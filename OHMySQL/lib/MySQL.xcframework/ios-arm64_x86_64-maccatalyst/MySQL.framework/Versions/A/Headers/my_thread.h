@@ -1,4 +1,4 @@
-/* Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2000, 2022, Oracle and/or its affiliates.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License, version 2.0,
@@ -32,7 +32,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include <mysql/components/services/my_thread_bits.h>
+#include <mysql/components/services/bits/my_thread_bits.h>
 
 #include "my_compiler.h"
 #include "my_config.h"
@@ -147,11 +147,23 @@ static inline void my_thread_yield() {
 #endif
 }
 
+inline bool operator==(const my_thread_handle &a, const my_thread_handle &b) {
+  return (a.thread == b.thread
+#ifdef WIN32
+          && a.handle == b.handle
+#endif /* WIN32 */
+  );
+}
+inline bool operator!=(const my_thread_handle &a, const my_thread_handle &b) {
+  return !(a == b);
+}
+
 int my_thread_create(my_thread_handle *thread, const my_thread_attr_t *attr,
                      my_start_routine func, void *arg);
 int my_thread_join(my_thread_handle *thread, void **value_ptr);
 int my_thread_cancel(my_thread_handle *thread);
-void my_thread_exit(void *value_ptr) MY_ATTRIBUTE((noreturn));
+
+[[noreturn]] void my_thread_exit(void *value_ptr);
 
 /** Sets the name of the thread for system and debugger, if possible.
 @param name Name to set, must be shorter than SETNAME_MAX_LENGTH, including NULL

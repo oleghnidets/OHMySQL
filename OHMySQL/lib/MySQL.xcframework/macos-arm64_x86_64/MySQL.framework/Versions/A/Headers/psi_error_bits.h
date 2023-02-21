@@ -1,4 +1,4 @@
-/* Copyright (c) 2016, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2016, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,11 +20,11 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_ERROR_BITS_H
-#define COMPONENTS_SERVICES_PSI_ERROR_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_ERROR_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_ERROR_BITS_H
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_error_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_error Error Instrumentation (ABI)
@@ -48,4 +48,4 @@ typedef void (*log_error_v1_t)(unsigned int error_num,
 
 /** @} (end of group psi_abi_error) */
 
-#endif /* COMPONENTS_SERVICES_PSI_ERROR_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_ERROR_BITS_H */

@@ -33,13 +33,8 @@ NS_SWIFT_NAME(MySQLQueryRequest)
 /// SQL query string.
 @property (nonatomic, copy, nonnull, readonly) NSString *query;
 
-
-/**
- Initialize request object with SQL string.
-
- @param query SQL query string.
- @return Instance of the class with set SQL query.
- */
+/// Initializes a request object with SQL string.
+/// - Parameter query: SQL query string.
 - (nonnull instancetype)initWithQuery:(nonnull NSString *)query;
 
 @end

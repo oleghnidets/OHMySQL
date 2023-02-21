@@ -1,0 +1,32 @@
+name: Documentation
+
+on:
+  push:
+    branches: [ master ]
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_14.0.1.app/Contents/Developer
+
+jobs:
+  Generate:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Generate archive
+      run: |
+        xcodebuild docbuild \
+          -scheme 'OHMySQL' \
+          -derivedDataPath ./build \
+          -destination 'platform=iOS Simulator,OS=latest,name=iPhone 13'
+    - name: Generate pages
+      run: |
+        $(xcrun --find docc) process-archive transform-for-static-hosting \
+          $(find ./build -type d -name '*.doccarchive') \
+          --hosting-base-path OHMySQL \
+          --output-path ./docs
+    - name: Deploy documentation to Github Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        keep_files: true

@@ -27,13 +27,13 @@ NS_SWIFT_NAME(MySQLContainer)
 /// Represents a main context and store coordinator.
 @interface OHMySQLContainer : NSObject
 
-/// Shared container.
+/// The shared container.
 @property (class, strong, readonly, nonnull) OHMySQLContainer *shared;
 
-/// Single context that is used in the app. Context should be set by a user of this class.
+/// Main context that is used in the app. Context must be set by the client of this class.
 @property (nonatomic, strong, nullable) OHMySQLQueryContext *mainQueryContext;
 
-/// Single store coordinator.
+/// Main store coordinator.
 @property (nonatomic, strong, readonly, nullable) OHMySQLStoreCoordinator *storeCoordinator;
 
 @end

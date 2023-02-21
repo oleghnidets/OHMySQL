@@ -1,4 +1,4 @@
-/* Copyright (c) 2008, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2008, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,8 +20,8 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_STATEMENT_BITS_H
-#define COMPONENTS_SERVICES_PSI_STATEMENT_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_STATEMENT_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_STATEMENT_BITS_H
 
 #ifndef MYSQL_ABI_CHECK
 #include <stddef.h> /* size_t */
@@ -30,7 +30,7 @@
 #include <mysql/components/services/bits/psi_bits.h>
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_statement_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_statement Statement Instrumentation (ABI)
@@ -49,23 +49,37 @@ typedef unsigned int PSI_statement_key;
 /**
   @def PSI_STATEMENT_VERSION_1
   Performance Schema Statement Interface number for version 1.
-  This version is deprecated.
+  This version is obsolete.
 */
 #define PSI_STATEMENT_VERSION_1 1
 
 /**
   @def PSI_STATEMENT_VERSION_2
   Performance Schema Statement Interface number for version 2.
-  This version is supported.
+  This version is obsolete.
 */
 #define PSI_STATEMENT_VERSION_2 2
 
 /**
+  @def PSI_STATEMENT_VERSION_3
+  Performance Schema Statement Interface number for version 3.
+  This version is obsolete.
+*/
+#define PSI_STATEMENT_VERSION_3 3
+
+/**
+  @def PSI_STATEMENT_VERSION_4
+  Performance Schema Statement Interface number for version 4.
+  This version is supported.
+*/
+#define PSI_STATEMENT_VERSION_4 4
+
+/**
   @def PSI_CURRENT_STATEMENT_VERSION
   Performance Schema Statement Interface number for the most recent version.
-  The most current version is @c PSI_STATEMENT_VERSION_2
+  The most current version is @c PSI_STATEMENT_VERSION_4
 */
-#define PSI_CURRENT_STATEMENT_VERSION 2
+#define PSI_CURRENT_STATEMENT_VERSION 4
 
 /**
   Interface for an instrumented statement.
@@ -126,16 +140,15 @@ typedef struct PSI_statement_info_v1 PSI_statement_info_v1;
 #define PSI_SCHEMA_NAME_LEN (64 * 3)
 
 /**
-  State data storage for @c get_thread_statement_locker_v1_t,
-  @c get_thread_statement_locker_v1_t.
+  State data storage for @c get_thread_statement_locker_v4_t.
   This structure provide temporary storage to a statement locker.
   The content of this structure is considered opaque,
   the fields are only hints of what an implementation
   of the psi interface can use.
   This memory is provided by the instrumented code for performance reasons.
-  @sa get_thread_statement_locker_v1_t
+  @sa get_thread_statement_locker_v4_t
 */
-struct PSI_statement_locker_state_v1 {
+struct PSI_statement_locker_state_v4 {
   /** Discarded flag. */
   bool m_discarded;
   /** In prepare flag. */
@@ -152,8 +165,16 @@ struct PSI_statement_locker_state_v1 {
   struct PSI_thread *m_thread;
   /** Timer start. */
   unsigned long long m_timer_start;
-  /** Timer function. */
-  unsigned long long (*m_timer)(void);
+  /** THREAD CPU time start. */
+  unsigned long long m_cpu_time_start;
+  /** State temporary data for CONTROLLED_MEMORY. */
+  size_t m_controlled_local_size_start;
+  /** State temporary data for MAX_CONTROLLED_MEMORY. */
+  size_t m_controlled_stmt_size_start;
+  /** State temporary data for TOTAL_MEMORY. */
+  size_t m_total_local_size_start;
+  /** State temporary data for MAX_TOTAL_MEMORY. */
+  size_t m_total_stmt_size_start;
   /** Internal data. */
   void *m_statement;
   /** Locked time. */
@@ -202,7 +223,7 @@ struct PSI_statement_locker_state_v1 {
   PSI_sp_share *m_parent_sp_share;
   PSI_prepared_stmt *m_parent_prepared_stmt;
 };
-typedef struct PSI_statement_locker_state_v1 PSI_statement_locker_state_v1;
+typedef struct PSI_statement_locker_state_v4 PSI_statement_locker_state_v4;
 
 struct PSI_sp_locker_state_v1 {
   /** Internal state. */
@@ -236,8 +257,8 @@ typedef void (*register_statement_v1_t)(const char *category,
   @param sp_share Parent stored procedure share, if any.
   @return a statement locker, or NULL
 */
-typedef struct PSI_statement_locker *(*get_thread_statement_locker_v1_t)(
-    struct PSI_statement_locker_state_v1 *state, PSI_statement_key key,
+typedef struct PSI_statement_locker *(*get_thread_statement_locker_v4_t)(
+    struct PSI_statement_locker_state_v4 *state, PSI_statement_key key,
     const void *charset, PSI_sp_share *sp_share);
 
 /**
@@ -411,6 +432,14 @@ typedef void (*set_statement_no_good_index_used_t)(
     struct PSI_statement_locker *locker);
 
 /**
+  Set a statement EXECUTION_ENGINE attribute.
+  @param locker the statement locker
+  @param secondary True for SECONDARY, false for PRIMARY.
+*/
+typedef void (*set_statement_secondary_engine_v3_t)(
+    struct PSI_statement_locker *locker, bool secondary);
+
+/**
   End a statement event.
   @param locker the statement locker
   @param stmt_da the statement diagnostics area.
@@ -441,7 +470,7 @@ typedef PSI_prepared_stmt *(*create_prepared_stmt_v1_t)(
 typedef void (*destroy_prepared_stmt_v1_t)(PSI_prepared_stmt *prepared_stmt);
 
 /**
-  repreare a prepare statement.
+  reprepare a prepare statement.
   @param prepared_stmt prepared statement.
 */
 typedef void (*reprepare_prepared_stmt_v1_t)(PSI_prepared_stmt *prepared_stmt);
@@ -455,7 +484,7 @@ typedef void (*execute_prepared_stmt_v1_t)(PSI_statement_locker *locker,
                                            PSI_prepared_stmt *prepared_stmt);
 
 /**
-  Set the statement text for a prepared statment event.
+  Set the statement text for a prepared statement event.
   @param prepared_stmt prepared statement.
   @param text the prepared statement text
   @param text_len the prepared statement text length
@@ -463,6 +492,15 @@ typedef void (*execute_prepared_stmt_v1_t)(PSI_statement_locker *locker,
 typedef void (*set_prepared_stmt_text_v1_t)(PSI_prepared_stmt *prepared_stmt,
                                             const char *text,
                                             unsigned int text_len);
+
+/**
+  Set a prepared statement EXECUTION_ENGINE attribute.
+  @param prepared_stmt prepared statement.
+  @param secondary True for SECONDARY, false for PRIMARY.
+*/
+typedef void (*set_prepared_stmt_secondary_engine_v3_t)(
+    PSI_prepared_stmt *prepared_stmt, bool secondary);
+
 /**
   Get a digest locker for the current statement.
   @param locker a statement locker for the running thread
@@ -509,9 +547,9 @@ typedef void (*drop_sp_v1_t)(unsigned int object_type, const char *schema_name,
                              unsigned int object_name_length);
 
 typedef struct PSI_statement_info_v1 PSI_statement_info;
-typedef struct PSI_statement_locker_state_v1 PSI_statement_locker_state;
+typedef struct PSI_statement_locker_state_v4 PSI_statement_locker_state;
 typedef struct PSI_sp_locker_state_v1 PSI_sp_locker_state;
 
 /** @} (end of group psi_abi_statement) */
 
-#endif /* COMPONENTS_SERVICES_PSI_STATEMENT_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_STATEMENT_BITS_H */

@@ -32,4 +32,3 @@
 #import "NSObject+Mapping.h"
 #import "NSString+Escaping.h"
 #import "OHMySQLMappingProtocol.h"
-

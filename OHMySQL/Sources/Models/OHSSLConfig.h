@@ -24,7 +24,7 @@
 
 NS_SWIFT_NAME(MySQLSSLConfig)
 /// This class is used for establishing secure connections using SSL.
-/// @note Please, see http://dev.mysql.com/doc/refman/5.7/en/mysql-ssl-set.html for more details.
+/// - Note: See for more details, http://dev.mysql.com/doc/refman/5.7/en/mysql-ssl-set.html .
 @interface OHSSLConfig : NSObject
 
 /// The path name to the key file.

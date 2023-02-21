@@ -1,4 +1,4 @@
-/* Copyright (c) 2008, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2008, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,13 +20,13 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_RWLOCK_BITS_H
-#define COMPONENTS_SERVICES_PSI_RWLOCK_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_RWLOCK_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_RWLOCK_BITS_H
 
 #include <mysql/components/services/bits/psi_bits.h>
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_rwlock_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_rwlock Rwlock Instrumentation (ABI)
@@ -249,7 +249,7 @@ typedef struct PSI_rwlock_locker *(*start_rwlock_rdwait_v1_t)(
 /**
   Record a rwlock instrumentation read wait end event.
   @param locker a thread locker for the running thread
-  @param rc the wait operation return code
+  @param rc 0 if the lock was acquired, 1 if it was not
 */
 typedef void (*end_rwlock_rdwait_v1_t)(struct PSI_rwlock_locker *locker,
                                        int rc);
@@ -270,7 +270,7 @@ typedef struct PSI_rwlock_locker *(*start_rwlock_wrwait_v1_t)(
 /**
   Record a rwlock instrumentation write wait end event.
   @param locker a thread locker for the running thread
-  @param rc the wait operation return code
+  @param rc 0 if the lock was acquired, 1 if it was not
 */
 typedef void (*end_rwlock_wrwait_v1_t)(struct PSI_rwlock_locker *locker,
                                        int rc);
@@ -294,4 +294,4 @@ typedef struct PSI_rwlock_locker_state_v1 PSI_rwlock_locker_state;
 
 /** @} (end of group psi_abi_rwlock) */
 
-#endif /* COMPONENTS_SERVICES_PSI_RWLOCK_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_RWLOCK_BITS_H */

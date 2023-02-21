@@ -1,4 +1,4 @@
-/* Copyright (c) 2016, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2016, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,15 +20,15 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_MY_IO_BITS_H
-#define COMPONENTS_SERVICES_MY_IO_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_MY_IO_BITS_H
+#define COMPONENTS_SERVICES_BITS_MY_IO_BITS_H
 
 /**
-  @file mysql/components/services/my_io_bits.h
+  @file mysql/components/services/bits/my_io_bits.h
   Types to make file and socket I/O compatible.
 */
 
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(MYSQL_ABI_CHECK)
 /* Include common headers.*/
 #include <io.h> /* access(), chmod() */
 #ifdef WIN32_LEAN_AND_MEAN
@@ -48,7 +48,7 @@
 #endif
 
 typedef int File; /* File descriptor */
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(MYSQL_ABI_CHECK)
 typedef int MY_MODE;
 typedef int mode_t;
 typedef int socket_len_t;
@@ -59,4 +59,4 @@ typedef socklen_t socket_len_t;
 typedef int my_socket; /* File descriptor for sockets */
 #endif /* _WIN32 */
 
-#endif /* COMPONENTS_SERVICES_MY_IO_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_MY_IO_BITS_H */

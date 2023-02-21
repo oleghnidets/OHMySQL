@@ -1,4 +1,4 @@
-/* Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2000, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,11 +20,11 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_MY_THREAD_BITS_H
-#define COMPONENTS_SERVICES_MY_THREAD_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_MY_THREAD_BITS_H
+#define COMPONENTS_SERVICES_BITS_MY_THREAD_BITS_H
 
 /**
-  @file mysql/components/services/my_thread_bits.h
+  @file mysql/components/services/bits/my_thread_bits.h
   Types to make different thread packages compatible.
 */
 
@@ -37,7 +37,7 @@
 #endif
 #endif /* MYSQL_ABI_CHECK */
 
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(MYSQL_ABI_CHECK)
 typedef DWORD my_thread_t;
 typedef struct thread_attr {
   DWORD dwStackSize;
@@ -50,9 +50,9 @@ typedef pthread_attr_t my_thread_attr_t;
 
 struct my_thread_handle {
   my_thread_t thread{0};
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(MYSQL_ABI_CHECK)
   HANDLE handle{INVALID_HANDLE_VALUE};
 #endif
 };
 
-#endif /* COMPONENTS_SERVICES_MY_THREAD_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_MY_THREAD_BITS_H */

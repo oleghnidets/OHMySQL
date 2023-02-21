@@ -1,19 +1,30 @@
-name: MySQL iOS
+name: Validation and Tests
 
 on:
   push:
-    branches: [ develop ]
+    branches: 
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
+  CocoaPodsValidation:
+    runs-on: macos-11
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cocoapods
+      run: pod lib lint --allow-warnings
   UnitTests:
     runs-on: macos-11
     steps:
-    - uses: ankane/setup-mysql@v1
+    - name: Setup MySQL
+      uses: ankane/setup-mysql@v1
       with:
         mysql-version: 8.0
         database: tests
     - uses: actions/checkout@v2
-    - name: Install deps
+    - name: Install dependencies
       run: |
         pod install --project-directory=SampleProject
     - name: Run tests 
@@ -24,9 +35,3 @@ jobs:
         DB_HOST='localhost' \
         DB_PORT='3306' \
         DB_SOCKET='/tmp/mysql.sock' | xcpretty
-  # PackageValidation:
-  #   runs-on: macos-11
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Cocoapods
-  #     run: pod lib lint

@@ -1,4 +1,4 @@
-/* Copyright (c) 2018, 2021, Oracle and/or its affiliates.
+/* Copyright (c) 2018, 2022, Oracle and/or its affiliates.
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2.0,
@@ -20,11 +20,11 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
-#ifndef COMPONENTS_SERVICES_PSI_SYSTEM_BITS_H
-#define COMPONENTS_SERVICES_PSI_SYSTEM_BITS_H
+#ifndef COMPONENTS_SERVICES_BITS_PSI_SYSTEM_BITS_H
+#define COMPONENTS_SERVICES_BITS_PSI_SYSTEM_BITS_H
 
 /**
-  @file
+  @file mysql/components/services/bits/psi_system_bits.h
   Performance schema instrumentation interface.
 
   @defgroup psi_abi_system System Instrumentation (ABI)
@@ -39,4 +39,4 @@ typedef void (*unload_plugin_v1_t)(const char *plugin_name);
 
 /** @} (end of group psi_abi_system) */
 
-#endif /* COMPONENTS_SERVICES_PSI_SYSTEM_BITS_H */
+#endif /* COMPONENTS_SERVICES_BITS_PSI_SYSTEM_BITS_H */
