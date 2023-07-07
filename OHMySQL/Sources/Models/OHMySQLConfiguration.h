@@ -49,6 +49,12 @@ NS_SWIFT_NAME(MySQLConfiguration)
 /// Used for establishing secure connections using SSL.
 @property (nonatomic, copy, nullable, readonly) OHSSLConfig *sslConfig;
 
+/// The timeout in seconds for each attempt to write to the server. There is a retry if necessary, so the total effective timeout value is two times the option value.
+@property (nonatomic, copy, nullable) NSNumber *writeTimeout;
+
+/// The timeout in seconds for each attempt to read from the server. There are retries if necessary, so the total effective timeout value is three times the option value. You can set the value so that a lost connection can be detected earlier than the TCP/IP Close Wait Timeout value of 10 minutes.
+@property (nonatomic, copy, nullable) NSNumber *readTimeout;
+
 
 /// Initializes and returns a newly allocated object.
 /// - Parameters:

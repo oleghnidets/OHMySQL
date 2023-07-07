@@ -74,13 +74,23 @@
     @synchronized (self) {
         mysql_library_init;
         
-        void *_mysql = mysql_init(NULL);
+        MYSQL *_mysql = mysql_init(NULL);
         self.store = [[OHMySQLStore alloc] initWithMySQL:_mysql];
         
         mysql_options(_mysql, MYSQL_OPT_COMPRESS, 0);
         bool reconnect = 1;
         mysql_options(_mysql, MYSQL_OPT_RECONNECT, &reconnect);
         mysql_options(_mysql, MYSQL_OPT_PROTOCOL, &_protocol);
+        
+        if (_configuration.writeTimeout && _configuration.writeTimeout.unsignedIntValue > 0) {
+            unsigned int writeTimeout = _configuration.writeTimeout.unsignedIntValue;
+            mysql_options(_mysql, MYSQL_OPT_WRITE_TIMEOUT, (void *)&writeTimeout);
+        }
+        
+        if (_configuration.readTimeout && _configuration.readTimeout.unsignedIntValue > 0) {
+            unsigned int readTimeout = _configuration.readTimeout.unsignedIntValue;
+            mysql_options(_mysql, MYSQL_OPT_READ_TIMEOUT, (void *)&readTimeout);
+        }
         
         OHSSLConfig *SSLconfig = self.configuration.sslConfig;
         if (SSLconfig) {

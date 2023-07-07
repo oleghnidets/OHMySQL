@@ -37,6 +37,8 @@ final class PersistentCoordinator {
                                                dbName: databaseName,
                                                port: 3306,
                                                socket: "/tmp/mysql.sock")
+        configuration.writeTimeout = 15
+        configuration.readTimeout = 5
         
         return MySQLStoreCoordinator(configuration: configuration)
     }
