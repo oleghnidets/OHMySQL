@@ -8,22 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		26FD804DE3AF9752104EDB1D /* Pods_OHMySQLDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38F5F954AD80EAAD5E97C201 /* Pods_OHMySQLDemo.framework */; };
-		6BA2DB69AE2502F1CE9B3ECC /* Pods_OHMySQL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4D1C043D6B84F151B3C023 /* Pods_OHMySQL.framework */; };
-		7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138041D2162FD001086E8 /* OHTasksFacade.m */; };
-		7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C1138071D23D9EA001086E8 /* OHEditViewController.m */; };
-		7C5F9BFB1E91240000611994 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F9BFA1E91240000611994 /* AppDelegate.m */; };
-		7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */; };
-		7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */; };
-		7C91ACBA2020FD8F00BED2AC /* OHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */; };
-		7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */; };
-		7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBB08CC1D18249000B92CA9 /* OHTask.m */; };
-		7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCC61F81B7B5661003A468F /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */; };
-		7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55D461BB95928004A2FF9 /* OHListViewController.m */; };
-		7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55D481BB95930004A2FF9 /* Main.storyboard */; };
-		7CE55E0C1BB95A48004A2FF9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */; };
-		7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE55E081BB95A48004A2FF9 /* Images.xcassets */; };
-		7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE55E0A1BB95A48004A2FF9 /* main.m */; };
 		924BF1BA292411B8009A9F69 /* MySQLDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924BF1B9292411B8009A9F69 /* MySQLDemoApp.swift */; };
 		924BF1BE292411BA009A9F69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 924BF1BD292411BA009A9F69 /* Assets.xcassets */; };
 		924BF1C1292411BA009A9F69 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 924BF1C0292411BA009A9F69 /* Preview Assets.xcassets */; };
@@ -63,33 +47,10 @@
 		1F1042AE50199E07C66B3C5F /* Pods-OHMySQLDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQLDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQLDemo/Pods-OHMySQLDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		38F5F954AD80EAAD5E97C201 /* Pods_OHMySQLDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQLDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C4D1C043D6B84F151B3C023 /* Pods_OHMySQL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OHMySQL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C1138031D2162FD001086E8 /* OHTasksFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTasksFacade.h; sourceTree = "<group>"; };
-		7C1138041D2162FD001086E8 /* OHTasksFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTasksFacade.m; sourceTree = "<group>"; };
-		7C1138061D23D9EA001086E8 /* OHEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHEditViewController.h; sourceTree = "<group>"; };
-		7C1138071D23D9EA001086E8 /* OHEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHEditViewController.m; sourceTree = "<group>"; };
-		7C5F9BF91E91240000611994 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7C5F9BFA1E91240000611994 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTaskTableViewCell.h; sourceTree = "<group>"; };
-		7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTaskTableViewCell.m; sourceTree = "<group>"; };
-		7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OHDemoModel.xcdatamodel; sourceTree = "<group>"; };
-		7C91ACB82020FD8F00BED2AC /* OHSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHSettingsViewController.h; sourceTree = "<group>"; };
-		7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OHSettingsViewController.m; sourceTree = "<group>"; };
-		7CBB08C91D18249000B92CA9 /* OHTask+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHTask+CoreDataProperties.h"; sourceTree = "<group>"; };
-		7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHTask+CoreDataProperties.m"; sourceTree = "<group>"; };
-		7CBB08CB1D18249000B92CA9 /* OHTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHTask.h; sourceTree = "<group>"; };
-		7CBB08CC1D18249000B92CA9 /* OHTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHTask.m; sourceTree = "<group>"; };
-		7CCC61C91B7B38BA003A468F /* OHMySQL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OHMySQL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CCC61F81B7B5661003A468F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7CCC61FA1B7B566A003A468F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		7CE55D211BB95887004A2FF9 /* OHAppDelegateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAppDelegateTest.h; sourceTree = "<group>"; };
 		7CE55D221BB95887004A2FF9 /* OHAppDelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAppDelegateTest.m; sourceTree = "<group>"; };
-		7CE55D451BB95928004A2FF9 /* OHListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHListViewController.h; sourceTree = "<group>"; };
-		7CE55D461BB95928004A2FF9 /* OHListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHListViewController.m; sourceTree = "<group>"; };
-		7CE55D491BB95930004A2FF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7CE55E071BB95A48004A2FF9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7CE55E081BB95A48004A2FF9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		7CE55E091BB95A48004A2FF9 /* Info-Sample.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-Sample.plist"; sourceTree = "<group>"; };
-		7CE55E0A1BB95A48004A2FF9 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7CE55E181BB95B77004A2FF9 /* OHMySQLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OHMySQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE55E1C1BB95B77004A2FF9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D693B3C218242914CCB4221 /* Pods-OHMySQL-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OHMySQL-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-OHMySQL-Sample/Pods-OHMySQL-Sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,15 +91,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7CCC61C61B7B38BA003A468F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CCC61F91B7B5661003A468F /* Foundation.framework in Frameworks */,
-				6BA2DB69AE2502F1CE9B3ECC /* Pods_OHMySQL.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7CE55E151BB95B77004A2FF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,38 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7C5F9BF61E91239200611994 /* Data Layer */ = {
-			isa = PBXGroup;
-			children = (
-				7CBB08C81D18249000B92CA9 /* Model */,
-				7C1138031D2162FD001086E8 /* OHTasksFacade.h */,
-				7C1138041D2162FD001086E8 /* OHTasksFacade.m */,
-			);
-			path = "Data Layer";
-			sourceTree = "<group>";
-		};
-		7C5F9BF71E91239E00611994 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7C6A95831C0084D60083798B /* OHTaskTableViewCell.h */,
-				7C6A95841C0084D60083798B /* OHTaskTableViewCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		7C5F9BF81E9123A600611994 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				7C1138061D23D9EA001086E8 /* OHEditViewController.h */,
-				7C1138071D23D9EA001086E8 /* OHEditViewController.m */,
-				7CE55D451BB95928004A2FF9 /* OHListViewController.h */,
-				7CE55D461BB95928004A2FF9 /* OHListViewController.m */,
-				7C91ACB82020FD8F00BED2AC /* OHSettingsViewController.h */,
-				7C91ACB92020FD8F00BED2AC /* OHSettingsViewController.m */,
-			);
-			path = "View Controllers";
-			sourceTree = "<group>";
-		};
 		7CBAB5C61E478F4900A978F0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,22 +126,10 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		7CBB08C81D18249000B92CA9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7CBB08C91D18249000B92CA9 /* OHTask+CoreDataProperties.h */,
-				7CBB08CA1D18249000B92CA9 /* OHTask+CoreDataProperties.m */,
-				7CBB08CB1D18249000B92CA9 /* OHTask.h */,
-				7CBB08CC1D18249000B92CA9 /* OHTask.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		7CCC61C01B7B38BA003A468F = {
 			isa = PBXGroup;
 			children = (
 				924BF1B8292411B8009A9F69 /* OHMySQLDemo */,
-				7CCC61CB1B7B38BA003A468F /* OHMySQLProject */,
 				7CE55D201BB95887004A2FF9 /* OHMySQLTests */,
 				FE42F509C0FD8A891F7BA875 /* Frameworks */,
 				9481FD4AF0BB3CCFFB913AF8 /* Pods */,
@@ -232,25 +140,10 @@
 		7CCC61CA1B7B38BA003A468F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CCC61C91B7B38BA003A468F /* OHMySQL.app */,
 				7CE55E181BB95B77004A2FF9 /* OHMySQLTests.xctest */,
 				924BF1B7292411B8009A9F69 /* OHMySQLDemo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7CCC61CB1B7B38BA003A468F /* OHMySQLProject */ = {
-			isa = PBXGroup;
-			children = (
-				7C5F9BF61E91239200611994 /* Data Layer */,
-				7CE55E031BB95A48004A2FF9 /* Supporting Files */,
-				7C5F9BF81E9123A600611994 /* View Controllers */,
-				7C5F9BF71E91239E00611994 /* Views */,
-				7C5F9BF91E91240000611994 /* AppDelegate.h */,
-				7C5F9BFA1E91240000611994 /* AppDelegate.m */,
-				7CE55D481BB95930004A2FF9 /* Main.storyboard */,
-			);
-			path = OHMySQLProject;
 			sourceTree = "<group>";
 		};
 		7CE55D201BB95887004A2FF9 /* OHMySQLTests */ = {
@@ -268,18 +161,6 @@
 				9271549228B7FEF3005CFBD4 /* OHMySQLTests-Bridging-Header.h */,
 			);
 			path = OHMySQLTests;
-			sourceTree = "<group>";
-		};
-		7CE55E031BB95A48004A2FF9 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7CE55E081BB95A48004A2FF9 /* Images.xcassets */,
-				7CE55E091BB95A48004A2FF9 /* Info-Sample.plist */,
-				7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */,
-				7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */,
-				7CE55E0A1BB95A48004A2FF9 /* main.m */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		7CE55E241BB95C13004A2FF9 /* Supporting Files */ = {
@@ -403,25 +284,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7CCC61C81B7B38BA003A468F /* OHMySQL */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7CCC61EC1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQL" */;
-			buildPhases = (
-				1A5AEA139B347FF8DBF1C536 /* [CP] Check Pods Manifest.lock */,
-				7CCC61C51B7B38BA003A468F /* Sources */,
-				7CCC61C61B7B38BA003A468F /* Frameworks */,
-				7CCC61C71B7B38BA003A468F /* Resources */,
-				4896715B9FBE1B2229E3B167 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OHMySQL;
-			productName = MySQL;
-			productReference = 7CCC61C91B7B38BA003A468F /* OHMySQL.app */;
-			productType = "com.apple.product-type.application";
-		};
 		7CE55E171BB95B77004A2FF9 /* OHMySQLTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CE55E1F1BB95B77004A2FF9 /* Build configuration list for PBXNativeTarget "OHMySQLTests" */;
@@ -472,11 +334,6 @@
 				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "Oleg Hnidets";
 				TargetAttributes = {
-					7CCC61C81B7B38BA003A468F = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 4LZBFVML4B;
-						ProvisioningStyle = Automatic;
-					};
 					7CE55E171BB95B77004A2FF9 = {
 						CreatedOnToolsVersion = 7.0;
 						LastSwiftMigration = 1340;
@@ -501,7 +358,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7CCC61C81B7B38BA003A468F /* OHMySQL */,
 				7CE55E171BB95B77004A2FF9 /* OHMySQLTests */,
 				924BF1B6292411B8009A9F69 /* OHMySQLDemo */,
 			);
@@ -509,16 +365,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7CCC61C71B7B38BA003A468F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CE55D4A1BB95930004A2FF9 /* Main.storyboard in Resources */,
-				7CE55E0D1BB95A48004A2FF9 /* Images.xcassets in Resources */,
-				7CE55E0C1BB95A48004A2FF9 /* LaunchScreen.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7CE55E161BB95B77004A2FF9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -538,24 +384,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A5AEA139B347FF8DBF1C536 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OHMySQL-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1B4E41E0CEF215DBFC5FB72C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -574,26 +402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OHMySQLTests/Pods-OHMySQLTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4896715B9FBE1B2229E3B167 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/OHMySQL/OHMySQL.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OHMySQL/MySQL.framework/MySQL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHMySQL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MySQL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OHMySQL/Pods-OHMySQL-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		650D93E4A1E471EBB5B39687 /* [CP] Check Pods Manifest.lock */ = {
@@ -659,24 +467,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7CCC61C51B7B38BA003A468F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7CBB08CE1D18249000B92CA9 /* OHTask.m in Sources */,
-				7C91ACBA2020FD8F00BED2AC /* OHSettingsViewController.m in Sources */,
-				7C6A95851C0084D60083798B /* OHTaskTableViewCell.m in Sources */,
-				7CE55D261BB95887004A2FF9 /* OHAppDelegateTest.m in Sources */,
-				7C1138081D23D9EA001086E8 /* OHEditViewController.m in Sources */,
-				7C5F9BFB1E91240000611994 /* AppDelegate.m in Sources */,
-				7CE55D471BB95928004A2FF9 /* OHListViewController.m in Sources */,
-				7CE55E0F1BB95A48004A2FF9 /* main.m in Sources */,
-				7C1138051D2162FD001086E8 /* OHTasksFacade.m in Sources */,
-				7C6A95B71C0087A00083798B /* OHDemoModel.xcdatamodeld in Sources */,
-				7CBB08CD1D18249000B92CA9 /* OHTask+CoreDataProperties.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7CE55E141BB95B77004A2FF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -719,27 +509,6 @@
 			targetProxy = 927C68ED292C0B9E000CB655 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7CE55D481BB95930004A2FF9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CE55D491BB95930004A2FF9 /* Base */,
-			);
-			name = Main.storyboard;
-			path = .;
-			sourceTree = "<group>";
-		};
-		7CE55E061BB95A48004A2FF9 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CE55E071BB95A48004A2FF9 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = .;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7CCC61EA1B7B38BA003A468F /* Debug */ = {
@@ -848,80 +617,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		7CCC61ED1B7B38BA003A468F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA0099FBAAFE0580C985E4EA /* Pods-OHMySQL.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUNDLE_LOADER = "";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4LZBFVML4B;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/OHMySQL\"",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/OHMySQLProject/Supporting Files/Info-Sample.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.com.ohmysql-1";
-				PRODUCT_NAME = OHMySQL;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				VALIDATE_WORKSPACE = YES;
-			};
-			name = Debug;
-		};
-		7CCC61EE1B7B38BA003A468F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4F43FE8C9F9591D60294582 /* Pods-OHMySQL.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUNDLE_LOADER = "";
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4LZBFVML4B;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_SHADOW = YES;
-				GCC_WARN_UNUSED_PARAMETER = YES;
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/OHMySQL\"",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/OHMySQLProject/Supporting Files/Info-Sample.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.com.ohmysql-1";
-				PRODUCT_NAME = OHMySQL;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
@@ -1046,15 +741,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CCC61EC1B7B38BA003A468F /* Build configuration list for PBXNativeTarget "OHMySQL" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7CCC61ED1B7B38BA003A468F /* Debug */,
-				7CCC61EE1B7B38BA003A468F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7CE55E1F1BB95B77004A2FF9 /* Build configuration list for PBXNativeTarget "OHMySQLTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1074,19 +760,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		7C6A95B51C0087A00083798B /* OHDemoModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */,
-			);
-			currentVersion = 7C6A95B61C0087A00083798B /* OHDemoModel.xcdatamodel */;
-			path = OHDemoModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 7CCC61C11B7B38BA003A468F /* Project object */;
 }
