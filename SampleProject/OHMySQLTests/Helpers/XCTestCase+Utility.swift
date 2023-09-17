@@ -24,32 +24,32 @@ import XCTest
 import OHMySQL
 
 extension XCTestCase {
-    var mainQueryContext: MySQLQueryContext! {
+    var mainQueryContext: MySQLQueryContext {
         MySQLContainer.shared.mainQueryContext!
     }
     
-    static var mainQueryContext: MySQLQueryContext! {
+    static var mainQueryContext: MySQLQueryContext {
         MySQLContainer.shared.mainQueryContext!
     }
     
     static func configureDatabase() {
-        guard let database = ProcessInfo.processInfo.environment["DB_NAME"],
-              let username = ProcessInfo.processInfo.environment["USER_NAME"],
-              let password = ProcessInfo.processInfo.environment["USER_PASSWORD"],
-              let serverName = ProcessInfo.processInfo.environment["DB_HOST"],
-              let portString = ProcessInfo.processInfo.environment["DB_PORT"],
-              let port = UInt(portString),
-              let socket = ProcessInfo.processInfo.environment["DB_SOCKET"] else {
-            XCTFail("Cannot configure database")
-            return
-        }
+//        guard let database = ProcessInfo.processInfo.environment["DB_NAME"],
+//              let username = ProcessInfo.processInfo.environment["USER_NAME"],
+//              let password = ProcessInfo.processInfo.environment["USER_PASSWORD"],
+//              let serverName = ProcessInfo.processInfo.environment["DB_HOST"],
+//              let portString = ProcessInfo.processInfo.environment["DB_PORT"],
+//              let port = UInt(portString),
+//              let socket = ProcessInfo.processInfo.environment["DB_SOCKET"] else {
+//            XCTFail("Cannot configure database")
+//            return
+//        }
         
-//        let database = "mysql"
-//        let username = "root"
-//        let password = ""
-//        let serverName = "localhost"
-//        let port: UInt = 3306
-//        let socket = "/tmp/mysql.sock"
+        let database = "mysql"
+        let username = "root"
+        let password = ""
+        let serverName = "localhost"
+        let port: UInt = 3306
+        let socket = "/tmp/mysql.sock"
         
         let configuration = MySQLConfiguration(user: username,
                                                password: password,

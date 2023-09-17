@@ -33,6 +33,7 @@
 		924BF1C9292411CC009A9F69 /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92775C8C291ADE370097B49C /* TaskListView.swift */; };
 		924BF1CA292411CC009A9F69 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92775C8E291ADE410097B49C /* ConfigurationView.swift */; };
 		924BF1CB292411CC009A9F69 /* TaskPresentationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B3E6AA291D96800015062A /* TaskPresentationItem.swift */; };
+		924CA5C02A5DE91900C4EDBF /* ConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924CA5BF2A5DE91900C4EDBF /* ConfigurationViewModel.swift */; };
 		9271549428B7FEF3005CFBD4 /* EscapeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271549328B7FEF3005CFBD4 /* EscapeTests.swift */; };
 		9271549628B7FF7B005CFBD4 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271549528B7FF7B005CFBD4 /* NullTests.swift */; };
 		9271549828BBAC4F005CFBD4 /* SelectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271549728BBAC4F005CFBD4 /* SelectTests.swift */; };
@@ -99,6 +100,7 @@
 		924BF1B9292411B8009A9F69 /* MySQLDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySQLDemoApp.swift; sourceTree = "<group>"; };
 		924BF1BD292411BA009A9F69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		924BF1C0292411BA009A9F69 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		924CA5BF2A5DE91900C4EDBF /* ConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewModel.swift; sourceTree = "<group>"; };
 		925EAB16287C155F00D80CA8 /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		9271549228B7FEF3005CFBD4 /* OHMySQLTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OHMySQLTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		9271549328B7FEF3005CFBD4 /* EscapeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EscapeTests.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				92775C8E291ADE410097B49C /* ConfigurationView.swift */,
+				924CA5BF2A5DE91900C4EDBF /* ConfigurationViewModel.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -703,6 +706,7 @@
 				924BF1CA292411CC009A9F69 /* ConfigurationView.swift in Sources */,
 				924BF1C5292411CC009A9F69 /* TaskListViewModel.swift in Sources */,
 				924BF1C7292411CC009A9F69 /* TaskDetailsView.swift in Sources */,
+				924CA5C02A5DE91900C4EDBF /* ConfigurationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

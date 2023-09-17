@@ -18,8 +18,6 @@ You can connect to your remote MySQL database using OHMySQL API. It allows you d
   spec.source           = { :git => 'https://github.com/oleghnidets/OHMySQL.git', :tag => spec.version.to_s }
   spec.ios.deployment_target = '14.0'
   spec.osx.deployment_target = '11.0'
-  spec.watchos.deployment_target = '8.0'
-  spec.tvos.deployment_target = '15.0'
   spec.requires_arc     = true 
   spec.source_files     = 'OHMySQL/Sources/**/*.{h,m}'
   spec.frameworks       = 'Foundation'

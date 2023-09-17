@@ -76,11 +76,13 @@ final class TaskListViewModel: ObservableObject {
         task.taskData = UIDevice.current.identifierForVendor?.uuidString.data(using: .utf8) as? NSData
         
         taskRepository.addTaskItem(task) { result in
-            switch result {
-            case .success:
-                self.tasks = (try? self.fetchTasks()) ?? []
-            case .failure:
-                self.state = .error(message: "Cannot create a task")
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.tasks = (try? self.fetchTasks()) ?? []
+                case .failure:
+                    self.state = .error(message: "Cannot create a task")
+                }
             }
         }
     }
