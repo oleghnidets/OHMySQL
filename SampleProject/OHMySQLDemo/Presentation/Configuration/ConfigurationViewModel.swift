@@ -70,26 +70,30 @@ final class ConfigurationViewModel: ObservableObject {
     @Published var socket = SettingsData.socket ?? ""
     
     private var cancellables: Set<AnyCancellable> = []
-
-    func save() {
-//        SettingsData.port
-//
-//            SettingsData.username = $0
-//        }.store(in: &cancellables)
-        $password.sink { SettingsData.password = $0 }.store(in: &cancellables)
-        $serverName.sink { SettingsData.serverName = $0 }.store(in: &cancellables)
-        $database.sink { SettingsData.database = $0 }.store(in: &cancellables)
-        $socket.sink { SettingsData.socket = $0 }.store(in: &cancellables)
-    }
     
     func viewLoaded() {
-        $port.sink { SettingsData.port = $0 }.store(in: &cancellables)
+        $port.sink {
+            SettingsData.port = $0
+        }.store(in: &cancellables)
+        
         $username.sink {
             SettingsData.username = $0
         }.store(in: &cancellables)
-        $password.sink { SettingsData.password = $0 }.store(in: &cancellables)
-        $serverName.sink { SettingsData.serverName = $0 }.store(in: &cancellables)
-        $database.sink { SettingsData.database = $0 }.store(in: &cancellables)
-        $socket.sink { SettingsData.socket = $0 }.store(in: &cancellables)
+        
+        $password.sink {
+            SettingsData.password = $0
+        }.store(in: &cancellables)
+        
+        $serverName.sink {
+            SettingsData.serverName = $0
+        }.store(in: &cancellables)
+        
+        $database.sink {
+            SettingsData.database = $0
+        }.store(in: &cancellables)
+        
+        $socket.sink {
+            SettingsData.socket = $0
+        }.store(in: &cancellables)
     }
 }
