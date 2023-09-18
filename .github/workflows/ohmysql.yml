@@ -25,7 +25,7 @@ jobs:
         database: tests
     - uses: actions/checkout@v2
     - uses: xavierLowmiller/xcodegen-action@1.1.2
-        with:
+      with:
         spec: project.yaml
         use-cache: true
     - name: Generate project
