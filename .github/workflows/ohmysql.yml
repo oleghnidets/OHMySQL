@@ -24,7 +24,7 @@ jobs:
         mysql-version: 8.0
         database: tests
     - uses: actions/checkout@v2
-      uses: xavierLowmiller/xcodegen-action@1.1.2
+    - uses: xavierLowmiller/xcodegen-action@1.1.2
         with:
         spec: project.yaml
         use-cache: true
@@ -32,7 +32,7 @@ jobs:
       run: |
         xcodegen
     - name: Run tests 
-      run: xcodebxcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 14" test \
+      run: xcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 14" test \
         USER_NAME='root' \
         USER_PASSWORD='' \
         DB_NAME='tests' \
