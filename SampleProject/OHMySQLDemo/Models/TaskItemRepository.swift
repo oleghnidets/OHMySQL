@@ -69,4 +69,12 @@ final class TaskItemRepository {
             completion(error != nil ? .failure(error!) : .success(()))
         }
     }
+    
+    func deleteTaskItem(_ item: TaskItem, completion: @escaping (Result<Void, Error>) -> ()) {
+        coordinator.mainQueryContext.deleteObject(item)
+        
+        coordinator.mainQueryContext.save { error in
+            completion(error != nil ? .failure(error!) : .success(()))
+        }
+    }
 }

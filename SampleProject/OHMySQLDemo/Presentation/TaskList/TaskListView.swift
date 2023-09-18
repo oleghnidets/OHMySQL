@@ -38,6 +38,8 @@ struct TaskListView: View {
                             Text(task.name ?? "-").font(.headline)
                             Text(task.taskDescription ?? "-").font(.subheadline)
                         }
+                    }.onDelete { indexSet in
+                        try? viewModel.delete(at: indexSet)
                     }
                 }
             case .emptyList:
@@ -51,6 +53,12 @@ struct TaskListView: View {
             viewModel.configureData()
         }.toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button(action: {
+                    try? viewModel.deleteAll()
+                }, label: {
+                    Label("", systemImage: "folder.badge.minus")
+                })
+                
                 Button(action: {
                     viewModel.addRandomTask()
                 }, label: {

@@ -87,8 +87,33 @@ final class TaskListViewModel: ObservableObject {
         }
     }
     
-    func delete() {
+    func deleteAll() throws {
+        guard let tasks = try? taskRepository.fetch() else {
+            return
+        }
         
+        try delete(at: IndexSet(integersIn: tasks.startIndex...tasks.endIndex - 1))
+    }
+    
+    func delete(at indexSet: IndexSet) throws {
+        guard let tasks = try? taskRepository.fetch() else {
+            return
+        }
+        
+        let items = indexSet.map { tasks[$0] }
+        var counter = 0
+        
+        items.forEach { item in
+            taskRepository.deleteTaskItem(item) { _ in 
+                DispatchQueue.main.async {
+                    counter += 1
+                    
+                    if counter == items.count {
+                        self.tasks = (try? self.fetchTasks()) ?? []
+                    }
+                }
+            }
+        }
     }
     
     private func handleDatabaseSelection() throws {
