@@ -1,12 +1,19 @@
 name: OHMySQL
 options:
   bundleIdPrefix: com.ohmysql.apple
-settings:
-  configs:
-    debug:
-      OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
-    release:
-      OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+
+FrameworkSettings:
+  settings:
+    configs:
+      debug:
+        OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+      release:
+        OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+FrameworkDependencies:
+  dependencies:
+        - framework: OHMySQL/lib/MySQL.xcframework
+        - sdk: Foundation.framework
+        - sdk: libc++.tbd
 
 targets:
   OHMySQL:
@@ -23,10 +30,9 @@ targets:
         release:
           GENERATE_INFOPLIST_FILE: YES
           DOCC_EXTRACT_SWIFT_INFO_FOR_OBJC_SYMBOLS: YES
-    dependencies:
-      - framework: OHMySQL/lib/MySQL.xcframework
-      - sdk: Foundation.framework
-      - sdk: libc++.tbd
+    templates:
+      - CommonSettings
+      - FrameworkDependencies
 
   OHMySQL-macOS:
     type: framework
@@ -34,7 +40,20 @@ targets:
     deploymentTarget: "11.0"
     sources: [OHMySQL/Sources]
     scheme: {}
+    templates:
+      - CommonSettings
+      - FrameworkDependencies
+
+  OHMySQLTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources: [OHMySQL/Tests]
+    settings:
+      configs:
+        debug:
+          GENERATE_INFOPLIST_FILE: YES
+        release:
+          GENERATE_INFOPLIST_FILE: YES
     dependencies:
-      - framework: OHMySQL/lib/MySQL.xcframework
-      - sdk: Foundation.framework
-      - sdk: libc++.tbd
+      - target: OHMySQL

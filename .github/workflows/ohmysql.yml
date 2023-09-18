@@ -24,11 +24,15 @@ jobs:
         mysql-version: 8.0
         database: tests
     - uses: actions/checkout@v2
-    - name: Install dependencies
+      uses: xavierLowmiller/xcodegen-action@1.1.2
+        with:
+        spec: project.yaml
+        use-cache: true
+    - name: Generate project
       run: |
-        pod install --project-directory=SampleProject
+        xcodegen
     - name: Run tests 
-      run: xcodebuild -workspace SampleProject/OHMySQL.xcworkspace -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test \
+      run: xcodebxcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 14" test \
         USER_NAME='root' \
         USER_PASSWORD='' \
         DB_NAME='tests' \
