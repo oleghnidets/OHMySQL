@@ -16,6 +16,7 @@ jobs:
   #   - name: Cocoapods
   #     run: pod lib lint --allow-warnings
   UnitTests:
+    runs-on: macos-latest
     steps:
     - name: Setup MySQL
       uses: ankane/setup-mysql@v1
