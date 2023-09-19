@@ -168,7 +168,7 @@ try? context.save()
 
 See [LICENSE](LICENSE).
 
-[platform-image]: https://img.shields.io/badge/platforms-ios%20|%20macOS%20|%20catalyst%20|%20tvOS%20|%20watchOS-orange.svg
+[platform-image]: https://img.shields.io/badge/platforms-ios%20|%20macOS%20|%20catalyst%20-orange.svg
 [platform-url]: https://oleghnidets.github.io/OHMySQL/documentation/ohmysql
 [license-image]: https://img.shields.io/badge/License-MIT-green.svg
 [license-url]: LICENSE
