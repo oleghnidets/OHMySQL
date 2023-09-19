@@ -9,6 +9,7 @@ FrameworkSettings:
         OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
       release:
         OTHER_SWIFT_FLAGS: -Wno-incomplete-umbrella
+        
 FrameworkDependencies:
   dependencies:
         - framework: OHMySQL/lib/MySQL.xcframework
