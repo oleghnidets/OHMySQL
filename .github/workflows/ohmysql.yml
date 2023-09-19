@@ -29,5 +29,6 @@ jobs:
   CocoaPodsValidation:
     runs-on: macos-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Cocoapods
       run: pod lib lint --allow-warnings
