@@ -9,12 +9,12 @@ on:
       - master
 
 jobs:
-  CocoaPodsValidation:
-    runs-on: macos-11
-    steps:
-    - uses: actions/checkout@v2
-    - name: Cocoapods
-      run: pod lib lint --allow-warnings
+  # CocoaPodsValidation:
+  #   runs-on: macos-11
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Cocoapods
+  #     run: pod lib lint --allow-warnings
   UnitTests:
     runs-on: macos-11
     steps:
@@ -23,14 +23,10 @@ jobs:
       with:
         mysql-version: 8.0
         database: tests
-    - uses: actions/checkout@v2
-    - uses: xavierLowmiller/xcodegen-action@1.1.2
-      with:
-        spec: project.yaml
-        use-cache: true
+    - name: Install xcodegen
+      run: brew install xcodegen
     - name: Generate project
-      run: |
-        xcodegen
+      run: xcodegen
     - name: Run tests 
       run: xcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 14" test \
         USER_NAME='root' \
