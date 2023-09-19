@@ -9,29 +9,26 @@ on:
       - master
 
 jobs:
-  CocoaPodsValidation:
-    runs-on: macos-11
+  UnitTests:
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Cocoapods
-      run: pod lib lint --allow-warnings
-  UnitTests:
-    runs-on: macos-11
-    steps:
     - name: Setup MySQL
       uses: ankane/setup-mysql@v1
       with:
         mysql-version: 8.0
         database: tests
-    - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: |
-        pod install --project-directory=SampleProject
     - name: Run tests 
-      run: xcodebuild -workspace SampleProject/OHMySQL.xcworkspace -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" clean test \
+      run: xcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 14" test \
         USER_NAME='root' \
         USER_PASSWORD='' \
         DB_NAME='tests' \
         DB_HOST='localhost' \
         DB_PORT='3306' \
         DB_SOCKET='/tmp/mysql.sock' | xcpretty
+  CocoaPodsValidation:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cocoapods
+      run: pod lib lint --allow-warnings
