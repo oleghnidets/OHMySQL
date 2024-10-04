@@ -23,17 +23,24 @@
 import SwiftUI
 
 struct MainView: View {
+    var myBool = true
+    
     var body: some View {
-        
-        TabView {
-            NavigationView {
-                TaskListView()
-            }.tabItem {
-                Label("Tasks", systemImage: "list.bullet")
+        if myBool {
+            TabView {
+                NavigationView {
+                    TaskListView()
+                }.tabItem {
+                    Label("Tasks", systemImage: "list.bullet")
+                }
+                
+                ConfigurationView().tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
             }
-            
-            ConfigurationView().tabItem {
-                Label("Settings", systemImage: "gear")
+        } else {
+            List() {
+                
             }
         }
     }

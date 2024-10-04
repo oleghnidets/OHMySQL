@@ -1,6 +1,6 @@
 framework module MySQL {
   umbrella header "mysql.h"
-
   export *
+
   module * { export * }
 }
