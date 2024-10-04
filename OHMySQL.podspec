@@ -22,6 +22,6 @@ You can connect to your remote MySQL database using OHMySQL API. It allows you d
   spec.source_files     = 'OHMySQL/Sources/**/*.{h,m}'
   spec.frameworks       = 'Foundation'
   spec.compiler_flags = '-Wno-incomplete-umbrella'
-  spec.vendored_frameworks = 'OHMySQL/lib/MySQL.xcframework'
+  spec.vendored_frameworks = 'OHMySQL/lib/MySQL.xcframework', 'OHMySQL/lib/OpenSSL.xcframework', 
   spec.library = 'c++'
 end
