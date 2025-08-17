@@ -205,6 +205,7 @@
 				TargetAttributes = {
 					924BF1B6292411B8009A9F69 = {
 						CreatedOnToolsVersion = 13.4.1;
+						DevelopmentTeam = 4LZBFVML4B;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -433,6 +434,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_ASSET_PATHS = "\"OHMySQLDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4LZBFVML4B;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -471,6 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OHMySQLDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4LZBFVML4B;
 				ENABLE_PREVIEWS = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
