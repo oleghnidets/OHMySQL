@@ -31,4 +31,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Cocoapods
-      run: pod lib lint --allow-warnings
+      run: pod lib lint --allow-warnings --verbose
