@@ -9,6 +9,16 @@ on:
       - master
 
 jobs:
+  SPMValidation:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: SPM describe
+      run: swift package describe
+    - name: SPM resolve
+      run: swift package resolve
+    - name: SPM build all targets
+      run: swift package resolve
   UnitTests:
     runs-on: macos-latest
     steps:
@@ -19,16 +29,10 @@ jobs:
         mysql-version: 8.0
         database: tests
     - name: Run tests 
-      run: xcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 14" test \
+      run: xcodebuild -project OHMySQL.xcodeproj -scheme "OHMySQLTests" -parallel-testing-enabled NO -destination "platform=iOS Simulator,OS=latest,name=iPhone 15" test \
         USER_NAME='root' \
         USER_PASSWORD='' \
         DB_NAME='tests' \
         DB_HOST='localhost' \
         DB_PORT='3306' \
         DB_SOCKET='/tmp/mysql.sock' | xcpretty
-  CocoaPodsValidation:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Cocoapods
-      run: pod lib lint --allow-warnings

@@ -171,8 +171,6 @@ See [LICENSE](LICENSE).
 [platform-url]: https://oleghnidets.github.io/OHMySQL/documentation/ohmysql
 [license-image]: https://img.shields.io/badge/License-MIT-green.svg
 [license-url]: LICENSE
-[cocoapods-image]: https://img.shields.io/cocoapods/v/OHMySQL.svg?style=flat-square
-[cocoapods-url]: OHMySQL.podspec
 [carthage-image]: https://img.shields.io/badge/carthage-compatible-blue.svg
 [carthage-url]: https://github.com/Carthage/Carthage
 [docs-image]: https://img.shields.io/badge/documentation-DocC-lightgrey.svg
