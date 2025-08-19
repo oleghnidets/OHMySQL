@@ -76,6 +76,7 @@
 		93C82CDC303D2E7CF624724B /* OHMySQLQueryContext.h in Headers */ = {isa = PBXBuildFile; fileRef = BAB51A09B7C7D7F716CAE4E0 /* OHMySQLQueryContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96084878DF9D641A66955541 /* OHJoinConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = A782FE266DE15545389DE520 /* OHJoinConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		98E28F19278A60D04CB5A3AB /* OHMySQLQueryRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBE81AF9B2C70DFF9885D48 /* OHMySQLQueryRequestFactory.m */; };
+		9AC11FF4656B0ED6FEA07794 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E1EFA92ACA388D488BB60E83 /* PrivacyInfo.xcprivacy */; };
 		9F870272FE634E7E7DC2D820 /* OHMySQLSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = F5075398C1297B498D695C82 /* OHMySQLSerialization.m */; };
 		A517C72F7ECBB0D75497103C /* OHMySQLConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 263DBBC085ED734F41082E68 /* OHMySQLConfiguration.m */; };
 		AA7F900FC4DAA3A15400A482 /* OHJoinConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C501CC03473A4EDFD43228B /* OHJoinConstants.m */; };
@@ -98,6 +99,7 @@
 		CAE51ADE7AB2432E9D84455D /* OHMySQLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F64FC4DE82A268EA7563F /* OHMySQLStore.m */; };
 		CC03DA763AB0A85D747744E6 /* OHMySQLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7F64FC4DE82A268EA7563F /* OHMySQLStore.m */; };
 		CC92E4B982530C3B15376D2D /* OHMySQLQueryRequestFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 584C06F6CE1DEE4DE17EA2DD /* OHMySQLQueryRequestFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD40E06823065C79AB0F254B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E1EFA92ACA388D488BB60E83 /* PrivacyInfo.xcprivacy */; };
 		CE8A5CB3E11E7719CDF4615E /* OHResultErrorType.h in Headers */ = {isa = PBXBuildFile; fileRef = EA845377406399FE522F9C22 /* OHResultErrorType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D26C26CF6D4E02CA48FF0C5C /* OHMySQLQueryTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = FF84201C4F4A7A4ABA52B1E8 /* OHMySQLQueryTimeline.m */; };
 		DC78812F3C769CB82CE0D8C5 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC242ECF51558924B70DE100 /* NullTests.swift */; };
@@ -194,6 +196,7 @@
 		D7276E6E6BB6B32F193BD678 /* OpenSSL.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:67RAULRX93:Marcin Krzyzanowski"; lastKnownFileType = wrapper.xcframework; name = OpenSSL.xcframework; path = OHMySQL/lib/OpenSSL.xcframework; sourceTree = "<group>"; };
 		D989D4A95C6A58D5EE126476 /* OHConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHConstants.h; sourceTree = "<group>"; };
 		DAD9266AF8FD656D4C28C091 /* OHMySQLTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = OHMySQLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EFA92ACA388D488BB60E83 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		E362352B7CD1893B51B3E606 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E8CE23805D0B550224EEF929 /* OHSerializationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHSerializationProtocol.h; sourceTree = "<group>"; };
 		EA845377406399FE522F9C22 /* OHResultErrorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OHResultErrorType.h; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 				E8CE23805D0B550224EEF929 /* OHSerializationProtocol.h */,
 				1954C0291FA63B50FFFC3512 /* OHSSLConfig.h */,
 				85E36ADA72FBBD4F968EE678 /* OHSSLConfig.m */,
+				E1EFA92ACA388D488BB60E83 /* PrivacyInfo.xcprivacy */,
 			);
 			name = Sources;
 			path = OHMySQL/Sources;
@@ -455,6 +459,7 @@
 			buildPhases = (
 				6AAA4E6013C110A4E3804971 /* Headers */,
 				24EA8948F99925867541DFBE /* Sources */,
+				514E6EA41E1D33DDA1A7CA6E /* Resources */,
 				CD82B2C895A7330333E21D0C /* Frameworks */,
 			);
 			buildRules = (
@@ -474,6 +479,7 @@
 			buildPhases = (
 				BD12A6A5FB75B213BE05C309 /* Headers */,
 				9B4EBE1135A5E0043E3268D8 /* Sources */,
+				4CF181EBCF2BC307A518F396 /* Resources */,
 				202D5ED50BF86A5CE493F568 /* Frameworks */,
 			);
 			buildRules = (
@@ -515,6 +521,25 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CF181EBCF2BC307A518F396 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD40E06823065C79AB0F254B /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		514E6EA41E1D33DDA1A7CA6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AC11FF4656B0ED6FEA07794 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		24EA8948F99925867541DFBE /* Sources */ = {

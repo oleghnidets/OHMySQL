@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2C839554FDF97987FD9DB6E1"
-               BuildableName = "OHMySQL.framework"
-               BlueprintName = "OHMySQL"
+               BlueprintIdentifier = "0B1010DB4D81DFC2B1C79A95"
+               BuildableName = "OHMySQLTests.xctest"
+               BlueprintName = "OHMySQLTests"
                ReferencedContainer = "container:OHMySQL.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,24 +32,13 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C839554FDF97987FD9DB6E1"
-            BuildableName = "OHMySQL.framework"
-            BlueprintName = "OHMySQL"
+            BlueprintIdentifier = "0B1010DB4D81DFC2B1C79A95"
+            BuildableName = "OHMySQLTests.xctest"
+            BlueprintName = "OHMySQLTests"
             ReferencedContainer = "container:OHMySQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0B1010DB4D81DFC2B1C79A95"
-               BuildableName = "OHMySQLTests.xctest"
-               BlueprintName = "OHMySQLTests"
-               ReferencedContainer = "container:OHMySQL.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <CommandLineArguments>
       </CommandLineArguments>
@@ -94,9 +83,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C839554FDF97987FD9DB6E1"
-            BuildableName = "OHMySQL.framework"
-            BlueprintName = "OHMySQL"
+            BlueprintIdentifier = "0B1010DB4D81DFC2B1C79A95"
+            BuildableName = "OHMySQLTests.xctest"
+            BlueprintName = "OHMySQLTests"
             ReferencedContainer = "container:OHMySQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -168,9 +157,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2C839554FDF97987FD9DB6E1"
-            BuildableName = "OHMySQL.framework"
-            BlueprintName = "OHMySQL"
+            BlueprintIdentifier = "0B1010DB4D81DFC2B1C79A95"
+            BuildableName = "OHMySQLTests.xctest"
+            BlueprintName = "OHMySQLTests"
             ReferencedContainer = "container:OHMySQL.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

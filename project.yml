@@ -17,6 +17,14 @@ targetTemplates:
       - framework: OHMySQL/lib/OpenSSL.xcframework
       - sdk: Foundation.framework
       - sdk: libc++.tbd
+  EnvVariables:
+    scheme:
+      environmentVariables:
+          DB_HOST: "$(DB_HOST)"
+          DB_NAME: "$(DB_NAME)"
+          DB_PORT: "$(DB_PORT)"
+          DB_SOCKET: "$(DB_SOCKET)"
+          USER_NAME: "$(USER_NAME)"
 
 targets:
   OHMySQL:
@@ -24,7 +32,9 @@ targets:
     platform: iOS
     deploymentTarget: "14.0"
     sources: [OHMySQL/Sources, 'OHMySQL.docc']
-    scheme: {}
+    scheme: 
+      testTargets:
+        - OHMySQLTests
     settings:
       configs:
         debug:
@@ -36,6 +46,7 @@ targets:
     templates:
       - CommonSettings
       - FrameworkDependencies
+      - EnvVariables
 
   OHMySQL-macOS:
     type: framework
@@ -46,12 +57,20 @@ targets:
     templates:
       - CommonSettings
       - FrameworkDependencies
+      - EnvVariables
 
   OHMySQLTests:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "14.0"
     sources: [OHMySQL/Tests]
+    scheme:
+      test:
+        config: Debug
+        targets:
+          - name: OHMySQLTests
+            parallelizable: true
+            randomExecutionOrder: true
     settings:
       configs:
         debug:
@@ -60,3 +79,5 @@ targets:
           GENERATE_INFOPLIST_FILE: YES
     dependencies:
       - target: OHMySQL
+    templates:
+      - EnvVariables

@@ -33,27 +33,27 @@ extension XCTestCase {
     }
     
     static func configureDatabase() {
-        guard let database = ProcessInfo.processInfo.environment["DB_NAME"] else {
+        guard let database = ProcessInfo.processInfo.environment["DB_NAME"], !database.isEmpty else {
             XCTFail("Cannot find DB name")
             return
         }
 
-        guard let username = ProcessInfo.processInfo.environment["USER_NAME"] else {
+        guard let username = ProcessInfo.processInfo.environment["USER_NAME"], !username.isEmpty else {
             XCTFail("Cannot find username")
             return
         }
 
-        guard let serverName = ProcessInfo.processInfo.environment["DB_HOST"] else {
+        guard let serverName = ProcessInfo.processInfo.environment["DB_HOST"],!serverName.isEmpty  else {
             XCTFail("Cannot find DB host")
             return
         }
-        guard let portString = ProcessInfo.processInfo.environment["DB_PORT"] else {
+        guard let portString = ProcessInfo.processInfo.environment["DB_PORT"], !portString.isEmpty else {
             XCTFail("Cannot find DB port")
             return
         }
 
         guard let port = UInt(portString) else {
-            XCTFail("Cannot convert port string to int")
+            XCTFail("Cannot convert port string to int: \(portString)")
             return
         }
         guard let socket = ProcessInfo.processInfo.environment["DB_SOCKET"] else {
