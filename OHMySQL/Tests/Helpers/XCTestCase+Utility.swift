@@ -33,14 +33,31 @@ extension XCTestCase {
     }
     
     static func configureDatabase() {
-        guard let database = ProcessInfo.processInfo.environment["DB_NAME"],
-              let username = ProcessInfo.processInfo.environment["USER_NAME"],
-              let password = ProcessInfo.processInfo.environment["USER_PASSWORD"],
-              let serverName = ProcessInfo.processInfo.environment["DB_HOST"],
-              let portString = ProcessInfo.processInfo.environment["DB_PORT"],
-              let port = UInt(portString),
-              let socket = ProcessInfo.processInfo.environment["DB_SOCKET"] else {
-            XCTFail("Cannot configure database")
+        guard let database = ProcessInfo.processInfo.environment["DB_NAME"] else {
+            XCTFail("Cannot find DB name")
+            return
+        }
+
+        guard let username = ProcessInfo.processInfo.environment["USER_NAME"] else {
+            XCTFail("Cannot find username")
+            return
+        }
+
+        guard let serverName = ProcessInfo.processInfo.environment["DB_HOST"] else {
+            XCTFail("Cannot find DB host")
+            return
+        }
+        guard let portString = ProcessInfo.processInfo.environment["DB_PORT"] else {
+            XCTFail("Cannot find DB port")
+            return
+        }
+
+        guard let port = UInt(portString) else {
+            XCTFail("Cannot convert port string to int")
+            return
+        }
+        guard let socket = ProcessInfo.processInfo.environment["DB_SOCKET"] else {
+            XCTFail("Cannot find db socket")
             return
         }
         
@@ -50,7 +67,9 @@ extension XCTestCase {
 //        let serverName = "localhost"
 //        let port: UInt = 3306
 //        let socket = "/tmp/mysql.sock"
-        
+
+        let password = ProcessInfo.processInfo.environment["USER_PASSWORD"] ?? ""
+
         let configuration = MySQLConfiguration(user: username,
                                                password: password,
                                                serverName: serverName,
