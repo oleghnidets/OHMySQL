@@ -13,8 +13,7 @@ jobs:
       run: |
         xcodebuild docbuild \
           -scheme 'OHMySQL' \
-          -derivedDataPath ./build \
-          -destination 'platform=iOS Simulator,OS=latest,name=iPhone 15'
+          -derivedDataPath ./build 
     - name: Generate pages
       run: |
         $(xcrun --find docc) process-archive transform-for-static-hosting \

@@ -9,6 +9,9 @@ on:
       - master
 
 jobs:
+  xcode:
+    - name: Set up Xcode version # Temporary solution https://github.com/actions/runner-images/issues/12758
+      run: sudo xcode-select --switch /Applications/Xcode_16.4.app
   SPMValidation:
     runs-on: macos-latest
     steps:
