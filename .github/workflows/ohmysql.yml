@@ -9,24 +9,21 @@ on:
       - master
 
 jobs:
-  xcode:
-    runs-on: macos-latest
+  # SPMValidation:
+  #   runs-on: macos-15
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: SPM describe
+  #     run: swift package describe
+  #   - name: SPM resolve
+  #     run: swift package resolve
+  #   - name: SPM build all targets
+  #     run: swift package resolve
+  UnitTests:
+    runs-on: macos-15
     steps:
     - name: Set up Xcode version # Temporary solution https://github.com/actions/runner-images/issues/12758
       run: sudo xcode-select --switch /Applications/Xcode_16.4.app
-  SPMValidation:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: SPM describe
-      run: swift package describe
-    - name: SPM resolve
-      run: swift package resolve
-    - name: SPM build all targets
-      run: swift package resolve
-  UnitTests:
-    runs-on: macos-latest
-    steps:
     - uses: actions/checkout@v2
     - name: Setup MySQL
       uses: ankane/setup-mysql@v1
