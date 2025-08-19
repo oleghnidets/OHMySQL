@@ -2,7 +2,6 @@
 
 [![License][platform-image]][platform-url]
 [![License][license-image]][license-url]
-[![CocoaPods Compatible][cocoapods-image]][cocoapods-url]
 [![Carthage Compatible][carthage-image]][carthage-url]
 [![Documentation][docs-image]][docs-url]
 
