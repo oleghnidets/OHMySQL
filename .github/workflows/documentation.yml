@@ -2,7 +2,7 @@ name: Documentation
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ master ]
 
 jobs:
   GenerateDocC:

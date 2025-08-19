@@ -9,16 +9,16 @@ on:
       - master
 
 jobs:
-  # SPMValidation:
-  #   runs-on: macos-15
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: SPM describe
-  #     run: swift package describe
-  #   - name: SPM resolve
-  #     run: swift package resolve
-  #   - name: SPM build all targets
-  #     run: swift package resolve
+  SPMValidation:
+    runs-on: macos-15
+    steps:
+    - uses: actions/checkout@v2
+    - name: SPM describe
+      run: swift package describe
+    - name: SPM resolve
+      run: swift package resolve
+    - name: SPM build all targets
+      run: swift package resolve
   UnitTests:
     runs-on: macos-15
     steps:
