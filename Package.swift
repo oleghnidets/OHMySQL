@@ -43,7 +43,7 @@ let package = Package(
         .testTarget(
             name: "OHMySQLTests",
             dependencies: ["OHMySQL"],
-            path: "OHMySQL/Tests",
+            path: "OHMySQL/Tests"
             
         ),
     ]
