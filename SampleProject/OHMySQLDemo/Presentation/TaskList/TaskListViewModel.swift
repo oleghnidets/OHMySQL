@@ -22,6 +22,7 @@
 
 import Foundation
 import OHMySQL
+import class UIKit.UIDevice
 
 final class TaskListViewModel: ObservableObject {
     enum State {

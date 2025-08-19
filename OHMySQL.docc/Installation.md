@@ -6,19 +6,15 @@ Learn the ways to integrate the framework in your application.
 
 The framework can be installed in different ways.
 
-### CocoaPods
+### SPM
 
-Open `Podfile` and declare the dependency:
-```bash
-pod 'OHMySQL'
-```
+Once you have your Swift package set up, adding `OHMySQL` as a dependency is as easy as adding it to the dependencies value of your Package.swift or the Package list in Xcode.
 
-Then open Terminal, navigate to project folder and install the dependencies:
+```swift
+dependencies: [
+    .package(url: "https://github.com/oleghnidets/OHMySQL.git", .upToNextMajor(from: "3.4.1"))
+]
 ```
-pod install --repo-update
-```
-
-> Tip: Learn how to use [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 
 ### Carthage
 
