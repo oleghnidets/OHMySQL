@@ -2,6 +2,7 @@
 
 [![License][platform-image]][platform-url]
 [![License][license-image]][license-url]
+[![SPM][spm-image]](spm-url)
 [![Carthage Compatible][carthage-image]][carthage-url]
 [![Documentation][docs-image]][docs-url]
 
@@ -167,6 +168,8 @@ try? context.save()
 
 See [LICENSE](LICENSE).
 
+[spm-image]: https://img.shields.io/badge/Swift_Package_Manager-compatible-orange?style=flat-square
+[spm-url]: Package.swift
 [platform-image]: https://img.shields.io/badge/platforms-ios%20|%20macOS%20|%20catalyst%20-orange.svg
 [platform-url]: https://oleghnidets.github.io/OHMySQL/documentation/ohmysql
 [license-image]: https://img.shields.io/badge/License-MIT-green.svg
