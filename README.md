@@ -110,7 +110,7 @@ let response = try? context.executeQueryRequestAndFetchResult(query)
 ### INSERT
 
 ```swift
-let query = MySQLQueryRequestFactory.insert("tasks", set: ["name": "Something", "desctiption": "new task"])
+let query = MySQLQueryRequestFactory.insert("tasks", set: ["name": "Something", "description": "new task"])
 try? context.execute(query)
 ```
 
